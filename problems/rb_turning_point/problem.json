@@ -6,7 +6,7 @@
     "email": "contact@gomafem.com"
   },
   "estimated_time_minutes": 2,
-  "disabled": false,
+  "disabled": true,
   "features": [
     "serial",
     "steady",
