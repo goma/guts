@@ -29,7 +29,7 @@
     "use_chemkin": false,
     "chemkin_input": "",
     "use_mpi": false,
-    "num_processors": 4,
+    "num_processors": 2,
     "use_decomp": true,
     "brk_input": "",
     "brk_exo_in": "channel.e",

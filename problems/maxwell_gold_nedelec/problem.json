@@ -28,7 +28,7 @@
     "use_chemkin": false,
     "chemkin_input": "",
     "use_mpi": true,
-    "num_processors": 4,
+    "num_processors": 2,
     "use_decomp": false,
     "brk_input": "",
     "brk_exo_in": "",

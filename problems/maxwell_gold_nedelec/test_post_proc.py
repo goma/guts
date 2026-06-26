@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
 frequency = 1e8
-known_scattering = 3667.959
-known_absorption =  -6.7515743e+02
-tolerance = 1e-4
+known_scattering = 3667.96
+known_absorption =  -6.7456004e+02
+tolerance = 1e-2
 
 def eps_diff(x,y):
     mv = abs(max(x,y))

@@ -24,10 +24,10 @@ Internal METIS decomposition using Recursive Bisection.
 ----------------- Communications Stats ------------
 
 		Number of Neighbors
-		Max:     3 (Proc = 0)		 Avg:  3.000		Min: 3 (Proc = 0)
+		Max:     1 (Proc = 0)		 Avg:  1.000		Min: 1 (Proc = 0)
 
 		Size of Messages
-		Max:  1254 (Proc = 2)		 Avg: 858.000		Min: 209 (Proc = 3)
+		Max:  2420 (Proc = 0)		 Avg: 2420.000		Min: 2420 (Proc = 0)
 --------------------------------------------------
 
 
@@ -41,7 +41,7 @@ BC [3] VELO_NORMAL SS 200 is a rotated condition, but lacks explicit ROT
 
 Number of unknowns            = 39996
 
-Number of matrix nonzeroes    = 8553216
+Number of matrix nonzeroes    = 7893312
 
 	 Using Coupled Level Set evolution!
 
@@ -55,20 +55,20 @@ Number of matrix nonzeroes    = 8553216
 
    ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
 -------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
-17:08:10 [0] 1.7e-03 6.4e+00 6.5e-02 9.9e+03 1.4e+06 6.4e+04  41 2.7e+00/5.7e+00 
-17:08:21 [1] 2.0e-04 1.3e-01 2.3e-03 3.2e+02 9.7e+04 3.5e+03  29 2.7e+00/6.1e+00 
-17:08:32 [2] 2.3e-06 2.6e-04 1.5e-05 4.3e+00 1.2e+02 1.5e+01  33 4.0e+00/8.2e+00 
-17:08:44 [3] 1.4e-08 5.6e-07 6.5e-08 1.7e-02 4.3e-01 5.6e-02  32 4.1e+00/8.3e+00 
-17:08:57 [4] 2.0e-11 8.1e-10 7.9e-11                         skp 4.0e+00/0.0e+00 
+20:06:20 [0] 1.7e-03 6.7e+00 6.7e-02 9.9e+03 1.4e+06 6.4e+04  32 4.4e+00/9.3e+00 
+20:06:34 [1] 2.0e-04 1.3e-01 2.3e-03 3.2e+02 9.7e+04 3.5e+03  24 4.3e+00/9.0e+00 
+20:06:47 [2] 2.3e-06 2.6e-04 1.5e-05 4.3e+00 1.2e+02 1.5e+01  24 4.4e+00/9.1e+00 
+20:07:01 [3] 1.4e-08 5.6e-07 6.6e-08 1.7e-02 4.3e-01 5.6e-02  24 4.3e+00/9.1e+00 
+20:07:14 [4] 1.9e-11 8.0e-10 7.9e-11                         skp 4.2e+00/0.0e+00 
 -------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
-scaled solution norms   9.950e+03  1.288e+02  6.245e+02 
+scaled solution norms   9.950e+03  6.823e+01  4.545e+02 
 
 CONSTANT DELTA_T          [1.7e-01, 1.6e-01, 3.2e-02, 3.8e-04]
 Predictor-corrector norm: [  0 d  ,   1 v  ,   1 P  ,   1 F  ]
 
 	 Maximum number of steps without renormalization reached: 1
 	 Huygens renormalization: Facet based reinitialization
-	  Reinitialization time: 1.2e-02 sec
+	  Reinitialization time: 1.0e-02 sec
 	 done. 
 
 => Try for soln at t=0.0002 with dt=0.0001 [1 for 1] (BE)
@@ -77,20 +77,20 @@ Predictor-corrector norm: [  0 d  ,   1 v  ,   1 P  ,   1 F  ]
 
    ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
 -------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
-17:09:03 [0] 1.2e-03 6.1e+00 5.5e-02 1.0e+04 1.5e+06 6.7e+04  31 4.0e+00/8.0e+00 
-17:09:15 [1] 2.2e-04 1.1e-01 2.4e-03 1.7e+02 7.5e+04 2.7e+03  30 3.9e+00/8.1e+00 
-17:09:27 [2] 2.6e-05 1.1e-03 1.0e-04 8.9e+01 2.0e+03 2.9e+02  35 4.1e+00/8.1e+00 
-17:09:40 [3] 1.1e-07 5.3e-06 4.4e-07 3.4e-01 8.1e+00 1.2e+00  35 3.9e+00/8.1e+00 
-17:09:52 [4] 4.3e-10 2.3e-08 1.8e-09                         skp 4.0e+00/0.0e+00 
+20:07:21 [0] 1.2e-03 6.1e+00 5.5e-02 1.0e+04 1.5e+06 6.7e+04  26 4.3e+00/9.2e+00 
+20:07:34 [1] 2.2e-04 1.1e-01 2.4e-03 1.7e+02 7.5e+04 2.7e+03  24 4.2e+00/9.1e+00 
+20:07:48 [2] 2.6e-05 1.1e-03 1.0e-04 8.9e+01 2.0e+03 2.9e+02  26 4.3e+00/9.4e+00 
+20:08:02 [3] 1.1e-07 5.3e-06 4.3e-07 3.4e-01 8.1e+00 1.2e+00  25 4.3e+00/9.8e+00 
+20:08:16 [4] 4.3e-10 2.3e-08 1.8e-09                         skp 4.4e+00/0.0e+00 
 -------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
-scaled solution norms   9.872e+03  1.310e+02  6.315e+02 
+scaled solution norms   9.872e+03  6.937e+01  4.596e+02 
 
-CONSTANT DELTA_T          [1.9e-16, 1.6e-01, 3.2e-02, 3.8e-04]
+CONSTANT DELTA_T          [2.1e-16, 1.6e-01, 3.2e-02, 3.8e-04]
 Predictor-corrector norm: [  0 d  ,   1 v  ,   1 P  ,   1 F  ]
 
 	 Maximum number of steps without renormalization reached: 1
 	 Huygens renormalization: Facet based reinitialization
-	  Reinitialization time: 1.3e-02 sec
+	  Reinitialization time: 2.0e-02 sec
 	 done. 
 
 Fixing exodus file out.exoII
@@ -98,5 +98,5 @@ Fixing exodus file out.exoII
 -done
 
 
-Proc 0 runtime:       1.81 Minutes.
+Proc 0 runtime:       2.08 Minutes.
 
