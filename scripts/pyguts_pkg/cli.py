@@ -11,7 +11,7 @@ from typing import List, Optional
 from .config import GUTSConfig, load_config
 from .discovery import discover_problems, filter_problems, validate_features
 from .executor import run_suite
-from .models import RunMeta, RunResult
+from .models import RunMeta, RunResult, StatusCode
 from .reports import write_html_report, write_json_report, write_text_report
 from .requirements import get_goma_capabilities
 
@@ -218,6 +218,20 @@ def main() -> None:
                 f"Norms={c.norm_code.value} Custom={c.cust_code.value} "
                 f"({elapsed})"
             )
+            if not c.abort_reason and not c.passed():
+                data_dir = Path(c.data_dir)
+                for label, fname in [("STDOUT", p.run.goma_sout), ("STDERR", p.run.goma_serr)]:
+                    fpath = data_dir / fname
+                    if fpath.is_file():
+                        lines = fpath.read_text(errors="replace").splitlines()
+                        tail = lines[-50:]
+                        print(f"    -- tail {label} --")
+                        for line in tail:
+                            print(f"    {line}")
+                if c.exo_code == StatusCode.FAILED and c.exo_log:
+                    print("    -- exodiff comparison --")
+                    for line in c.exo_log.splitlines():
+                        print(f"    {line}")
 
     # Run the suite
     print(
