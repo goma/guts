@@ -1,4 +1,4 @@
-# GUTS — GOMA Unit Test Suite
+# GUTS — GOMA Unified Test Suite
 
 GUTS is the regression test harness for the [GOMA](https://gomafem.com) finite element solver. It discovers problem directories, runs each one against a GOMA executable, and checks stdout/stderr and Exodus II output against stored blessed files. Results are written as text, HTML, and JSON reports.
 
