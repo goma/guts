@@ -1,0 +1,254 @@
+# {include("params")}
+-------------------------------------------------------------------------------
+FEM File Specifications
+-------------------------------------------------------------------------------
+FEM file                         = mesh2.exoII
+Output EXODUS II file            = out.exoII
+GUESS file                       = contin.dat
+SOLN file                        = soln.dat
+Write intermediate results       = no
+
+-------------------------------------------------------------------------------
+General Specifications
+-------------------------------------------------------------------------------
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0 
+Initial Guess                    = zero
+
+
+-------------------------------------------------------------------------------
+Time Integration Specifications
+-------------------------------------------------------------------------------
+$$Time integration                 = steady
+Time integration                 = transient
+delta_t                          = 0.01
+Maximum number of time steps     = 50
+Maximum time                     = 1.2
+Minimum time step                = 1e-06
+Maximum time step                = 1
+Maximum Linear Solve Iterations  = 500
+Time step parameter		 = 0.5
+#Time step error                   error d v T Y p R V
+Time step error                  = .1e-0 1 1 0 0 0 0 0
+Printing Frequency		 = 1
+Initial Time 			 = 0
+Jacobian quality weight		 = 0.333
+Angle quality weight		 = 0.333
+Triangle quality weight		 = 0.333
+Element quality tolerance	 = 0
+Element quality tolerance type	 = min
+
+-------------------------------------------------------------------------------
+Solver Specifications
+-------------------------------------------------------------------------------
+Solution Algorithm               = mumps
+Preconditioner                   = ls
+Polynomial                       = 1
+Size of Krylov subspace          = 64
+Orthogonalization                = classical
+Maximum Linear Solve Iterations  = 500
+Number of Newton Iterations      = 25
+#Newton correction factor         = 1  0.01  0.5  0.1  0.1  100.0
+Newton correction factor         = 1  0.00001  0.5  0.01  0.05  10
+#Newton correction factor         = 1 
+Normalized Residual Tolerance    = 1e-12
+Residual Ratio Tolerance         = 1e-4
+Pressure Stabilization           = no
+Pressure Stabilization Scaling   = 0.0
+
+-------------------------------------------------------------------------------
+	   		Continuation Specifications
+-------------------------------------------------------------------------------
+Continuation                      = none
+Continuation Type                 = BC
+Boundary condition ID             = 22
+Boundary condition data float tag = 1
+Material id                       = 1
+Material property tag             = 7001
+Material property tag subindex    = 0
+Initial parameter value           = -21315
+Final parameter value             = -20315
+delta_s                           = 50
+Maximum number of path steps      = 60
+Minimum path step                 = 0.01
+Maximum path step                 = 500
+Continuation Printing Frequency   = 1
+LOCA method                       = alc
+Step control aggressiveness       = 1.5
+Number of continuation conditions = -1
+END OF CC
+------------------------------------------
+Hunting Specifications
+-----------------------------------------
+Number of hunting conditions     = -1
+HC = BC 1 0 0 -0 -0 1 0.06 1  
+END OF HC
+HC = BC 1 0 0 -0 -0 1 0.06 1  
+-------------------------------------------------------------------------------
+-------------------------------------------
+Augmenting Conditions Specifications
+-------------------------------------------
+Augmenting Conditions Initial Guess = read_exoII_file cont.exoII
+
+Number of augmenting conditions = -1
+END OF AC
+
+-------------------------------------------------------------------------------
+Boundary Condition Specifications
+-------------------------------------------------------------------------------
+Number of BC			 = -1
+
+#
+# inlet
+#
+$$BC = UVARY SS 2 1 {y4} {-y4} {-qflow_cyl}
+BC = GD_LINEAR SS 2 R_MOMENTUM1 0 VELOCITY1 0 0.0 1.0
+BC = GD_PARAB  SS 2 R_MOMENTUM1 0 MESH_POSITION2 0 {2*web_sp} 0.0 {-2*web_sp/R^2}
+BC = V NS 2 0.0 1.0
+BC = DX NS 2 0.0 1.0
+BC = DY NS 2 0.0 1.0
+
+#
+#  Centerline
+#
+BC = V NS 200 0.0  1.0
+BC = V 		NS	1	0.0
+BC = PLANEY SS 1 {0} {1} {0} {0}
+BC = DX NS 200 0.0  1.0
+BC = U NS 200 0.0 1.0
+#
+# wall (no slip: interior surface + curved corner)
+#
+BC = U NS 3 0.0 1.0
+BC = V NS 3 0.0 1.0
+BC = DX NS 3 0.0 1.0
+BC = DY NS 3 0.0 1.0
+#
+# wall (slip: exterior surface)
+#
+##BC = PLANE SS 7 {0} {1} {0} {-y10}
+BC = VELO_NORMAL 	SS	7	0.0
+BC = VELO_TANGENT SS	7	400	{v_t=0} {beta} {alpha}
+{Ifdef(Use_Hoffman)}
+BC = VELO_THETA_HOFFMAN NS 400 {sca1} {0} {0} {0} {0} {surf_tens} 0 0  
+{Endif}
+{Ifdef(Use_Cox)}
+BC = VELO_THETA_COX NS 400 {sca1} {0} {0} {0} {Cox_slip} {surf_tens} 0 0  
+{Endif}
+{Ifdef(Use_Shik)}
+BC = VELO_THETA_SHIK NS 400 {sca1} {0} {0} {0} {Shik_lambda} {surf_tens/Shik_g} 0 0  180.0  
+{Endif}
+{Ifdef(Use_Blake)}
+BC = VELO_THETA_TPL NS 400 {sca1} {0} {0} {0} {Blake_v0} {surf_tens/Blake_g} 0 0
+{Endif}
+$$BC = GEOM SS 7 26 {x5} {y5} {x4} {y4} {x10} {y10} {x12} {y12} 
+BC = PLANE SS 75 0.0  1.0  0.0  -0.4064
+BC = DX NS 6 0.0 1.0
+BC = DY NS 6 0.0 1.0
+#
+# static contact line
+#
+#
+# Free Surface
+BC = KINEMATIC 	SS 	4	0.0
+BC = CAP_REPULSE SS 4 {surf_tens} {P_ext} 0.0  {P_repulse}  {a_repa} {b_repa} {0} {d_repa}
+# free surface is attached to substrate
+# Substrate
+BC = PLANE SS 5 {1} {0} {0} {0}
+BC = VELO_NORMAL 	SS	5	0.0
+BC = VELO_TANGENT SS	5	300	{v_tangential} {beta} {alpha}
+{Ifdef(Use_Hoffman)}
+BC = VELO_THETA_HOFFMAN NS 300 {sca} {1} {0} {0} {0} {surf_tens} 0 0  
+{Endif}
+{Ifdef(Use_Cox)}
+BC = VELO_THETA_COX NS 300 {sca} {1} {0} {0} {Cox_slip} {surf_tens} 0 0  
+{Endif}
+{Ifdef(Use_Shik)}
+BC = VELO_THETA_SHIK NS 300 {sca} {1} {0} {0} {Shik_lambda} {surf_tens/Shik_g} 0 0  180.0  
+{Endif}
+{Ifdef(Use_Blake)}
+BC = VELO_THETA_TPL NS 300 {sca} {1} {0} {0} {Blake_v0} {surf_tens/Blake_g} 0 0
+{Endif}
+
+END OF BC
+------------------------------------------------------------------------------------------
+
+Problem Description
+------- -----------
+Number of Materials		= 1
+MAT = newt  1
+	Coordinate System	= CYLINDRICAL
+	Element Mapping		= isoparametric
+	Mesh Motion		= ARBITRARY
+	Number of bulk species	= 1
+	Number of EQ		= 5
+
+	EQ = mesh1       Q2 D1 Q2   0 0 1 1 0 0 
+	EQ = mesh2       Q2 D2 Q2   0 0 1 1 0 0 
+	EQ = momentum1   Q2 U1 Q2   1 1 1 1 1 0 
+	EQ = momentum2   Q2 U2 Q2   1 1 1 1 1 0 
+	EQ = continuity  Q1 P  Q1   1         0 
+
+				  - - - - - - -
+                                  d m a b d s p
+				  i a d n i r o
+				  v s v d f c r
+				    s     f   o
+			                      u
+					      s
+-------------------------------------------------------------------------------
+Post Processing Specifications
+-------------------------------------------------------------------------------
+Stream Function			= yes
+Streamwise normal stress	= yes
+Pressure contours		= yes
+Second Invarient of Strain	= yes
+Mesh Dilatation			= no
+Mean shear rate                 = yes
+Navier Stokes Residuals		= no
+Moving Mesh Residuals		= no
+Mass Diffusion Vectors		= no
+Mass Fluxlines			= no
+Energy Conduction Vectors	= no
+Energy Fluxlines		= no
+Time Derivatives		= no
+Mesh Stress Tensor		= yes
+Viscosity                       = yes
+
+
+
+Post Processing Fluxes = 
+END OF FLUX
+FLUX = VOLUME_FLUX 1  1  0    flux.out 
+FLUX = VOLUME_FLUX 2  1  0    flux.out
+FLUX = VOLUME_FLUX 3  1  0    flux.out
+FLUX = VOLUME_FLUX 4  1  0    flux.out
+FLUX = FORCE_NORMAL   1  1  0  presprof.out profile
+FLUX = FORCE_NORMAL   2  1  0  presprof.out profile
+FLUX = FORCE_NORMAL   3  1  0  presprof.out profile
+FLUX = FORCE_X 1  1 0 flux.out profile
+FLUX = FORCE_Y 1  1 0 flux.out profile
+FLUX = FORCE_X 2  1 0 flux.out profile
+FLUX = FORCE_Y 2  1 0 flux.out profile
+FLUX = FORCE_X 3  1 0 flux.out profile
+FLUX = FORCE_Y 3  1 0 flux.out profile
+
+Post Processing Volumetric Integration
+VOLUME_INT = VOLUME   1   0  volume.out 1
+END OF VOLUME_INT
+
+Post Processing Data = 
+DATA = VELOCITY1  300  1 0 data.out
+DATA = VELOCITY2  300  1 0 data.out
+DATA = theta  300  1 0 data.out
+DATA = VELOCITY1  400  1 0 data.out
+DATA = VELOCITY2  400  1 0 data.out
+DATA = theta  400  1 0 data.out
+END OF DATA
+DATA = MESH_DISPLACEMENT1 100 1 0 data1.out
+DATA = MESH_DISPLACEMENT2 200 1 0 data2.out
+DATA = MESH_DISPLACEMENT1 300 1 0 data3.out
+DATA = MESH_DISPLACEMENT1 400 1 0 data4.out
+DATA = MESH_DISPLACEMENT1   4 1 0 free_surface.out
+

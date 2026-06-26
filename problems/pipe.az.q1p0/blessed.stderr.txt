@@ -1,0 +1,37 @@
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 65 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 67 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 69 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 71 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 89 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 107 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 125 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 143 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 161 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 179 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 181 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 183 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 185 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 187 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 1 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 6 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 18 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 38 with zero unknowns has an applied bc
+		converged SS!

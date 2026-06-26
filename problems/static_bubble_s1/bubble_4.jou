@@ -1,0 +1,96 @@
+## /usr/local/cubit/claro.11.1/bin/clarox
+## Cubit Version 11.1
+## Cubit Build 39097
+## Revised 2009-01-20 11:54:47 -0700 (Tue, 20 Jan 2009)
+## Running 02/03/2009 02:13:44 PM
+## Command Options:
+## -warning = On
+## -information = On
+undo on
+undo on
+$ Aprepro (Revision: 2.06) Mon Feb  2 10:39:51 2009
+#
+#  r_OD_cap = 0.3 cm
+undo on
+#
+#  These options ensure that cubit can read the mesh back in
+#  and recover the geometry
+nodeset associativity on
+set associativity complete on
+#
+create brick x 5 y 5 z 5
+#
+# Create the cylinder
+cylinder height 5 major radius 1.03 minor radius 0.97
+#
+# ok now get rid of the other half of the cylinder
+#
+subtract body 2 from body 1 keep
+delete volume 1
+#
+#
+split curve 14 midpoint
+split curve 16 midpoint
+imprint all
+merge all
+
+split surface 9 across location vertex 21  10
+split curve 33 
+
+imprint all
+merge all
+
+#
+#  OK we have the geometry
+#
+#  inner part of the capillary tube
+#
+curve 29 interval 16
+curve 30 interval 16
+curve 34 interval 5
+curve 35 interval 5
+block 1 surface 17 18
+block 1 element type QUAD9
+mesh surface 17
+mesh surface 18
+
+curve 18 interval 15
+curve 17 interval 15
+curve 20 interval 15
+curve 19 interval 15
+block 2 surface 11
+block 2 element type QUAD9
+mesh surface 11
+#
+#
+# Side set information
+#
+#    Bubble itself
+#
+#sideset 1 curve 29 wrt Surface 17
+sideset 1 curve 29 
+nodeset 1 curve 29
+#sideset 1 curve 30 wrt Surface 18
+sideset 1 curve 30 
+nodeset 2 curve 30
+sideset 11 curve 18
+nodeset 11 curve 18
+sideset 12 curve 17
+nodeset 12 curve 17
+sideset 13 curve 20
+nodeset 13 curve 20
+sideset 14 curve 19
+nodeset 14 curve 19
+
+nodeset 101 vertex 14
+nodeset 102 vertex 13
+nodeset 103 vertex 16
+nodeset 104 vertex 15
+nodeset 105 vertex 23
+nodeset 106 vertex 10
+nodeset 107 vertex 21
+#
+# Export the mesh
+#
+export genesis "bubble_4.g" dimension 2 overwrite
+#

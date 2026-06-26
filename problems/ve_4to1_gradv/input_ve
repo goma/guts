@@ -1,0 +1,109 @@
+------------------------------------------------------------
+                 FEM File Specifications
+------------------------------------------------------------
+FEM file			 = four_one.g
+Output EXODUS II file            = out.exoII
+GUESS file                       = contin.dat
+SOLN file                        = soln.dat
+Write intermediate results       = no
+------------------------------------------------------------
+                 General Specifications
+------------------------------------------------------------
+Output Level                     = 0
+Debug                            = 0
+Initial Guess			 = read_exoII_file ve.exoII
+
+------------------------------------------------------------
+                 Time Integration Specifications
+------------------------------------------------------------
+Time integration                 = steady
+delta_t                          = 5.0e-7
+Maximum number of time steps     = 1000
+Maximum time                     = 10.0e+0
+Minimum time step                = 1.e-9
+Time step parameter              = 0.
+Time step error                  = 0.002  1  0  0  1  0
+Printing Frequency               = 5
+
+------------------------------------------------------------
+                 Solver Specifications
+------------------------------------------------------------
+Solution Algorithm               = amesos
+Amesos Solver Package            = superlu
+Preconditioner                   = dom_decomp
+Matrix subdomain solver		 = ilut
+Polynomial                       = 5
+Matrix output type               = none
+Size of Krylov subspace          = 500
+Orthogonalization                = modified
+Maximum Linear Solve Iterations  = 1000
+Number of Newton Iterations      = 20
+Newton correction factor         = 1
+Normalized Residual Tolerance    = 1.0e-8
+Residual Ratio Tolerance         = 1.0e-4
+Pressure Stabilization		 = no
+Pressure Stabilization Scaling   = 1.0
+Continuity Stabilization	 = no
+------------------------------------------------------------
+Boundary Condition Specifications                 
+------------------------------------------------------------
+-------------------------------------------------------------
+             Related SS bc's on position
+-------------------------------------------------------------
+
+Number of BC                     = -1
+
+# no-slip boundaries
+BC      = U NS 3 0. 1.
+BC      = V NS 3 0. 1.
+
+# inflow
+BC      = V NS 4 0. 1.
+BC = GD_LINEAR SS 40 R_MOMENTUM1  0 VELOCITY1      0  0.   1.  
+BC = GD_PARAB  SS 40 R_MOMENTUM1  0 MESH_POSITION2 0 -1.5  0.0 0.09375
+
+# bottom 
+BC      = V NS 1 0.
+
+# outflow
+
+BC      = P NS 100 0.
+BC      = V NS 2 0.
+BC = GD_LINEAR SS 20 R_MOMENTUM1  0 VELOCITY1      0  0.   1.  
+BC = GD_PARAB  SS 20 R_MOMENTUM1  0 MESH_POSITION2 0 -6.  0.0 6.
+
+END OF BC
+###########
+----
+Problem Description
+---
+
+Number of Materials = 1
+
+MAT = ve_gradv   1
+
+	Coordinate System = CARTESIAN
+	Element Mapping = Isoparametric
+	Mesh Motion = ARBITRARY
+ 
+	Number of bulk species = 0
+	Number of viscoelastic modes = 1
+
+	Number of EQ   = 10
+	EQ = momentum1  Q2  U1	Q2	  0.   1.   1.   1.   0.   0.
+	EQ = momentum2  Q2  U2	Q2   0.   1.   1.   1.   0.   0.
+	EQ = continuity	Q1  P 	Q1   1.                       0.
+	EQ = stress11   Q1	S11	Q1	     1.    1.   1.   1.   1.
+	EQ = stress12   Q1	S12	Q1	     1.    1.   1.   1.   1.
+	EQ = stress22   Q1	S22	Q1	     1.    1.   1.   1.   1. 
+	EQ = gradient11 Q1	G11	Q1	           1.             1.
+	EQ = gradient12 Q1	G12	Q1	           1.             1.
+	EQ = gradient21 Q1	G21	Q1	           1.             1.
+	EQ = gradient22 Q1	G22	Q1	           1.             1.
+                                    div   ms  adv  bnd  dif  src  por
+
+Post Processing Specifications
+
+Stream Function = yes
+Streamwise normal stress = no
+Pressure contours = yes

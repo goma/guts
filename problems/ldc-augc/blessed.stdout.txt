@@ -1,0 +1,49 @@
+v7.11.0-1-g709cfe59
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2026 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+
+
+######################### __PRINT_SYNC_END__ #########################
+
+Number of unknowns            = 1182
+
+Number of matrix nonzeroes    = 46944
+
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:09:51 [0] 2.6e-12 2.2e-11 5.3e-12 1.9e-10 1.3e-08 1.2e-09  1  2.0e-02/4.0e-02 
+          AC 1.0e+00 1.0e+00 1.0e+00 1.0e+00 1.0e+00 1.0e+00  1  2.0e-02/0.0e+00 
+17:09:51 [1] 4.4e-17 3.7e-15 2.0e-16                         skp 2.0e-02/0.0e+00 
+          AC 6.6e-12 6.6e-12 6.6e-12 1.0e+00 1.0e+00 1.0e+00  1  2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.387e+01  4.267e-01  2.028e+00 
+
+------------------------------
+Augmenting Conditions:       1
+Number of extra unknowns:    1
+
+	BC[   4] DF[   0]= 2.000000e+00
+
+-done
+
+
+Proc 0 runtime:       0.00 Minutes.
+

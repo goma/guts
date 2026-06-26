@@ -1,0 +1,30 @@
+
+reset
+
+create cylinder radius 5 height 2
+webcut volume 1 with plane yplane offset 4.5 noimprint nomerge 
+delete Volume 1
+webcut volume all with plane zplane offset 0 noimprint nomerge 
+webcut volume all with plane xplane offset -0.5 noimprint nomerge 
+delete volume 4 5
+
+imprint all
+merge all
+
+surface 22 30 size 0.5
+mesh surface 22 30
+refine curve 30 numsplit 1 bias 1.0 depth 10 smooth
+refine curve 30 numsplit 1 bias 1.0 depth 10 smooth
+refine curve 30 numsplit 1 bias 1.0 depth 10 smooth
+refine curve 30 numsplit 1 bias 1.0 depth 10 smooth
+
+block 1 surface 22 30
+block 1 element type shell4
+nodeset 1 curve 28 43
+nodeset 2 curve 18 22
+nodeset 3 curve 26 40
+nodeset 10 surface 22 30
+sideset 10 surface 22 30
+
+set large exodus file off
+export mesh "porousmesh.exoII"  block all overwrite

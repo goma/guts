@@ -1,0 +1,29 @@
+Copyright (c) 2002  Sandia Corporation.
+
+Under the terms of Contract DE-AC04-94AL85000, there is a non-exclusive
+license for use of this work by or on behalf of the U.S. Government. Export
+of this program may require a license from the United States Government.
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN ...
+
+
+Number of unknowns            = 6169
+
+Number of matrix nonzeroes    = 339405
+
+	----------------------------------
+	Linear stability analysis:
+
+
+               R e s i d u a l         C o r r e c t i o n
+
+  ToD    itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)
+-------- --- ------- ------- ------- ------- ------- ------- --- ---------------
+14:40:44 [0] 2.2e-13 1.0e-10 2.8e-12 4.4e-12 2.3e-09 5.9e-11  1  4.8e-01/5.6e-01
+scaled solution norms   1.500000e+03  2.584496e+02  4.958978e+02 
+Assembling LSA Jacobian ...
+Assembling LSA Mass matrix ...
+
+Proc 0 runtime:       0.09 Minutes.
+

@@ -1,0 +1,22 @@
+## /usr/local/cubit/claro.11.1/bin/clarox
+## Cubit Version 11.1
+## Cubit Build 41110
+## Revised 2009-08-06 11:55:55 -0600 (Thu, 06 Aug 2009)
+## Running 08/31/2009 03:48:36 PM
+## Command Options:
+## -warning = On
+## -information = On
+cylinder height 2 radius 1
+create brick width 2 depth 2 height 2
+body 2 move y -1
+subtract body 2 from body 1
+surface 12 size 0.1
+mesh surface 12
+nodeset 1 curve 20
+nodeset 2 curve 19
+nodeset 3 curve 17
+nodeset 4 curve 15
+nodeset 100 vertex 11
+block 1 surface 12
+block 1 element type SHELL4
+export genesis "shell_3D.gen" overwrite

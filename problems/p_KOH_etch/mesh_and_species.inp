@@ -1,0 +1,172 @@
+# Top surface y - position = {y_top = (0.1 + 0.1) * 1.0e-4}
+# Left side x - position = {x_left = -0.5 *(0.35 + 2.0 * 0.35) * 1.0e-4}
+# Right side x - position = {x_right = 0.5 *(0.35 + 2.0 * 0.35) * 1.0e-4}
+# Mask surface y - position = {y_mask = 0.1 * 1.0e-4}
+# Feature surface y - position = {y_feat = 0.0}
+# Left feature x - position = {x_feat_1 = -0.5 * 0.35 * 1.0e-4}
+# Right feature x - position = {x_feat_2 = 0.5 * 0.35 * 1.0e-4}
+# Left slope =  {slope_feat_1 = - sqrt(2.0)}
+# Right slope = {slope_feat_2 =   sqrt(2.0)}
+------------------------------------------------------------
+                 FEM Problem Specifications
+------------------------------------------------------------
+FEM file                         = single_feature_step.exoII
+Output EXODUS II file            = out_single_step.exoII
+GUESS file                       = no
+SOLN file                        = no
+Brk file                         = brk.in
+Write intermediate results       = no
+------------------------------------------------------------
+                 General Specifications
+------------------------------------------------------------
+Output Level                     = 0
+Debug                            = 0
+Initial Guess			 = zero
+Initialize                       = MASS_FRACTION 0 {C_H2O_init = 1.0}
+Initialize                       = MASS_FRACTION 1 {C_KOH_init = 2.0/8.0}
+Initialize                       = MASS_FRACTION 2 {C_H2_init = 0.0}
+Initialize                       = MASS_FRACTION 3 {C_SiOH_init = 0.0}
+Process Temperature              = 323.0
+------------------------------------------------------------
+                 Time Integration Specifications
+------------------------------------------------------------
+Time integration                 = transient
+delta_t                          = 1.0e-1
+Maximum number of time steps     = 10
+Maximum time                     = 35.0
+Minimum time step                = 1.0e-3
+Maximum time step                = 0.5
+Minimum Resolved Time Step       = 1.0e-2
+Time step parameter		 = 0.5
+Time step error                   = -1.0e-3  1  1 0 1 0 0 0 0 0 0 0
+Initial Time                     = 0.0
+Printing Frequency		 = 1
+Fix Frequency                    = 1
+------------------------------------------------------------
+                 Solver Specifications
+------------------------------------------------------------
+Solution Algorithm               = amesos
+Amesos Solver Package            = mumps
+#Amesos Solver Package            = superlu
+Newton correction factor         = 1
+Number of Newton Iterations      = 10
+Normalized Residual Tolerance    = 1.0e-10
+Residual Relative Tolerance      = 1e-6
+#Normalized Correction Tolerance  = 1.0e-10
+------------------------------------------------------------
+	Boundary Condition Specifications                 
+------------------------------------------------------------
+
+Number of BC = -1
+
+### Mesh BC ####
+
+# Top surface - y = {y_top}
+BC = PLANE SS 2 0.0 1.0 0.0 {- y_top}
+
+# Right surface - x = {x_right}
+BC = PLANE SS 1 1.0 0.0 0.0 {- x_right}
+
+# Left surface - x = {x_left}
+BC = PLANE SS 3 1.0 0.0 0.0 {- x_left}
+
+# Mask surface - y = {y_mask}
+BC = PLANEY SS 4 0.0 1.0 0.0 {- y_mask}
+
+# Step surface - x = {x_feat_1}, {x_feat_2}
+BC = PLANE SS 61 1.0 0.0 0.0 {- x_feat_1}
+BC = PLANE SS 62 1.0 0.0 0.0 {- x_feat_2}
+
+# Mesh fence - y = {y_feat}
+BC = PLANEY SS 63 0.0 1.0 0.0 {- y_feat}
+
+# Feature - Moving etch plane depending on orientation and concentration
+BC = PLANE SS 51 {slope_feat_1} -1.0 0.0 {y_feat - slope_feat_1 * x_feat_1}
+BC = PLANE SS 52 {slope_feat_2} -1.0 0.0 {y_feat - slope_feat_2 * x_feat_2}
+
+BC = MOVING_PLANE_ETCH SS 53 100 
+
+
+### Species BC ####
+
+# Left surface - Constant concentration
+
+# Water
+#BC = Y NS 3 0 {C_H2O_init} 
+
+# KOH
+#BC = Y NS 3 1 {C_KOH_init} 
+
+# H2
+#BC = Y NS 3 2 {C_H2_init}
+
+# SiO2(OH)2
+#BC = Y NS 3 3 {C_SiOH_init}
+
+# Etching plane - surface reaction
+
+# Water
+BC = YFLUX_ETCH SS 53 0 100 
+
+# KOH
+BC = YFLUX_ETCH SS 53 1 100 
+
+# H2
+BC = YFLUX_ETCH SS 53 2 100 
+
+# SiO2(OH)2
+BC = YFLUX_ETCH SS 53 3 100 
+
+END OF BC
+
+----
+Problem Description
+---
+
+Number of Materials = 1
+
+MAT = etch_solution    1
+
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = ARBITRARY
+  Number of bulk species = 4
+  Number of bulk species equations = 4
+  Default Material Species Type = SPECIES_DENSITY
+
+Number of EQ                     = 3
+        EQ = mesh1         Q2      D1      Q2        0.    0.    1.   1.    0.  
+        EQ = mesh2         Q2      D2      Q2        0.    0.    1.   1.    0. 
+        EQ = species_bulk  Q2      Y       Q2        1.    1.    1.   1.    0.  
+                                               div   ms   adv   bnd  dif    src   porous
+
+
+
+
+Post Processing Specifications
+
+Stream Function = no
+Streamwise normal stress = no
+Pressure contours = no
+Second Invarient of Strain = no
+Mesh Dilatation = no
+Navier Stokes Residuals = no
+Moving Mesh Residuals = no
+Mass Diffusion Vectors = no
+Mass Fluxlines = no
+Energy Conduction Vectors = no
+Energy Fluxlines = no
+Time Derivatives = no
+Mesh Stress Tensor = no
+Mesh Strain Tensor = no
+Viscosity = no
+
+
+#Post Processing Volumetric Integration =
+#VOLUME_INT = VOLUME    1 0 volume.out
+#END OF VOLUME_INT
+
+
+
+
+

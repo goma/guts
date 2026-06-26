@@ -1,0 +1,16 @@
+WARNING: Boundary condition 0, PLANE, applied on NS 1, is never used
+ (/opt/workdir/goma/src/mm_bc_conflict.c:2001)
+WARNING: Boundary condition 1, PLANE, applied on NS 2, is never used
+ (/opt/workdir/goma/src/mm_bc_conflict.c:2001)
+WARNING: Boundary condition 2, PLANE, applied on NS 3, is never used
+ (/opt/workdir/goma/src/mm_bc_conflict.c:2001)
+WARNING: Boundary condition 3, PLANE, applied on NS 4, is never used
+ (/opt/workdir/goma/src/mm_bc_conflict.c:2001)
+		converged SS!
+
+WARNING: Linear Stability Analysis is not (and cannot be) compatible
+  with all user-supplied boundary conditions (i.e., BC cards with
+  the term USER in them).  If you are using some, and you want LSA,
+  then you must modify your boundary conditions accordingly.
+
+		completed LSA!

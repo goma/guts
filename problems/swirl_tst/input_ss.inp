@@ -1,0 +1,107 @@
+ FEM File Specifications
+ ---
+FEM file                         = spin.exoII
+Output EXODUS II file            = out.exoII
+GUESS file                       = contin.dat
+SOLN file                        = soln.dat
+Write intermediate results       = no
+ ---
+General Specifications
+ ---
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+Initial Guess                    = read_exoII_file steady_state.exoII
+ --- 
+Time Integration Specifications
+ ---
+Time integration                 = steady
+delta_t                          = 5.e-07
+Maximum number of time steps     = 5
+Maximum time                     = 405.0e+0
+Minimum time step                = 1.0e-9
+Time step parameter		 = 0.
+Time step error                  = 1.1 0 1 0 0 0 0
+Printing Frequency		 = 1
+ ---
+Solver Specifications
+ ---
+#Solution Algorithm               = front
+Solution Algorithm               = umf
+Preconditioner                   = ilu
+Size of Krylov subspace          = 15
+Orthogonalization                = classical
+Maximum Linear Solve Iterations  = 1000
+Preconditioner                   = poly
+Polynomial                       = LS,1
+Size of Krylov subspace          = 64
+Orthogonalization                = classical
+Maximum Linear Solve Iterations  = 1000
+Number of Newton Iterations      = 10
+Newton correction factor         = 1
+Normalized Residual Tolerance    = 1e-9
+Residual Ratio Tolerance         = 1e-3
+
+Pressure Stabilization           = no
+Pressure Stabilization Scaling   = 1.
+
+ ---
+Boundary Condition Specifications
+ ---
+Number of BC			 =    -1
+BC = PLANE  SS 1   0.  1.  0.  0.
+BC = PLANE  SS 2   1.  0.  0.  0.
+
+BC = V  NS 10  0.0
+BC = U  NS 20  0.0
+BC = V  NS 20  0.0
+BC = GD_LINEAR SS 2 R_MOMENTUM3 0 VELOCITY3  0 0. -1.
+BC = GD_LINEAR SS 2 R_MOMENTUM3 0 MESH_POSITION2 0 0. 5000.
+
+# ss 3 is the outer curve
+BC = VELO_NORMAL  SS 3  0. 0.
+$$BC = KINEMATIC  SS 3  0. 0.
+$$BC = CAPILLARY  SS 3  0.05  0.  0.0
+$$BC = SURFTANG   NS 300 -1.0 0.  0. 0.05
+
+END OF BC
+
+
+----
+Problem Description
+----
+ 
+Number of Materials = 1
+ 
+ MAT =   photoresist    1
+ 
+  Coordinate System = SWIRLING
+  Element Mapping   = isoparametric
+  Mesh Motion = ARBITRARY
+  Number of bulk species = 0
+ 
+        Number of EQ  = 6
+        EQ = mesh1      Q2  D1  Q2    	   0.   0.   1.   1.   0.
+        EQ = mesh2      Q2  D2  Q2         0.   0.   1.   1.   0.
+        EQ = momentum1  Q2  U1  Q2    	   1.   1.   1.   1.   1.   0. 
+        EQ = momentum2  Q2  U2  Q2         1.   1.   1.   1.   1.   0. 
+        EQ = momentum3  Q2  U3  Q2         1.   1.   1.   1.   1.   0. 
+        EQ = continuity P1  P   P1    1.                       0.
+                                     div   ms  adv  bnd  dif  src  por
+
+Post Processing Specifications
+
+Stream Function = yes
+Streamwise normal stress = no
+Pressure contours = yes
+Second Invarient of Strain = no
+Mesh Dilatation = no
+Navier Stokes Residuals = no
+Moving Mesh Residuals = no
+Mass Diffusion Vectors = no
+Mass Fluxlines = no
+Energy Conduction Vectors = no
+Energy Fluxlines = no
+Time Derivatives = no
+Mesh Stress Tensor = no
+Mesh Strain Tensor = no

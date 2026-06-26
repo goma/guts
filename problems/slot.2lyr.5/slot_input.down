@@ -1,0 +1,171 @@
+{Include(geometry)}
+ ---
+ FEM Problem Specifications
+ ---
+FEM file                         = slot.exoII
+Output EXODUS II file            = out_down.exoII
+GUESS file                       = guess_down.dat
+SOLN file                        = soln_down.dat
+Write intermediate results	 = no
+
+ ---
+General Specifications
+ ---
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0 
+Initial Guess                    = read
+Pad Sparse Matrix                = no
+Anneal Mesh on Output = no
+ --- 
+Time Integration Specifications
+ ---
+Time integration                 = steady
+ ---
+Solver Specifications
+ ---
+Solution Algorithm               = lu
+FRONT MXBUFF                     = 4000000
+FRONT MXFRONT_WIDTH              = 800
+UMF XDIM                         = 4000000
+UMF IDIM                         = 4000000
+Number of Newton Iterations      = 19
+Newton correction factor         = 1.0    
+Normalized Residual Tolerance    = 3.0e-9
+Residual Ratio Tolerance         = 1.0e-2
+Residual Relative Tolerance      = 1e-6
+ ---
+Boundary Condition Specifications
+ ---
+Number of BC			 =  -1       
+
+$$Geometry first      
+BC				 = PLANE SS  1   {a1}   {b1}   {c1}  {d1}
+BC				 = PLANE SS  2   {a2}   {b2}   {c2}  {d2}
+BC				 = PLANE SS  3   {a3}   {b3}   {c3}  {d3}
+BC				 = PLANE SS  4   {a4}   {b4}   {c4}  {d4}
+BC				 = PLANE SS  5   {a5}   {b5}   {c5}  {d5}
+BC				 = PLANE SS  8   {a8}   {b8}   {c8}  {d8}
+BC				 = PLANE SS  9   {a9}   {b9}   {c9}  {d9}
+BC				 = PLANE SS  30   {a30} {b30}  {0.}  {d30}
+BC				 = PLANE SS  31   {a31} {b31}  {0.}  {d31}
+BC				 = PLANE SS  32   {a32} {b32}  {0.}  {d32}
+BC				 = PLANE SS  66   {a66} {b66}  {0}   {d66}
+BC                               = DX NS 1400 {x23_new-x23}  1.
+BC                               = DY NS 1400 {y23_new-y23}  1.
+
+$$$This next bc is to keep the upstream motion of the mesh from distorting
+$$$the downstream motion.
+$$BC                               = DX NS 17 0.
+
+$$No slip surfaces
+BC =    U        NS      1       0.0 
+BC =    V        NS      1       0.0 
+
+$$inflow1 
+BC =    U        NS     3       0. 
+BC =    V        NS     3       {-inflow_speed1} 
+
+$$inflow2 
+BC =    U        NS     31       0. 
+BC =    V        NS     31       {-inflow_speed2} 
+
+$$Web
+BC =    U        NS      9       {webspeed}
+BC =    V        NS      9       0.0  
+
+$$Contact lines
+
+$$ Upstream static contact line
+BC =    U        NS    100      0.0 
+BC =    V        NS    100      0.0  
+
+$$ DCL
+BC =    U        NS    700       0.0 
+BC =    V        NS    700       0.0  
+
+$$ Downstream static separation line
+BC =    U        NS    1400       0.0 
+BC =    V        NS    1400       0.0  
+
+$$ Now for menisci and DCL disting conditions
+
+$$ First upstream
+  $$ slip condition
+BC = VELO_NORMAL SS 21 0.
+
+BC = VELO_NORMAL SS 23 0.
+$$BC = KINEMATIC   SS      23       0.
+$$BC = CAPILLARY   SS      23       {surface_tension1}  {vacuum}  0.
+$$BC = CA          NS    700       1.000    0.0   -1.0    0.0
+$$BC = CA          NS    100       0.600    0.0    1.0    0.0
+
+$$ Down the downstream Meniscus
+
+$$BC = VELO_NORMAL SS 6 0.
+BC = KINEMATIC   SS      6       0.
+BC = CAPILLARY   SS      6       {surface_tension2}   0.0  0.
+BC = SURFTANG_SCALAR    NS    400 {surface_tension2}
+
+$$ Interface
+
+$$BC = VELO_NORMAL SS 40 0.
+BC = KINEMATIC   SS      40       0.
+BC = CAPILLARY   SS      40       {.11}   0.0  0.
+BC = SURFTANG_SCALAR    NS    260 {0.11}
+BC = CA  NS 290 1.57 0. 1. 0.
+
+END OF BC
+
+----
+Problem Description
+---
+
+Number of Materials = 2
+
+MAT = fluid1    1
+
+	Coordinate System = CARTESIAN
+ 
+	Element Mapping                  = isoparametric
+
+	Mesh Motion = ARBITRARY
+ 
+	Number of bulk species = 0
+
+	Number of EQ			 = 5
+	EQ = momentum1  Q2	U1	Q2  0.  1.   1.  1.0     1.0   0.
+	EQ = momentum2  Q2	U2	Q2  0.  1.   1.  1.0     1.0    0.
+	EQ = continuity	P1	P 	P1	1.                           0.
+	EQ = mesh1	SP	D1	SP  0.     0.   0.   1.       0. 0.  
+	EQ = mesh2	SP	D2	SP  0.    0.    0.   1.       0. 0.  
+                                            div  ms  adv   bnd  dif     src   porous
+
+MAT = fluid2    2
+
+	Coordinate System = CARTESIAN
+ 
+	Element Mapping                  = isoparametric
+
+	Mesh Motion = ARBITRARY
+ 
+	Number of bulk species = 0
+
+	Number of EQ			 = 5
+	EQ = momentum1  Q2	U1	Q2  0.  1.   1.  1.0     1.0   0.
+	EQ = momentum2  Q2	U2	Q2  0.  1.   1.  1.0     1.0    0.
+	EQ = continuity	P1	P 	P1	1.                           0.
+	EQ = mesh1	SP	D1	SP  0.     0.   0.   1.       0. 0.  
+	EQ = mesh2	SP	D2	SP  0.    0.    0.   1.       0. 0.  
+                                            div  ms  adv   bnd  dif     src   porous
+
+Post Processing Specifications
+ 
+Stream Function =  yes
+Streamwise normal stress = yes
+Pressure contours = yes
+Second Invarient of Strain = yes
+Mesh Dilatation = yes
+Navier Stokes Residuals = yes
+Moving Mesh Residuals = yes  
+

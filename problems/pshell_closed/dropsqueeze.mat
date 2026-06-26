@@ -1,0 +1,82 @@
+###############################################################################
+### Material parameters for generic liquid                                  ###
+### Author:  Scott A Roberts (sarober@sandia.gov)                           ###
+###############################################################################
+# {include('dropsqueeze.aprepro")}
+
+###########################
+### Physical Properties ###
+###########################
+Density                            = CONSTANT 1.0
+Second Level Set Density           = CONSTANT 0.001 POSITIVE
+
+########################################################
+### Mechanical Properties and Constitutive Equations ###
+########################################################
+
+# Mesh parameters
+Solid Constitutive Equation        = NONLINEAR
+Lame MU                            = CONSTANT 1.0
+Lame LAMBDA                        = CONSTANT 1.0
+Stress Free Solvent Vol Frac       = CONSTANT 0.0
+
+# Fluid parameters
+Liquid Constitutive Equation       = NEWTONIAN
+Viscosity                          = CONSTANT 0.01
+Second Level Set Viscosity         = CONSTANT 0.0002 POSITIVE
+Surface Tension                    = CONSTANT {sigma}
+
+# Thermal Properties
+Conductivity                       = CONSTANT 1.0
+Heat Capacity                      = CONSTANT 1.0
+
+# Porous term terms for linking lubrication to level set field
+Media Type	 	           = POROUS_BRINKMAN
+Porosity                           = CONSTANT 1.0
+Permeability   		           = CONSTANT 1.0
+Brinkman Porosity                  = CONSTANT 1.0
+Brinkman Permeability              = CONSTANT 1.0
+FlowingLiquid Viscosity            = CONSTANT 0.0
+Inertia Coefficient                = CONSTANT 0.0
+
+####################
+### Source Terms ###
+####################
+Navier-Stokes Source               = CONSTANT 0.0 0.0 0.0 
+Solid Body Source                  = CONSTANT 0.0 0.0 0.0
+Mass Source                        = CONSTANT 0.0
+Heat Source                        = CONSTANT 0.0
+Current Source                     = CONSTANT 0.0
+
+#########################
+### Lubrication Terms ###
+#########################
+#Upper Height Function Constants = CONSTANT_SPEED {V_squeeze_top} {H_init_top}
+Upper Height Function Constants = CONSTANT_SPEED 0.0 {H_init_top}
+Lower Height Function Constants = CONSTANT_SPEED 0.0 0.0
+Upper Velocity Function Constants = CONSTANT 0.0 0.0 0.0
+Lower Velocity Function Constants = CONSTANT 0.0 0.0 0.0
+#Upper Contact Angle = DYNAMIC {caU} 4.142e-14 1.0e-7 1.0e-21
+Upper Contact Angle = CONSTANT {caU} 
+Lower Contact Angle = CONSTANT {caL}
+#FSI Deformation Model = FSI_MESH_CONTINUUM
+FSI Deformation Model = FSI_SHELL_ONLY
+
+##########################
+### Porous Shell Terms ###
+##########################
+Porous Shell Closed Porosity      = CONSTANT 0.1
+Porous Shell Height               = CONSTANT 0.00001
+Porous Shell Radius               = CONSTANT 0.00001
+Porous Shell Closed Gas Pressure  = CONSTANT 1.0e6
+Porous Shell Atmospheric Pressure = CONSTANT 1.0e6
+Porous Shell Reference Pressure   = CONSTANT 0.0
+Porous Shell Cross Permeability = CONSTANT {0.}
+Porous Shell Initial Pore Pressure = CONSTANT 0.
+
+########################################
+### Porous Shell Gas Diffusion Terms ###
+########################################
+Porous Shell Gas Diffusivity          = CONSTANT 1.0e-6
+Porous Shell Gas Temperature Constant = CONSTANT 2.494353e10
+Porous Shell Henrys Law Constant      = CONSTANT 1.67e12

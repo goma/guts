@@ -1,0 +1,190 @@
+
+FEM File Specifications
+-- ---- --------------
+#FEM file                         = test.exoII
+FEM file                         = ell.exoII
+#FEM file                         = contin.exoII
+Output EXODUS II file            = out.exoII
+GUESS file                       = contin.dat
+SOLN file                        = No
+Write intermediate results       = NO
+
+General Specifications
+------- --------------
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+#Initial Guess                    = zero
+Initial Guess                    = read_exoII
+
+Time Integration Specifications
+---- ----------- --------------
+#Time integration                 = steady
+Time integration                 = transient
+delta_t                          = 0.025
+Maximum number of time steps     = 10
+Maximum time                     = 10.
+Minimum time step                = 1e-9
+Maximum time step                = .025
+Time step parameter		 = 0.0
+Time step error                  = -0.2e-1 0 1 1 0 0 0 0
+Printing Frequency		 = 1
+Initial Time 			 = 0.0
+Fill Subcycle			 = 1
+
+Level Set Interface Tracking     = ON
+Level Set Length Scale		 = 0.50
+#Level Set Initialization Method  = Exodus
+#Level Set Initialization Method  = Projection
+Level Set Initialization Method  = Nodeset NS 10 EB 1
+#Level Set Initialization Method  = Surfaces 1
+#                                   SURF = PLANE 1. 0. 0. 0.
+Level Set Renormalization Method = Huygens_Constrained
+Level Set Renormalization Tolerance = 0.5
+Level Set Renormalization Frequency = 5
+
+Solver Specifications
+------ --------------
+Solution Algorithm               = umf
+Preconditioner                  = dom_decomp
+Matrix subdomain solver          = ilut
+Matrix reorder                   = rcm
+Matrix Scaling                   = row_sum
+Matrix subdomain solver          = ilut
+ILUT Fill Factor		 = 4.0
+#Matrix drop tolerance            = 1.e-9
+#Matrix Scaling                   = sym_diag
+Matrix residual norm type        = r0
+#Matrix output type               = 10
+Matrix factorization overlap     = none
+#Matrix factorization reuse       = calc
+Matrix drop tolerance            = 0
+Matrix polynomial order          = 3
+Size of Krylov subspace          = 175
+Orthogonalization                = modified
+Maximum Linear Solve Iterations  = 600
+Number of Newton Iterations      = 30
+Newton correction factor         = 1  
+Normalized Residual Tolerance    = 1e-7
+Residual Ratio Tolerance         = 1e-7
+Residual Relative Tolerance      = 1.0e-06
+Pressure Stabilization           = no
+Pressure Stabilization Scaling   = 0.005
+
+Boundary Condition Specifications
+-------- --------- --------------
+Number of BC			 = -1
+
+BC = LS_CAPILLARY LS 0
+
+#BC = U NS 2 0
+#BC = V NS 2 0
+BC = VELO_SLIP_FILL SS 2 100000.0 0.0 0.0 0.0 0 0.0
+#BC = WETTING_TENSION SS 2 -1.0
+#BC = U NS 2 0.0
+BC = VELO_NORMAL SS 2 0.0
+
+BC = VELO_SLIP_FILL SS 4 100000.0 0.0 0.0 0.0 0 0.0
+#BC = WETTING_TENSION SS 4 -1.0
+#BC = U NS 4 0.0
+BC = VELO_NORMAL SS 4 0.0
+
+BC = VELO_SLIP_FILL SS 5 100000.0 0.0 0.0 0.0 0 0.0
+#BC = WETTING_TENSION SS 5 -1.0
+BC = V NS 5 0.0
+
+BC = U NS 3 0
+#BC = V NS 3 0
+
+
+BC  = GD_LINEAR SS 6  R_MOMENTUM1 0 VELOCITY1 0 0.0 1.0
+BC  = GD_PARAB SS 6  R_MOMENTUM1 0 MESH_POSITION2 0 0.0  -6.0  6.0
+
+#BC = U NS 6 0.0
+#BC = FLOW_PRESSURE SS 6 -1.0
+BC = V NS 6 0.0
+
+#BC = PSPG SS 6
+
+
+BC = U NS 100 0.
+BC = V NS 100 0.
+
+END OF BC
+
+Rotation Specifications =
+
+
+END OF ROT
+
+
+
+
+Problem Description
+------- -----------
+Number of Materials		= 2
+MAT = newt 1
+	Coordinate System	= CARTESIAN
+
+	Element Mapping		= isoparametric
+	Mesh Motion		= ARBITRARY
+	Number of bulk species	= 0
+	Number of EQ		= 4
+
+	EQ = momentum1   Q2 U1 Q2   1 1 1 1 1 0 
+	EQ = momentum2   Q2 U2 Q2   1 1 1 1 1 0 
+	EQ = continuity  Q1 P  Q1   1         0 
+	EQ = level_set   Q2 F  Q2   1 1     1   
+				  - - - - - - -
+                                  d m a b d s p
+				  i a d n i r o
+				  v s v d f c r
+				    s     f   o
+			                      u
+					      s
+
+MAT = newt 2
+	Coordinate System	= CARTESIAN
+
+	Element Mapping		= isoparametric
+	Mesh Motion		= ARBITRARY
+	Number of bulk species	= 0
+	Number of EQ		= 4
+
+	EQ = momentum1   Q2 U1 Q2   1 1 1 1 1 0 
+	EQ = momentum2   Q2 U2 Q2   1 1 1 1 1 0 
+	EQ = continuity  Q1 P  Q1   1         0 
+	EQ = level_set   Q2 F  Q2   1 1     1   
+				  - - - - - - -
+                                  d m a b d s p
+				  i a d n i r o
+				  v s v d f c r
+				    s     f   o
+			                      u
+					      s
+Post Processing Specifications
+---- ---------- -------------- 
+Stream Function			= no
+Streamwise normal stress	= no
+Pressure contours		= no
+Second Invarient of Strain	= no
+Mesh Dilatation			= no
+Navier Stokes Residuals		= no
+Moving Mesh Residuals		= no
+Mass Diffusion Vectors		= no
+Mass Fluxlines			= no
+Energy Conduction Vectors	= no
+Energy Fluxlines		= no
+Time Derivatives		= no
+Mesh Stress Tensor		= no
+Fill contours		  	= yes
+
+
+Post Processing Fluxes
+FLUX = VOLUME_FLUX 10 1 0 ell.dat
+END OF FLUX
+
+Post Processing Volumetric Integration = 
+	#VOLUME_INT = POSITIVE_FILL 1 0 ell.dat    
+	VOLUME_INT = NEGATIVE_FILL 1 0 ell.dat
+END OF VOLUME_INT

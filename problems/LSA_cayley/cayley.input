@@ -1,0 +1,101 @@
+#Serial Rayleigh-Benard test problem
+
+------------------------------------------------------------
+                 FEM File Specifications
+------------------------------------------------------------
+FEM file                         = rb-in.exoII
+Output EXODUS II file            = out.exoII
+GUESS file                       = contin.dat
+SOLN file                        =
+Write intermediate results       = no
+------------------------------------------------------------
+                 General Specifications
+------------------------------------------------------------
+Number of processors             = 1
+Output Level                     = 2
+Debug                            = 0
+Initial Guess                    = read_exoII
+------------------------------------------------------------
+                 Time Integration Specifications
+------------------------------------------------------------
+Time integration                 = steady
+delta_t                          = 5.0e-07
+Maximum number of time steps     = 1000
+Maximum time                     = 10.0e+0
+Minimum time step                = 10.e-09
+Time step parameter              = 0.
+Time step error                  = 0.002  1  0  0  1  0
+Printing Frequency               = 5
+------------------------------------------------------------
+                 Continuation Specifications
+------------------------------------------------------------
+
+------------------------------------------------------------
+                 Solver Specifications
+------------------------------------------------------------
+Solution Algorithm               = umf
+Number of Newton Iterations      = 20
+Newton correction factor         = 1.0
+Normalized Residual Tolerance    = 1.0e-08
+Residual Ratio Tolerance         = 1.0e-06
+Linear Stability                 = yes
+#PRESSURE DATUM                   = 0   0.
+UMF IDIM = 6000000
+UMF XDIM = 6000000
+
+------------------------------------------------------------
+               Eigensolver Specifications                 
+------------------------------------------------------------
+Eigen Algorithm                  = cayley
+Eigen Number of modes            = 10
+Eigen Record modes               = 5
+Eigen Size of Krylov subspace    = 50
+Eigen Initial Shifts             = 100.0 1000.0 0.0 0.0
+
+------------------------------------------------------------
+	Boundary Condition Specifications                 
+------------------------------------------------------------
+ 
+Number of BC			 = -1
+BC = QSIDE SS 1 0.0
+BC = QSIDE SS 3 0.0
+BC = U NS 1 0.0 1.0
+BC = U NS 2 0.0 1.0
+BC = V NS 2 0.0 1.0
+BC = T NS 2 0.0 1.0
+BC = U NS 3 0.0 1.0
+BC = U NS 4 0.0 1.0
+BC = V NS 4 0.0 1.0
+BC = T NS 4 1500.0 1.0
+BC = P NS 9 0.0 1.0
+
+END OF BC
+
+###########
+----
+Problem Description
+---
+
+Number of Materials = 1
+
+MAT = rb    1
+
+	Coordinate System = CARTESIAN
+ 
+	Element Mapping                  = isoparametric
+
+	Mesh Motion = ARBITRARY
+ 
+	Number of bulk species = 0
+
+	Number of EQ			 = 4
+	EQ = momentum1  Q2	U1	Q2	    1.  1.  1.  1.  1.  0.
+	EQ = momentum2  Q2	U2	Q2	    1.  1.  1.  1.  1.  0.
+ 	EQ = energy    	Q2	T 	Q2	    1.  1.  1.  1.  1.  0.
+ 	EQ = continuity	Q1	P 	Q1	1.                      0.
+                                                div ms  adv bnd dif src por
+
+
+Post Processing Specifications
+
+Stream Function = no

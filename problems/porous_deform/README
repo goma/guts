@@ -1,0 +1,11 @@
+This test is run with
+
+mpirun -np 1 goma_exe -a -i input
+
+It takes an intial guess from contin.exoII
+
+Tested are the following features:
+poroelasticity.  Porous deform.
+partially saturated flow with hysteretic saturation function
+orthotropic permeability model
+restart from a saturation hysteresis solution

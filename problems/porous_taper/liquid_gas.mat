@@ -1,0 +1,69 @@
+{include(defs)}
+
+Material Data File for LIQUID & GAS
+
+---Physical Properties
+Density				= CONSTANT {sldens}
+Second Level Set Density	= CONSTANT {sldens_lt} POSITIVE
+
+
+---Mechanical Properties and Constitutive Equations
+Solid Constitutive Equation 	= NONLINEAR	
+Convective Lagrangian Velocity  = NONE
+Lame MU 			= CONSTANT 	1.
+Lame LAMBDA 			= CONSTANT 	1.
+Stress Free Solvent Vol Frac	= CONSTANT	0.0
+Liquid Constitutive Equation 	= NEWTONIAN
+Viscosity			= CONSTANT	{lqvisc}
+Second Level Set Viscosity 	= CONSTANT      {lqvisc_lt} POSITIVE
+Low Rate Viscosity		= CONSTANT	{lqvisc}
+Power Law Exponent		= CONSTANT	-1.82
+Suspension Maximum Packing	= CONSTANT	1.0
+Suspension Species Number	= 0
+Polymer Constitutive Equation   = NOPOLYMER
+Surface Tension			= CONSTANT	{surftens}
+
+---Thermal Properties
+Conductivity		= CONSTANT	1
+Heat Capacity		= CONSTANT	1
+Volume Expansion	= CONSTANT	1.
+Reference Temperature	= CONSTANT	0.
+Liquidus Temperature	= CONSTANT	1.
+Solidus Temperature	= CONSTANT	1.
+ 
+---Electrical Properties
+Electrical Conductivity = CONSTANT       1.
+
+---Microstructure Properties
+Media Type		= CONTINUOUS
+Porosity                = CONSTANT     1.0
+Permeability		= CONSTANT     1.0
+
+---Brinkman-equation parameters
+Brinkman Porosity        =  CONSTANT     1.0
+Brinkman Permeability    =  CONSTANT     1.0
+FlowingLiquid Viscosity  =  CONSTANT     1.0
+Inertia Coefficient      =  CONSTANT     0.0
+
+---Species Properties
+Diffusion Constitutive Equation = FICKIAN
+Diffusivity  			= CONSTANT  0   1.e-3
+Latent Heat Vaporization	= CONSTANT  0	1.0
+Latent Heat Fusion		= CONSTANT  0	1.0
+Vapor Pressure  		= CONSTANT  0   1.1
+Species Volume Expansion        = CONSTANT  0   0.
+Reference Concentration         = CONSTANT  0   0.
+
+********Species Number**********************|
+
+----Source Terms
+Navier-Stokes Source			= CONSTANT     {0.0} 0.0  0.0
+$$Navier-Stokes Source			= CONSTANT     {-sldens*grav} 0.0  0.0
+$$Second Level Set Momentum Source	= CONSTANT     {-grav} 0.  0. POSITIVE
+$$Second Level Set Momentum Source	= CONSTANT     {-sldens_lt*grav} 0.  0. POSITIVE
+Solid Body Source		= CONSTANT	0.  0.  0.
+Mass Source			= CONSTANT	0.
+Heat Source			= CONSTANT	0.
+Species Source			= CONSTANT  0   0.
+Species Source			= CONSTANT  1   0.
+Current Source                  = CONSTANT      0.

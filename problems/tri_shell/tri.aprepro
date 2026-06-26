@@ -1,0 +1,31 @@
+### Drop squeeze parameters ###
+
+### Mesh / LS parameters
+# Lubrication gap = {Hlub = 0.1} cm
+# Inner cylinder radius = {R1 = 10.0} cm
+# Outer cylinder radius = {R2 = R1 + Hlub} cm
+# Eccentricity = {ecc = 0.2}
+# Cylinder length = {Clen = 30.0} cm
+# Mesh intervals (theta)  = {nx = 48}
+#                (length) = {nz = 20}
+
+### Fluid parameters
+# Surface tension = {sigma = 25.0}
+# Lower contact angle = {caL = 90.0} degrees
+# Upper contact angle = {caU = caL } degrees
+# Ambient pressure = {p0 = 0.0} P
+
+### Initial condition
+# Drop radius = {dropR = 0.005} cm
+#               {Xlen  = 4*dropR} cm
+
+### Template movement
+# Upper initial height = {H_init_top = 0.0015} cm
+# Upper squeeze velocity = {V_squeeze_top = -0.0e3} cm/s
+# Upper dz = {V_dz_top = 0.0e0} cm/s
+# Upper force = {Force_top = 0.0e4} 
+
+### Integration parameters
+# Initial time step size = {dt = 1e-10}
+# Final time = {Tout = 5e-10}
+# Maximum time step size = {dt_max = 1e-6}

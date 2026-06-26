@@ -1,0 +1,22 @@
+$ Pitch angle of problem 		{ alpha = 5 }
+$ x coordinate of first arc plane	{ax1 = 2.0}
+$ y coordinate of first arc plane	{ay1 = .25/2 + ax1*tand(alpha/2) }
+$ Static contact angle on both surfaces	{theta_s = 60 }
+$ gap width at first arc plane		{ h = ay1 }
+$ radius of first arc			{ r1 = h/cosd(theta_s - alpha/2 ) }
+$ First arc center x coord		{ cx1 = ax1 - r1 * sind(theta_s - alpha/2)*cosd(alpha/2) }
+$ First arc center y coord		{ cy1 = ay1- r1 * sind(theta_s - alpha/2)*sind(alpha/2) }
+$ Normal x comp to first knockout plane	{ nx1 = -cosd(alpha/2) }
+$ Normal y comp to first knockout plane	{ ny1 = -sind(alpha/2) }
+$ d1  					{ d1 = ax1*nx1 + ay1*ny1 }
+
+
+$ x coordinate of second arc plane	{ax2 = 4.0}
+$ y coordinate of second arc plane	{ay2 =  0.25/2.0 + ax2*tand(alpha/2) }
+$ gap width at second arc plane		{h = ay2}
+$ radius of second arc			{ r2 = h/cosd(theta_s - alpha/2) }
+$ Second arc center x coord		{ cx2 = ax2 + r2 * sind(theta_s - alpha/2)*cosd(alpha/2) }
+$ Second arc center y coord		{ cy2 = ay2 + r2 * sind(theta_s - alpha/2)*sind(alpha/2)  }
+$ Normal x comp to second knockout plane{ nx2 =  cosd(alpha/2) }
+$ Normal y comp to second knockout plane{ ny2 =  sind(alpha/2) }
+$ d2  					{ d2 = ax2*nx2 + ay2*ny2 }

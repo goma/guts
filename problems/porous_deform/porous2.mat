@@ -1,0 +1,94 @@
+{include(defs_porous2)}
+
+Material Data File for POROUS MATERIAL
+
+/**********Form of each property card *********/
+PROPERTY   = MODEL   FLOAT#1 FLOAT#2 .....FLOAT#5
+
+/**********Form of each Constitutive card *********/
+MECHANICS_TYPE   = MODEL 
+
+Of the many available options, MODEL can be USER
+/************************************************/
+
+
+---Physical Properties
+Density                 = CONSTANT      {sldens}
+
+---Mechanical Properties and Constitutive Equations
+Solid Constitutive Equation     = LINEAR
+Lame MU                         = CONSTANT      {L_mu}
+Lame LAMBDA                     = CONSTANT      {L_lambda}
+#Stress Free Solvent Vol Frac    = CONSTANT      {poros}
+Liquid Constitutive Equation    = NEWTONIAN
+Viscosity                       = CONSTANT      {lqvisc}
+Low Rate Viscosity              = CONSTANT      0.
+Power Law Exponent              = CONSTANT      0.
+High Rate Viscosity             = CONSTANT      0.
+Time Constant                   = CONSTANT      0.
+Aexp                            = CONSTANT      0.
+$Surface Tension                 = CONSTANT      {surftens}
+
+---Thermal Properties
+Conductivity            = CONSTANT      1.
+Heat Capacity           = CONSTANT      1.
+Volume Expansion        = CONSTANT      1.
+Reference Temperature   = CONSTANT      0.
+Liquidus Temperature    = CONSTANT      1.
+Solidus Temperature     = CONSTANT      1.
+ 
+---Electrical Properties
+Electrical Conductivity = CONSTANT      1.
+
+---Microstructure Properties (Porous section 1)
+Media Type               = POROUS_PART_SAT
+#Porosity                 = CONSTANT    	{poros}
+Porosity                 = DEFORM    	{poros}
+$Permeability		 = CONSTANT	{permeab_c} 
+Permeability           = ORTHOTROPIC  {permeab_c} {permeab_i} {0.} 1. 0. 0. 0. 1. 0. 0. 0. 1.
+Liquid phase compressibility = CONSTANT {1.e-9*L*T/K}
+Liquid phase reference pressure = CONSTANT 0.
+Capillary Network Stress = PARTIALLY_WETTING
+Rel Gas Permeability     = CONSTANT  	{1./airvisc}
+# from Ken 3layer
+Rel Liq Permeability     = VAN_GENUCHTEN  0. 0. {m_van200=1.0} {lqvisc}
+
+Saturation = TANH_HYST 1.0 0.0 {const_c_w} {const_d_w} 0.0698 0. {const_c_d} {const_d_d} {draining = 1.0} {Switch_threshold = 1.e-6}
+
+
+--Misc Porous numerical props (Porous Section 2)
+Porous Weight Function          = SUPG 1.0
+Porous Mass Lumping             = TRUE
+#Porous Time Integration         = TAYLOR_GALERKIN 0
+#Porous Advective Scaling         = CONSTANT 0 1.
+
+---Porous Species Properties (Porous Section 3)
+/* Darcy fickian only for saturated media */
+Porous Diffusion Constitutive Equation = DARCY_FICKIAN
+Porous Gas Diffusivity              = CONSTANT  0  {gpdiff}
+
+Porous Latent Heat Vaporization = CONSTANT  0   0.
+Porous Latent Heat Fusion       = CONSTANT  0   0.
+Porous Vapor Pressure           = FLAT      0  {0.0*vappres} {sldens} {mwsl} {rgas} {temp} {mwair} {ambpres}
+Porous Liquid Volume Expansion  = CONSTANT  0   1.
+                                            ^
+***Species Number (all zero for primary liquid solvent)****|
+
+--Porous Gas-inert properties
+/*Note. if you change p_ambient here you need to make sure the initialize
+card and the boundary conditions are compatible with the saturation curve. */
+
+Porous Gas Constants           = IDEAL_GAS   29 8314 300 0
+
+----Source Terms--
+Navier-Stokes Source            = CONSTANT      0.  0.  0.
+Solid Body Source               = CONSTANT      0.  0.  0.
+Mass Source                     = CONSTANT      0.
+Heat Source                     = CONSTANT      0.
+Species Source                  = CONSTANT  0   0.
+Species Source                  = CONSTANT  1   0.
+Species Source                  = CONSTANT  2   0.
+Current Source                  = CONSTANT      0.
+
+$$Initialize = POR_LIQ_PRES 0 {-pcmax}
+

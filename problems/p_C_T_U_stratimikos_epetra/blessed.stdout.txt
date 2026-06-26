@@ -1,0 +1,59 @@
+v7.11.0-1-g709cfe59
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2026 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+
+Internal METIS decomposition using Recursive Bisection.
+
+
+
+----------------- Communications Stats ------------
+
+		Number of Neighbors
+		Max:     1 (Proc = 0)		 Avg:  1.000		Min: 1 (Proc = 0)
+
+		Size of Messages
+		Max:    37 (Proc = 1)		 Avg: 61.500		Min: 37 (Proc = 0)
+--------------------------------------------------
+
+
+######################### __PRINT_SYNC_START__ #########################
+######################### __PRINT_SYNC_END__ #########################
+
+Number of unknowns            = 381
+
+Number of matrix nonzeroes    = 31564
+
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:27 [0] 3.6e-01 6.2e+00 1.0e+00 stratimikos.xml filename
+stratimikos.xml filename
+8.3e+00 2.9e+02 3.5e+01   1 1.0e-02/2.0e-02 
+17:10:27 [1] 1.7e-14 2.0e-13 4.3e-14                         skp 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   1.000e+01  2.060e+00  3.263e+00 
+
+Fixing exodus file out.exoII
+
+-done
+
+
+Proc 0 runtime:       0.00 Minutes.
+

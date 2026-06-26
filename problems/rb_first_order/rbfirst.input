@@ -1,0 +1,164 @@
+#Serial Rayleigh-Benard test problem --- part 2 of 4
+{include(geometry.in)}
+
+------------------------------------------------------------
+                 FEM File Specifications
+------------------------------------------------------------
+FEM file                         = rbzero-out.exoII
+Output EXODUS II file            = rbfirst-out.exoII
+GUESS file                       = contin.dat
+SOLN file                        = rbfirst-out.dat
+Write intermediate results       = no
+------------------------------------------------------------
+                 General Specifications
+------------------------------------------------------------
+Number of processors             = 1
+Output Level                     = 2
+Debug                            = 0
+Initial Guess                    = read_exoII
+------------------------------------------------------------
+                 Time Integration Specifications
+------------------------------------------------------------
+Time integration                 = steady
+delta_t                          = 5.0e-07
+Maximum number of time steps     = 1000
+Maximum time                     = 10.0e+0
+Minimum time step                = 10.e-09
+Time step parameter              = 0.
+Time step error                  = 0.002  1  0  0  1  0
+Printing Frequency               = 5
+------------------------------------------------------------
+                 Continuation Specifications
+------------------------------------------------------------
+Continuation                     = loca
+Continuation Type                = MT
+$Boundary condition ID            = 4
+Boundary condition data float tag= 0
+Material id                      = 1
+Material property tag            = 1600
+Material property tag subindex   = 0
+Initial parameter value          = 2701.0
+Final parameter value            = 30600.0
+delta_s                          = 180.0
+Maximum number of path steps     = 149
+Minimum path step                = 1.0e-05
+Maximum path step                = 1800.0
+Continuation Printing Frequency  = 1
+LOCA method                      = ss
+Continuation order               = 1
+Step control aggressiveness      = 0.2
+------------------------------------------------------------
+                 Solver Specifications
+------------------------------------------------------------
+Solution Algorithm               = gmres
+ Preconditioner			 = ilu
+ Matrix Scaling			 = row_sum
+Polynomial                       = LS,1
+Size of Krylov subspace          = 500
+Orthogonalization                = classical
+#Matrix drop tolerance            = 1.0-e9
+Maximum Linear Solve Iterations  = 500
+Number of Newton Iterations      = 20
+Newton correction factor         = 1.0
+Normalized Residual Tolerance    = 1.0e-08
+Residual Ratio Tolerance         = 1.0e-06
+Residual Relative Tolerance      = 1e-6
+Pressure Stabilization		 = yes
+Pressure Stabilization Scaling   = 1.00
+Linear Stability                 = no
+#PRESSURE DATUM                   = 0   0.
+UMF IDIM = 645000
+UMF XDIM = 845000
+------------------------------------------------------------
+	Boundary Condition Specifications                 
+------------------------------------------------------------
+-------------------------------------------------------------
+             Related SS bc's on position
+-------------------------------------------------------------
+$
+$ a*x + b*y + c*z + d = 0
+$
+$   {a1 = 0.0}
+$   {b1 = 1.0}
+$   {c1 = 0.0}
+$   {d1 = 0.0}
+$
+$   {a2 = 1.0}
+$   {b2 = 0.0}
+$   {c2 = 0.0}
+$   {d2 = 1.0}
+$
+$   {a3 = 0.0}
+$   {b3 = 1.0}
+$   {c3 = 0.0}
+$   {d3 = 1.0}
+$
+$   {a4 = 1.0}
+$   {b4 = 0.0}
+$   {c4 = 0.0}
+$   {d4 = 0.0}
+$
+Number of BC			 = -1
+BC = PLANE SS 1 {a1} {b1} {c1} {d1}
+BC = PLANE SS 2 {a2} {b2} {c2} {d2}
+BC = PLANE SS 3 {a3} {b3} {c3} {d3}
+BC = PLANE SS 4 {a4} {b4} {c4} {d4}
+$
+BC = U NS 1 0.0 1.0
+BC = V NS 1 0.0 1.0
+BC = T NS 1 1.0 1.0
+BC = U NS 2 0.0 1.0
+BC = V NS 2 0.0 1.0
+BC = U NS 3 0.0 1.0
+BC = V NS 3 0.0 1.0
+BC = T NS 3 0.0 1.0
+BC = V NS 4 0.0 1.0
+BC = P NS 9 0.0 1.0
+$
+END OF BC
+
+###########
+----
+Problem Description
+---
+
+Number of Materials = 1
+
+MAT = rb    1
+
+	Coordinate System = CYLINDRICAL
+ 
+	Element Mapping                  = isoparametric
+
+	Mesh Motion = ARBITRARY
+ 
+	Number of bulk species = 0
+
+	Number of EQ			 = 4
+	EQ = momentum1  Q1	U1	Q1	    1.  1.  1.  1.  1.  0.
+	EQ = momentum2  Q1	U2	Q1	    1.  1.  1.  1.  0.  0.
+ 	EQ = energy    	Q1	T 	Q1	    1.  1.  1.  1.  1.  0.
+ 	EQ = continuity	Q1	P 	Q1	1.                      0.
+                                                div ms  adv bnd dif src por
+
+
+Post Processing Specifications
+
+Stream Function = no
+Streamwise normal stress = no
+Pressure contours = yes
+Second Invarient of Strain = no
+Mesh Dilatation = no
+Navier Stokes Residuals = yes
+Moving Mesh Residuals = no
+Mass Diffusion Vectors = no
+Mass Fluxlines = no
+Energy Conduction Vectors = no
+Energy Fluxlines = no
+Time Derivatives = no
+Mesh Stress Tensor = no
+Mesh Strain Tensor = no
+Lagrangian Convection = no
+
+
+

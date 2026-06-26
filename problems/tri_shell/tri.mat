@@ -1,0 +1,63 @@
+###############################################################################
+### Material parameters for generic liquid                                  ###
+### Author:  Scott A Roberts (sarober@sandia.gov)                           ###
+###############################################################################
+# {include('tri.aprepro")}
+
+###########################
+### Physical Properties ###
+###########################
+Density                            = CONSTANT 1.0
+
+########################################################
+### Mechanical Properties and Constitutive Equations ###
+########################################################
+
+# Mesh parameters
+Solid Constitutive Equation        = NONLINEAR
+Lame MU                            = CONSTANT 1.0
+Lame LAMBDA                        = CONSTANT 1.0
+Stress Free Solvent Vol Frac       = CONSTANT 0.0
+
+# Fluid parameters
+Liquid Constitutive Equation       = NEWTONIAN
+Viscosity                          = CONSTANT 0.01
+Surface Tension                    = CONSTANT {sigma}
+
+# Thermal Properties
+Conductivity                       = CONSTANT 1.0
+Heat Capacity                      = CONSTANT 1.0
+
+# Porous term terms for linking lubrication to level set field
+Media Type	 	           = POROUS_BRINKMAN
+Porosity                           = CONSTANT 1.0
+Permeability   		           = CONSTANT 1.0
+Brinkman Porosity                  = CONSTANT 1.0
+Brinkman Permeability              = CONSTANT 1.0
+FlowingLiquid Viscosity            = CONSTANT 0.0
+Inertia Coefficient                = CONSTANT 0.0
+
+####################
+### Source Terms ###
+####################
+Navier-Stokes Source               = CONSTANT 0.0 0.0 0.0
+Solid Body Source                  = CONSTANT 0.0 0.0 0.0
+Mass Source                        = CONSTANT 0.0
+Heat Source                        = CONSTANT 0.0
+Current Source                     = CONSTANT 0.0
+
+#########################
+### Lubrication Terms ###
+#########################
+#Upper Height Function Constants = CONSTANT_SPEED 0.0 {Hlub}
+Upper Height Function Constants = JOURNAL {Hlub} {ecc}
+Lower Height Function Constants = CONSTANT_SPEED 0.0 0.0
+Upper Velocity Function Constants = CONSTANT 0.0 0.0 0.0
+Lower Velocity Function Constants = TANGENTIAL_ROTATE 0.0 0.0 1.0 1.0 0.0 
+Upper Contact Angle = CONSTANT {caU}
+Lower Contact Angle = CONSTANT {caL}
+FSI Deformation Model = FSI_SHELL_ONLY
+
+
+
+

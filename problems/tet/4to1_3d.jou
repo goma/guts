@@ -1,0 +1,55 @@
+# ratio	      = {ratio       = 4}
+# fore_length = {fore_length = 8}
+# aft_length  = {aft_length  = 8}
+# depth       = {depth       = 4}
+
+## Geometry Creation
+create brick x {fore_length} y {ratio} z {depth}
+create brick x {aft_length}  y 1       z {depth}
+move volume 1 x {-fore_length/2} y {ratio/2}
+move volume 2 x {aft_length/2}   y {1/2}
+unite volume 1 2
+merge all
+compress all
+
+## Block Labling
+block 1 volume 1
+sideset 10 surface 4 # xmin (inflow)
+sideset 20 surface 7 # xmax (outflow)
+sideset 30 surface 3 # ymin (bottom)
+sideset 40 surface 5 6 8 # ymax (top)
+sideset 50 surface 2 # zmin (back)
+sideset 60 surface 1 # zmax (front)
+nodeset 10 surface 4 # xmin (inflow)
+nodeset 20 surface 7 # xmax (outflow)
+nodeset 30 surface 3 # ymin (bottom)
+nodeset 40 surface 5 6 8 # ymax (top)
+nodeset 50 surface 2 # zmin (back)
+nodeset 60 surface 1 # zmax (front)
+
+volume 1 size {1/3}
+volume 1 scheme auto
+#curve 13 scheme bias 1.1
+#curve 9 scheme bias 0.9
+#curve 1 scheme bias 1.1
+#curve 4 scheme bias 0.9
+#curve 10 12 scheme dualbias 0.9
+
+mesh volume 1
+
+block 1 element type hex8
+export genesis "4to1_hex8.e" dimension 3 overwrite
+
+block 1 element type hex27
+export genesis "4to1_hex27.e" dimension 3 overwrite
+
+delete mesh
+volume 1 scheme tetmesh
+
+mesh volume 1
+
+block 1 element type tetra4
+export genesis "4to1_tet4.e" dimension 3 overwrite
+
+block 1 element type tetra10
+export genesis "4to1_tet10.e" dimension 3 overwrite

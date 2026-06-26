@@ -1,0 +1,47 @@
+# brk -- input file problem description for decomposition
+#        for 2D problem drying problem with energy, species,
+#        and mesh displacement degrees of freedom
+
+1       # element block ID
+2       # number of basic eqnvars
+3 1 1 1 # energy equation
+5 2 1 1 # mesh (2D)
+
+#
+# interactions...
+#
+
+#      T      DM
+#
+       1       0       # energy equation
+       0       1       # mesh equation
+
+
+4           # number of nodes per element in this eb
+3 5  
+3 5  
+3 5  
+3 5  
+
+2       # element block ID
+3       # number of basic eqnvars
+3 1 1 1 # energy equation
+4 1 1 1 # species
+5 2 1 1 # mesh (2D)
+
+#
+# interactions...
+#
+
+#      T      Y        DM       
+#
+       1      1         0       # energy equation
+       1      1         0       # species_bulk
+       0      0         1       # mesh equation
+
+
+4           # number of nodes per element in this eb
+3 4 5  
+3 4 5  
+3 4 5  
+3 4 5  

@@ -1,0 +1,101 @@
+Material Data File for LIQUID & GAS
+##{include("params")}
+
+---Physical Properties
+Density				= CONSTANT 0.000001 
+$$Second Level Set Density	= CONSTANT 0.0000001 POSITIVE
+
+
+---Mechanical Properties and Constitutive Equations
+Solid Constitutive Equation 	= NONLINEAR	
+Convective Lagrangian Velocity  = NONE
+Lame MU 			= CONSTANT 	1.
+Lame LAMBDA 			= CONSTANT 	1.
+Stress Free Solvent Vol Frac	= CONSTANT	0.0
+{Ifdef(do_Newtonian)}
+Liquid Constitutive Equation 	= NEWTONIAN
+Viscosity			= CONSTANT	0.001 
+{Endif}
+{Ifdef(do_Powerlaw)}
+Liquid Constitutive Equation 	= POWER_LAW
+Low Rate Viscosity		= CONSTANT	0.001
+Power Law Exponent		= CONSTANT	{pl_index}
+{Endif}
+{Ifdef(do_Bingham)}
+Liquid Constitutive Equation 	= BINGHAM
+Low Rate Viscosity		= CONSTANT	0.001
+Power Law Exponent		= CONSTANT	{pl_index}
+High Rate Viscosity		= CONSTANT	0.0
+Time Constant			= CONSTANT	10.0
+Aexp				= CONSTANT	2.0
+Thermal Exponent		= CONSTANT	0.0
+Yield Stress			= CONSTANT	{yield}
+Yield Exponent			= CONSTANT	{F}
+{Endif}
+{Ifdef(do_Carreau)}
+Liquid Constitutive Equation 	= CARREAU
+Low Rate Viscosity		= CONSTANT	0.001
+Power Law Exponent		= CONSTANT	{pl_index}
+High Rate Viscosity		= CONSTANT	0.000
+Time Constant			= CONSTANT	1.0
+Aexp				= CONSTANT	3.0
+{Endif}
+{Ifdef(do_HerschelBulkley)}
+Liquid Constitutive Equation 	= HERSCHEL_BULKLEY
+Low Rate Viscosity		= CONSTANT	0.001
+Power Law Exponent		= CONSTANT	{pl_index}
+Yield Stress			= CONSTANT	{yield}
+{Endif}
+Polymer Constitutive Equation   = NOPOLYMER
+Surface Tension			= CONSTANT	70 
+
+---Thermal Properties
+Conductivity		= CONSTANT	1
+Heat Capacity		= CONSTANT	1
+Volume Expansion	= CONSTANT	1.
+Reference Temperature	= CONSTANT	{25.0}
+Liquidus Temperature	= CONSTANT	1.
+Solidus Temperature	= CONSTANT	1.
+ 
+---Electrical Properties
+Electrical Conductivity = CONSTANT       1.
+
+---Microstructure Properties
+Media Type		= POROUS_BRINKMAN
+Porosity                = CONSTANT     1.0
+Permeability		= CONSTANT     1.0
+
+---Brinkman-equation parameters
+Brinkman Porosity        =  CONSTANT     1.0
+Brinkman Permeability    =  CONSTANT     1.0
+FlowingLiquid Viscosity  =  CONSTANT     0.0
+Inertia Coefficient      =  CONSTANT     0.0
+
+---Species Properties
+Diffusion Constitutive Equation = FICKIAN
+Diffusivity  			= CONSTANT  0   1.e-3
+Latent Heat Vaporization	= CONSTANT  0	1.0
+Latent Heat Fusion		= CONSTANT  0	1.0
+Vapor Pressure  		= CONSTANT  0   1.1
+Species Volume Expansion        = CONSTANT  0   0.
+Reference Concentration         = CONSTANT  0   0.
+
+********Species Number**********************|
+
+----Source Terms
+Navier-Stokes Source			= CONSTANT     {0.0} {-0.000001*9810}  0.0
+Solid Body Source		= CONSTANT	0.  0.  0.
+Mass Source			= CONSTANT	0.
+Heat Source			= CONSTANT	0.
+Species Source			= CONSTANT  0   0.
+Species Source			= CONSTANT  1   0.
+Current Source                  = CONSTANT      0.
+
+# Special inputs
+Upper Height Function Constants = CONSTANT_SPEED  {0.0} {gap}
+Lower Height Function Constants = CONSTANT_SPEED 0.0  0.0
+Upper Velocity Function Constants = CONSTANT 0.  0.  0.
+Lower Velocity Function Constants = CONSTANT 0.  0.  0.
+Upper Contact Angle = CONSTANT  180.0
+Lower Contact Angle = CONSTANT  180.0
+FSI Deformation Model = FSI_SHELL_ONLY

@@ -1,0 +1,18 @@
+5.6.0
+
+
+----------------- Communications Stats ------------
+
+		Number of Neighbors
+		Max:     1 (Proc = 0)		 Avg:  1.000		Min: 1 (Proc = 0)
+
+		Size of Messages
+		Max:    83 (Proc = 0)		 Avg: 78.000		Min: 83 (Proc = 1)
+--------------------------------------------------
+
+
+
+##################################### PRINT_SYNC_START #########################
+
+-done
+

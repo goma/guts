@@ -1,0 +1,95 @@
+v7.11.0-1-g709cfe59
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2026 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+
+Internal METIS decomposition using Recursive Bisection.
+
+
+
+----------------- Communications Stats ------------
+
+		Number of Neighbors
+		Max:     1 (Proc = 0)		 Avg:  1.000		Min: 1 (Proc = 0)
+
+		Size of Messages
+		Max:    28 (Proc = 1)		 Avg: 37.000		Min: 28 (Proc = 0)
+--------------------------------------------------
+
+
+######################### __PRINT_SYNC_START__ #########################
+######################### __PRINT_SYNC_END__ #########################
+
+Number of unknowns            = 130
+
+Number of matrix nonzeroes    = 4928
+
+Initial guess read from "ttfq.exoII.2.0" ...(last soln in file)
+		 Values read time plane at time = 0
+
+=> Try for soln at t=1e-05 with dt=1e-05 [0 for 0] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 3.1e-04 1.5e-03 6.1e-04 2.0e+00 6.0e+00 2.8e+00  18 1.0e-02/0.0e+00 
+17:10:04 [1] 1.4e-08 1.0e-07 2.4e-08 1.9e-05 8.1e-05 3.1e-05  17 0.0e+00/0.0e+00 
+17:10:04 [2] 2.8e-13 2.7e-12 5.5e-13                         skp 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   1.983e+00  1.357e-01  3.966e-01 
+
+CONSTANT DELTA_T          [, 1.4e-03, 1.5e-01, 5.2e-07]
+Predictor-corrector norm: [,   1 v  ,   0 P  ,   1 F  ]
+
+=> Try for soln at t=2e-05 with dt=1e-05 [1 for 1] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 3.1e-04 1.7e-03 6.0e-04 1.8e+00 5.7e+00 2.6e+00  18 1.0e-02/0.0e+00 
+17:10:04 [1] 2.0e-08 1.2e-07 3.0e-08 2.2e-05 9.3e-05 3.3e-05  17 1.0e-02/0.0e+00 
+17:10:04 [2] 2.2e-13 2.8e-12 5.3e-13                         skp 0.0e+00/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.150e+00  1.405e-01  4.171e-01 
+
+CONSTANT DELTA_T          [, 1.2e-03, 1.4e-01, 6.0e-07]
+Predictor-corrector norm: [,   1 v  ,   0 P  ,   1 F  ]
+
+=> Try for soln at t=3e-05 with dt=1e-05 [2 for 2] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 2.2e-05 2.1e-04 4.8e-05 1.4e-01 6.0e-01 2.4e-01  19 0.0e+00/0.0e+00 
+17:10:04 [1] 2.9e-09 1.8e-08 4.7e-09 3.5e-06 1.5e-05 5.6e-06  17 1.0e-02/0.0e+00 
+17:10:04 [2] 1.7e-14 2.7e-13 4.7e-14                         skp 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.177e+00  1.413e-01  4.205e-01 
+
+CONSTANT DELTA_T          [, 1.8e-04, 1.3e-02, 9.3e-08]
+Predictor-corrector norm: [,   1 v  ,   0 P  ,   1 F  ]
+
+Fixing exodus file ttfq_out.exoII
+
+-done
+
+
+Proc 0 runtime:       0.00 Minutes.
+

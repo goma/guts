@@ -1,0 +1,1 @@
+This problem solves a drop spreading under a structured porous medium.  It involves solving the lubrication equation with level set fields on a shell and coupling that to a new porous shell equation.

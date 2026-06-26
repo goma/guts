@@ -1,0 +1,36 @@
+3D Simple Braze Problem: GOMA Version Information
+=================================================
+
+Directory:   .../VandV/problems/v2.2/simple_braze1
+
+Sept 8, 99 baseline #1
+**********************
+     ** no info **
+
+Information (partial) gleaned from exoII file.
+
+Oct 10, 01 baseline #2
+**********************
+     goma_100901 executable
+     output files:
+        base2.sout
+        base2.serr
+        base2_out.exoII
+
+     initial residuals - 7.5e-04 6.9e-02 5.0e-03
+     initial updates  - 1.2e+04 1.4e+06 1.1e+05
+
+
+Re-baseline problem with "modern" day Goma.
+Add severl new files to repository.
+
+Dec 5, 03 baseline #3
+*********************
+     goma_Dec0503 executable
+     output files:
+        blessed.sout
+        blessed.serr
+        blessed.exoII
+
+     initial residuals - 1.4e-03 1.3e-01 1.0e-02
+     initial updates  - 1.9e+05 1.2e+07 1.1e+06

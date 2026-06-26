@@ -1,0 +1,49 @@
+Two-Phase Evaporation (Discontinuous Variables Test): GOMA Version Information
+==============================================================================
+
+Directory:   .../VandV/problems/v2.2/evap_two_phase
+
+The Test Suite problem runs the last stage of this sequence.
+
+
+goma -i input.2
+cp solnheat.dat contin2_3.dat
+goma -i input.3
+cp solnheat.dat contin3_f.dat
+goma -i input
+
+
+
+
+Sept 8, 99 baseline #1
+**********************
+     goma_991110 executable
+     output files:
+        base1.sout
+        base1.serr
+        base1_outheat.exoII
+
+     initial residuals - 2.3e-01 3.5e+00 6.7e-01 
+     1st iteration updates - 9.3e+00 3.0e+03 1.0e+02 
+
+NB: This problem stopped running in late February 2001; some code changes
+as well as some problem changes were introduced. This problem was then
+re-baselined.
+
+
+Mar 29, 01 baseline #2
+**********************
+     goma_010118 executable
+     output files:
+        base2.sout
+        base2.serr
+        base2_outheat.exoII
+
+     initial residuals - 3.1e-03 1.4e-02 4.3e-03
+     1st iteration updates - 1.2e+00 5.9e+01 3.5e+00
+
+HKM 4/15/01
+    New discontinuous variables approach put specific variables
+pertaining to individual materials in their own exodus nodal variable.
+Therefore, the number and names of the nodal variables have changed.
+However, the underlying solution stayed the same.

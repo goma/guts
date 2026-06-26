@@ -1,0 +1,249 @@
+BC Duplication list for Processor 0:
+-------- --------- ----------- ----
+
+At global node 1 (proc node 1) (-48, -12)
+ R_MOMENTUM1     gets   U               (2) from NS 1
+ R_MOMENTUM2     gets   V               (3) from NS 1
+
+At global node 2 (proc node 2) (-48, -11)
+ R_MOMENTUM1     gets   GD_PARAB        (4) from SS 4
+			GD_LINEAR       (5) from SS 4
+ R_MOMENTUM2     gets   V               (6) from NS 4
+
+At global node 5 (proc node 5) (-48, -10)
+ R_MOMENTUM1     gets   GD_PARAB        (4) from SS 4
+			GD_LINEAR       (5) from SS 4
+ R_MOMENTUM2     gets   V               (6) from NS 4
+
+At global node 7 (proc node 7) (-48, -9)
+ R_MOMENTUM1     gets   GD_PARAB        (4) from SS 4
+			GD_LINEAR       (5) from SS 4
+ R_MOMENTUM2     gets   V               (6) from NS 4
+
+At global node 9 (proc node 9) (-48, -8)
+ R_MOMENTUM1     gets   GD_PARAB        (4) from SS 4
+			GD_LINEAR       (5) from SS 4
+ R_MOMENTUM2     gets   V               (6) from NS 4
+
+At global node 11 (proc node 11) (-48, -7)
+ R_MOMENTUM1     gets   GD_PARAB        (4) from SS 4
+			GD_LINEAR       (5) from SS 4
+ R_MOMENTUM2     gets   V               (6) from NS 4
+
+At global node 13 (proc node 13) (-48, -6)
+ R_MOMENTUM1     gets   GD_PARAB        (4) from SS 4
+			GD_LINEAR       (5) from SS 4
+ R_MOMENTUM2     gets   V               (6) from NS 4
+
+At global node 15 (proc node 15) (-48, -5)
+ R_MOMENTUM1     gets   GD_PARAB        (4) from SS 4
+			GD_LINEAR       (5) from SS 4
+ R_MOMENTUM2     gets   V               (6) from NS 4
+
+At global node 17 (proc node 17) (-48, -4)
+ R_MOMENTUM1     gets   GD_PARAB        (4) from SS 4
+			GD_LINEAR       (5) from SS 4
+ R_MOMENTUM2     gets   V               (6) from NS 4
+
+At global node 19 (proc node 19) (-48, -3)
+ R_MOMENTUM1     gets   GD_PARAB        (4) from SS 4
+			GD_LINEAR       (5) from SS 4
+ R_MOMENTUM2     gets   V               (6) from NS 4
+
+At global node 21 (proc node 21) (-48, -2)
+ R_MOMENTUM1     gets   GD_PARAB        (4) from SS 4
+			GD_LINEAR       (5) from SS 4
+ R_MOMENTUM2     gets   V               (6) from NS 4
+
+At global node 23 (proc node 23) (-48, -1)
+ R_MOMENTUM1     gets   GD_PARAB        (4) from SS 4
+			GD_LINEAR       (5) from SS 4
+ R_MOMENTUM2     gets   V               (6) from NS 4
+
+At global node 25 (proc node 25) (-48, 0)
+ R_MOMENTUM1     gets   GD_PARAB        (4) from SS 4
+			GD_LINEAR       (5) from SS 4
+ R_MOMENTUM2     gets   V               (6) from NS 4
+
+At global node 27 (proc node 27) (-48, 1)
+ R_MOMENTUM1     gets   GD_PARAB        (4) from SS 4
+			GD_LINEAR       (5) from SS 4
+ R_MOMENTUM2     gets   V               (6) from NS 4
+
+At global node 29 (proc node 29) (-48, 2)
+ R_MOMENTUM1     gets   GD_PARAB        (4) from SS 4
+			GD_LINEAR       (5) from SS 4
+ R_MOMENTUM2     gets   V               (6) from NS 4
+
+At global node 31 (proc node 31) (-48, 3)
+ R_MOMENTUM1     gets   GD_PARAB        (4) from SS 4
+			GD_LINEAR       (5) from SS 4
+ R_MOMENTUM2     gets   V               (6) from NS 4
+
+At global node 33 (proc node 33) (-48, 4)
+ R_MOMENTUM1     gets   GD_PARAB        (4) from SS 4
+			GD_LINEAR       (5) from SS 4
+ R_MOMENTUM2     gets   V               (6) from NS 4
+
+At global node 35 (proc node 35) (-48, 5)
+ R_MOMENTUM1     gets   GD_PARAB        (4) from SS 4
+			GD_LINEAR       (5) from SS 4
+ R_MOMENTUM2     gets   V               (6) from NS 4
+
+At global node 37 (proc node 37) (-48, 6)
+ R_MOMENTUM1     gets   GD_PARAB        (4) from SS 4
+			GD_LINEAR       (5) from SS 4
+ R_MOMENTUM2     gets   V               (6) from NS 4
+
+At global node 39 (proc node 39) (-48, 7)
+ R_MOMENTUM1     gets   GD_PARAB        (4) from SS 4
+			GD_LINEAR       (5) from SS 4
+ R_MOMENTUM2     gets   V               (6) from NS 4
+
+At global node 41 (proc node 41) (-48, 8)
+ R_MOMENTUM1     gets   GD_PARAB        (4) from SS 4
+			GD_LINEAR       (5) from SS 4
+ R_MOMENTUM2     gets   V               (6) from NS 4
+
+At global node 43 (proc node 43) (-48, 9)
+ R_MOMENTUM1     gets   GD_PARAB        (4) from SS 4
+			GD_LINEAR       (5) from SS 4
+ R_MOMENTUM2     gets   V               (6) from NS 4
+
+At global node 45 (proc node 45) (-48, 10)
+ R_MOMENTUM1     gets   GD_PARAB        (4) from SS 4
+			GD_LINEAR       (5) from SS 4
+ R_MOMENTUM2     gets   V               (6) from NS 4
+
+At global node 47 (proc node 47) (-48, 11)
+ R_MOMENTUM1     gets   GD_PARAB        (4) from SS 4
+			GD_LINEAR       (5) from SS 4
+ R_MOMENTUM2     gets   V               (6) from NS 4
+
+At global node 49 (proc node 49) (-48, 12)
+ R_MOMENTUM1     gets   U               (0) from NS 3
+ R_MOMENTUM2     gets   V               (1) from NS 3
+
+At global node 51 (proc node 51) (48, 12)
+ R_MOMENTUM1     gets   U               (0) from NS 3
+ R_MOMENTUM2     gets   V               (1) from NS 3
+
+At global node 52 (proc node 52) (48, 11)
+ R_MOMENTUM1     gets   GD_PARAB        (8) from SS 2
+			GD_LINEAR       (9) from SS 2
+ R_MOMENTUM2     gets   V               (7) from NS 2
+
+At global node 55 (proc node 55) (48, 10)
+ R_MOMENTUM1     gets   GD_PARAB        (8) from SS 2
+			GD_LINEAR       (9) from SS 2
+ R_MOMENTUM2     gets   V               (7) from NS 2
+
+At global node 57 (proc node 57) (48, 9)
+ R_MOMENTUM1     gets   GD_PARAB        (8) from SS 2
+			GD_LINEAR       (9) from SS 2
+ R_MOMENTUM2     gets   V               (7) from NS 2
+
+At global node 59 (proc node 59) (48, 8)
+ R_MOMENTUM1     gets   GD_PARAB        (8) from SS 2
+			GD_LINEAR       (9) from SS 2
+ R_MOMENTUM2     gets   V               (7) from NS 2
+
+At global node 61 (proc node 61) (48, 7)
+ R_MOMENTUM1     gets   GD_PARAB        (8) from SS 2
+			GD_LINEAR       (9) from SS 2
+ R_MOMENTUM2     gets   V               (7) from NS 2
+
+At global node 63 (proc node 63) (48, 6)
+ R_MOMENTUM1     gets   GD_PARAB        (8) from SS 2
+			GD_LINEAR       (9) from SS 2
+ R_MOMENTUM2     gets   V               (7) from NS 2
+
+At global node 65 (proc node 65) (48, 5)
+ R_MOMENTUM1     gets   GD_PARAB        (8) from SS 2
+			GD_LINEAR       (9) from SS 2
+ R_MOMENTUM2     gets   V               (7) from NS 2
+
+At global node 67 (proc node 67) (48, 4)
+ R_MOMENTUM1     gets   GD_PARAB        (8) from SS 2
+			GD_LINEAR       (9) from SS 2
+ R_MOMENTUM2     gets   V               (7) from NS 2
+
+At global node 69 (proc node 69) (48, 3)
+ R_MOMENTUM1     gets   GD_PARAB        (8) from SS 2
+			GD_LINEAR       (9) from SS 2
+ R_MOMENTUM2     gets   V               (7) from NS 2
+
+At global node 71 (proc node 71) (48, 2)
+ R_MOMENTUM1     gets   GD_PARAB        (8) from SS 2
+			GD_LINEAR       (9) from SS 2
+ R_MOMENTUM2     gets   V               (7) from NS 2
+
+At global node 73 (proc node 73) (48, 1)
+ R_MOMENTUM1     gets   GD_PARAB        (8) from SS 2
+			GD_LINEAR       (9) from SS 2
+ R_MOMENTUM2     gets   V               (7) from NS 2
+
+At global node 75 (proc node 75) (48, 0)
+ R_MOMENTUM1     gets   GD_PARAB        (8) from SS 2
+			GD_LINEAR       (9) from SS 2
+ R_MOMENTUM2     gets   V               (7) from NS 2
+
+At global node 77 (proc node 77) (48, -1)
+ R_MOMENTUM1     gets   GD_PARAB        (8) from SS 2
+			GD_LINEAR       (9) from SS 2
+ R_MOMENTUM2     gets   V               (7) from NS 2
+
+At global node 79 (proc node 79) (48, -2)
+ R_MOMENTUM1     gets   GD_PARAB        (8) from SS 2
+			GD_LINEAR       (9) from SS 2
+ R_MOMENTUM2     gets   V               (7) from NS 2
+
+At global node 81 (proc node 81) (48, -3)
+ R_MOMENTUM1     gets   GD_PARAB        (8) from SS 2
+			GD_LINEAR       (9) from SS 2
+ R_MOMENTUM2     gets   V               (7) from NS 2
+
+At global node 83 (proc node 83) (48, -4)
+ R_MOMENTUM1     gets   GD_PARAB        (8) from SS 2
+			GD_LINEAR       (9) from SS 2
+ R_MOMENTUM2     gets   V               (7) from NS 2
+
+At global node 85 (proc node 85) (48, -5)
+ R_MOMENTUM1     gets   GD_PARAB        (8) from SS 2
+			GD_LINEAR       (9) from SS 2
+ R_MOMENTUM2     gets   V               (7) from NS 2
+
+At global node 87 (proc node 87) (48, -6)
+ R_MOMENTUM1     gets   GD_PARAB        (8) from SS 2
+			GD_LINEAR       (9) from SS 2
+ R_MOMENTUM2     gets   V               (7) from NS 2
+
+At global node 89 (proc node 89) (48, -7)
+ R_MOMENTUM1     gets   GD_PARAB        (8) from SS 2
+			GD_LINEAR       (9) from SS 2
+ R_MOMENTUM2     gets   V               (7) from NS 2
+
+At global node 91 (proc node 91) (48, -8)
+ R_MOMENTUM1     gets   GD_PARAB        (8) from SS 2
+			GD_LINEAR       (9) from SS 2
+ R_MOMENTUM2     gets   V               (7) from NS 2
+
+At global node 93 (proc node 93) (48, -9)
+ R_MOMENTUM1     gets   GD_PARAB        (8) from SS 2
+			GD_LINEAR       (9) from SS 2
+ R_MOMENTUM2     gets   V               (7) from NS 2
+
+At global node 95 (proc node 95) (48, -10)
+ R_MOMENTUM1     gets   GD_PARAB        (8) from SS 2
+			GD_LINEAR       (9) from SS 2
+ R_MOMENTUM2     gets   V               (7) from NS 2
+
+At global node 97 (proc node 97) (48, -11)
+ R_MOMENTUM1     gets   GD_PARAB        (8) from SS 2
+			GD_LINEAR       (9) from SS 2
+ R_MOMENTUM2     gets   V               (7) from NS 2
+
+At global node 99 (proc node 99) (48, -12)
+ R_MOMENTUM1     gets   U               (2) from NS 1
+ R_MOMENTUM2     gets   V               (3) from NS 1
+

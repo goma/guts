@@ -1,0 +1,10 @@
+rm -f tmp_*.d
+rm -f tmp.*.inp
+rm -f tmp.*.mat
+rm -f echo_*.inp
+rm -f echo_*.mat
+rm -f history*.jou
+rm -f cubit*.jou
+rm -f *.g.*
+rm -f *.exoII.*
+rm -f BCdup.txt

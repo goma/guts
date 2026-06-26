@@ -1,0 +1,107 @@
+v7.11.0-1-g709cfe59
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2026 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+
+
+######################### __PRINT_SYNC_END__ #########################
+
+Number of unknowns            = 6169
+
+Number of matrix nonzeroes    = 339405
+
+Initial guess read from "rb-in.exoII" ...(last soln in file)
+Nodal variable VX found in exoII database - reading.
+Nodal variable VY found in exoII database - reading.
+Nodal variable T found in exoII database - reading.
+Nodal variable P found in exoII database - reading.
+		 Values read time plane at time = 1500
+
+	----------------------------------
+	Linear stability analysis:
+
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:09:35 [0] 1.1e-13 2.9e-11 9.9e-13 1.3e-12 7.8e-10 2.1e-11  1  1.7e-01/2.1e-01 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   1.500e+03  2.584e+02  4.959e+02 
+
+	Step accepted, theta (proportion complete) = 0.000000e+00
+
+	Starting Eigenvalue Calculation (2 matrix fills and an ARPACK call):
+Assembling LSA Jacobian ...
+Assembling LSA Mass matrix ...
+	SHIFT-n-INVERT: sigma,ncv = 0 50
+
+	    Eigensolver Initial Guess Generation
+	    Requiring 2 extra orders resid reduction: 8.02956e-11
+
+	Before poleze: sigma and mu = 0  0
+	After  poleze: sigma and mu = 0  0 
+
+	15 converged of 39 candidate eigenvalues found
+Printing real eigenvector with value  -1.63745
+Printing real eigenvector with value  -3.08856
+Printing real eigenvector with value  -4.1188
+Printing real eigenvector with value  -7.25423
+Printing real eigenvector with value  -9.86963
+
+Eigenvalue Calculation Summary
+
+The number of Ritz values requested is 10
+The number of Arnoldi vectors generated (NCV) is 50
+What portion of the spectrum: LR
+The number of converged Ritz values is 15
+Number of Implicit Arnoldi update iterations taken is 1
+The number of OP*x is 51
+The convergence criterion is 1.000000e-06
+LOCA LSA ONLY HAS FINISHED: 
+
+CONTINUATION ROUTINE HAS FINISHED: 
+	Ending Parameter value     = 0
+	Number of steps            = 1
+	Number of Matrix fills     = 1
+	Number of Residual fills   = 2
+
+
+
+	 I will continue no more!
+	 No more continuation for you!
+
+-done
+
+
+Proc 0 runtime:       0.03 Minutes.
+
+
+ Ritz values (Real,Imag) and direct residuals
+ --------------------------------------------
+               Col   1       Col   2       Col   3
+  Row   1:   -1.63745D+00  -0.00000D+00   3.13083D-14
+  Row   2:   -3.08856D+00  -0.00000D+00   1.74971D-13
+  Row   3:   -4.11880D+00  -0.00000D+00   7.10543D-14
+  Row   4:   -7.25423D+00  -0.00000D+00   1.77636D-15
+  Row   5:   -9.86963D+00  -0.00000D+00   6.21725D-14
+  Row   6:   -1.03433D+01  -0.00000D+00   3.00204D-13
+  Row   7:   -1.98675D+01  -0.00000D+00   1.35003D-13
+  Row   8:   -3.23319D+01  -0.00000D+00   2.84217D-14
+  Row   9:   -3.94801D+01  -0.00000D+00   4.54747D-13
+  Row  10:   -3.98026D+01  -0.00000D+00   2.12452D-12
+  

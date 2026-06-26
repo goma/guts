@@ -1,0 +1,14 @@
+Fibre Test: GOMA Version Information
+====================================
+
+Directory:   .../VandV/problems/v2.2/fibre
+
+July, 25, 00 baseline #1
+**********************
+     goma_Aug3099 executable
+     output files:
+        base1.sout
+        base1.serr
+
+     initial residuals - 2.7e-03 2.8e-01 2.2e-02 
+     1st iteration updates - 6.3e+00 7.1e+02 3.9e+01 

@@ -1,0 +1,141 @@
+v7.11.0-1-g709cfe59
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2026 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+
+Internal METIS decomposition using Recursive Bisection.
+
+
+
+----------------- Communications Stats ------------
+
+		Number of Neighbors
+		Max:     1 (Proc = 0)		 Avg:  1.000		Min: 1 (Proc = 0)
+
+		Size of Messages
+		Max:   449 (Proc = 1)		 Avg: 590.000		Min: 449 (Proc = 0)
+--------------------------------------------------
+
+
+######################### __PRINT_SYNC_START__ #########################
+######################### __PRINT_SYNC_END__ #########################
+
+Number of unknowns            = 91082
+
+Number of matrix nonzeroes    = 8074624
+
+Initial guess read from "oldroydb_steady.exoII.2.0" ...(last soln in file)
+Nodal variable VX found in exoII database - reading.
+Nodal variable VY found in exoII database - reading.
+Nodal variable S11 found in exoII database - reading.
+Nodal variable S12 found in exoII database - reading.
+Nodal variable S22 found in exoII database - reading.
+Nodal variable G11 found in exoII database - reading.
+Nodal variable G12 found in exoII database - reading.
+Nodal variable G21 found in exoII database - reading.
+Nodal variable G22 found in exoII database - reading.
+		 Values read time plane at time = 0
+
+=> Try for soln at t=0.1 with dt=0.1 [0 for 0] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:11 [0] 4.1e-01 1.0e+03 1.2e+01 8.7e+01 1.7e+05 2.6e+03  1  1.7e+00/6.6e+00 
+17:08:20 [1] 1.8e-01 4.6e+01 1.9e+00 6.5e+00 4.7e+03 6.6e+01  1  1.4e+00/6.1e+00 
+17:08:28 [2] 2.1e-03 4.1e-01 1.4e-02 6.4e-02 2.9e+01 5.6e-01  1  1.4e+00/6.0e+00 
+17:08:35 [3] 1.2e-05 1.3e-04 2.1e-05 4.4e-04 3.2e-02 1.3e-03  1  1.3e+00/6.6e+00 
+17:08:44 [4] 8.1e-12 3.8e-10 3.1e-11                         skp 1.7e+00/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   8.449e+01  5.545e+00  1.307e+01 
+
+CONSTANT DELTA_T          [, 8.4e-03, 6.5e-02, 1.9e-02]
+Predictor-corrector norm: [,   1 v  ,   1 P  ,   1 S  ]
+
+=> Try for soln at t=0.2 with dt=0.1 [1 for 1] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:46 [0] 6.6e-01 1.9e+02 3.4e+00 6.0e+01 1.0e+05 1.8e+03  1  1.7e+00/9.9e+00 
+17:09:03 [1] 2.2e-01 1.3e+00 2.3e-01 7.1e+00 1.4e+02 8.5e+00  1  1.7e+00/9.9e+00 
+17:09:19 [2] 1.6e-03 3.0e-03 1.6e-03 5.7e-02 7.0e-01 6.6e-02  1  1.7e+00/1.0e+01 
+17:09:35 [3] 9.5e-08 1.4e-07 9.6e-08 3.5e-06 3.3e-05 4.0e-06  1  1.7e+00/8.3e+00 
+17:09:47 [4] 3.3e-16 1.2e-12 6.5e-15                         skp 1.4e+00/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   1.091e+02  6.964e+00  1.667e+01 
+
+CONSTANT DELTA_T          [, 8.0e-03, 3.6e-02, 3.4e-03]
+Predictor-corrector norm: [,   1 v  ,   1 P  ,   1 S  ]
+
+=> Try for soln at t=0.3 with dt=0.1 [2 for 2] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:09:49 [0] 3.4e-01 1.9e+02 2.9e+00 3.6e+00 1.1e+04 1.2e+02  1  1.4e+00/6.5e+00 
+17:09:57 [1] 1.0e-02 7.0e-01 1.9e-02 3.5e-01 4.4e+01 6.9e-01  1  1.4e+00/1.3e+01 
+17:10:12 [2] 2.6e-05 3.2e-04 6.2e-05 8.3e-04 7.3e-02 2.6e-03  1  2.4e+00/1.2e+01 
+17:10:27 [3] 6.9e-11 1.6e-09 1.3e-10                         skp 1.8e+00/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   1.301e+02  8.209e+00  1.977e+01 
+
+CONSTANT DELTA_T          [, 3.1e-03, 1.7e-03, 2.7e-03]
+Predictor-corrector norm: [,   1 v  ,   1 P  ,   1 S  ]
+
+=> Try for soln at t=0.4 with dt=0.1 [3 for 3] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:30 [0] 1.0e-01 1.7e+02 2.4e+00 3.6e+00 1.0e+04 1.2e+02  1  1.9e+00/1.0e+01 
+17:10:46 [1] 1.9e-03 5.8e-01 1.5e-02 5.6e-02 3.7e+01 5.0e-01  1  1.8e+00/7.8e+00 
+17:10:58 [2] 8.0e-06 1.4e-04 2.1e-05 3.1e-04 3.1e-02 1.0e-03  1  1.3e+00/6.2e+00 
+17:11:06 [3] 6.3e-12 3.7e-10 1.9e-11                         skp 1.3e+00/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   1.475e+02  9.275e+00  2.238e+01 
+
+OK  3.4e-03 < 1.5 8.0e-03 [, 2.2e-03, 1.5e-03, 2.2e-03]
+Predictor-corrector norm: [,   1 v  ,   1 P  ,   1 S  ]
+
+=> Try for soln at t=0.5 with dt=0.1 [4 for 4] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:11:08 [0] 9.0e-02 1.5e+02 2.1e+00 3.3e+00 9.6e+03 1.1e+02  1  1.3e+00/6.3e+00 
+17:11:16 [1] 2.4e-03 4.9e-01 1.6e-02 5.4e-02 3.7e+01 4.9e-01  1  1.4e+00/6.1e+00 
+17:11:23 [2] 1.9e-05 1.4e-04 3.4e-05 7.1e-04 3.8e-02 1.8e-03  1  1.3e+00/5.8e+00 
+17:11:31 [3] 1.9e-11 4.8e-10 3.5e-11                         skp 1.2e+00/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   1.616e+02  1.017e+01  2.452e+01 
+
+OK  2.7e-03 < 1.5 8.0e-03 [, 1.7e-03, 1.3e-03, 1.7e-03]
+Predictor-corrector norm: [,   1 v  ,   1 P  ,   1 S  ]
+
+Fixing exodus file saramito_oldroyd_b_transient.exoII
+
+-done
+
+
+Proc 0 runtime:       3.37 Minutes.
+

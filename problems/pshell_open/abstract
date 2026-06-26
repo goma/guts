@@ -1,0 +1,1 @@
+This problem solves a drop imbibing into an open thin porous region while also sliding down a curved surface under graviy.  It makes use of the lubrication equation with level set fields on a shell and coupling that with the open porous flow shell equation.

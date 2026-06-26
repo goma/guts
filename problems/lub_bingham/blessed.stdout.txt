@@ -1,0 +1,247 @@
+v7.11.0-1-g709cfe59
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2026 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+
+
+P_0: rotating equations at 0 nodes.
+######################### __PRINT_SYNC_END__ #########################
+
+Number of unknowns            = 13356
+
+Number of matrix nonzeroes    = 442792
+	Setting SHELL_TEMPERATURE (variable [170]) to 25
+
+INITIAL ELEMENT QUALITY CHECK---
+
+Variable Stats:  parm=1 
+	   min        max        mean       stdev     #values
+=============================================================
+LUB_P 	       0         0         0         0      6678
+SH_TEMP 	      25        25        25         0      6678
+============================================================= 
+
+	----------------------------------
+	First Order Hunting:
+	Step number:    1 of  100 (max)
+	Attempting solution at: theta = 0 ;  step = 0.0521683
+	MTID=  1 MPID= 4100 Parameter=  1.000000e+00 delta_s= -7.500000e-02
+	MTID=  1 MPID= 4600 Parameter=  0.000000e+00 delta_s= 5.216833e-04
+	MTID=  2 MPID= 4100 Parameter=  1.000000e+00 delta_s= -7.500000e-02
+	MTID=  2 MPID= 4600 Parameter=  0.000000e+00 delta_s= 5.216833e-04
+	BCID=  0 DFID=    1 Parameter= -3.480428e-02 delta_s= -3.187875e-03
+	BCID=  0 DFID=    2 Parameter=  1.000000e+00 delta_s= -7.500000e-02
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  ROrd/Rt UOrd/Rt 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- ------- -------
+17:08:09 [0] 1.5e+00 2.9e+03 4.1e+01 9.6e-01 8.0e+03 8.0e+01  1  9.4e-01/4.6e-01 0.0/0.0 0.0/0.0 
+17:08:10 [1] 1.9e-02 3.1e+00 1.1e-01 5.3e-01 1.4e+02 4.6e+00  1  9.3e-01/3.6e-01 1.2/2.6 1.1/1.2 
+17:08:11 [2] 1.3e-06 1.5e-04 5.4e-06 5.2e-06 1.9e-03 5.6e-05  1  6.0e-01/1.9e-01 1.7/5.1 3.9/6.7 
+17:08:12 [3] 5.5e-15 3.5e-12 7.5e-14 4.0e-13 8.1e-11 1.4e-12  1  5.9e-01/1.9e-01 1.8/9.6 1.5/9.0 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- ------- -------
+scaled solution norms   5.335e+01  2.320e+01  3.291e+01 
+
+
+First Order Hunting Continuation  resolve time:  7.6e-01
+
+	Step accepted, theta (proportion complete) = 0.000000e+00
+	Step accepted, MTID=  1 MPID= 4100 Parameter=  1.000000e+00
+	Step accepted, MTID=  1 MPID= 4600 Parameter=  0.000000e+00
+	Step accepted, MTID=  2 MPID= 4100 Parameter=  1.000000e+00
+	Step accepted, MTID=  2 MPID= 4600 Parameter=  0.000000e+00
+	Step accepted, BCID=  0 DFID=    1 Parameter= -3.480428e-02
+	Step accepted, BCID=  0 DFID=    2 Parameter=  1.000000e+00
+
+Variable Stats:  parm=1 
+	   min        max        mean       stdev     #values
+=============================================================
+LUB_P 	-0.747522  -2.23213e-14  -0.359631  0.0808214      6678
+SH_TEMP 	      25   53.3525   46.0465   6.80741      6678
+============================================================= 
+
+	----------------------------------
+	First Order Hunting:
+	Step number:    2 of  100 (max)
+	Attempting solution at: theta = 0.0521683 ;  step = 0.0521683
+	MTID=  1 MPID= 4100 Parameter=  9.302326e-01 delta_s= -6.976744e-02
+	MTID=  1 MPID= 4600 Parameter=  5.216833e-04 delta_s= 5.216833e-04
+	MTID=  2 MPID= 4100 Parameter=  9.302326e-01 delta_s= -6.976744e-02
+	MTID=  2 MPID= 4600 Parameter=  5.216833e-04 delta_s= 5.216833e-04
+	BCID=  0 DFID=    1 Parameter= -3.188390e-02 delta_s= -2.920384e-03
+	BCID=  0 DFID=    2 Parameter=  9.302326e-01 delta_s= -6.976744e-02
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  ROrd/Rt UOrd/Rt 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- ------- -------
+17:08:14 [0] 4.2e-05 1.7e-02 4.0e-04 1.2e-03 8.5e-01 1.5e-02  1  7.0e-01/1.8e-01 0.0/0.0 0.0/0.0 
+17:08:15 [1] 1.1e-07 1.9e-05 5.1e-07 7.6e-07 3.2e-04 8.1e-06  1  7.3e-01/1.9e-01 1.2/2.9 1.2/3.3 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- ------- -------
+scaled solution norms   5.307e+01  2.322e+01  3.294e+01 
+
+
+First Order Hunting Continuation  resolve time:  9.1e-01
+
+	Step accepted, theta (proportion complete) = 5.216833e-02
+	Step accepted, MTID=  1 MPID= 4100 Parameter=  9.302326e-01
+	Step accepted, MTID=  1 MPID= 4600 Parameter=  5.216833e-04
+	Step accepted, MTID=  2 MPID= 4100 Parameter=  9.302326e-01
+	Step accepted, MTID=  2 MPID= 4600 Parameter=  5.216833e-04
+	Step accepted, BCID=  0 DFID=    1 Parameter= -3.188390e-02
+	Step accepted, BCID=  0 DFID=    2 Parameter=  9.302326e-01
+
+Variable Stats:  parm=0.930233 
+	   min        max        mean       stdev     #values
+=============================================================
+LUB_P 	-0.747522  0.00654005  -0.357866  0.0830674      6678
+SH_TEMP 	      25     53.07   46.0803   6.79548      6678
+============================================================= 
+
+	----------------------------------
+	First Order Hunting:
+	Step number:    3 of  100 (max)
+	Attempting solution at: theta = 0.208673 ;  step = 0.156505
+	MTID=  1 MPID= 4100 Parameter=  7.488005e-01 delta_s= -1.814320e-01
+	MTID=  1 MPID= 4600 Parameter=  2.086733e-03 delta_s= 1.565050e-03
+	MTID=  2 MPID= 4100 Parameter=  7.488005e-01 delta_s= -1.814320e-01
+	MTID=  2 MPID= 4600 Parameter=  2.086733e-03 delta_s= 1.565050e-03
+	BCID=  0 DFID=    1 Parameter= -2.451250e-02 delta_s= -7.371399e-03
+	BCID=  0 DFID=    2 Parameter=  7.488005e-01 delta_s= -1.814320e-01
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  ROrd/Rt UOrd/Rt 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- ------- -------
+17:08:18 [0] 5.6e-04 1.8e-01 4.4e-03 1.3e-02 9.2e+00 1.7e-01  1  7.5e-01/1.8e-01 0.0/0.0 0.0/0.0 
+17:08:19 [1] 1.2e-05 1.7e-03 4.9e-05 9.0e-05 3.6e-02 9.3e-04  1  7.8e-01/1.9e-01 1.1/2.0 1.2/2.3 
+17:08:20 [2] 1.4e-09 1.3e-07 6.3e-09 6.3e-09 5.0e-06 1.0e-07  1  8.3e-01/3.8e-01 2.0/4.9 1.8/4.8 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- ------- -------
+scaled solution norms   5.212e+01  2.326e+01  3.299e+01 
+
+
+First Order Hunting Continuation  resolve time:  1.8e+00
+
+	Step accepted, theta (proportion complete) = 2.086733e-01
+	Step accepted, MTID=  1 MPID= 4100 Parameter=  7.488005e-01
+	Step accepted, MTID=  1 MPID= 4600 Parameter=  2.086733e-03
+	Step accepted, MTID=  2 MPID= 4100 Parameter=  7.488005e-01
+	Step accepted, MTID=  2 MPID= 4600 Parameter=  2.086733e-03
+	Step accepted, BCID=  0 DFID=    1 Parameter= -2.451250e-02
+	Step accepted, BCID=  0 DFID=    2 Parameter=  7.488005e-01
+
+Variable Stats:  parm=0.748801 
+	   min        max        mean       stdev     #values
+=============================================================
+LUB_P 	-0.747522  0.0682034  -0.351108  0.0907371      6678
+SH_TEMP 	      25   52.1153    46.163   6.77151      6678
+============================================================= 
+
+	----------------------------------
+	First Order Hunting:
+	Step number:    4 of  100 (max)
+	Attempting solution at: theta = 0.678188 ;  step = 0.469515
+	MTID=  1 MPID= 4100 Parameter=  3.905620e-01 delta_s= -3.582385e-01
+	MTID=  1 MPID= 4600 Parameter=  6.781883e-03 delta_s= 4.695150e-03
+	MTID=  2 MPID= 4100 Parameter=  3.905620e-01 delta_s= -3.582385e-01
+	MTID=  2 MPID= 4600 Parameter=  6.781883e-03 delta_s= 4.695150e-03
+	BCID=  0 DFID=    1 Parameter= -1.113874e-02 delta_s= -1.337376e-02
+	BCID=  0 DFID=    2 Parameter=  3.905620e-01 delta_s= -3.582385e-01
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  ROrd/Rt UOrd/Rt 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- ------- -------
+17:08:25 [0] 1.2e-02 2.2e+00 7.2e-02 2.7e-01 2.4e+02 4.6e+00  1  1.3e+00/3.8e-01 0.0/0.0 0.0/0.0 
+17:08:27 [1] 8.2e-03 4.8e-01 2.3e-02 3.4e-02 2.0e+01 4.6e-01  1  1.4e+00/4.0e-01 1.0/0.5 1.1/1.0 
+17:08:28 [2] 4.2e-05 6.8e-03 2.4e-04 4.9e-04 8.1e-01 1.8e-02  1  1.6e+00/4.0e-01 4.0/2.7 1.4/1.6 
+17:08:30 [3] 9.0e-07 5.6e-05 3.3e-06 4.8e-06 6.8e-03 1.5e-04  1  1.4e+00/3.9e-01 0.9/1.8 1.5/2.4 
+17:08:32 [4] 3.1e-10 1.1e-08 9.3e-10 1.0e-09 1.1e-06 2.4e-08  1  1.4e+00/3.7e-01 1.9/4.4 1.8/4.7 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- ------- -------
+scaled solution norms   5.000e+01  2.324e+01  3.301e+01 
+
+
+First Order Hunting Continuation  resolve time:  2.1e+00
+
+	Step accepted, theta (proportion complete) = 6.781883e-01
+	Step accepted, MTID=  1 MPID= 4100 Parameter=  3.905620e-01
+	Step accepted, MTID=  1 MPID= 4600 Parameter=  6.781883e-03
+	Step accepted, MTID=  2 MPID= 4100 Parameter=  3.905620e-01
+	Step accepted, MTID=  2 MPID= 4600 Parameter=  6.781883e-03
+	Step accepted, BCID=  0 DFID=    1 Parameter= -1.113874e-02
+	Step accepted, BCID=  0 DFID=    2 Parameter=  3.905620e-01
+
+Variable Stats:  parm=0.390562 
+	   min        max        mean       stdev     #values
+=============================================================
+LUB_P 	-0.747522  0.649783  -0.291473  0.144491      6678
+SH_TEMP 	      25   50.0012   46.1682   6.90875      6678
+============================================================= 
+
+	 ******** LAST PATH STEP!
+
+	----------------------------------
+	First Order Hunting:
+	Step number:    5 of  100 (max)
+	Attempting solution at: theta = 1 ;  step = 0.321812
+	MTID=  1 MPID= 4100 Parameter=  2.500000e-01 delta_s= -1.405620e-01
+	MTID=  1 MPID= 4600 Parameter=  1.000000e-02 delta_s= 3.218117e-03
+	MTID=  2 MPID= 4100 Parameter=  2.500000e-01 delta_s= -1.405620e-01
+	MTID=  2 MPID= 4600 Parameter=  1.000000e-02 delta_s= 3.218117e-03
+	BCID=  0 DFID=    1 Parameter= -6.487046e-03 delta_s= -4.651698e-03
+	BCID=  0 DFID=    2 Parameter=  2.500000e-01 delta_s= -1.405620e-01
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  ROrd/Rt UOrd/Rt 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- ------- -------
+17:08:38 [0] 4.1e-02 2.4e+00 1.2e-01 5.4e-01 7.3e+02 1.3e+01  1  1.5e+00/3.9e-01 0.0/0.0 0.0/0.0 
+17:08:40 [1] 3.7e-02 2.5e+00 1.2e-01 9.4e-02 1.0e+02 1.7e+00  1  1.7e+00/3.8e-01 1.0/-0.0 1.1/0.9 
+17:08:42 [2] 4.2e-04 6.3e-02 1.5e-03 1.8e-03 5.8e+00 8.5e-02  1  1.5e+00/3.7e-01 -235.8/2.9 1.5/1.5 
+17:08:44 [3] 1.0e-05 6.6e-04 4.0e-05 9.5e-05 1.6e-01 2.6e-03  1  1.6e+00/3.7e-01 0.8/1.4 1.2/1.6 
+17:08:46 [4] 6.2e-08 3.0e-06 2.4e-07 5.4e-07 5.7e-04 9.7e-06  1  1.5e+00/3.6e-01 1.4/2.6 1.6/2.9 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- ------- -------
+scaled solution norms   5.000e+01  2.292e+01  3.268e+01 
+
+
+First Order Hunting Continuation  resolve time:  2.4e+00
+
+	Step accepted, theta (proportion complete) = 1.000000e+00
+	Step accepted, MTID=  1 MPID= 4100 Parameter=  2.500000e-01
+	Step accepted, MTID=  1 MPID= 4600 Parameter=  1.000000e-02
+	Step accepted, MTID=  2 MPID= 4100 Parameter=  2.500000e-01
+	Step accepted, MTID=  2 MPID= 4600 Parameter=  1.000000e-02
+	Step accepted, BCID=  0 DFID=    1 Parameter= -6.487046e-03
+	Step accepted, BCID=  0 DFID=    2 Parameter=  2.500000e-01
+
+Variable Stats:  parm=0.25 
+	   min        max        mean       stdev     #values
+=============================================================
+LUB_P 	-0.747522   2.80834  -0.0958822   0.34058      6678
+SH_TEMP 	      25   50.0035   45.6128   7.45719      6678
+============================================================= 
+
+
+	 I will continue no more!
+	 No more continuation for you!
+
+-done
+
+
+Proc 0 runtime:       0.74 Minutes.
+

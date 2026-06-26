@@ -1,0 +1,31 @@
+# brk -- input file problem description for decomposition
+#        of vemodels problem with velocity, pressure,
+#        mesh, stress, and velocity gradient residual
+#
+
+1       # element block ID
+3       # number of basic eqnvars
+0  2 1 1 # momentum (2D)
+5  2 1 1 # mesh
+9  1 1 1 # continuity
+
+#
+# interactions...
+#
+
+#   u     d     P  
+ 
+    1     0     1   # fluid momentum equation
+    1     1     1   # mesh
+    1     0     1   # continuity
+
+9             # number of nodes per element in this eb
+0 5 9
+0 5 9
+0 5 9
+0 5 9
+0 5 
+0 5 
+0 5 
+0 5 
+0 5 

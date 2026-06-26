@@ -1,0 +1,131 @@
+------------------------------------------------------------
+                 FEM File Specifications
+------------------------------------------------------------
+FEM file                         = simple.exoII
+#FEM file                         = incl.exoII
+Output EXODUS II file            = vle_ant_out.exoII
+GUESS file                       = contin.dat
+SOLN file                        = soln.dat
+Write intermediate results       = no
+------------------------------------------------------------
+                 General Specifications
+------------------------------------------------------------
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+Number of Jacobian File Dumps    = 2
+Initial Guess                    = zero
+Initialize                       = TEMPERATURE 0 300.
+------------------------------------------------------------
+                 Time Integration Specifications
+------------------------------------------------------------
+#Time integration                 = transient
+Time integration                 = steady
+delta_t                          = 1.0e-3
+Maximum number of time steps     = 100
+Maximum time                     = 1.0e+03
+Minimum time step                = 1.e-9
+Maximum time step                = 0.005
+Time step parameter              = 0.
+Time step error                  = 0.01  1  0  1  1  0 0
+Printing Frequency               = 5
+Initial Time                     = 0.
+------------------------------------------------------------
+                 Solver Specifications
+------------------------------------------------------------
+Solution Algorithm               = mumps
+Polynomial                       = LS,1
+Size of Krylov subspace          = 64
+Orthogonalization                = classical
+Maximum Linear Solve Iterations  = 1000
+Number of Newton Iterations      = 15
+Newton correction factor         = 1
+Normalized Residual Tolerance    = 1.0e-11
+Residual Ratio Tolerance         = 1.0e-3
+UMF IDIM                         = 8000000
+UMF XDIM                         = 8000000
+------------------------------------------------------------
+	Boundary Condition Specifications                 
+------------------------------------------------------------
+
+Number of BC			 = -1
+
+BC  = Y NS 1 0 0.5
+BC  = Y NS 1 1 0.3
+
+$$ Species 1
+BC = VL_EQUIL SS 7 0 1 2 1.e+05 18. 18. 18. 18.
+BC = KINEMATIC_SPECIES   SS 7 0 0.
+
+$$ Species 2
+BC = VL_EQUIL SS 7 1 1 2 1.e+05 18. 18. 18. 18.
+BC = KINEMATIC_SPECIES   SS 7 1 0.
+
+END OF BC
+
+###########
+----
+Problem Description
+---
+
+Number of Materials = 2
+
+MAT = antoine_liq    1
+
+	Coordinate System = CARTESIAN
+ 
+	Element Mapping                  = isoparametric
+
+	Mesh Motion = ARBITRARY
+ 
+	Number of bulk species = 2
+        Really meant number of bulk species equations in line above = TRUE
+
+	Number of EQ			 = -1
+
+        EQ = species_bulk Q2_D    Y     Q2_D    1.    1.        1.   1.   0.
+        EQ = energy     Q2      T       Q2      1.    1.   1.   1.   1.   0.
+
+        END OF EQ
+
+
+
+MAT = air  2
+
+	Coordinate System = CARTESIAN
+ 
+	Element Mapping                  = isoparametric
+
+	Mesh Motion = ARBITRARY
+ 
+	Number of bulk species = 2
+        Really meant number of bulk species equations in line above = TRUE
+
+	Number of EQ			 = -1
+
+        EQ = species_bulk Q2_D    Y      Q2_D       1.    1.     1.   1.   0.
+	EQ = energy     Q2      T       Q2      1.    1.   1.   1.   1.   0.
+
+        END OF EQ
+
+
+Post Processing Specifications
+
+Stream Function = yes
+Streamwise normal stress = no
+Pressure contours = yes
+Second Invarient of Strain = no
+Mesh Dilatation = no
+Navier Stokes Residuals = yes
+Moving Mesh Residuals = yes
+Mass Diffusion Vectors = yes
+Mass Fluxlines = no
+Energy Conduction Vectors = no
+Energy Fluxlines = no
+Time Derivatives = no
+Mesh Stress Tensor = no
+Mesh Strain Tensor = no
+Lagrangian Convection = no
+
+
+

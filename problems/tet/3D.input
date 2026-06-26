@@ -1,0 +1,138 @@
+------------------------------------------------------------
+                 FEM Problem Specifications
+------------------------------------------------------------
+FEM file                         = 4to1_tet4.exoII
+Output EXODUS II file            = out.exoII
+GUESS file                       = contin.dat
+SOLN file                        = soln.dat
+Write intermediate results       = no
+------------------------------------------------------------
+                 General Specifications
+------------------------------------------------------------
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+Initial Guess                    = zero
+------------------------------------------------------------
+                 Time Integration Specifications
+------------------------------------------------------------
+Time integration                 = steady
+delta_t                          = 5.0e-6
+Maximum number of time steps     = 250
+Maximum time                     = 10.0e+0
+Minimum time step                = 1.0e-12
+Time step parameter		 = 0.
+#Time step error  		 = err=.005  mesh=1  v=1  T=0   C=0  p=0
+Time step error  		 = .008  1   1   0   0   0
+Printing Frequency		 = 1
+------------------------------------------------------------
+                 Solver Specifications
+------------------------------------------------------------
+Solution Algorithm               = bicgstab
+$Solution Algorithm               = umf
+Preconditioner                   = dom_decomp
+Matrix storage format            = msr
+Matrix subdomain solver          = ilu
+Matrix Scaling                   = row_sum
+$Matrix output type               = 1
+Size of Krylov subspace          = 400
+$Matrix reorder                   = rcm
+Orthogonalization                = classical
+Maximum Linear Solve Iterations  = 400
+$$$Matrix drop tolerance            = 10.0
+Matrix graph fillin = 0
+Matrix ILUT fill factor = 3
+Matrix BILU Threshold = 1.e-08
+Number of Newton Iterations      = 6
+Newton correction factor         = 1
+Normalized Residual Tolerance    = 1.e-8
+Residual Ratio Tolerance         = 1.e-5
+Pressure Stabilization           = pspp_e
+Pressure Stabilization Scaling   = 1.0
+
+------------------------------------------------------------
+	Boundary Condition Specifications                 
+------------------------------------------------------------
+Number of BC = -1
+BC = U     NS     10       1.
+BC = V     NS     10       0.
+BC = W     NS     10       0.
+
+BC = V     NS     20       0.
+BC = W     NS     20       0.
+
+BC = V     NS     30       0.
+
+BC = U     NS     40       0.
+BC = V     NS     40       0.
+BC = W     NS     40       0.
+
+BC = U     NS     50       0.
+BC = V     NS     50       0.
+BC = W     NS     50       0.
+
+BC = W     NS     60       0.
+
+$$BC = GD_LINEAR SS 10 R_MOMENTUM1  0 VELOCITY1      0  0.   1.
+$$BC = GD_PARAB  SS 10 R_MOMENTUM1  0 MESH_POSITION2 0 -1.5  0. 0.09375 
+$$BC = PSPG SS 40 
+$$BC = PSPG SS 20 
+$$BC = GD_LINEAR SS 20 R_MOMENTUM1  0 VELOCITY1      0  0.   1.
+$$BC = GD_PARAB  SS 20 R_MOMENTUM1  0 MESH_POSITION2 0 -6    0. 6. 
+END OF BC
+
+
+----
+Problem Description
+---
+
+Number of Materials = 1
+
+MAT = newt   1
+
+	Coordinate System = CARTESIAN
+
+	Element Mapping = isoparametric
+
+	Mesh Motion = ARBITRARY
+
+	Number of bulk species = 0
+
+
+Number of EQ			 = 4
+EQ = momentum1  Q1	U1	Q1	     1.    1.   1.   1.   0.   0.
+EQ = momentum2  Q1	U2	Q1	     1.    1.   1.   1.   0.   0.
+EQ = momentum3  Q1	U3	Q1	     1.    1.   1.   1.   0.   0.
+EQ = continuity	Q1	P 	Q1	           1.             0.
+
+
+                                             ms   adv  bnd  dif  src  porous
+
+Post Processing Specifications
+
+Stream Function = yes
+Streamwise normal stress = no
+Pressure contours = yes
+Second Invarient of Strain = no
+Mesh Dilatation = no
+Navier Stokes Residuals = no
+Moving Mesh Residuals = no
+Mass Diffusion Vectors = no
+Mass Fluxlines = no
+Energy Conduction Vectors = no
+Energy Fluxlines = no
+Time Derivatives = no
+Mesh Stress Tensor = no
+Mesh Strain Tensor = no
+
+
+Post Processing Fluxes = 
+
+FLUX = VOLUME_FLUX 20 1 0 flux.out
+FLUX = VOLUME_FLUX 40 1 0 flux.out
+
+END OF FLUX
+
+
+
+

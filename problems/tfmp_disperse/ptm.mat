@@ -1,0 +1,87 @@
+# Goma material file for lubp_liq testing
+# Author Andrew Cochrane (acochrane@gmail.com) June 24th 2014
+{include(variables.inc)}
+
+Density               = CONSTANT 1.
+
+Solid Constitutive Equation        = NONLINEAR
+Lame MU                            = CONSTANT 1.0
+Lame LAMBDA                        = CONSTANT 1.0
+
+
+Liquid Constitutive Equation = NEWTONIAN
+Viscosity                    = CONSTANT 1.0
+Surface Tension              = CONSTANT 0.0
+
+
+# Thermal Properties#
+Conductivity                       = CONSTANT 1.
+Heat Capacity                      = CONSTANT 1.
+
+# Porous term terms for linking lubrication to level set field
+Media Type	 	           = POROUS_BRINKMAN
+Porosity                = CONSTANT    1
+Permeability            = CONSTANT   1
+
+
+Navier-Stokes Source               = CONSTANT 0.0 0.0 0.0
+Mass Source                        = CONSTANT 0.0
+Heat Source                        = CONSTANT 0.0
+Current Source                     = CONSTANT 0.0
+
+#Upper Height Function Constants = POLY_TIME {c0} {c1} {c2}
+#Upper Height Function Constants = POLY_TIME 350e-7 -0.0005 0.00225
+Upper Height Function Constants = CONSTANT_SPEED -1925e-7 2000e-7
+#Upper Height Function Constants = CONSTANT_SPEED 0 2000e-7
+#Upper Height Function Constants = ROLL_ON 5e-1 {2000e-7} 0.0 {(2000e-7-75e-7)} 1.0
+Lower Height Function Constants = CONSTANT_SPEED 0 0
+Upper Velocity Function Constants = CONSTANT 0.0 0.0 0.0
+Lower Velocity Function Constants = CONSTANT 0.0 0.0 0.0
+Upper Contact Angle = CONSTANT 180.0
+Lower Contact Angle = CONSTANT 180.0
+
+FlowingLiquid Viscosity = CONSTANT  0.0
+
+FSI Deformation Model = FSI_SHELL_ONLY
+
+#Thin Film Multiphase Density = IDEAL_GAS {44.01} {83146217.5} {298.15} {1013250.}
+Thin Film Multiphase Density = CONSTANT {rho_g}
+Thin Film Multiphase Viscosity  = CONSTANT {mu_g} {mu_l}
+Thin Film Multiphase Diffusivity Model = PIECEWISE {bdif} {tfmp_diff_center} {tfmp_beta_d}
+Thin Film Multiphase Mass Lumping = TRUE
+Thin Film Multiphase Clipping = {tfmp_clip} {tfmp_clip_strength}
+Thin Film Multiphase Relative Permeability Model = PIECEWISE {Scg} {alphag} {Scl} {alphal}
+
+#Thin Film Multiphase Dissolution Model = 
+Thin Film Multiphase Dissolution Model = SQUARE 2.233e-5 3.3555e-11 44.01
+Thin Film Multiphase Drop Lattice = SQUARE 1.0 1.0
+
+#Elastohydrodynamic Lubrication Gap Model = RADIAL
+Elastohydrodynamic Lubrication Normal Calculation Method = SIK_XY_WEB
+Elastohydrodynamic Lubrication Shell Integration Kind = XY
+
+
+
+
+#double Dgl = 2.233e-9; // m^2/s CO2 in water
+#double Dgl = 2.233e-5; // cm^2/s CO2 in water
+
+#double Hgl = 3.4e-2; //     [(mol/L/atm)]
+#double Hgls = 3.3555e-11; // = Hgl/1000.0/101325.0/10.0 [(mol/cc)/(g/cm/s^2)]
+
+#dbl Patm; = 1013250.0; // 101.325 kPa -> cgs units
+
+#need ideal gas law constant
+#this puts constraints on the input units e.g. cgs vs mks
+#//double R = 83146217.5; // cm^2 g/(s^2 mol K) cgs
+# double R = 8.31462175; // m^2 kg/(s^2 mol K) mks
+#Molecular weight of gas
+#double Mg = 44.01; // CO2 g/mol
+#Temperature (standard ambient 25 degC)
+#double T = 298.15; // K
+
+#double mu_l = 0.01; //    [g/cm/s]
+#double mu_g = 186e-6; //  [g/cm/s]
+
+#lambda = 160e-4; // cm
+#Vd = 6e-9;// cm^3 

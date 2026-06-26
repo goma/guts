@@ -1,0 +1,131 @@
+{include("params")}
+
+FEM File Specifications
+-- ---- --------------
+
+FEM file                         = {mesh_file}
+Output EXODUS II file            = {output_file}
+GUESS file                       = no
+SOLN file                        = no
+Write intermediate results       = no
+
+General Specifications
+------- --------------
+Output Level                     = 0
+Debug                            = 0
+{Ifdef(continue)}
+Initial Guess                    = read_exoII_file {contfile}  1
+{Else}
+Initialize = TEMPERATURE 0 {T_init}
+{Endif}
+##Initialize = TEMPERATURE 0 {0.5*T_init}
+
+Time Integration Specifications
+---- ----------- --------------
+Time integration                 = transient
+delta_t                          = {time_step_init}
+Maximum number of time steps     = 10000
+Maximum time                     = {total_time}
+Minimum time step                = {time_step_min}
+Maximum time step                = {time_step_max}
+Time step parameter              = 0.0
+Time step error                  = {-time_step_error}
+Printing Frequency               = 3
+Initial Time                     = {initial_time}
+
+Solver Specifications
+------ --------------
+Solution Algorithm               = amesos
+Amesos Solver Package            = mumps
+Preconditioner                   = dom_decomp
+Matrix subdomain solver          = ilut
+Matrix Scaling                   = row_sum
+Matrix ILUT fill factor          = 2.0
+Matrix Relative Threshold        = 0.0
+Matrix Absolute Threshold        = 1.e-5
+Matrix drop tolerance            = 1.e-9
+Matrix residual norm type        = r0
+Maximum Linear Solve Iterations  = 1200
+Number of Newton Iterations      = 9
+Newton correction factor         = 1  
+Normalized Residual Tolerance    = {resid_eps}
+Normalized Correction Tolerance  = {soln_eps}
+Solver Output Format Bitmap      = {2^12-1}
+Output Variable Statistics       = yes
+
+Boundary Condition Specifications
+-------- --------- --------------
+
+Number of BC = -1
+
+
+# Outlet
+
+# Vertices
+# Fix position of one node - middle bottom
+BC = DX NS 100 0.
+BC = DY NS 100 0.
+BC = DZ NS 100 0.
+
+# Stick to plate - bottom side
+BC = PLANEZ SS 1 0. 0. 1. 0.
+$$BC = PLANEZ SS 3 0. 0. 1. -10.
+
+## Move top surface linearly in time
+BC = GD_LINEAR SS 3 R_MESH1 0 MESH_POSITION1 0 1. 0.
+BC = GD_TIME SS 3 R_MESH1 0 LINEAR 0 0. 0.05  {0.5*total_time}
+BC = GD_LINEAR SS 3 R_MESH1 0 MESH_DISPLACEMENT1 0 0. -1.
+BC = DY NS 3 0.
+BC = DZ NS 3 0.
+
+# Convection on outer walls - min_z max_z 
+BC = QCONV SS 3 {ht_amb} {T_amb}      # top`
+BC = QCONV SS 1 {ht_coeff} {TableTemp} # bottom
+
+END OF BC
+
+
+Problem Description
+------- -----------
+Number of Materials = 1
+
+MAT = liquid_new 1
+    Coordinate System = CARTESIAN
+    Element Mapping   = isoparametric
+    Mesh Motion       = LAGRANGIAN
+    Number of bulk species = 0
+    Number of Matrices = 1
+
+    Number of EQ = 4
+    EQ = mesh1	  Q1  D1  Q1 
+    EQ = mesh2	  Q1  D2  Q1   	 
+    EQ = mesh3	  Q1  D3  Q1   	 
+    EQ = energy   Q1  T   Q1 
+
+Post Processing Specifications
+---- ---------- -------------- 
+Stream Function             = no
+Streamwise normal stress    = no
+Pressure contours           = no
+Second Invarient of Strain = no
+Mesh Dilatation       = yes
+Navier Stokes Residuals  = yes
+Moving Mesh Residuals  = no
+Mass Diffusion Vectors  = no
+Mass Fluxlines       = no
+Energy Conduction Vectors = no
+Energy Fluxlines      = no
+Time Derivative             = no
+Mesh Stress Tensor           = no
+Fill contours            = yes
+Density            = yes
+Viscosity           = yes
+
+Post Processing Fluxes =
+FLUX = FORCE_Z 3 1 0 flux.out
+END OF FLUX
+
+Post Processing Volumetric Integration = 
+VOLUME_INT = VOLUME 1 0 volume.out
+VOLUME_INT = HEAT_ENERGY 1 -9 volume.out
+END OF VOLUME_INT

@@ -1,0 +1,13 @@
+# {nm = 1} # nm in nm
+# EM Free Space Permittivity = {eps0 = 8.854187e-12 * 1e-27 / (nm^3)} (kg * nm / s^2) / A^2 (from F/m)
+# EM Free Space Permeability = {mu0 = 1.256637e-6 * 1e9} kg * nm / (s^2 A^2) (from H/m)
+# EM Speed of Light = {c0 = 1.0 / sqrt(eps0*mu0)} nm / s
+# EM Free Space Impedance = {Z0 = sqrt(mu0/eps0)} kg * nm^2 / (s^3 A^2) (from Ohm)
+# radius {radius = 100 * nm}
+# mesh_size = {mesh_size = radius/2}
+# air_inner_radius {air_inner_radius = radius * 2}
+# air_radius {air_radius = air_inner_radius + 3*radius }
+#
+# Air
+# permittivity {air_permittivity = 1}
+# permeability {air_permeability = 1}

@@ -1,0 +1,20 @@
+drying_test: GOMA Version Information
+=============================================================================
+
+Directory:   .../VandV/problems/drying_test
+
+Feb. 11 2009, rebaseline -> no information before this HKM
+**********************
+     goma_02112009 executable
+     output files:
+        base2.stderr
+        base2.stdout
+        out_blessed_3.exoII 
+
+     initial residuals     1.7e-03 3.9e-03 2.0e-03 
+     1st iteration updates 5.3e-02 2.1e+00 2.5e-01 
+
+   Note the blessed file, out_blessed_2.exoII was identically
+   zero before this. Therefore, this test was basically not
+ functioning before this, probably due to a script error. 
+

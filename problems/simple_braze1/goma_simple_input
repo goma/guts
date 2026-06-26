@@ -1,0 +1,209 @@
+$ Aprepro ($Revision: 1.1 $) Tue Jan  2 14:07:18 1996
+$ Aprepro ($Revision: 1.1 $) Wed Dec 20 16:15:55 1995
+ ---
+ FEM File Specifications
+ ---
+FEM file                         = 3d.exoII
+Output EXODUS II file            = out.exoII
+GUESS file                       = contin.dat
+SOLN file                        = soln.dat
+Write intermediate results       = no
+ ---
+General Specifications
+ ---
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0 
+Number of Jacobian File Dumps    = 1
+Initial Guess                    = read_exoII_file restart.exoII
+$$Initial Guess                    = read_exoII_file out.exoII.1000
+Initialize                       = VELOCITY1 0 0.0
+Initialize                       = VELOCITY2 0 0.0
+Initialize                       = VELOCITY3 0 0.0
+ --- 
+Time Integration Specifications
+ ---
+Time integration                 = transient
+delta_t                          = 10.e-06
+Maximum number of time steps     = 7
+Maximum time                     = 25.0
+Minimum time step                = 1.e-10
+Maximum time step                = 5.e-04
+Time step parameter		 = 0.
+Time step error                  = 10.1 1 1 0 0 0 0 
+Printing Frequency		 = 1
+Initial Time                     = 0.
+ ---Solver Specifications
+ ---
+Solution Algorithm               = gmres
+Preconditioner                   = dom_decomp
+Matrix subdomain solver          = ilut
+Matrix Scaling                   = row_sum
+Size of Krylov subspace          = 100
+$$Matrix output type               = 20
+$$Matrix reorder                   = rcm
+Orthogonalization                = classical
+Maximum Linear Solve Iterations  = 100
+Matrix ILUT fill factor = 3
+Number of Newton Iterations      = 17
+Newton correction factor         = 1
+Normalized Residual Tolerance    = 1.e-9
+Residual Ratio Tolerance         = 1.e-5
+Pressure Stabilization           = yes
+Pressure Stabilization Scaling   = 0.1
+ ---
+Boundary Condition Specifications
+ ---
+Number of BC			 = -1
+
+  BC = FORCE        SS 23 0. 0. 0. 
+  /* I think this is real important to keep it from tilting */
+  BC = DZ NS 23 0.
+  BC = SOLID_FLUID  SS 2 2 1
+  BC = NO_SLIP      SS 2 2 1
+
+  BC = PLANE        SS 6 0. 1. 0. 0.
+  BC = VELO_SLIP    SS 20 1.0 0. 0. 0.
+  BC = V            NS 21 0.0
+  BC = V            NS 22 0.0
+  BC = U            NS 22 0.0
+  BC = W            NS 22 0.0
+  BC = PLANE        SS 11 0. 0  1. 0.0
+  BC = PLANE        SS 12 0. 0. 1.  0.01
+
+  BC = VELO_NORMAL  SS 11 0.
+  BC = VELO_NORMAL  SS 12 0.
+$$ BC = W NS 11 0.
+$$  BC = W NS 12 0.
+
+  BC = CAPILLARY    SS 1 1285. 0. 0. 
+  BC = KINEMATIC    SS 1 0.
+  BC = CAPILLARY    SS 3 1285. 0. 0.
+  BC = KINEMATIC    SS 3 0.
+  BC = DX           NS 7 0.
+  BC = DZ           NS 7 0.
+  BC = U           NS 7 0.
+  BC = W           NS 7 0.
+  BC = VELO_NORMAL_EDGE  SS 1 6 0.0
+  BC = VELO_TANGENT_EDGE SS 1 6 0.0 0.0 0.0
+  BC = VELO_NORMAL_EDGE  SS 3 6 0.0
+  BC = VELO_TANGENT_EDGE SS 3 6 0.0 0.0 0.0
+  BC = CA_EDGE SS 1 6 120. -0. -1. 0. 
+  BC = CA_EDGE SS 3 6 120. -0. -1. 0.
+$  BC = CA_EDGE_OR_FIX SS 3 6  CIRCLE  120. -0. -1. 0. 0. 0. 0.  0.532
+$  BC = CA_EDGE_OR_FIX SS 1 6  CIRCLE  120. -0. -1. 0. 0. 0. 0.  -0.507
+
+#########
+END OF BC
+#########
+
+Rotation Specifications = -1
+
+  ROT = MESH SURFACE  6 T1 0         PLANE 6         T2 0     SEED  0.  0. -1
+  ROT = MESH SURFACE 11 T1 0          T2 0           PLANE 11 SEED -1.  0.  0.
+  ROT = MESH SURFACE 12 T1 0          T2 0           PLANE 12 SEED -1.  0.  0.
+  ROT = MESH SURFACE  1 KINEMATIC 1   T1 0           T2 0     SEED -0. -0. -1.
+  ROT = MESH SURFACE  3 KINEMATIC 3   T1 0           T2 0     SEED -0. -0. -1.
+  ROT = MOM  SURFACE 11 T1 0          T2 0           VELO_NORMAL 11   SEED -1.  0.  0.
+  ROT = MOM  SURFACE 12 T1 0          T2 0           VELO_NORMAL 12   SEED -1.  0.  0.
+  ROT = MOM  SURFACE 20 T1 0          V 21           T2 0     SEED  0.  0. -1.
+
+  ROT = MESH EDGE 6 11 T 0          PLANE 6       PLANE 11       NONE
+  ROT = MESH EDGE 6 12 T 0          PLANE 6       PLANE 12       NONE
+  ROT = MESH EDGE 1 11 KINEMATIC 1    T 0         PLANE 11       NONE
+  ROT = MESH EDGE 1 12 KINEMATIC 1    T 0         PLANE 12       NONE
+  ROT = MESH EDGE 3 11  KINEMATIC 3    T 0         PLANE 11       NONE
+  ROT = MESH EDGE 3 12  KINEMATIC 3    T 0         PLANE 12       NONE
+  ROT = MESH EDGE 6 1  T 0      PLANE 6       CA_EDGE 1      NONE
+  ROT = MESH EDGE 6 3  T 0      PLANE 6       CA_EDGE 3      NONE
+$$  ROT = MESH EDGE 6 1  T 0      PLANE 6       CA_EDGE_OR_FIX 1      NONE
+$$  ROT = MESH EDGE 6 3  T 0      PLANE 6       CA_EDGE_OR_FIX 3      NONE
+  ROT = MESH EDGE 11 2 T 0          SOLID_FLUID 2       PLANE   11     NONE
+  ROT = MESH EDGE 12 2 T 0          SOLID_FLUID 2       PLANE   12     NONE
+  ROT = MOM  EDGE 6 1  VELO_NORMAL_EDGE 1 V 21    VELO_TANGENT_EDGE 1  NONE
+  ROT = MOM  EDGE 6 3  VELO_NORMAL_EDGE 3 V 21    VELO_TANGENT_EDGE 3  NONE
+
+  ROT = MOM  EDGE 11 2 NO_SLIP 2  NO_SLIP 2       VELO_NORMAL 11  NONE
+  ROT = MOM  EDGE 12 2 NO_SLIP 2  NO_SLIP 2       VELO_NORMAL 12  NONE
+
+  ROT = MOM  EDGE 1 2 U 7 NO_SLIP 2  W  7   NONE
+  ROT = MOM  EDGE 3 2 U 7 NO_SLIP 2  W  7   NONE
+  ROT = MESH  EDGE 1 2 DX 7 SOLID_FLUID 2   DZ 7   NONE
+  ROT = MESH  EDGE 3 2 DX 7 SOLID_FLUID 2   DZ 7   NONE
+
+  ROT = MOM  EDGE 11 6 T 0  T 0       VELO_NORMAL 11  NONE
+  ROT = MOM  EDGE 12 6 T 0  T 0       VELO_NORMAL 12  NONE
+
+$$  ROT = MESH VERTEX 6 3 11  CA_EDGE_OR_FIX 3 PLANE 6 PLANE 11 NONE
+$$  ROT = MESH VERTEX 6 3 12  CA_EDGE_OR_FIX 3 PLANE 6 PLANE 12 NONE
+$$  ROT = MESH VERTEX 6 1 11  CA_EDGE_OR_FIX 1 PLANE 6 PLANE 11 NONE
+$$  ROT = MESH VERTEX 6 1 12  CA_EDGE_OR_FIX 1 PLANE 6 PLANE 12 NONE
+  ROT = MESH VERTEX 6 3 11  CA_EDGE 3 PLANE 6 PLANE 11 NONE
+  ROT = MESH VERTEX 6 3 12  CA_EDGE 3 PLANE 6 PLANE 12 NONE
+  ROT = MESH VERTEX 6 1 11  CA_EDGE 1 PLANE 6 PLANE 11 NONE
+  ROT = MESH VERTEX 6 1 12  CA_EDGE 1 PLANE 6 PLANE 12 NONE
+  ROT = MOM  VERTEX 6 3 11  VELO_NORMAL_EDGE 3 V 21 VELO_TANGENT_EDGE 3 NONE
+  ROT = MOM  VERTEX 6 3 12  VELO_NORMAL_EDGE 3 V 21 VELO_TANGENT_EDGE 3 NONE
+  ROT = MOM  VERTEX 6 1 11  VELO_NORMAL_EDGE 1 V 21 VELO_TANGENT_EDGE 1 NONE
+  ROT = MOM  VERTEX 6 1 12  VELO_NORMAL_EDGE 1 V 21 VELO_TANGENT_EDGE 1 NONE
+
+$$  ROT = MOM  VERTEX 11 1 2  U 7  NO_SLIP 2  VELO_NORMAL 11 NONE
+$$  ROT = MOM  VERTEX 11 3 2  U 7  NO_SLIP 2  VELO_NORMAL 11 NONE
+$$  ROT = MOM  VERTEX 12 1 2  U 7  NO_SLIP 2  VELO_NORMAL 12 NONE
+$$  ROT = MOM  VERTEX 12 3 2  U 7  NO_SLIP 2  VELO_NORMAL 12 NONE
+
+$$  ROT = MOM  VERTEX 11 1 2  U 7  NO_SLIP 2  W 11 NONE
+$$  ROT = MOM  VERTEX 11 3 2  U 7  NO_SLIP 2  W 11 NONE
+$$  ROT = MOM  VERTEX 12 1 2  U 7  NO_SLIP 2  W 12 NONE
+$$  ROT = MOM  VERTEX 12 3 2  U 7  NO_SLIP 2  W 12 NONE
+
+##########
+END OF ROT
+##########
+
+----
+Problem Description
+---
+
+Number of Materials = 2
+
+MAT = cu    1
+
+  Coordinate System       = CARTESIAN
+  Element Mapping         = isoparametric
+  Mesh Motion             = ARBITRARY
+  Number of bulk species  = 0
+	Number of EQ	  = 7
+	EQ = mesh1      Q1      D1     Q1   1.   0.   1.   1.   0.   0.
+	EQ = mesh2      Q1      D2     Q1   1.   0.   1.   1.   0.   0.
+        EQ = mesh3      Q1      D3     Q1   1.   0.   1.   1.   0.   0.
+        EQ = momentum1  Q1      U1     Q1   1.   0.   1.   1.   0.   0.
+        EQ = momentum2  Q1      U2     Q1   1.   0.   1.   1.   1.   0.
+        EQ = momentum3  Q1      U3     Q1   1.   0.   1.   1.   0.   0.
+        EQ = continuity Q1      P      Q1   1.   0.
+        
+
+MAT = alumina_ceramic   2
+
+  Coordinate System       = CARTESIAN
+  Element Mapping         = isoparametric
+  Mesh Motion             = LAGRANGIAN
+  Number of bulk species  = 0
+        Number of EQ      = 3
+        EQ = mesh1      Q1      D1     Q1   1.   0.   1.   1.   0.   0.
+        EQ = mesh2      Q1      D2     Q1   1.   0.   1.   1.   1.   0.
+        EQ = mesh3      Q1      D3     Q1   1.   0.   1.   1.   0.   0.
+
+Post Processing Specifications
+ 
+Stream Function = no
+Streamwise normal stress = no
+Pressure contours = yes
+Second Invarient of Strain = no
+Mesh Dilatation = yes
+Mesh Stress Tensor = yes
+Navier Stokes Residuals = no
+Moving Mesh Residuals = no
+Mass Diffusion Vectors = no
+Mass Fluxlines = no
+Energy Conduction Vectors = no

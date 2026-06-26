@@ -1,0 +1,45 @@
+# Rich Larson's Current Test problem
+========================================
+
+Directory:   ...goma_VandV/problems/test_current
+
+
+Aug 13, 01 baseline #1
+************************
+     goma_????? executable
+     output files:
+        base1.sout
+        base1.serr
+        out_blessed.exoII
+
+     initial residuals - 1.2e-01 3.4e-01 2.0e-01
+     1st iteration updates - 5.5e-01 1.7e+00 9.5e-01
+
+
+Oct 22, 01 baseline #2
+************************
+     goma_102001 executable (Goma 3.9.3 SunOS on sass1930)
+     output files:
+        base1.sout
+        base1.serr
+        out_blessed.exoII
+
+     initial residuals - 1.2e-01 3.4e-01 2.0e-01
+     1st iteration updates - 5.5e-01 1.7e+00 9.5e-01
+
+
+This problem was updated for Goma 4.4.0. The solution and
+residuals have not changed from their original values but
+a re-baseline with a "modern" goma was created.
+
+
+Dec 24, 03 baseline #3
+**************************
+     goma_120503 executable
+     output files:
+        blessed.sout
+        blessed.serr
+        blessed.out.exoII
+
+     initial residuals - 2.1e-04 8.8e-04 3.9e-04
+     1st iteration updates - 4.5e-02 6.8e+00 4.5e-01 

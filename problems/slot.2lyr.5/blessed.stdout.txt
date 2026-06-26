@@ -1,0 +1,42 @@
+v7.11.0-1-g709cfe59
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2026 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+
+
+######################### __PRINT_SYNC_END__ #########################
+
+Number of unknowns            = 9806
+
+Number of matrix nonzeroes    = 544794
+
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:08 [0] 1.4e-07 2.9e-06 2.8e-07 2.5e+02 1.9e+04 8.4e+02  1  7.0e-01/1.2e+02 
+17:10:08 [1] 2.5e-08 2.1e-06 1.0e-07 1.0e+01 3.1e+02 1.7e+01  1  1.0e+00/7.7e+00 
+17:10:17 [2] 2.3e-11 5.4e-10 4.6e-11 1.2e-02 1.0e-01 1.6e-02  1  1.2e+00/3.6e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   1.521e+04  2.520e+02  1.285e+03 
+
+-done
+
+
+Proc 0 runtime:       2.23 Minutes.
+

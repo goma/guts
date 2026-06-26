@@ -1,0 +1,116 @@
+This problem is substantially more difficult than the 1lyr case
+because of the interface contact line between the layers.  Its
+location on the center land is extremely sensitive to processing
+conditions.  Just now the problem is set up for a flat-sided land
+whose angle can be changed etc.    Follow this proceedure to
+obtain a solution.  Note also that the parameters for this problem
+have been consolidated at the top of the file "geometry" which is
+used to generate your mesh.
+
+To get a solution (the initial distribution here should be ready to
+run to get you a solution.):
+
+YOU MUST START WITH HIGH SURFACE TENSION (~0.1) ON THE INTERFACE
+AND A 90 DEG. CONTACT ANGLE, THEN CONTINUE DOWN IN SURFACE TENSION.
+But first get a fixed grid solution with the following boundary
+conditions AND the "Initial Guess" card set to "zero": 
+
+
+------
+BC = VELO_NORMAL SS 23 0.
+$$BC = KINEMATIC   SS      23       0.
+$$BC = CAPILLARY   SS      23       {surface_tension1}  {vacuum}  0.
+$$$BC = CA          NS    700       1.000    0.0   -1.0    0.0
+B$$C = CA          NS    100       0.600    0.0    1.0    0.0
+
+$$ Down the downstream Meniscus
+
+BC = VELO_NORMAL SS 6 0.
+$$BC = KINEMATIC   SS      6       0.
+$$BC = CAPILLARY   SS      6       {surface_tension2}   0.0  0.
+$$BC = SURFTANG_SCALAR    NS    400 {surface_tension2}
+
+$$ Interface
+
+BC = VELO_NORMAL SS 40 0.
+$$BC = KINEMATIC   SS      40       0.
+$$BC = CAPILLARY   SS      40       {.11}   0.0  0.
+$$BC = SURFTANG_SCALAR    NS    260 {0.11}
+$$BC = CA  NS 290 1.57 0. 1. 0.
+
+---------
+
+
+goma -a -i slot_input
+cp soln.dat  contin.dat
+
+Now set the "Intial Guess" card to "read" and change the
+interface boundary conditions (between layers on sset 40) 
+as follows:
+
+--------
+$$BC = VELO_NORMAL SS 40 0.
+BC = KINEMATIC   SS      40       0.
+BC = CAPILLARY   SS      40       {.11}   0.0  0.
+BC = SURFTANG_SCALAR    NS    260 {0.11}
+BC = CA  NS 290 1.57 0. 1. 0.
+--------
+
+Then run the following sequence:
+
+    ~/.sun5/bin/goma -a -i slot_input -r 0.08 -n 40
+     cp soln.dat contin.dat
+    ~/.sun5/bin/goma -a -i slot_input -r 0.1
+     cp soln.dat contin.dat
+    ~/.sun5/bin/goma -a -i slot_input 
+
+Now you have a solution to the moving interface problem with
+a fixed external up- and downstream meniscus and a moving 
+interface.  Note I chose the LAND to be flat between the
+slots.   
+
+To release the downstream free surface:
+
+--------
+$$ Down the downstream Meniscus
+
+$$BC = VELO_NORMAL SS 6 0.
+BC = KINEMATIC   SS      6       0.
+BC = CAPILLARY   SS      6       {surface_tension2}   0.0  0.
+BC = SURFTANG_SCALAR    NS    400 {surface_tension2}
+------
+
+Here you need run goma as follows:
+
+   goma -a -i slot_input -r 0.1
+   cp soln.dat contin.dat
+   goma -a -i slot_input
+
+   cp soln.dat contin.dat
+
+
+Finally release the upstream meniscus the same way (SSET 23):
+
+---------
+$$BC = VELO_NORMAL SS 23 0.
+BC = KINEMATIC   SS      23       0.
+BC = CAPILLARY   SS      23       {surface_tension1}  {vacuum}  0.
+BC = CA          NS    700       1.000    0.0   -1.0    0.0
+BC = CA          NS    100       0.600    0.0    1.0    0.0
+
+--------
+
+Here the vacuume is set to -700 up inthe "geometry" file.   
+
+
+Final note, when changing parameters here, you must take small steps and
+look at where the internal contact separation line wants to locate.  
+Just now it is very limited as the land is flat.  The next generation of
+this model will round that land and allow the separation line to 
+travel up into either channel.
+
+
+Good luck!
+
+PRS (7/3/97)
+

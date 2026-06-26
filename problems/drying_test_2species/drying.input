@@ -1,0 +1,136 @@
+$ pete_input_figure9 - test problem for 2-d drying problem
+
+{include(props.incl)}
+
+###############################################################
+                    FEM File Specifications
+###############################################################
+FEM file                         = film.exoII
+Output EXODUS II file            = result.exoII
+GUESS file                       = contin.dat
+SOLN file                        = soln.dat
+Write intermediate results       = no
+###############################################################
+                     General Specifications
+###############################################################
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+Number of Jacobian File Dumps    = 2
+Initial Guess                    = zero
+Initialize                       = TEMPERATURE   0 {T_init}
+Anneal Mesh on Output            = no
+##############################################################
+                 Time Integration Specifications
+##############################################################
+Time integration                 = transient
+delta_t                          = 1.0e-7
+Maximum number of time steps     = 50000
+Maximum time                     = 2320.0
+Minimum time step                = 1.e-8
+#Maximum Resolved Time Step       = 2.0
+Maximum time step                = 2.0
+Time step parameter              = 0.5
+Time step error                  = -1.0e-4  0  0  1  1  0  0  0  0
+Printing Frequency               = 0 2.0
+Initial Time                     = 0.0
+###############################################################
+                      Solver Specifications
+###############################################################
+#Solution Algorithm               = amesos
+#Amesos Solver Package            = mumps
+Solution Algorithm                = umf
+Number of Newton Iterations      = 10
+Newton correction factor         = 1.
+Normalized Residual Tolerance    = 1.e-11
+Residual Ratio Tolerance         = 1.e-11
+##############################################################
+                 Boundary Condition Specifications
+##############################################################
+Number of BC                     =   -1
+
+##                    a   b   c     d
+BC = PLANE  SS  100  0.0 1.0 0.0  {H_sub}
+BC = PLANE  SS  2000 1.0 0.0 0.0  {-H_t}
+BC = PLANE  SS  1000 1.0 0.0 0.0  0.0
+BC = PLANE  SS  700  0.0 1.0 0.0  0.0
+
+BC = QRAD            SS 400   {Kh}  {T_inf}  {0.0} {SB_constant}
+BC = QRAD            SS 100   {Kb}  {T_b}  {0.0} {SB_constant}
+BC = QRAD            SS 400   {0.0} {T_coil} {eps} {SB_constant} 1
+BC = LATENT_HEAT     SS 400    0  0. 0. {X0_inf}
+BC = YFLUX_EQUIL     SS 400  FLORY 0 1. {Km_0} {X0_inf}
+BC = YFLUX_EQUIL     SS 400  FLORY 1 1. {Km_1} {X1_inf}
+BC = KIN_LEAK        SS 400   0.  0.0
+
+END OF BC
+###############################################################
+                         Problem Description
+###############################################################
+
+Number of Materials = 2
+
+ MAT =   substrate    1
+
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = ARBITRARY
+  Number of bulk species = 0
+
+        Number of EQ                     = -1
+
+        EQ = energy     Q1  T   Q1        1.  1.   1.   1.   0.   0.
+        EQ = mesh1      Q1  D1  Q1        0.  0.   1.   1.   0.   0.
+        EQ = mesh2      Q1  D2  Q1        0.  0.   1.   1.   0.   0.
+                                     div  ms  adv  bnd  dif  src  por
+        END OF EQ
+
+
+ MAT =   film   2
+
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = ARBITRARY
+  Number of bulk species = 2
+  Default Material Species Type = SPECIES_DENSITY
+
+        Number of EQ                     = -1
+
+          EQ = energy   Q1  T   Q1        1.  1.   1.   1.   0.   0.
+          EQ = species_bulk Q1 Y Q1       1.  1.   1.   1.   0.   0.
+          EQ = mesh1    Q1  D1  Q1        0.  0.   1.   1.   0.   0.
+          EQ = mesh2    Q1  D2  Q1        0.  0.   1.   1.   0.   0.
+                                     div  ms  adv  bnd  dif  src  por
+          END OF EQ
+
+########################################################################
+                    Post Processing Specifications
+########################################################################
+Stream Function = no
+Streamwise normal stress = no
+Pressure contours = no
+Second Invarient of Strain = no
+Third Invarient of Strain = no
+Navier Stokes Residuals = no
+Moving Mesh Residuals = no
+Mass Diffusion Vectors = yes
+Mass Fluxlines = no
+Energy Conduction Vectors = no
+Energy Fluxlines = no
+Time Derivatives = yes
+Mesh Stress Tensor = yes
+
+Post Processing Data =
+DATA = TEMPERATURE    7 2 0 faceTemps.dat
+DATA = TEMPERATURE    1 1 0 faceTemps.dat
+DATA = MASS_FRACTION  7 2 0 faceCs.dat
+DATA = MASS_FRACTION  4 2 0 faceCs.dat
+#DATA = MASS_FRACTION  7 2 1 faceCs.dat
+#DATA = MASS_FRACTION  4 2 1 faceCs.dat
+END OF DATA
+
+Post Processing Volumetric Integration =
+VOLUME_INT = SPECIES_MASS 2 0 remainingSolvent0.out
+VOLUME_INT = SPECIES_MASS 2 1 remainingSolvent1.out
+VOLUME_INT = SPECIES_MASS 2 2 remainingPolymer.out
+END OF VOLUME_INT

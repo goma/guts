@@ -1,0 +1,37 @@
+Test Case 1:
+
+3D Center slot coater section
+
+Ratio of inlet velocity to web speed of restart data : 0.95
+Ratio of inlet velocity to web speed of current case : 0.94
+
+Features:
+Two material files are used.  They have identical fluid properties
+but the psuedo solid shear modulus (Lame' mu) is three orders of
+magnitude larger.  This material file is used in a region near
+the static and dynamic contact lines to mititgate mesh distortion.
+
+The dynamic contact line uses the VAR_CA_EDGE condition.  Since there
+is no curvature to this DCL, there should be only one value of
+contact applied along its length.  Using this condition, however,  does 
+seem to improve robustness of converged
+
+This test case exercises the VELO_NORMAL_EDGE, VELO_TANGENT_EDGE, CA_EDGE
+and VAR_CA_EDGE conditions as well as the three dimensional rotation 
+sections.
+
+GMRES with ILU preconditioning is used as the linear solver.
+
+Runtime on the compute server( sass2153) is roughly 30 minutes.
+
+Five iterations to convergence should be expected.
+
+
+Files:
+
+input - 			input deck
+newt.mat - 			material file for nominal psuedo-solid stiffness
+stiff_newt.mat - 		material file for stiffer psuedo-solid
+restart_center_slot3d.exoII - 	The exodus restart file 
+solution_file.exoII - 		This is the exodus file created by goma containing the solution
+output.txt - 			This is a text file echo the GOMA screen output for the run

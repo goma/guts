@@ -1,0 +1,37 @@
+GOMA WARNING: Standard error was redirected to blessed2.serr on Proc 0 only!
+		The other processors will still print to the terminal
+		A better method to redirect standard error would be to use shell redirects
+GOMA WARNING: Standard output was redirected to blessed2.sout on Proc 0 only!
+		The other processors will still print to the terminal
+		A better method to redirect standard output would be to use shell redirects
+Copyright (c) 2006  Sandia Corporation.
+
+Under the terms of Contract DE-AC04-94AL85000, there is a non-exclusive
+license for use of this work by or on behalf of the U.S. Government. Export
+of this program may require a license from the United States Government.
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB ...
+
+
+Number of unknowns            = 381
+
+Number of matrix nonzeroes    = 24994
+
+
+               R e s i d u a l         C o r r e c t i o n
+
+  ToD    itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)
+-------- --- ------- ------- ------- ------- ------- ------- --- ---------------
+08:34:15 [0] 3.6e-01 6.2e+00 1.0e+00 5.7e+01 5.3e+02 9.4e+01  18 4.0e-02/0.0e+00
+08:34:15 [1] 2.1e-01 3.3e+00 5.5e-01 3.0e+02 5.5e+03 9.9e+02  33 3.0e-02/1.0e-02
+08:34:15 [2] 1.6e-01 1.7e+00 3.5e-01 9.4e+01 1.4e+03 2.7e+02  33 2.0e-02/0.0e+00
+08:34:15 [3] 9.2e-02 4.3e-01 1.4e-01 1.7e+01 1.8e+02 3.7e+01  34 2.0e-02/0.0e+00
+08:34:15 [4] 1.3e-03 7.4e-03 1.9e-03 2.3e+02 4.7e+03 9.3e+02  37 1.0e-02/0.0e+00
+08:34:15 [5] 1.1e-03 1.1e-02 2.5e-03 3.3e+01 6.8e+02 1.4e+02  35 1.0e-02/1.0e-02
+08:34:15 [6] 2.8e-06 2.9e-05 6.9e-06 3.4e-02 3.8e-01 9.5e-02  36 1.0e-02/1.0e-02
+08:34:15 [7] 2.0e-13 1.9e-12 3.5e-13 6.5e-09 1.4e-07 2.7e-08  39 1.0e-02/0.0e+00
+scaled solution norms   1.000000e+01  2.241887e+00  3.404630e+00 
+
+Proc 0 runtime:       0.01 Minutes.
+

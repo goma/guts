@@ -1,0 +1,132 @@
+
+------------------------------------------------------------
+                 FEM Problem Specifications
+------------------------------------------------------------
+FEM file                         = domain.g
+Output EXODUS II file            = out_log.exoII
+GUESS file                       = none
+SOLN file                        = none
+Write intermediate results       = no
+------------------------------------------------------------
+                 General Specifications
+------------------------------------------------------------
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+
+Initial Guess                    = zero
+
+------------------------------------------------------------
+                 Time Integration Specifications
+------------------------------------------------------------
+Time integration                 = steady
+
+---
+Continuation Specifications
+---
+Continuation                     = first
+Continuation Type                = MT
+Boundary condition ID            = 24
+Boundary condition data float tag = 1
+Material id                       = 1
+Material property tag             = 5200
+Material property tag subindex     = 0
+Initial parameter value           = 0.
+Final parameter value             = 0.6
+delta_s                           = 0.1
+Maximum number of path steps      = 10
+Minimum path step                 = 1e-2
+Maximum path step                 = 0.1 
+#
+#Material property tag             = 5700
+#Material property tag subindex     = 0
+#Initial parameter value           = 4.0
+#Final parameter value             = 0.0
+#delta_s                           = -0.1
+#Maximum number of path steps      = 500
+#Minimum path step                 = 1e-3
+#Maximum path step                 = 0.1
+Continuation Printing Frequency              = 1
+Continuation Fix Frequency                   = 1
+
+------------------------------------------------------------
+                 Solver Specifications
+------------------------------------------------------------
+Solution Algorithm               = amesos
+Amesos Solver Package            = mumps
+Preconditioner                   = dom_decomp 
+Number of Newton Iterations      = 50
+Newton correction factor         = 1
+Normalized Residual Tolerance    = 1.0e-7
+Residual Ratio Tolerance         = 1.0e-2
+
+------------------------------------------------------------
+	Augmenting Condition Specifications                 
+------------------------------------------------------------
+Number of augmenting conditions = -1
+AC = FC 1 0 0 VOLUME_FLUX 4 -1.0
+END OF AC
+
+------------------------------------------------------------
+	Boundary Condition Specifications                 
+------------------------------------------------------------
+Number of BC			 = -1
+
+
+# inflow
+BC = FLOW_STRESSNOBC SS 4 200
+BC = V NS 4 0.0
+
+# outflow
+BC = FLOW_STRESSNOBC SS 2 0
+BC = V NS 2 0.0
+
+# top
+BC = U NS 3 0.0
+BC = V NS 3 0.0
+
+# bottom
+BC = U NS 1 0.0
+BC = V NS 1 0.0
+
+# inflow
+BC = STRESS_DEVELOPED SS 4
+# outflow
+#BC = STRESS_DEVELOPED SS 2
+
+END OF BC
+
+----
+Problem Description
+---
+
+Number of Materials = 1
+
+MAT = fluid_log 1
+	Coordinate System	= CARTESIAN
+	Element Mapping        = isoparametric
+	Mesh Motion		= ARBITRARY
+	Number of bulk species	= 0
+        Number of viscoelastic modes = 1
+
+
+  Number of EQ			 = 10
+  EQ = momentum1  Q2	U1	Q2	     1.    1.   1.   1.   0.   0.
+  EQ = momentum2  Q2	U2	Q2	     1.    1.   1.   1.   0.   0.
+  EQ = continuity Q1	P 	Q1	           1.             0.
+  EQ = stress11   Q1	S11	Q1	     1.    1.   1.   1.   1.
+  EQ = stress12   Q1	S12	Q1	     1.    1.   1.   1.   1.
+  EQ = stress22   Q1	S22	Q1	     1.    1.   1.   1.   1. 
+  EQ = gradient11 Q1	G11	Q1	           1.             1.
+  EQ = gradient12 Q1	G12	Q1	           1.             1.
+  EQ = gradient21 Q1	G21	Q1	           1.             1.
+  EQ = gradient22 Q1	G22	Q1	           1.             1.
+                                             ms   adv  bnd  dif  src  porous
+
+Post Processing Specifications
+Map Conf Stress = yes
+
+
+
+
+

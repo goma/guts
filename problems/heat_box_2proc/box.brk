@@ -1,0 +1,19 @@
+# brk -- box input file
+#
+# Simple conduction and species transport in a box--one block-single eqation
+
+ 1        # element block ID
+ 1        # number of basic eqnvar
+ 3 1 1 1  # energy equation
+ 
+#
+# eqnvar interaction specification
+#
+#       T
+        1                              # energy equation
+ 
+ 4   # number of nodes per element
+ 3
+ 3
+ 3
+ 3

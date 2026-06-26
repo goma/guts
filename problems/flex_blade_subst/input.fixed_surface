@@ -1,0 +1,167 @@
+{include(blade.fas)}
+ ---
+ FEM File Specifications
+ ---
+FEM file                         = blade.exoII
+Output EXODUS II file            = out.exoII
+GUESS file                       = contin.dat
+SOLN file                        = soln.dat
+Write intermediate results	     = no
+ ---
+General Specifications
+ ---
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0 
+Initial Guess                    = zero 
+#Initial Guess                    = read    
+Pad Sparse Matrix                = yes
+ --- 
+Time integration                 = steady
+ ---
+Solver Specifications
+ ---
+Solution Algorithm               = umf
+UMF XDIM = 4000000
+UMF IDIM = 4000000
+Number of Newton Iterations      = 10        
+Newton correction factor         = 1.0    
+Normalized Residual Tolerance    = 1.0e-12
+Residual Ratio Tolerance         = 1.0e-6
+ ---
+Boundary Condition Specifications
+ ---
+Number of BC			 = -1              
+BC = PLANE SS  2   1.   0.   0.  {-S}  
+BC = PLANE SS  8   1.   0.   0.  {I}  
+BC = DX NS 170 0
+BC = DY NS 170 0
+BC = DY SS  6   0.
+
+BC =    V        NS     20       0.0  
+BC =    U        NS     80       1.0 
+BC =    V        NS     80       0.0 
+ 
+BC =    U        NS    400       1.0 
+BC =    V        NS    400       0.0  
+BC =   DX        NS    400       0.0 
+BC =   DY        NS    400       0.0 
+BC =   DX        NS    600       0.0 
+BC =   DY        NS    600       0.0 
+
+BC =   DX        NS    110       0.0 
+BC =   DY        NS    110       0.0 
+BC =   DX        NS    120       0.0 
+BC =   DY        NS    120       0.0 
+BC =   DX        NS    130       0.0 
+BC =   DY        NS    130       0.0 
+
+BC =   DX        NS    30       0.0 
+BC =   DY        NS    30       0.0 
+BC =   DX        NS    70       0.0 
+BC =   DY        NS    70       0.0 
+BC = VELO_NORMAL   SS      3       0.0  0.0 0.0
+BC = VELO_NORMAL   SS      7       0.0  0.0 0.0
+
+BC =   DX        NS    40       0.0 
+BC =   DY        NS    40       0.0 
+BC =   DX        NS    50       0.0 
+BC =   DY        NS    50       0.0 
+BC =   DX        NS    10       0.0 
+BC =   DY        NS    10       0.0 
+BC =   U        NS    10       1.0 
+BC =   V        NS    10       0.0 
+BC =   U        NS    40       0.0 
+BC =   V        NS    40       0.0 
+BC =   U        NS    50       0.0 
+BC =   V        NS    50       0.0 
+######
+END OF BC 
+######
+BC = PLANE SS  6   0.  1.0  0.  0.0202
+BC = CAPILLARY   SS      3       0.05   0.0 0.0
+BC = KINEMATIC   SS      3       0.
+BC = SURFTANG    NS    200       1.0    0.0    0.0    0.05
+BC = KINEMATIC   SS      7       0.
+BC = CAPILLARY   SS      7       0.05    0.0   0.0
+BC = SURFTANG    NS    100      -0.1736  -0.9848   0.0    0.05
+
+BC =  GD_CONST  SS  4  R_MESH1 0 VELOCITY1  0  0.0 
+BC =  GD_CONST  SS  4  R_MESH2 0 VELOCITY2  0  0.0 
+BC =  GD_CONST  SS  5  R_MESH1 0 VELOCITY1  0  0.0 
+BC =  GD_CONST  SS  5  R_MESH2 0 VELOCITY2  0  0.0 
+
+BC = SOLID_FLUID SS 1 2 1
+BC = NO_SLIP     SS 1 2 1
+BC = FLUID_SOLID SS 4 3 1
+BC = FLUID_SOLID SS 5 3 1 
+
+BC =    U        NS    300       0.0 
+BC =    V        NS    300       0.0  
+
+----
+Problem Description
+---
+ 
+Number of Materials  =  3
+ 
+ MAT =   liquid    1
+ 
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = ARBITRARY
+  Number of bulk species = 0
+ 
+Number of EQ			 = 5
+EQ = momentum1  Q2	U1	Q2	     0. 1000.  1.   1.0    0.0    0.
+EQ = momentum2  Q2	U2	Q2	     0. 1000.  1.   1.0   1.0    0.
+EQ = continuity	P1	P 	P1	1.                          0.
+EQ = mesh1	Q2	D1	Q2	         0.   0.     1.   1.    0.  0.
+EQ = mesh2	Q2	D2	Q2	         0.   0.     1.   1.    0.  0.
+                            div  ms  adv   bnd  dif     src  porous
+
+MAT = substrate   2 
+
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = LAGRANGIAN
+  Number of bulk species = 0
+
+	Number of EQ			 = 2
+	EQ = mesh1	Q2	D1	Q2   0.   0.  1.   1.      0.   0. 
+	EQ = mesh2	Q2	D2	Q2   0.	  0.  1.   1.      0.   0. 
+
+                                       div  ms  adv   bnd  dif    src   porous
+
+MAT = blade   3 
+
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = LAGRANGIAN
+  Number of bulk species = 0
+
+	Number of EQ			 = 2
+	EQ = mesh1	Q2	D1	Q2   0.   0.  1.   1.      0.   0. 
+	EQ = mesh2	Q2	D2	Q2   0.	  0.  1.   1.      0.   0. 
+
+                                       div  ms  adv   bnd  dif    src   porous
+
+
+Post Processing Specifications
+ 
+Stream Function = yes 
+Streamwise normal stress = yes
+Pressure contours = yes
+Second Invarient of Strain = yes
+Mesh Dilatation = yes
+Navier Stokes Residuals = yes
+Moving Mesh Residuals = yes  
+Mass Diffusion Vectors = no
+Mass Fluxlines = no
+Energy Conduction Vectors = no
+Energy Fluxlines = no
+Time Derivatives = yes
+Mesh Stress Tensor = yes
+ 
+
+

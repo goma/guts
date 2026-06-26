@@ -1,0 +1,325 @@
+# Note: hash marks are comment characters. Everything following a hash mark
+# will be ignored. Lines beginning with a hash mark will be deleted.
+#
+$ GOMA input file
+$ CREATION_DATE USER_NAME_AND_SITE
+$ {ECHO(OFF)} 
+$     {include(Defs)}
+$ {ECHO(ON)}
+
+FEM Problem Specifications
+--- ------- --------------
+FEM file                         = geom1d.exoII
+Output EXODUS II file            = condens1dp_o_b.exoII
+GUESS file                       = none
+SOLN file                        = none
+Write intermediate results	 = no
+
+General Specifications
+------- --------------
+
+Number of processors = 1
+Output level = 0
+Debug        = 0
+Number of Jacobian File Dumps = 2
+#Initial Guess                    = read_exoII_file condens1dp_o_a.exoII 
+#Initial Guess                    = read
+
+Time Integration Specifications
+---- ----------- --------------
+Time integration                 = transient
+delta_t                          = 1.0E-3
+Maximum number of time steps     = 45
+Maximum time                     = 3000.0
+Minimum time step                = 1.0E-10
+Maximum time step                = 50.0
+Time step parameter              = 0.0
+Time step error                  = 0.01 1 1 1 1 0 1
+Printing Frequency               = 1
+Initial Time                     = 0.0
+
+
+Solver Specifications
+------ --------------
+Solution Algorithm               = umf
+Number of Newton Iterations      = 17
+Newton correction factor         = 1
+Normalized Residual Tolerance    = 1e-10
+Residual Ratio Tolerance         = 1e-2
+
+Boundary Condition Specifications
+-------- --------- --------------
+Number of BC			 = -1
+#
+#
+#    Bottom of the domain - fixed and inert
+#
+BC = DX NS {bottom_ns} 0.0
+BC = DY NS {bottom_ns} 0.0
+BC = U NS {bottom_ns}			0.0
+BC = V NS {bottom_ns}                   0.0
+#
+# Set the temperature at the bottom of the domain.
+# BC = T NS {bottom_ns}                  300.
+# Species -> no flux bc 
+# Pressure -> Don't need a boundary condition
+#
+# ----------------------------------------------------------
+#    Right Side of the domain - bottom made up of liquid
+#
+# -> Force mesh to be fixed at a x=constant value
+#    There are three ways to do this: 
+#                DX     -> NS,  DC
+#                PLANEX -> SS,  PCC
+#                PLANE  -> SS,  PCC-ROT
+BC = DX NS {right1_ns}        0.0
+# mesh2 -> Free to vary
+# 
+# Normal component of the velocity = U
+# set noflow out of the right side of the domain
+BC = U NS {right1_ns}			0.0
+#
+# Tangential component of the velocity = V
+#     set the tangential stress = dv/dx + du/dy
+#               du/dy = 0 to be consistent with BC on u
+#           Set dv/dx = 0 to make the problem 1D
+#            -> Implies zero tangential stress condition is good
+#               and thus we don't need a boundary condition
+#
+# Temperature -> adiabatic
+# Species -> no flux bc 
+# Pressure -> Don't need a boundary condition
+#
+# ----------------------------------------------------------
+#    Right Side of the domain - top made up of gas
+#
+# -> Force mesh to be fixed at a x=constant value
+#    There are three ways to do this: 
+#                DX     -> NS,  DC
+#                PLANEX -> SS,  PCC
+#                PLANE  -> SS,  PCC-ROT
+BC = DX NS {right2_ns}        0.0
+# mesh2 -> Free to vary
+# 
+# Normal component of the velocity = U
+# set noflow out of the right side of the domain
+BC = U NS {right2_ns}			0.0
+#
+# Tangential component of the velocity = V
+#     set the tangential stress = dv/dx + du/dy
+#               du/dy = 0 to be consistent with BC on u
+#           Set dv/dx = 0 to make the problem 1D
+#
+# Temperature -> adiabatic
+# Species -> no flux bc 
+# Pressure -> Don't need a boundary condition
+#
+# ----------------------------------------------------------
+#    Left Side of the domain - bottom made up of liquid
+#
+# -> Force mesh to be fixed at a x=constant value
+#    There are three ways to do this: 
+#                DX     -> NS,  DC
+#                PLANEX -> SS,  PCC
+#                PLANE  -> SS,  PCC-ROT
+BC = DX NS {left1_ns}        0.0
+# mesh2 -> Free to vary
+# 
+# Normal component of the velocity = U
+# set noflow out of the right side of the domain
+BC = U NS {left1_ns}			0.0
+#
+# Tangential component of the velocity = V
+#     set the tangential stress = dv/dx + du/dy
+#               du/dy = 0 to be consistent with BC on u
+#           Set dv/dx = 0 to make the problem 1D
+#            -> Implies zero tangential stress condition is good
+#               and thus we don't need a boundary condition
+#
+# Temperature -> adiabatic
+# Species -> no flux bc 
+# Pressure -> Don't need a boundary condition
+#
+# ----------------------------------------------------------
+#    Left Side of the domain - top made up of gas
+#
+# -> Force mesh to be fixed at a x=constant value
+#    There are three ways to do this: 
+#                DX     -> NS,  DC
+#                PLANEX -> SS,  PCC
+#                PLANE  -> SS,  PCC-ROT
+BC = DX NS {left2_ns}        0.0
+# mesh2 -> Free to vary
+# 
+# Normal component of the velocity = U
+# set noflow out of the right side of the domain
+BC = U NS {left2_ns}			0.0
+#
+# Tangential component of the velocity = V
+#     set the tangential stress = dv/dx + du/dy
+#               du/dy = 0 to be consistent with BC on u
+#           Set dv/dx = 0 to make the problem 1D
+#            -> Implies zero tangential stress condition is good
+#               and thus we don't need a boundary condition
+#
+# Temperature -> adiabatic
+# Species -> no flux bc 
+# Pressure -> Don't need a boundary condition
+#
+# ----------------------------------------------------------
+#    Top of the domain -> made up of gas
+#
+# -> Force mesh to be fixed at a x=constant value
+#    There are three ways to do this: 
+#                DX     -> NS,  DC
+#                PLANEX -> SS,  PCC
+#                PLANE  -> SS,  PCC-ROT
+BC = DX NS {top_ns}        0.0
+# -> Force mesh to be fixed at a y=constant value
+BC = DY NS {top_ns}        0.0
+# 
+# Tangential component of the velocity = U
+# set no tangential flow 
+BC = U NS {top_ns}			0.0
+#
+# normal component of the velocity = V
+# -> Set it equal to the net mass flux into the domain
+#
+# BC = T     NS {top_ns} 300.
+# BC = VNORM_LEAK SS {top_ss} 1.0 0.95
+BC = FLOW_PRESSURE SS {top_ss} 0.12
+BC = YFLUX    SS {top_ss} 0 1.0 0.25
+# BC = YFLUX    SS {top_ss} 1 1.0 0.95
+# Species -> no flux bc 
+# Pressure -> Don't need a boundary condition
+#
+# ----------------------------------------------------------
+#
+#         Interface
+#
+#       -> KINEMATIC_DISC requires a float.
+#            I don't know why.
+#
+# KINEMATIC_DISC:
+#        Set a requirement for total mass conservation 
+#        across the interface -> this will specify
+#        the normal component of the interfacial velocity
+#        i.e., the mesh variable.
+BC = KINEMATIC_DISC    SS {interface_ss} 0.0
+#
+# KINEMATIC_SPECIES
+#       This boundary condition specifies that the net fluxes
+#       on either side of the interface for the species indicated on
+#       the card is equal to each other. This ties together the
+#       species with the same ID on either side of the interface.
+BC = KINEMATIC_SPECIES SS 102 0 0.
+# VL_EQUIL:
+#        
+#
+BC = VL_EQUIL SS {interface_ss} 0 1 2 1.0133E6 28. 28. 28. 28.
+#                              Sp Mat1 P_amb   Mol1 Mol2   Mol_NoCond
+#                                   Mat2               Mol_Liq
+#
+#
+# CAPILLARY
+#        Set the surface tension at the interface
+#
+BC = CAPILLARY SS {interface_ss} 1.0 0.0 0.0 
+#
+#  SURFTANG_BC
+#        Sets the extra surface tension at the inflow and outflow locations
+#
+#       -> HKM I am not sure of the signs in these lines below
+#              The first line agrees with a picture on p. 228 of the Goma manual
+#              The second line, I don't know.
+#
+BC = SURFTANG_SCALAR NS {leftInterfaceP_ns}   -1.0 
+BC = SURFTANG_SCALAR NS {rightInterfaceP_ns}   1.0
+#
+# BC = SURFTANG NS {leftInterfaceP_ns}   0.0 -1.0 0.0 1.0 
+# BC = SURFTANG NS {rightInterfaceP_ns}  0.0  1.0 0.0 1.0
+
+# CONT_TANG_VEL:
+#        The tangential components of the velocity 
+#        on either side of the interface are equal
+BC = CONT_TANG_VEL SS {interface_ss} 1 2 0.0 0.0
+#
+# DISCONTINUOUS_VELO:
+#        Specify the net interfacial flux of the last component
+#        in the fluids on one side of the interface to
+#        have a net interfacial flux of zero.
+BC = DISCONTINUOUS_VELO SS {interface_ss} EVAPORATION 1 2
+#
+#
+#
+# ----------------------------------------------------------
+#
+# Set the pressure datum for the problem
+#
+# BC = P NS {topRightP_ns} 0
+#
+# END OF BC
+#         This card signals the end of boundary condition processing
+END OF BC
+#
+
+----
+Problem Description
+---
+Number of Materials = 2
+
+MAT = liquid    1
+
+  	Coordinate System = CARTESIAN
+  	Element Mapping   = isoparametric
+  	Mesh Motion = ARBITRARY
+#            Number of bulk species is one less than the
+#            total number in the problem
+  	Number of bulk species = 1
+        Really meant number of bulk species equations in line above = TRUE
+
+	Number of EQ			 = 6
+#                                       Mass  Adv  Bnd  diff src por
+	EQ = mesh1       Q2   D1 Q2      0.   0.   0.   1.   0.   0.
+	EQ = mesh2       Q2   D2 Q2      0.   0.   0.   1.   0.   0.
+	EQ = momentum1   Q2_D U1 Q2_D    1    1    1    1    1    0 
+	EQ = momentum2   Q2_D U2 Q2_D	 1    1    1    1    1    0 
+        EQ = species_bulk Q2_D Y Q2_D    1.   1.   1.   1    1.
+#                                       div                  src
+	EQ = continuity  P1 P  P1        1.                   0. 
+
+	
+MAT = gas 2
+	
+  	Coordinate System = CARTESIAN
+  	Element Mapping   = isoparametric
+  	Mesh Motion = ARBITRARY
+  	Number of bulk species = 1
+        Really meant number of bulk species equations in line above = TRUE
+
+	Number of EQ			 = 6
+#                                       Mass  Adv  Bnd  diff src por
+	EQ = mesh1       Q2 D1 Q2        0.   0.   0.   1.   0.   0.
+	EQ = mesh2       Q2 D2 Q2        0.   0.   0.   1.   0.   0.
+	EQ = momentum1   Q2_D U1 Q2_D    1.   1    1    1    1    0 
+	EQ = momentum2   Q2_D U2 Q2_D    1.   1    1    1    1    0 
+        EQ = species_bulk Q2_D Y Q2_D    1.   1.   1.   1    1.
+#                                       div                  src
+	EQ = continuity  P1 P  P1        1                   0. 
+
+	
+Post Processing Specifications
+---- ---------- --------------
+Stream Function			= yes
+Streamwise normal stress	= no
+Pressure contours		= yes
+Second Invarient of Strain	= no
+Mesh Dilatation			= yes
+Navier Stokes Residuals		= yes
+Moving Mesh Residuals		= yes
+Mass Diffusion Vectors		= yes
+Mass Fluxlines			= yes
+Energy Conduction Vectors	= no
+Energy Fluxlines		= no
+Time Derivatives		= yes
+Mesh Stress Tensor		= no

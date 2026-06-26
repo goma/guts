@@ -1,0 +1,48 @@
+$ Thermo-Physical Properties  (all units SI)
+$
+$ viscosity 				{visc = 1.0}
+$ density 				{dens = 1.0}
+$ surface tension			{surf = 0.01}
+$ gravity 				{grav = 1.0}
+$
+$ OPERATING CONDITIONS
+$
+$ beta 					{beta = 1000.0}
+$   
+$  MESH PARAMETERS
+$
+$ {z1 = 0.0} {r1 = 0.0}
+$ {z2 = 0.0} {r2 = 1.0}
+$ {z3 = 1.0} {r3 = 1.0}
+$ {z4 = 1.0} {r4 = 0.0}
+$
+ POINT     1      {z1} {r1}
+ POINT     2      {z2} {r2}
+ POINT     3      {z3} {r3}
+ POINT     4      {z4} {r4}
+$
+$ {elem1 = 20} {elem2 = 20} {elem3 = 20} {elem4 = 20}
+$
+ LINE      1   STR     1     2     0    {elem1}  1.0000
+ LINE      2   STR     2     3     0    {elem2}  1.0000
+ LINE      3   STR     3     4     0    {elem3}  1.0000
+ LINE      4   STR     4     1     0    {elem4}  1.0000
+$
+ REGION     1     1    -1    -2    -3    -4
+$
+ SCHEME    1 Mye
+ SCHEME    0 M
+$
+ BODY       1
+$
+ NODEBC     1     1
+ NODEBC     2     2
+ NODEBC     3     3
+ NODEBC     4     4
+ POINBC     9     1
+ ELEMBC     1     1
+ ELEMBC     2     2
+ ELEMBC     3     3
+ ELEMBC     4     4
+ EXIT
+

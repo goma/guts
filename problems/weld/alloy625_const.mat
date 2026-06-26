@@ -1,0 +1,85 @@
+Material Data File for KEYHOLE WELDING
+{ECHO(OFF)}
+{include(keyhole_model)}
+
+/**********Form of each property card *********/
+PROPERTY   = MODEL   FLOAT#1 FLOAT#2 .....FLOAT#5
+
+/**********Form of each Constitutive card *********/
+MECHANICS_TYPE   = MODEL 
+
+Of the many available options, MODEL can be USER
+/************************************************/
+
+
+---Physical Properties
+Density				= CONSTANT     {rho_metal}
+Second Level Set Density 	= CONSTANT {rho_air=(0.5/7900.0)*rho_metal} POSITIVE
+
+---Mechanical Properties and Constitutive Equations
+Solid Constitutive Equation 	= HOOKEAN_PSTRAIN
+Convective Lagrangian Velocity	= NONE
+Lame MU 			= CONSTANT 	1.
+Lame LAMBDA 			= CONSTANT 	1.
+Stress Free Solvent Vol Frac	= CONSTANT	0.
+Liquid Constitutive Equation 	= NEWTONIAN
+#Viscosity			= USER      {visc_mu_c0} {visc_mu_c1} {visc_mu_c2} {visc_mu_c3} {1.0e11} {T_90_fsolid} {max_T=4.0}
+Viscosity                       = CONSTANT {visc_mu_c0}
+Second Level Set Viscosity 	= CONSTANT {0.003*visc_mu_c0} POSITIVE
+Low Rate Viscosity		= CONSTANT	0.
+Power Law Exponent		= CONSTANT	0.
+High Rate Viscosity		= CONSTANT	0.
+Time Constant			= CONSTANT	0.
+Aexp 				= CONSTANT	0.
+Polymer Constitutive Equation	= NOPOLYMER
+#Surface Tension                 = USER  {sigma} {sigma_refT} {dsigma_dT}
+Surface Tension                 = CONSTANT  {sigma}
+
+---Thermal Properties
+#Conductivity			= USER	{t_cond} {dcond_dT} {t_cond_refT}
+Conductivity			= CONSTANT {t_cond}
+Second Level Set Conductivity 	= CONSTANT {0.05*t_cond} POSITIVE
+#Heat Capacity			= USER	{sp_heat} {dsp_heat_dT} {sp_heat_refT} {T_90_fsolid} {T_liquidus} {lat_hfs} 
+Heat Capacity			= CONSTANT {sp_heat}
+Second Level Set Heat Capacity 	= CONSTANT {sp_heat} POSITIVE
+Volume Expansion		= CONSTANT	{beta}
+Reference Temperature		= CONSTANT	{T_ref}
+Liquidus Temperature		= CONSTANT	{T_liquidus}
+Solidus Temperature		= CONSTANT	{T_boil}
+
+---Electrical Properties
+Electrical Conductivity = CONSTANT  {sigma}
+
+
+---Microstructure Properties
+Media Type		= CONTINUOUS
+Porosity                = CONSTANT     1.0
+Permeability		= CONSTANT     1.0
+
+---Brinkman-equation parameters
+Brinkman Porosity        =  CONSTANT     1.0
+Brinkman Permeability    =  CONSTANT     1.0
+FlowingLiquid Viscosity  =  CONSTANT     1.0
+Inertia Coefficient      =  CONSTANT     0.0
+
+---Species Properties
+Diffusion Constitutive Equation = FICKIAN
+Diffusivity  			= CONSTANT  0   1.e-3
+Latent Heat Vaporization	= CONSTANT  0	{lat_hfg}
+Latent Heat Fusion		= CONSTANT  0	{lat_hfs}
+Vapor Pressure  		= CONSTANT  0   1.1
+Species Volume Expansion        = CONSTANT  0   0.
+Reference Concentration         = CONSTANT  0   0.
+				             
+********Species Number**********************|
+
+----Source Terms
+Navier-Stokes Source			= CONSTANT     {-rho_metal*gravity}  0. 0.
+Second Level Set Momentum Source	= CONSTANT     {-rho_air*gravity}  0.  0.  POSITIVE
+Solid Body Source		= CONSTANT	0.  0.  0.
+Mass Source			= CONSTANT	0.
+Heat Source			= CONSTANT      0.
+Species Source			= CONSTANT  0   2.
+Current Source			= CONSTANT  0
+
+

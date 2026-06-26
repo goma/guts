@@ -1,0 +1,48 @@
+Time/iteration = 1.000000e+00 
+ SHELL_VOLUME_FLUX  Side_Set  2 Block  2 Species 0
+ flux=  0.197905 0  area= 5.715  
+
+Time/iteration = 9.302326e-01 
+ SHELL_VOLUME_FLUX  Side_Set  2 Block  2 Species 0
+ flux=  0.188289 0  area= 5.715  
+
+Time/iteration = 8.632343e-01 
+ SHELL_VOLUME_FLUX  Side_Set  2 Block  2 Species 0
+ flux=  0.180332 0  area= 5.715  
+
+Time/iteration = 8.010614e-01 
+ SHELL_VOLUME_FLUX  Side_Set  2 Block  2 Species 0
+ flux=  0.173566 0  area= 5.715  
+
+Time/iteration = 7.351813e-01 
+ SHELL_VOLUME_FLUX  Side_Set  2 Block  2 Species 0
+ flux=  0.166516 0  area= 5.715  
+
+Time/iteration = 6.747192e-01 
+ SHELL_VOLUME_FLUX  Side_Set  2 Block  2 Species 0
+ flux=  0.159742 0  area= 5.715  
+
+Time/iteration = 5.520012e-01 
+ SHELL_VOLUME_FLUX  Side_Set  2 Block  2 Species 0
+ flux=  0.143417 0  area= 5.715  
+
+Time/iteration = 4.718650e-01 
+ SHELL_VOLUME_FLUX  Side_Set  2 Block  2 Species 0
+ flux=  0.130247 0  area= 5.715  
+
+Time/iteration = 4.130729e-01 
+ SHELL_VOLUME_FLUX  Side_Set  2 Block  2 Species 0
+ flux=  0.120921 0  area= 5.715  
+
+Time/iteration = 3.537999e-01 
+ SHELL_VOLUME_FLUX  Side_Set  2 Block  2 Species 0
+ flux=  0.117051 0  area= 5.715  
+
+Time/iteration = 3.030322e-01 
+ SHELL_VOLUME_FLUX  Side_Set  2 Block  2 Species 0
+ flux=  0.131443 0  area= 5.715  
+
+Time/iteration = 2.500000e-01 
+ SHELL_VOLUME_FLUX  Side_Set  2 Block  2 Species 0
+ flux=  0.247728 0  area= 5.715  
+

@@ -1,0 +1,85 @@
+Material Data File for the Corrosion Product (Copper Sulfide) Layer 
+
+/**********Form of each property card *********/
+PROPERTY   = MODEL   FLOAT#1 FLOAT#2 .....FLOAT#5
+
+/**********Form of each Constitutive card *********/
+MECHANICS_TYPE   = MODEL 
+
+Of the many available options, MODEL can be USER
+/************************************************/
+# Water properties at 298 K in cgs
+
+---Physical Properties
+Density			= CONSTANT 	1.
+
+---Mechanical Properties and Constitutive Equations
+Solid Constitutive Equation 	= NONLINEAR	
+#Solid Constitutive Equation 	= HOOKEAN_PSTRAIN	
+Lame MU 			= CONSTANT 	1.
+Lame LAMBDA 			= CONSTANT 	1.
+Stress Free Solvent Vol Frac	= CONSTANT	0.
+Liquid Constitutive Equation 	= NEWTONIAN
+Viscosity			= CONSTANT      0.01 
+Low Rate Viscosity		= CONSTANT	0.
+Power Law Exponent		= CONSTANT	0.
+High Rate Viscosity		= CONSTANT	0.
+Time Constant			= CONSTANT	0.
+Aexp 				= CONSTANT	0.
+#
+# HKM -> usually this is best left to the input deck to specify
+#       The number here is correct for cgs units
+# Surface Tension                 = constant      72.88
+
+---Thermal Properties
+Conductivity		= CONSTANT	1.
+Heat Capacity		= CONSTANT	1.
+Volume Expansion	= CONSTANT	1.
+Reference Temperature	= CONSTANT	0.
+Liquidus Temperature	= CONSTANT	1.
+Solidus Temperature	= CONSTANT	1.
+ 
+---Electrical Properties
+Electrical Conductivity = CONSTANT       .0943
+
+---Microstructure Properties
+Media Type          = CONTINUOUS
+Permeability		= CONSTANT	1.
+---Brinkman-equation parameters
+Brinkman Porosity         = CONSTANT    0.9
+Brinkman Permeability     = CONSTANT    1.0e-04
+FlowingLiquid Viscosity   = CONSTANT    1.0
+Inertia Coefficient       = CONSTANT    0.0
+
+
+
+---Species Properties
+Diffusion Constitutive Equation = FICKIAN
+Diffusivity  			= CONSTANT  0   1.0
+Latent Heat Vaporization	= CONSTANT  0	0.
+Latent Heat Fusion		= CONSTANT  0	0.
+Vapor Pressure  		= CONSTANT  0	1.0133e5
+Species Volume Expansion	= CONSTANT  0   1.
+Reference Concentration         = CONSTANT  0   0.
+Molecular Weight                = CONSTANT  0   28.
+
+Diffusivity  			= CONSTANT  1   1.
+Latent Heat Vaporization	= CONSTANT  1	0.
+Latent Heat Fusion		= CONSTANT  1	0.
+#Vapor Pressure  		= CONSTANT  1	1.e4
+Vapor Pressure  		= CONSTANT  1	0.0
+Species Volume Expansion	= CONSTANT  1   1.
+Reference Concentration         = CONSTANT  1   0.
+Molecular Weight                = CONSTANT  1   28.
+
+----Source Terms
+# gravity is in the negative y direction
+Navier-Stokes Source		= CONSTANT	0.  -980.  0.
+Solid Body Source		= CONSTANT	0.  0.  0.
+Mass Source			= CONSTANT	0.
+Heat Source			= CONSTANT	0.
+Species Source			= CONSTANT  0   0.
+Species Source			= CONSTANT  1   0.
+Current Source                  = CONSTANT      0.
+# Initialize = MASS_FRACTION 0 1.0
+

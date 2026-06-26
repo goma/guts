@@ -1,0 +1,119 @@
+ FEM File Specifications
+ ---
+
+FEM file                         = cube.exoII
+Output EXODUS II file            = out_pspg.exoII
+GUESS file                       = contin.dat
+SOLN file                        = soln.dat
+Write intermediate results       = no
+ ---
+General Specifications
+ ---
+Number of processors             = 1
+Output Level                     = 1
+Debug                            = 0
+Initial Guess                    = zero
+ --- 
+Time Integration Specifications
+ ---
+Time integration                 = steady
+ ---
+Solver Specifications
+ ---
+Solution Algorithm               = gmres
+Preconditioner                   = dom_decomp
+Matrix subdomain solver          = ilut
+Polynomial                       = 1
+Size of Krylov subspace          = 150
+Orthogonalization                = modified
+Maximum Linear Solve Iterations  = 150
+Number of Newton Iterations      = 10
+Newton correction factor         = 1.
+Normalized Residual Tolerance    = 1.0e-7
+Residual Ratio Tolerance         = 1.0e-4
+#Pressure Stabilization           = no
+#Pressure Stabilization Scaling   = .0
+Pressure Stabilization           = yes
+Pressure Stabilization Scaling   = .1
+ ---
+Boundary Condition Specifications
+ ---
+Number of BC			 =   -1
+
+#inflow
+BC = V NS 40 0.
+BC = W NS 40 0.
+BC = FLOW_PRESSURE SS 4 48.0
+#BC = PX SS 5 48.0
+
+#BC = PSPG SS 4
+#BC = PSPG SS 6
+
+#side wall (no slip)
+
+BC = V NS 50 0.
+#BC = W NS 50 0.
+
+BC = V NS 30 0.
+#BC = V NS 6 0.
+#BC = W NS 6 0.
+
+#outflow
+BC = V NS 60 0.
+BC = W NS 60 0.
+
+#fixed plate
+BC = U NS 10 0.
+BC = V NS 10 0.
+BC = W NS 10 0.
+
+#moving plate 
+BC = U NS 20 0.
+BC = V NS 20 0.
+BC = W NS 20 0.
+
+#########
+END OF BC
+##########
+
+----
+Problem Description
+---
+ 
+Number of Materials = 1
+ 
+ MAT =   newt    10
+ 	Coordinate System	= CARTESIAN
+	Element Mapping		= isoparametric
+	Mesh Motion		= ARBITRARY
+	Number of bulk species	= 0
+	Number of EQ		= 4
+	EQ = momentum1   Q2 U1 Q2   0 1 1 1 0 0 
+	EQ = momentum2   Q2 U2 Q2   0 1 1 1 0 0 
+	EQ = momentum3   Q2 U3 Q2   0 1 1 1 0 0 
+	EQ = continuity  Q1 P  Q1 1         0
+
+
+				  - - - - - - -
+                                  d m a b d s p
+				  i a d n i r o
+				  v s v d f c r
+
+Post Processing Specifications
+
+Stream Function = no
+Streamwise normal stress = no
+Pressure contours = no
+Second Invarient of Strain = no
+Mesh Dilatation = no
+Navier Stokes Residuals = no
+Moving Mesh Residuals = no
+Mass Diffusion Vectors = no
+Mass Fluxlines = no
+Energy Conduction Vectors = no
+Energy Fluxlines = no
+Time Derivatives = no
+Mesh Stress Tensor = no
+Mesh Strain Tensor = no
+
+

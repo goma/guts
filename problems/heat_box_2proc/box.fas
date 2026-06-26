@@ -1,0 +1,37 @@
+$ box.fas
+$ {include("Defs")}
+$ {ECHO(OFF)}{ _FORMAT="%g"}{ECHO(ON)}
+$
+ title
+   Steady Heat Conduction in a Box
+$
+ point {P_sw=pc++}	{ x_sw }	{ y_sw }		$ southwest
+ point {P_se=pc++}	{ x_se }	{ y_se }		$ southeast
+ point {P_ne=pc++}	{ x_ne }	{ y_ne }		$ northeast
+ point {P_nw=pc++}	{ x_nw }	{ y_nw }		$ northwest
+$
+ line {L_s=lc++} str  {P_sw} {P_se} 0     {ne_ew} {gr_ew}	$ south
+ line {L_e=lc++} str  {P_se} {P_ne} 0     {ne_sn} {gr_sn}	$ east
+ line {L_n=lc++} str  {P_ne} {P_nw} 0     {ne_ew} {1/gr_ew}	$ north
+ line {L_w=lc++} str  {P_nw} {P_sw} 0     {ne_sn} {1/gr_sn}	$ west
+$
+ region {R_box=rc++} {mat} -{L_s} -{L_e} -{L_n} -{L_w}
+ scheme 0 m
+ body {R_box}
+$
+ elembc {s_ss}		{L_s}
+ elembc {e_ss}		{L_e}
+ elembc {n_ss}		{L_n}
+ elembc {w_ss}		{L_w}
+$
+ nodebc {s_ns}		{L_s}
+ nodebc {e_ns}		{L_e}
+ nodebc {n_ns}		{L_n}
+ nodebc {w_ns}		{L_w}
+$
+ poinbc {sw_ns}		{P_sw}
+ poinbc {se_ns}		{P_se}
+ poinbc {ne_ns}		{P_ne}
+ poinbc {nw_ns}		{P_nw}
+$
+ exit

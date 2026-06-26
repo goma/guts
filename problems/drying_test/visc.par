@@ -1,0 +1,17 @@
+$material {matl= "matte_soln"}
+$eta0 {eta0= 0.02}
+$power_law_index {pl_index= 1.0}
+$lambda {lambda= 1.0}
+$exponent {aexp= 2.0}
+$etainf {etainf= 0}
+$yield_stress  {yld_strs= 0}
+$F_factor  {F_factor= 10}
+$temp_C1  {C1= 0.0}
+$temp_C2  {C2= 298.0}
+$reference_temp  {tref= 298}
+$conc_exponent  {conc_exp= 4.0}
+$reference_conc  {conc_ref= 0.30}
+$liquid_density  {density_cgs= 1}
+$units for viscosity are  poise
+$end of viscosity parameters
+

@@ -1,0 +1,24 @@
+## /usr/local/cubit/claro.10.2/bin/clarox
+## Cubit Version 10.2
+## Cubit Build 25
+## Revised 01/29/2007 09:34:07 MST
+## Running 02/26/2007 03:00:35 PM
+## Command Options:
+## -warning = On
+## -information = On
+brick x 1.27 y 0.3175 z 1
+volume 1 move 0.635 0.015875 -0.5
+surface 1 size 0.03
+surface 1 scheme map
+mesh surface 1
+block 1 surface 1
+block 1 element type QUAD9
+nodeset 10 curve 2
+sideset 10 curve 2
+nodeset 20 curve 4
+sideset 20 curve 4
+nodeset 30 curve 3
+sideset 30 curve 3
+nodeset 40 curve 1
+sideset 40 curve 1
+export genesis "microfill.exoII"

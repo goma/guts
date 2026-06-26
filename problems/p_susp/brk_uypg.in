@@ -1,0 +1,31 @@
+# brk -- susp input file
+#
+# Simple suspension species swirling flow in a cylindrical geometry
+#  --one material block-
+
+ 1        # element block ID
+ 4        # number of basic eqnvar
+ 0 3 1 1  # momentum equation
+ 4 1 1 1  # species_bulk
+ 9 1 1 1  # pressure
+30 1 1 1  # shear rate
+ 
+#
+# eqnvar interaction specification
+#
+#    U     c     P    Sh
+     1     1     1     0  #   momentum equation
+     1     1     0     1  #    species equation
+     1     0     1     0  # continuity equation
+     1     0     0     1  # shear rate equation
+ 
+ 9   # number of nodes per element
+ 0 4 9 30
+ 0 4 9 30
+ 0 4 9 30
+ 0 4 9 30
+ 0   
+ 0  
+ 0  
+ 0  
+ 0  

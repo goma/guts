@@ -1,0 +1,50 @@
+WARNING: Defaulting on Time step error norm indicators
+ (/opt/workdir/goma/src/mm_input.c:1612)
+WARNING: Defaulting Free Volume Solvent to TRUE (/opt/workdir/goma/src/mm_input_mp.c:7784)
+Free Volume Solvent 0 = 1
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 2 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 11 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 17 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 23 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 29 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 35 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 41 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 47 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 53 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 59 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 65 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 6 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 14 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 20 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 26 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 32 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 38 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 44 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 50 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 56 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 62 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 5 with zero unknowns has an applied bc
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 67 with zero unknowns has an applied bc

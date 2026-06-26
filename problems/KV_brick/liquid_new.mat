@@ -1,0 +1,122 @@
+${include("params")}
+${include(matfile)}
+${ECHO(OFF)}
+
+$$   Model Selection
+
+{is_dCONST=(Density_model == "CONSTANT" ? 1 :0)}
+
+{is_mCONST=(Modulus_model == "CONSTANT" ? 1 :0)}
+{is_mNONL=(Modulus_model == "NONLINEAR" ? 1 :0)}
+{is_mNEOH=(Modulus_model == "NEO-HOOKEAN" ? 1 :0)}
+
+{is_vNEWT=(Viscosity_model == "NEWTONIAN" ? 1 :0)}
+{is_vPL=(Viscosity_model == "POWER_LAW" ? 1 :0)}
+{is_vCARR=(Viscosity_model == "CARREAU" ? 1 :0)}
+{is_vBING=(Viscosity_model == "BINGHAM" ? 1 :0)}
+{is_vCWLF=(Viscosity_model == "CARREAU_WLF" ? 1 :0)}
+{is_vBINGWLF=(Viscosity_model == "BINGHAM_WLF" ? 1 :0)}
+
+{is_stCONST=(Surface_Tension_model == "CONSTANT" ? 1 :0)}
+{is_stUSER=(Surface_Tension_model == "USER" ? 1 :0)}
+
+{is_hcCONST=(Heat_Capacity_model == "CONSTANT" ? 1 :0)}
+{is_hcTHERMAL=(Heat_Capacity_model == "THERMAL" ? 1 :0)}
+
+{is_tcCONST=(Thermal_Conductivity_model == "CONSTANT" ? 1 :0)}
+{is_tcTHERMAL=(Thermal_Conductivity_model == "THERMAL" ? 1 :0)}
+
+{ifndef(v_ref_temp)}
+Default Reference Temperature  {reference_temp=25}
+        {endif}
+
+{ECHO(ON)}
+/**********Form of each property card *********/
+PROPERTY   = MODEL   FLOAT#1 FLOAT#2 .....FLOAT#5
+
+/**********Form of each Constitutive card *********/
+MECHANICS_TYPE   = MODEL 
+
+Of the many available options, MODEL can be USER
+/************************************************/
+
+
+---Physical Properties
+{ifdef(is_dCONST)}
+Density			= CONSTANT 	{d_value}
+#Density			= THERMEXP 	{0.000001120329}  {0.00074}
+{endif}
+
+---Mechanical Properties and Constitutive Equations
+Solid Constitutive Equation 	= KELVIN_VOIGT
+$$Solid Constitutive Equation 	= NONLINEAR
+Convective Lagrangian Velocity  = NONE
+Lame MU 			= CONSTANT      {m_value/2/(1+m_poisson)}
+Lame LAMBDA 			= POISSON_RATIO      {m_poisson}
+Lame Temperature Shift          = CONSTANT      1.0
+Solid Viscosity			= CONSTANT	{solid_visc}
+Solid Dilational Viscosity	= CONSTANT	{0.0*solid_visc}
+Stress Free Solvent Vol Frac	= CONSTANT	0.
+Solid Thermal Expansion		= CONSTANT	{solid_therm_exp}
+#Solid Thermal Expansion		= THERMAL	{solid_therm_exp} {-0.00077*solid_therm_exp} 0. 0. {v_ref_temp}
+Solid Reference Temperature	= CONSTANT	{v_ref_temp}
+
+Liquid Constitutive Equation 	= NEWTONIAN
+Viscosity		= CONSTANT	{v_eta0}
+Low Rate Viscosity		= CONSTANT	{v_eta0}
+Power Law Exponent		= CONSTANT	{v_power_law}
+Low Rate Viscosity		= CONSTANT	{v_eta0}
+Power Law Exponent		= CONSTANT	{v_power_law}
+High Rate Viscosity		= CONSTANT	{v_etainf}
+Time Constant			= CONSTANT	{v_lambda}
+Aexp				= CONSTANT	{v_exponent}
+Thermal Exponent		= CONSTANT      {v_temp_C1}
+$$Momentum Weight Function 	= SUPG 1.0
+Thixotropic Factor		= CONSTANT      {thixo_factor}
+Surface Tension			= CONSTANT	{st_value}
+Polymer Constitutive Equation   = NOPOLYMER
+
+---Thermal Properties
+
+Conductivity            = CONSTANT      {tc_value}
+Heat Capacity           = CONSTANT      {hc_value}
+Volume Expansion	= CONSTANT	1.
+Reference Temperature   = CONSTANT      {v_ref_temp}
+Liquidus Temperature	= CONSTANT	1.
+Solidus Temperature	= CONSTANT	1.
+Energy Weight Function  = GALERKIN          0.0
+$$Residence Time Weight Function  = CONSTANT          0.  0.0001  0.0
+
+---Electrical Properties
+Electrical Conductivity	= CONSTANT	1
+
+---Microstructure Properties
+Media Type              = CONTINUOUS
+Permeability		= CONSTANT	1.
+
+---Brinkman-equation parameters
+Brinkman Porosity         = CONSTANT    0.9
+Brinkman Permeability     = CONSTANT    1.0e-04
+FlowingLiquid Viscosity   = CONSTANT    1.0
+Inertia Coefficient       = CONSTANT    0.0
+
+---Species Properties
+Diffusion Constitutive Equation = FICKIAN
+Diffusivity  			= CONSTANT  0   1.
+Species Time Integration 	= TAYLOR_GALERKIN_EXP 0
+Latent Heat Vaporization	= CONSTANT  0	0.
+Latent Heat Fusion		= CONSTANT  0	0.
+Vapor Pressure  		= CONSTANT  0	0.
+Species Volume Expansion	= CONSTANT  0	0.
+Reference Concentration         = CONSTANT  0   0.
+				            ^
+********Species Number**********************|
+
+----Source Terms
+Navier-Stokes Source		= CONSTANT	0.   {-d_value*ga}  {0.0} 
+Solid Body Source		= CONSTANT	0.   {-d_value*ga}  {0.0}
+Mass Source			= CONSTANT	0.
+$$Heat Source                     = VISC_DISS     {diss_pre}
+Heat Source			= CONSTANT	0.
+Species Source			= CONSTANT  0   0.
+Current Source			= CONSTANT      0.

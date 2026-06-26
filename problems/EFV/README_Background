@@ -1,0 +1,22 @@
+Subroutine rd_trans_vectors_from_exoII
+
+Subroutine is called from the time step loop to load up the external field variables according to the current time step in the solver.
+
+1. Opens exoII file listed on read external line from input deck
+
+2. Interrogates the exoII file to find the total number of time planes present in file.
+
+3. Select appropriate time plane to read from
+	a.  Set initial time plane in file as the minimum time plane to read
+	b.  Loop through the time planes present in the external file until the time value desired is past.  This sets the previous time plane as the lower value and the next time plane as the upper value.
+	c. Calculate which of those two time planes is closest to the Goma solver time.
+	d. Set that time plane number as the time plane to read.
+
+4.  Skip over my commented out debugging info file section.
+
+5.  Read in the external values from the designated time plane.  This section of code is the same as in the previous set only the final time plane section.
+	a. Reads variable names
+	b. Allocates memory
+	c. reads the nodal variables from the exo file
+
+6. Closes the exo file.

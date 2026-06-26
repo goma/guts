@@ -1,0 +1,48 @@
+3D Simple Braze Problem: GOMA Version Information
+=================================================
+
+Directory:   .../VandV/problems/v2.2/simple_braze1
+
+Sept 8, 99 baseline #1
+**********************
+     goma_Aug3099 executable
+     output files:
+        base1.sout
+        base1.serr
+        base1_out.exoII
+
+     initial residuals - 1.3e-03 1.2e-01 9.8e-03 
+     initial updates  - 1.3e+05 1.1e+07 9.1e+05 
+
+Scaling issues with the gmres iterative solver using row_sum scaling
+in the preconditioner led to poor behavior of this problem, including
+Deformation Gradient failures when DIRICHLET_PENALTY was adjusted
+upward. DIRICHLET_PENALTY was reset to 1. and a new baseline established.
+
+Aug 10, 00 baseline #2
+**********************
+     goma_Aug1000 executable
+     restart file: restart.exoII (11/12/98 simulation goma_simple_input.solid)
+     output files:
+        base2.sout
+        base2.serr
+        base2_out.exoII
+
+     initial residuals - 7.5e-04 6.9e-02 5.0e-03
+     initial updates  - 1.2e+04 1.4e+06 1.1e+05
+
+
+Re-baseline problem; update T12 and T13 values in exodusII file to eliminate
+small differences (couple percent) in exodiff.
+
+Dec 4, 03 baseline #3
+*********************
+     goma_Dec0403 executable
+     restart file: restart.exoII (11/12/98 simulation goma_simple_input.solid)
+     output files:
+        blessed.sout
+        blessed.serr
+        out_blessed.exoII
+
+     initial residuals - 1.4e-03 1.3e-01 1.0e-02
+     initial updates  - 1.9e+05 1.2e+07 1.1e+06

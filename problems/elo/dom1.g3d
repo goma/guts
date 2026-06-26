@@ -1,0 +1,9 @@
+$
+$ {include(Defs)}
+$
+TRANSLATE {nz}   {H_elo}   {gf}
+OFFSET    0.0     0.0      {H_elo}
+SSETS  FRONT 201
+SSETS  BACK  301
+SHOW SSETS
+EXIT

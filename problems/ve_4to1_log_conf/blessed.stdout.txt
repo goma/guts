@@ -1,0 +1,56 @@
+v7.11.0-1-g709cfe59
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2026 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+
+
+######################### __PRINT_SYNC_END__ #########################
+
+Number of unknowns            = 3834
+
+Number of matrix nonzeroes    = 330740
+
+Initial guess read from "ve.exoII" ...(last soln in file)
+Nodal variable VX found in exoII database - reading.
+Nodal variable VY found in exoII database - reading.
+Nodal variable P found in exoII database - reading.
+Nodal variable S11 found in exoII database - reading.
+Nodal variable S12 found in exoII database - reading.
+Nodal variable S22 found in exoII database - reading.
+Nodal variable G11 found in exoII database - reading.
+Nodal variable G12 found in exoII database - reading.
+Nodal variable G21 found in exoII database - reading.
+Nodal variable G22 found in exoII database - reading.
+		 Values read time plane at time = 0
+
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:36 [0] 1.2e-02 3.0e-01 3.6e-02 1.2e+00 1.1e+01 1.4e+00  1  9.9e-01/1.5e-01 
+17:10:37 [1] 9.8e-05 1.6e-03 2.6e-04 7.9e-03 1.3e-01 1.6e-02  1  1.5e+00/2.4e-01 
+17:10:39 [2] 7.8e-09 1.0e-07 1.8e-08 5.0e-07 6.2e-06 7.9e-07  1  2.1e+00/2.4e-01 
+17:10:41 [3] 2.4e-15 3.3e-13 1.2e-14                         skp 1.1e+00/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.172e+02  1.265e+01  4.745e+01 
+
+-done
+
+
+Proc 0 runtime:       0.11 Minutes.
+

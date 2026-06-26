@@ -1,0 +1,4 @@
+WARNING: Use CAP_ENDFORCE for consistent sign convention (/opt/workdir/goma/src/mm_input_bc.c:916)
+  REMOVING BC VELO_TANGENT at SS 66/100 because of KINEMATIC 
+  REMOVING BC VELO_TANGENT at SS 6/100 because of KINEMATIC 
+		converged SS!

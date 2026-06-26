@@ -1,0 +1,62 @@
+Copyright (c) 2002  Sandia Corporation.
+
+Under the terms of Contract DE-AC04-94AL85000, there is a non-exclusive
+license for use of this work by or on behalf of the U.S. Government. Export
+of this program may require a license from the United States Government.
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN ...
+
+WARNING:  mm_input.c:6603: Defaulting: Number of viscoelastic modes = 0
+WARNING:  mm_input_mp.c:931: Defaulting Solid Thermal Expansion to CONSTANT
+WARNING:  mm_input_mp.c:939: Defaulting Solid Reference Temperature to CONSTANT
+WARNING:  mm_input_mp.c:1942: Defaulting Surface Tension to CONSTANT (1)
+WARNING:  mm_input_mp.c:2168: Defaulting: Energy Weight Function = GALERKIN
+WARNING:  mm_input_mp.c:2219: Defaulting on Electrical Permittivity
+WARNING:  mm_input_mp.c:2232: Defaulting on Electrical Surface Diffusivity
+
+Unused side sets: 99
+
+Unused node sets: 50 60 70 99 30034 40072 40060 40056 40055 40034 40004 50044 50032 50020 50012 50005 50004
+
+Found 2 different element shapes.
+
+Boundary Condition Duplication List
+-------- --------- ----------- ----
+Divert BC dup list to file "BCdup.txt"...
+Don't rotate MOMENTUM at node 2 because too many rotations
+Don't rotate MOMENTUM at node 3 because too many rotations
+Don't rotate MOMENTUM at node 4 because too many rotations
+Don't rotate MOMENTUM at node 5 because too many rotations
+Don't rotate MOMENTUM at node 6 because too many rotations
+Don't rotate MESH at node 7 because too many rotations
+Don't rotate MESH at node 17 because too many rotations
+Don't rotate MOMENTUM at node 27 because too many rotations
+Don't rotate MOMENTUM at node 37 because too many rotations
+Don't rotate MOMENTUM at node 38 because too many rotations
+Don't rotate MOMENTUM at node 39 because too many rotations
+Don't rotate MOMENTUM at node 40 because too many rotations
+Rotate MESH for BC's at 28 NODES 
+Rotate MOMENTUM for BC's at 9 NODES 
+
+Number of unknowns            = 667
+
+Number of matrix nonzeroes    = 25331
+
+
+               R e s i d u a l         C o r r e c t i o n
+
+  ToD    itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)
+-------- --- ------- ------- ------- ------- ------- ------- --- ---------------
+11:29:55 [0] 2.6e-01 2.3e+00 6.9e-01 2.4e+03 2.6e+04 6.5e+03  1  1.7e-01/3.0e-02
+L_oo cause: R->(634 TENS n=123 (x=14.9 y=0))  DelX->(666 TENS n=131 (x=8.55 y=0))
+11:29:55 [1] 5.9e-05 3.3e-04 1.0e-04 1.2e+00 1.8e+01 4.0e+00  1  1.7e-01/3.0e-02
+L_oo cause: R->(143 VY n=27 (x=0 y=0))  DelX->(41 TENS n=6 (x=5.55 y=0))
+11:29:55 [2] 4.1e-07 2.4e-06 7.2e-07 4.0e-04 4.9e-03 1.2e-03  1  1.8e-01/2.0e-02
+L_oo cause: R->(143 VY n=27 (x=0 y=0))  DelX->(148 TENS n=27 (x=0 y=0))
+11:29:56 [3] 3.3e-12 4.0e-11 7.5e-12 6.8e-09 1.3e-07 2.3e-08  1  1.7e-01/3.0e-02
+L_oo cause: R->(146 P n=27 (x=0 y=0))  DelX->(221 TENS n=40 (x=1 y=0))
+scaled solution norms   1.218760e+04  3.878591e+02  1.982903e+03 
+
+Proc 0 runtime:       0.04 Minutes.
+

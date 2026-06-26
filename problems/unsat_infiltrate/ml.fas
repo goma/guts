@@ -1,0 +1,23 @@
+ TITLE 
+ One dimensional stack of 4-node elements 
+
+ POINT     1      0.0      		0.0
+ POINT     2      0.0           	100.
+ POINT     3      1000.0     	        100. 
+ POINT     4      1000.0     		0.0    
+ LINE      1   STR     1     2     0    1        	1.0
+ LINE      2   STR     3     2     0    60.		0.98
+ LINE      3   STR     3     4     0	1		1.0	
+ LINE      4   STR     4     1     0    60.		0.98
+ REGION     1     1   -1   -2   -3   -4 
+ SCHEME    0 M
+ BODY       1     
+ NODEBC     1     1
+ NODEBC     2     2  
+ NODEBC     3     3
+ NODEBC     4     4
+ ELEMBC     1     1
+ ELEMBC     2     2 
+ ELEMBC     3     3
+ ELEMBC     4     4
+ EXIT  

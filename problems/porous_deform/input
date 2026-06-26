@@ -1,0 +1,188 @@
+{include(defs_common)}
+
+
+FEM Problem Specifications
+--- ------- --------------
+FEM file                         = rewet1.exoII
+#FEM file                         = contin.exoII
+Output EXODUS II file            = out1.exoII
+GUESS file                       = contin.dat
+SOLN file                        = no
+Write intermediate results       = no
+Anneal Mesh on Output            = no
+
+ ---
+General Specifications
+ ---
+Number of processors             = 2
+Output Level                     = 0
+Debug                            = 0
+Initial Guess                    = read_exoII_file contin.exoII
+#Initial Guess                    = zero
+#Initial Guess                    = read_exoII
+#Initialize = VELOCITY1 0 -0.8
+#Initialize = POR_POROSITY 0 {0.93}
+#Initialize = POR_LIQ_PRES 0 {-pcmax}
+#Initialize = MESH_DISPLACEMENT1 0 0.0
+#Initialize = MESH_DISPLACEMENT2 0 0.0
+
+
+---
+Time Integration Specifications
+---- ----------- --------------
+##Time integration                 = steady
+Time integration                 = transient
+delta_t                          = {1e-5}
+#delta_t                          = {dt_max/5000.0}
+#delta_t                          = -0.0003
+Initial Time                     = {0.0*S}
+Maximum number of time steps     = 15
+Maximum time                     = {4.0*S}
+Minimum time step                = {dt_min/1000.0} 
+Maximum time step                = {50.0*dt_max}
+Minimum Resolved Time Step       = {dt_min/1000.0}
+Time step parameter              = 0.0
+Time step error  		 = -5.e-2  0   1   1   1   0   1 0
+Printing Frequency               = 5
+Fill Weight Function	         = Explicit
+Courant Number Limit             = 0.25
+
+
+---
+Solver Specifications
+------ --------------
+#Solution Algorithm               = gmres
+Solution Algorithm               = mumps
+Amesos Solver Package            = superlu
+Preconditioner                  = dom_decomp
+Matrix subdomain solver          = ilut
+Matrix reorder                   = rcm
+Matrix Scaling                   = row_sum
+Matrix ILUT fill factor          = 5.0
+Matrix Relative Threshold        = 1.0
+Matrix Absolute Threshold        = 1.e-5
+Matrix drop tolerance            = 1.e-6
+#Matrix Scaling                   = sym_diag
+Matrix residual norm type        = r0
+$Matrix output type               = 10
+#Matrix factorization overlap     = diag
+#Matrix factorization reuse       = calc
+Size of Krylov subspace          = 250
+Orthogonalization                = modified
+Maximum Linear Solve Iterations  = 250
+
+Number of Newton Iterations      = 9
+Newton correction factor         = 1.0
+Normalized Residual Tolerance    = 1.e-9
+#Residual Ratio Tolerance         = 1e-6
+Normalized Correction Tolerance  = 1.e-2
+Pressure Stabilization           = no
+Pressure Stabilization Scaling   = 0.001
+
+Boundary Condition Specifications
+-------- --------- --------------
+Number of BC                     = -1
+######################################
+## Level Set BC's
+
+#BC = POROUS_LIQ_FLUX_CONST SS 50 {MF}  
+
+BC = DY NS 10 0.0
+BC = DY NS 20 0.0
+ 
+BC = DX NS 400 .0
+#BC = DY NS 400 0.0
+
+#BC = DX NS 100 0.0
+
+END OF BC
+######################################
+
+Problem Description
+---
+Number of Materials = 3
+
+MAT = porous2    1
+
+        Coordinate System = CYLINDRICAL
+        Element Mapping   = isoparametric
+       	Mesh Motion = DYNAMIC_LAGRANGIAN
+        $$$Mesh Motion = LAGRANGIAN
+        Number of bulk species = 0
+
+	Number of EQ			 = 4
+         EQ = porous_unsat Q1 P_LIQ Q1     1.   1.   1.   1.   1.
+         EQ = mesh1       Q1 D1 Q1    1 0 0 1 0 0
+         EQ = mesh2       Q1 D2 Q1    1 0 0 1 0 0
+	 EQ = porous_deform Q1 P_POR Q1  1.   1.   1.   1.   1.	
+
+
+MAT = porous1    2
+
+        Coordinate System = CYLINDRICAL
+        Element Mapping   = isoparametric
+        Mesh Motion = DYNAMIC_LAGRANGIAN
+        $$$Mesh Motion = LAGRANGIAN
+        Number of bulk species = 0
+
+	Number of EQ			 = 4
+         EQ = porous_unsat Q1 P_LIQ Q1     1.   1.   1.   1.   1.
+         EQ = mesh1       Q1 D1 Q1    1 0 0 1 0 0
+         EQ = mesh2       Q1 D2 Q1    1 0 0 1 0 0
+         EQ = porous_deform Q1 P_POR Q1  1.   1.   1.   1.   1.	
+
+
+
+
+MAT = filter_not      3
+ 
+  Coordinate System = CYLINDRICAL
+  Element Mapping   = isoparametric
+  Mesh Motion = DYNAMIC_LAGRANGIAN
+  $$$Mesh Motion = LAGRANGIAN
+  Number of bulk species = 0
+ 
+	Number of EQ			 = 2
+         EQ = mesh1       Q1 D1 Q1    1 0 0 1 0 0
+         EQ = mesh2       Q1 D2 Q1    1 0 0 1 0 0
+         EQ = porous_unsat Q1 P_LIQ Q1     1.   1.   1.   1.   1.
+
+                              	    ms  adv  bnd  dif  src por
+
+
+END OF EQ
+
+
+
+Post Processing Specifications
+---- ---------- --------------
+Stream Function                 = no
+Streamwise normal stress        = no
+Pressure contours               = yes
+Second Invarient of Strain      = no
+Mesh Dilatation                 = no
+Navier Stokes Residuals         = no
+Moving Mesh Residuals           = no
+Mass Diffusion Vectors          = no
+Mass Fluxlines                  = no
+Energy Conduction Vectors       = no
+Energy Fluxlines                = no
+Time Derivatives                = yes
+Viscosity = yes
+Mesh Stress Tensor              = no
+Porous Saturation = yes
+Bulk density of species in porous media = yes
+Gas concentration of species in porous media = no
+Liquid phase convection vectors in porous media = no
+Porosity in deformable porous media = no
+Capillary pressure in porous media = yes
+Liquid phase Darcy Velocity in porous media = yes
+Local liquid accumulation rate in porous media = yes
+
+
+Post Processing Volumetric Integration =
+
+VOLUME_INT = POROUS_LIQ_INVENTORY  1 0 block1.dat 
+VOLUME_INT = POROUS_LIQ_INVENTORY  2 0 block2.dat
+
+END OF VOLUME_INT

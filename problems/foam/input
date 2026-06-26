@@ -1,0 +1,187 @@
+
+{include("microfill.def")}
+
+FEM File Specifications
+-- ---- --------------
+FEM file                         = microfill.exoII
+#FEM file                         = contin.exoII
+Output EXODUS II file            = out.exoII
+GUESS file                       =
+SOLN file                        = No
+Write intermediate results       = no
+
+General Specifications
+------- --------------
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+Initial Guess                    = zero
+#Initial Guess                    = read_exoII
+#Initial Guess                    = read_exoII_file contin.exoII
+#Initialize                       = PRESSURE 0 30.0
+
+Time Integration Specifications
+---- ----------- --------------
+#Time integration                 = steady
+Time integration                 = transient
+delta_t                          = 1.e-4
+Maximum number of time steps     = 40
+Maximum time                     = 0.3
+Minimum time step                = 1e-8
+Maximum time step                = 0.1
+Time step parameter		 = 0.0
+Time step error                  = -5.0e-2 0 1 1 0 0 0 0 0
+Printing Frequency		 = 1
+Initial Time 			 = 0.0
+Fill Subcycle			 = 4
+Fill Weight Function             = Explicit
+
+Level Set Interface Tracking     = on
+Level Set Length Scale		 = {elem_size}
+#Level Set Initialization Method  = Exodus
+#Level Set Output Filename        = out_the_way
+#Level Set Initialization Method  = Projection
+#Level Set Initialization Method  = Nodeset NS 10 EB 1
+Level Set Initialization Method  = Surfaces 1
+                                   SURF = PLANE 1. 0. 0. 0.04
+#Level Set Semi_Lagrange         = TRUE
+#Level Set Reconstruction Method = FACETS
+Level Set Renormalization Method = Huygens_Constrained
+Level Set Renormalization Tolerance = 0.20
+Force Initial Level Set Renormalization = yes
+#Level Set Search Option  = GRID_SEARCH 0
+Level Set Renormalization Frequency = 200
+Restart Time Integration After Renormalization = no
+Level Set Subgrid Integration Depth = 3
+Level Set Contact Tolerance = 0.5
+#Level Set Subelement Integration = on
+#No XFEM on nodesets = 10 20
+
+Solver Specifications
+------ --------------
+Solution Algorithm               = umf
+Matrix storage format            = msr
+Preconditioner                  = ls
+Matrix reorder                   = rcm
+Matrix Scaling                   = none
+#Matrix subdomain solver          = bilu
+Matrix ILUT fill factor		 = 2.0
+Matrix RILU relax factor	 = 1.0
+#Matrix drop tolerance            = 1.e-9
+#Matrix Scaling                   = sym_diag
+Matrix residual norm type        = r0
+#Matrix output type               = 10
+Matrix factorization overlap     = none
+#Matrix factorization reuse       = calc
+Matrix drop tolerance            = 1.0e-10
+Matrix polynomial order          = 3
+Size of Krylov subspace          = 999
+#Orthogonalization                = classical
+Orthogonalization                = modified
+Maximum Linear Solve Iterations  = 999
+Number of Newton Iterations      = 10
+Newton correction factor         = 1  
+Normalized Residual Tolerance    = 1e-10
+Residual Ratio Tolerance         = 1e-10
+Pressure Stabilization           = no
+Pressure Stabilization Scaling   = 0.010
+
+------------------------------------------------------------
+	Augmenting Conditions Specifications                 
+------------------------------------------------------------
+Augmenting Conditions Initial Guess = read
+Number of augmenting conditions = -1
+#AC = FC  1 0 0 VOLUME_FLUX 30 -1.0
+END OF AC
+
+
+Boundary Condition Specifications
+-------- --------- --------------
+Number of BC			 = -1
+
+BC = U NS 30 {Uinlet}
+BC = V NS 30 0.0
+
+BC = VELO_NORMAL SS 10 0.0
+BC = VELO_SLIP SS 10 1.e-7 0. 0. 0. 0.
+#BC = VELO_SLIP_LS SS 10 {2.0*elem_size} 1.e6 0. 0. 0. 1.e-3
+BC = WETTING_SPEED_BLAKE SS 10 18.8 0.00365 0.1145 0.1 0.001 0. 0. 0.
+#BC = FILL_CA SS 10 25.0
+#BC = LS_CA_H SS 10 25.0
+7
+BC = V NS 20 0.0 
+#BC = VELO_NORMAL SS 20 0.0
+BC = VELO_SLIP SS 20 1.e-7 0. 0. 0. 0.
+#BC = VELO_SLIP_LS SS 20 {2.0*elem_size} 1.e6 0. 0. 0. 1.e-5
+BC = WETTING_SPEED_BLAKE SS 20 13.1 0.00611 0.115 0.1 0.001 0. 0. 0.
+#BC = WETTING_SPEED_LINEAR SS 20 25.0 1.1 0.0 0.001 0. 0. 0.
+#BC = FILL_CA SS 20 25.0
+#BC = LS_CA_H SS 20 25.0
+
+
+BC = LS_CAPILLARY LS 0
+
+END OF BC
+
+Rotation Specifications =
+
+
+END OF ROT
+
+
+
+
+Problem Description
+------- -----------
+Number of Materials		= 1
+MAT = newt 1
+	Coordinate System	= CARTESIAN
+
+	Element Mapping		= isoparametric
+	Mesh Motion		= ARBITRARY
+	Number of bulk species	= 0
+	Number of EQ		= 4
+
+	EQ = momentum1   Q2 U1 Q2   1 1 1 1 1 0 
+	EQ = momentum2   Q2 U2 Q2   1 1 1 1 1 0 
+	EQ = continuity  Q1_XV P  Q1_XV   1         0 
+	EQ = level_set   Q2 F  Q2   1 1     1   
+	EQ = curvature   Q1 H Q1    1  1   1
+	EQ = normal1     Q1 N1 Q1   1  1
+	EQ = normal2     Q1 N2 Q1   1  1
+				  - - - - - - -
+                                  d m a b d s p
+				  i a d n i r o
+				  v s v d f c r
+				    s     f   o
+			                      u
+					      s
+
+
+Post Processing Specifications
+---- ---------- -------------- 
+Stream Function			= yes
+Streamwise normal stress	= no
+Pressure contours		= no
+Second Invarient of Strain	= no
+Mesh Dilatation			= no
+Navier Stokes Residuals		= no
+Moving Mesh Residuals		= no
+Mass Diffusion Vectors		= no
+Mass Fluxlines			= no
+Energy Conduction Vectors	= no
+Energy Fluxlines		= no
+Time Derivatives		= no
+Mesh Stress Tensor		= no
+Viscosity                       = yes
+Fill contours		  	= yes
+
+
+Post Processing Fluxes
+#FLUX = VOLUME_FLUX 10 1 0 micro.dat
+END OF FLUX
+
+Post Processing Volumetric Integration = 
+	#VOLUME_INT = POSITIVE_FILL 1 0 ell.dat    
+	#VOLUME_INT = NEGATIVE_FILL 1 0 ell.dat
+END OF VOLUME_INT

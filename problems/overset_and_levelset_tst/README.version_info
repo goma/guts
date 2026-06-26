@@ -1,0 +1,17 @@
+overset_and_levelset_tst: GOMA Version Information
+=============================================================================
+
+Directory:   .../VandV/problems/overset_and_levelset_tst
+
+Feb. 10, 2009 baseline #2
+**********************
+     goma_02092009
+     output files:
+        blessed.serr
+        blessed.sout
+        out_ls_blessed_3.exoII
+
+     initial residualsi    7.5e-04 9.6e-03 1.8e-03
+     1st iteration updates 6.3e+00 2.3e+02 3.3e+01 
+
+    New blessed exodus file due to bug fixes in T33.

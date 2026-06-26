@@ -1,0 +1,74 @@
+{Include(Defs)}
+Material Data File for COATING
+
+---Physical Properties
+Density	 = CONSTANT {rho_sol*rho_poly/(rho_sol+(rho_poly-rho_sol)*X1_init)}
+#Density	 = CONSTANT 0.06837
+
+---Mechanical Properties and Constitutive Equations
+Solid Constitutive Equation 	= LINEAR	
+#Solid Constitutive Equation 	= HOOKEAN_PSTRAIN	
+Lame MU 			= CONSTANT 	1.
+Lame LAMBDA 			= CONSTANT 	0.
+Stress Free Solvent Vol Frac	= CONSTANT	0.
+Liquid Constitutive Equation 	= NEWTONIAN
+Viscosity			= CONSTANT	1.
+Low Rate Viscosity		= CONSTANT	0.
+Power Law Exponent		= CONSTANT	0.
+High Rate Viscosity		= CONSTANT	0.
+Time Constant			= CONSTANT	0.
+Aexp 				= CONSTANT	0.
+
+---Thermal Properties
+Conductivity		= CONSTANT	{k_sol}
+Heat Capacity		= CONSTANT	{cp_sol}
+Volume Expansion	= CONSTANT	1.
+Reference Temperature	= CONSTANT	0.
+Liquidus Temperature	= CONSTANT	1.
+Solidus Temperature	= CONSTANT	1.
+ 
+---Electrical Properties
+Electrical Conductivity = CONSTANT       1.
+
+---Microstructure Properties
+Media Type          = CONTINUOUS
+Permeability		= CONSTANT	1.
+
+---Brinkman-equation parameters
+Brinkman Porosity         = CONSTANT    1.0
+Brinkman Permeability     = CONSTANT    1.0
+FlowingLiquid Viscosity   = CONSTANT    1.0
+Inertia Coefficient       = CONSTANT    0.0
+
+---Species Properties
+Diffusion Constitutive Equation = FICKIAN
+$$Diffusivity  			= CONSTANT  0   1.e-8
+Diffusivity  			= FREE_VOL  0   {V1_crit} {V2_crit} {k11} {k12} {k21} {k22} {chi} {epsilon} {D01} {E0} {1/rho_sol} {1/rho_poly}  0
+Latent Heat Vaporization	= CONSTANT  0	{h_vap}
+Latent Heat Fusion		= CONSTANT  0	0.
+Vapor Pressure  		= ANTOINE   0	{conv} {A} {B} {C} {Tmin} {Tmax}
+#Vapor Pressure  		= CONSTANT   0	0.
+Species Volume Expansion	= CONSTANT  0   1.
+Reference Concentration         = CONSTANT  0   0.
+Molecular Weight                = CONSTANT  0   {mw}
+Specific Volume                 = CONSTANT  0   {1./rho_sol}
+Molar Volume                    = CONSTANT  0   {mv_sol}
+
+Non-condensable Molecular Weight = CONSTANT 0   {mw_inert}
+Non-volatile Specific Volume     = CONSTANT 0   {1./rho_poly}
+Non-volatile Molar Volume       = CONSTANT 0    {mv_poly}
+
+Flory-Huggins parameters        = CONSTANT  0   1   0.3
+
+				            ^
+********Species Number**********************|
+
+----Source Terms
+Navier-Stokes Source		= CONSTANT	0.  0.  0.
+Solid Body Source		= CONSTANT	0.  0.  0.
+Mass Source			= CONSTANT	0.
+Heat Source			= CONSTANT	0.
+Species Source			= CONSTANT  0   0.
+Current Source                  = CONSTANT      0.
+
+Initialize                      = MASS_FRACTION 0 {X1_init}

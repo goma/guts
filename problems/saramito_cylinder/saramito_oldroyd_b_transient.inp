@@ -1,0 +1,97 @@
+------------------------------------------------------------
+                 FEM Problem Specifications
+------------------------------------------------------------
+FEM file                         = oldroydb_steady.exoII
+Output EXODUS II file            = saramito_oldroyd_b_transient.exoII
+GUESS file                       = oldroydb_steady.exoII
+SOLN file                        = none
+Write intermediate results       = no
+------------------------------------------------------------
+                 General Specifications
+------------------------------------------------------------
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+Initial Guess                    = read_exoII
+
+------------------------------------------------------------
+                 Time Integration Specifications
+------------------------------------------------------------
+Time integration                 = transient
+delta_t                          = 0.1
+Maximum number of time steps     = 5
+Maximum time                     = 10
+Minimum time step                = 1.0e-8
+Maximum time step                = 0.5
+Time step parameter		 = 0.
+#Time step error  		 = err=.005  mesh=1  v=1  T=0   C=0  p=0
+Time step error  		 = -.008  1   1   1   1   1  1  1
+Printing Frequency		 = 1
+#Fix Frequency                    = 10
+
+
+Solver Specifications
+------ --------------
+Solution Algorithm               = amesos
+Amesos Solver Package            = mumps
+Number of Newton Iterations      = 10
+Newton correction factor         = 1.
+Normalized Residual Tolerance    = 1.0e-8
+
+Boundary Condition Specifications
+-------- --------- --------------
+Number of BC			 = -1
+
+#inlet on left
+BC = U NS 1 1.0
+BC = STRESS_DEVELOPED SS 1
+
+#top
+BC = VELO_NORMAL SS 6   0.0
+
+#upstream of cylinder
+BC = V NS 2 0.0
+
+#downstream of cylinder
+BC = V NS 4 0.0
+
+# cylinder surface
+BC = VELO_NORMAL SS 3   0.0
+
+# outlet
+BC = STRESS_DEVELOPED SS 5
+BC = V NS 5 0.0
+
+END OF BC
+----
+Problem Description
+---
+
+Number of Materials = 1
+
+MAT = saramito_oldroyd_b 1
+	Coordinate System	= CARTESIAN
+	Element Mapping		= isoparametric
+	Mesh Motion		= ARBITRARY
+	Number of bulk species	= 0
+        Number of viscoelastic modes = 1
+
+
+Number of EQ			 = 10
+EQ = momentum1  Q2	U1	Q2	     1.    1.   1.   1.   0.   0.
+EQ = momentum2  Q2	U2	Q2	     1.    1.   1.   1.   0.   0.
+EQ = continuity	P1	P 	P1	           1.             0.
+EQ = stress11   Q1	S11	Q1	     1.    1.   1.   1.   1.
+EQ = stress12   Q1	S12	Q1	     1.    1.   1.   1.   1.
+EQ = stress22   Q1	S22	Q1	     1.    1.   1.   1.   1. 
+EQ = gradient11 Q1	G11	Q1	           1.             1.
+EQ = gradient12 Q1	G12	Q1	           1.             1.
+EQ = gradient21 Q1	G21	Q1	           1.             1.
+EQ = gradient22 Q1	G22	Q1	           1.             1.
+
+                                             ms   adv  bnd  dif  src  porous
+
+Post Processing Specifications
+VE Stress Norm = yes
+Saramito Yield Coeff = yes
+Pressure contours = yes

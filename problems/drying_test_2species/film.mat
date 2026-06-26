@@ -1,0 +1,95 @@
+$ film_figure9.mat  - test problem for 2-D drying model
+
+{Include(props.incl)}
+Material Data File for COATING
+
+---Physical Properties
+
+Density  = SOLVENT_POLYMER {1./rho_poly} 0 0
+
+
+---Mechanical Properties and Constitutive Equations
+Solid Constitutive Equation 	= LINEAR
+#Solid Constitutive Equation 	= HOOKEAN_PSTRAIN
+Lame MU 			= CONSTANT 	1.
+Lame LAMBDA 			= CONSTANT 	0.
+
+Stress Free Solvent Vol Frac    = CONSTANT      0.
+Liquid Constitutive Equation    = NEWTONIAN
+Viscosity                       = CONSTANT      1.2
+Low Rate Viscosity              = CONSTANT      0.
+Power Law Exponent              = CONSTANT      0.
+High Rate Viscosity             = CONSTANT      0.
+Time Constant                   = CONSTANT      0.
+Aexp                            = CONSTANT      0.
+
+---Thermal Properties
+Conductivity            = CONSTANT      {k_sol_0}
+Heat Capacity           = CONSTANT      {cp_sol_0}
+Volume Expansion        = CONSTANT      1.
+Reference Temperature   = CONSTANT      {tref}
+Liquidus Temperature    = CONSTANT      1.
+Solidus Temperature     = CONSTANT      1.
+
+---Electrical Properties
+Electrical Conductivity = CONSTANT       1.
+
+---Microstructure Properties
+Media Type          = CONTINUOUS
+Permeability            = CONSTANT      1.
+
+---Brinkman-equation parameters
+Brinkman Porosity         = CONSTANT    1.0
+Brinkman Permeability     = CONSTANT    1.0
+FlowingLiquid Viscosity   = CONSTANT    1.0
+Inertia Coefficient       = CONSTANT    0.0
+
+---Species Properties
+
+Diffusion Constitutive Equation = GENERALIZED_FICKIAN
+---Solvent 0 (Toluene)
+Diffusivity                     = GENERALIZED_FREE_VOL  0 {V1_crit_0} {V2_crit_0} {k11_0} {k12_0} {k21_0} {k22_0} {chi1} {eps_02} {D_02} {E0_0} {D0p} {E0_polymer} 0
+Latent Heat Vaporization        = CONSTANT  0   {h_vap_0}
+Latent Heat Fusion              = CONSTANT  0   0.
+Vapor Pressure                  = ANTOINE   0   {conv} {A_0} {B_0} {C_0} {Tmin} {Tmax}
+Species Volume Expansion        = CONSTANT  0   1.
+Reference Concentration         = CONSTANT  0   {X0_init*rho_init}
+Molecular Weight                = CONSTANT  0   {mw_sol_0}
+Specific Volume                 = CONSTANT  0   {1./rho_sol_0}
+Molar Volume                    = CONSTANT  0   {mv_sol_0}
+Emissivity                      = CONSTANT  0   {eps_sol0}
+
+---Solvent 1 (Ethanol)
+Diffusivity                     = GENERALIZED_FREE_VOL  1 {V1_crit_1} {V2_crit_1} {k11_1} {k12_1} {k21_1} {k22_1} {chi2} {eps_12} {D_12} {E0_1} {D0p} {E0_polymer} 0
+Latent Heat Vaporization        = CONSTANT  1   {h_vap_1}
+Latent Heat Fusion              = CONSTANT  1   0.
+Vapor Pressure                  = ANTOINE   1   {conv} {A_1} {B_1} {C_1} {Tmin} {Tmax}
+Species Volume Expansion        = CONSTANT  1   1.
+Reference Concentration         = CONSTANT  1   {X1_init*rho_init}
+Molecular Weight                = CONSTANT  1   {mw_sol_1}
+Specific Volume                 = CONSTANT  1   {1./rho_sol_1}
+Molar Volume                    = CONSTANT  1   {mv_sol_1}
+Emissivity                      = CONSTANT  1   {eps_sol1}
+
+Non-condensable Molecular Weight = CONSTANT  0   {mw_poly}
+Non-volatile Molar Volume        = CONSTANT  0   {mv_poly}
+Non-volatile Specific Volume     = CONSTANT  0   {1./rho_poly}
+Non-volatile Emissivity          = CONSTANT  0   {eps_poly}
+
+Flory-Huggins parameters        = CONSTANT 0 1 {chi3} 0 2 {chi1} 1 2 {chi2}
+#Flory-Huggins parameters        = CONSTANT 0 2 0.3
+#Flory-Huggins parameters        = CONSTANT 1 2 0.3
+
+********Species Number**********************|
+
+----Source Terms
+Navier-Stokes Source            = VARIABLE_DENSITY      {-980.0}  0.  0.
+Solid Body Source               = CONSTANT      0.  0.  0.
+Mass Source                     = CONSTANT      0.
+Heat Source                     = CONSTANT      0.
+Species Source                  = CONSTANT  0   0.
+Species Source                  = CONSTANT  1   0.
+Current Source                  = CONSTANT      0.
+
+Initialize                      = MASS_FRACTION 0 {X0_init*rho_init}
+Initialize                      = MASS_FRACTION 1 {X1_init*rho_init}

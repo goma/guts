@@ -1,0 +1,282 @@
+v7.11.0-1-g709cfe59
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2026 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+
+
+######################### __PRINT_SYNC_END__ #########################
+
+Number of unknowns            = 52754
+
+Number of matrix nonzeroes    = 1859906
+	Setting TEMPERATURE (variable [3]) to 0.3
+
+	 Using Coupled Level Set evolution!
+
+	Subelement Integration of level set interface active.
+
+		 Surface object level set initialization : - done 
+
+	 Renormalization unnecessary ( 1.07059e-16 < 0.06 ). 
+
+=> Try for soln at t=1e-05 with dt=1e-05 [0 for 0] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:09 [0] 6.5e-06 1.7e-04 2.9e-05 1.6e+02 2.7e+04 1.9e+03  1  5.9e-01/6.5e+00 
+17:08:16 [1] 2.2e-14 1.9e-12 1.2e-13                         skp 6.2e-01/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   1.575e+02  5.941e-01  8.472e+00 
+
+CONSTANT DELTA_T          [, 3.9e-02, 9.0e-08, 3.7e-02, 0.0e+00]
+Predictor-corrector norm: [,   1 v  ,   1 T  ,   0 P  ,   1 F  ]
+
+	 Renormalization unnecessary ( 1.07059e-16 < 0.06 ). 
+
+=> Try for soln at t=2e-05 with dt=1e-05 [1 for 1] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:17 [0] 6.5e-06 1.7e-04 2.9e-05 3.9e+02 6.7e+04 4.8e+03  1  6.4e-01/6.7e+00 
+17:08:24 [1] 1.1e-10 1.0e-08 8.7e-10 7.0e+01 1.2e+04 8.7e+02  1  1.2e+00/1.4e+01 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   6.033e-01  8.104e-02  1.523e-01 
+
+CONSTANT DELTA_T          [, 1.7e-03, 8.8e-08, 2.0e+01, 1.3e-13]
+Predictor-corrector norm: [,   1 v  ,   1 T  ,   0 P  ,   1 F  ]
+
+	 Renormalization unnecessary ( 1.67803e-13 < 0.06 ). 
+
+=> Try for soln at t=3e-05 with dt=1e-05 [2 for 2] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:40 [0] 6.4e-06 1.6e-04 2.9e-05 1.6e+02 2.7e+04 2.0e+03  1  1.2e+00/1.4e+01 
+17:08:56 [1] 1.6e-13 1.5e-11 1.2e-12                         skp 1.2e+00/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   4.050e-01  7.940e-02  1.489e-01 
+
+CONSTANT DELTA_T          [, 4.3e-04, 8.6e-08, 5.9e+01, 1.3e-13]
+Predictor-corrector norm: [,   1 v  ,   1 T  ,   0 P  ,   1 F  ]
+
+	 Renormalization unnecessary ( 2.8523e-13 < 0.06 ). 
+
+=> Try for soln at t=4e-05 with dt=1e-05 [3 for 3] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:58 [0] 6.4e-06 1.6e-04 2.9e-05 4.4e-01 7.5e+01 5.4e+00  1  1.2e+00/1.4e+01 
+17:09:13 [1] 5.2e-14 4.7e-12 4.0e-13                         skp 1.2e+00/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   4.050e-01  7.918e-02  1.489e-01 
+
+OK  2.4e-04 < 1.5 1.0e+06 [, 2.4e-04, 8.4e-08, 4.8e-01, 1.2e-13]
+Predictor-corrector norm: [,   1 v  ,   1 T  ,   0 P  ,   1 F  ]
+
+	 Renormalization unnecessary ( 4.46474e-13 < 0.06 ). 
+
+=> Try for soln at t=5.5e-05 with dt=1.5e-05 [4 for 4] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:09:16 [0] 1.4e-05 3.7e-04 6.4e-05 9.8e-02 1.7e+01 1.2e+00  1  1.2e+00/1.4e+01 
+17:09:31 [1] 7.3e-14 6.6e-12 5.5e-13                         skp 1.2e+00/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   4.050e-01  7.918e-02  1.489e-01 
+
+OK  4.0e-04 < 1.5 1.0e+06 [, 4.0e-04, 1.9e-07, 1.2e-01, 1.9e-13]
+Predictor-corrector norm: [,   1 v  ,   1 T  ,   0 P  ,   1 F  ]
+
+	 Renormalization unnecessary ( 8.07211e-13 < 0.06 ). 
+
+=> Try for soln at t=7.75e-05 with dt=2.25e-05 [5 for 5] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:09:33 [0] 3.2e-05 8.2e-04 1.4e-04 1.2e-02 2.0e+00 1.4e-01  1  1.2e+00/1.4e+01 
+17:09:48 [1] 9.0e-14 8.1e-12 6.8e-13                         skp 1.2e+00/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   4.050e-01  7.913e-02  1.489e-01 
+
+OK  6.2e-04 < 1.5 1.0e+06 [, 6.2e-04, 4.1e-07, 2.5e-02, 4.1e-13]
+Predictor-corrector norm: [,   1 v  ,   1 T  ,   0 P  ,   1 F  ]
+
+	 Renormalization unnecessary ( 1.55956e-12 < 0.06 ). 
+
+=> Try for soln at t=0.00011125 with dt=3.375e-05 [6 for 6] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:09:50 [0] 7.1e-05 1.8e-03 3.2e-04 1.2e-02 2.1e+00 1.5e-01  1  1.3e+00/1.4e+01 
+17:10:06 [1] 9.8e-14 8.9e-12 7.4e-13                         skp 1.2e+00/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   4.050e-01  7.910e-02  1.488e-01 
+
+OK  9.3e-04 < 1.5 1.0e+06 [, 9.3e-04, 8.5e-07, 5.1e-02, 8.8e-13]
+Predictor-corrector norm: [,   1 v  ,   1 T  ,   0 P  ,   1 F  ]
+
+	 Renormalization unnecessary ( 3.06515e-12 < 0.06 ). 
+
+=> Try for soln at t=0.000161875 with dt=5.0625e-05 [7 for 7] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:08 [0] 1.6e-04 4.1e-03 7.0e-04 8.3e-03 1.4e+00 1.0e-01  1  1.2e+00/1.4e+01 
+17:10:24 [1] 9.5e-14 8.8e-12 7.0e-13                         skp 1.2e+00/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   4.050e-01  7.909e-02  1.488e-01 
+
+OK  1.4e-03 < 1.5 1.0e+06 [, 1.4e-03, 1.7e-06, 7.8e-02, 1.8e-12]
+Predictor-corrector norm: [,   1 v  ,   1 T  ,   0 P  ,   1 F  ]
+
+	 Renormalization unnecessary ( 6.00645e-12 < 0.06 ). 
+
+=> Try for soln at t=0.000237813 with dt=7.59375e-05 [8 for 8] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:26 [0] 3.4e-04 9.0e-03 1.5e-03 4.6e-03 8.2e-01 5.7e-02  1  1.2e+00/1.4e+01 
+17:10:41 [1] 1.5e-13 7.8e-12 7.1e-13                         skp 1.2e+00/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   4.050e-01  7.908e-02  1.489e-01 
+
+OK  1.9e-03 < 1.5 1.0e+06 [, 1.9e-03, 3.1e-06, 1.6e-01, 3.7e-12]
+Predictor-corrector norm: [,   1 v  ,   1 T  ,   0 P  ,   1 F  ]
+
+	 Renormalization unnecessary ( 1.16324e-11 < 0.06 ). 
+
+=> Try for soln at t=0.000351719 with dt=0.000113906 [9 for 9] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:43 [0] 7.4e-04 2.0e-02 3.3e-03 2.7e-03 5.0e-01 3.4e-02  1  1.2e+00/8.8e+00 
+17:10:53 [1] 9.5e-13 2.6e-11 3.8e-12                         skp 6.7e-01/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   4.050e-01  7.908e-02  1.489e-01 
+
+OK  2.6e-03 < 1.5 1.0e+06 [, 2.6e-03, 4.8e-06, 1.5e-01, 7.0e-12]
+Predictor-corrector norm: [,   1 v  ,   1 T  ,   0 P  ,   1 F  ]
+
+	 Renormalization unnecessary ( 2.22023e-11 < 0.06 ). 
+
+=> Try for soln at t=0.000522578 with dt=0.000170859 [10 for 10] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:55 [0] 1.6e-03 4.2e-02 7.1e-03 3.1e-03 3.6e-01 2.4e-02  1  6.6e-01/6.7e+00 
+17:11:02 [1] 6.0e-12 1.5e-10 2.4e-11                         skp 6.4e-01/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   4.050e-01  7.909e-02  1.489e-01 
+
+OK  3.4e-03 < 1.5 1.0e+06 [, 3.4e-03, 5.2e-06, 3.3e-02, 1.2e-11]
+Predictor-corrector norm: [,   1 v  ,   1 T  ,   0 P  ,   1 F  ]
+
+	 Renormalization unnecessary ( 4.18006e-11 < 0.06 ). 
+
+=> Try for soln at t=0.000778867 with dt=0.000256289 [11 for 11] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:11:03 [0] 3.2e-03 9.0e-02 1.5e-02 5.9e-03 3.2e-01 3.0e-02  1  6.6e-01/6.7e+00 
+17:11:11 [1] 3.7e-11 8.4e-10 1.5e-10                         skp 6.6e-01/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   4.050e-01  7.910e-02  1.489e-01 
+
+OK  4.0e-03 < 1.5 1.0e+06 [, 4.0e-03, 4.7e-06, 1.5e-02, 2.0e-11]
+Predictor-corrector norm: [,   1 v  ,   1 T  ,   0 P  ,   1 F  ]
+
+	 Renormalization unnecessary ( 7.78439e-11 < 0.06 ). 
+
+=> Try for soln at t=0.0011633 with dt=0.000384434 [12 for 12] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:11:12 [0] 6.5e-03 1.9e-01 3.0e-02 1.1e-02 3.9e-01 5.0e-02  1  6.3e-01/6.8e+00 
+17:11:20 [1] 2.3e-10 4.8e-09 8.9e-10                         skp 6.5e-01/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   4.050e-01  7.912e-02  1.489e-01 
+
+OK  4.1e-03 < 1.5 1.0e+06 [, 4.1e-03, 4.1e-05, 7.7e-03, 2.7e-11]
+Predictor-corrector norm: [,   1 v  ,   1 T  ,   0 P  ,   1 F  ]
+
+	 Renormalization unnecessary ( 1.43997e-10 < 0.06 ). 
+
+=> Try for soln at t=0.00173995 with dt=0.00057665 [13 for 13] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:11:21 [0] 1.2e-02 3.7e-01 5.8e-02 1.9e-02 5.9e-01 8.6e-02  1  6.4e-01/6.3e+00 
+17:11:28 [1] 1.5e-09 3.0e-08 5.5e-09                         skp 6.0e-01/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   4.730e-01  7.916e-02  1.490e-01 
+
+OK  3.6e-03 < 1.5 1.0e+06 [, 3.6e-03, 1.5e-04, 4.1e-03, 3.2e-11]
+Predictor-corrector norm: [,   1 v  ,   1 T  ,   0 P  ,   1 F  ]
+
+	 Renormalization unnecessary ( 2.66557e-10 < 0.06 ). 
+		LAST TIME STEP!
+
+=> Try for soln at t=0.002 with dt=0.000260049 [14 for 14] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:11:29 [0] 2.1e-03 6.7e-02 9.9e-03 3.4e-03 9.8e-02 1.6e-02  1  6.1e-01/6.2e+00 
+17:11:36 [1] 2.6e-11 5.5e-10 9.6e-11                         skp 6.0e-01/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   5.150e-01  7.918e-02  1.491e-01 
+
+OK  3.6e-04 < 1.5 1.0e+06 [, 3.6e-04, 2.8e-05, 2.3e-05, 7.1e-12]
+Predictor-corrector norm: [,   1 v  ,   1 T  ,   0 P  ,   1 F  ]
+
+	 Renormalization unnecessary ( 3.36099e-10 < 0.06 ). 
+		out of time!
+
+-done
+
+
+Proc 0 runtime:       3.49 Minutes.
+

@@ -1,0 +1,9 @@
+transient
+gmres
+serial
+cartesian
+voltage
+species
+moving mesh
+2d
+no chemkin

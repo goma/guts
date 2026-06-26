@@ -1,0 +1,11 @@
+WARNING: Defaulting on Time step error norm indicators
+ (/opt/workdir/goma/src/mm_input.c:1612)
+WARNING: That's an awfully large Level Set Renormalization Tolerance.
+ (/opt/workdir/goma/src/mm_input.c:2237)
+WARNING: Defaulting on Lubrication Curvature Normal (/opt/workdir/goma/src/mm_input_mp.c:11149)
+WARNING: Defaulting on Lubrication LS Interpolation (/opt/workdir/goma/src/mm_input_mp.c:11165)
+WARNING: Defaulting on Lubrication Curvature Diffusion (/opt/workdir/goma/src/mm_input_mp.c:11181)
+WARNING: Defaulting on Lubrication Curvature Relaxation (/opt/workdir/goma/src/mm_input_mp.c:11193)
+WARNING:  Change Porous Shell Closed Height to Porous Shell Height  (/opt/workdir/goma/src/mm_input_mp.c:11366)
+WARNING:  Change Porous Shell Closed Radius to Porous Shell Radius  (/opt/workdir/goma/src/mm_input_mp.c:11409)
+WARNING: SHELL_TANH MODEL not yet fitted for pressure gradients in both gas and liquid (/opt/workdir/goma/src/mm_fill_porous.c:6131)

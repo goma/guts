@@ -1,0 +1,28 @@
+{ax1 = 3.0}
+{ay1 = 0.25}
+{theta_s = 60}
+{h = ay1}
+{ cx1 = ax1 + h * tand(theta_s) }
+{ cy1 = ay1 }
+{ r1 = h/cosd(theta_s) }
+{ d1 = ax1 }
+{ nx1 = 1.0 }
+{ ny1 = 0.0 }
+
+
+{ax2 = 0.9}
+{ay2 = (0.5 )/2.0 }
+{theta_s = 60}
+{h2 = ay2 }
+{ cx2 = ax2 - h2 * tand(theta_s) }
+{ cy2 = ay2 }
+{ r2 = h2/cosd(theta_s) }
+{ d2 = -ax2 }
+{ nx2 = -1.0 }
+{ ny2 =  0.0 }
+
+
+{nominal_Y_ss50 = 1.5}
+{scale_factor_ss50 = 0.35}
+{nominal_Y_ss60 = 0.5}
+{scale_factor_ss60 = 0.35}

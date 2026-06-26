@@ -1,0 +1,4 @@
+reconcile_bc_to_matrl:  WARNING Global Pressure Datum 1.01325e+06 and VL_EQUIL Pressure Datum 100000 Differ
+reconcile_bc_to_matrl:  WARNING Global Pressure Datum set to 100000 by VL_EQUIL card
+WARNING: Bad nodal post process variable count  (/opt/workdir/goma/src/mm_post_proc.c:12295)
+		converged SS!

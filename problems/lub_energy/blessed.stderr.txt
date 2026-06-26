@@ -1,0 +1,16 @@
+WARNING: Solver Output greater than 80 characters...
+ (/opt/workdir/goma/src/mm_input.c:6918)
+WARNING: Using default equation term multipliers (bdy, diff,src) on R_LUBP in carbo (/opt/workdir/goma/src/mm_input.c:10056)
+	 R_LUBP 1 1 1 
+WARNING: Using default equation term multipliers (mas,adv,bnd,dif,src) on R_SHELL_ENERGY in carbo (/opt/workdir/goma/src/mm_input.c:10267)
+	 R_SHELL_ENERGY 0 1 1 1 1 
+MAT 0 Thixotropic Factor = 0
+WARNING: Defaulting Thixotropic Factor to Zero (/opt/workdir/goma/src/mm_input_mp.c:2160)
+WARNING: No WALL_DISTANCE external field - using turbulent field. (/opt/workdir/goma/src/mm_input_mp.c:10262)
+WARNING: Defaulting on Lubrication Curvature Normal (/opt/workdir/goma/src/mm_input_mp.c:11149)
+WARNING: Defaulting on Lubrication LS Interpolation (/opt/workdir/goma/src/mm_input_mp.c:11165)
+	 R_LUBP 1 1 1 
+	 R_SHELL_ENERGY 0 1 1 1 1 
+MAT 1 Thixotropic Factor = 0
+WARNING: Lubrication Wall Effect assumes constant capillary height for now... (/opt/workdir/goma/src/mm_shell_util.c:3830)
+WARNING: get_side_info for BIQUAD_SHELL needs to be checked (/opt/workdir/goma/src/mm_fill_fill.c:3080)

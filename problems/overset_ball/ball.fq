@@ -1,0 +1,40 @@
+ TITLE 
+  
+ POINT     1      8.0000001E-01      0.0000000E+00
+ POINT     2      8.0000001E-01      2.0000000E-01
+ POINT     3      1.4000000E+00      0.0000000E+00
+ POINT     4      1.4000000E+00      2.0000000E-01
+ POINT    21      9.4999999E-01      0.0000000E+00
+ POINT    22      9.6464467E-01      3.5355341E-02
+ POINT    23      1.0353553E+00      3.5355341E-02
+ POINT    24      1.0500000E+00      0.0000000E+00
+ POINT    25      1.0000000E+00      0.0000000E+00
+ LINE      1   STR     3     1     0    26  1.0000
+ LINE      2   STR     1     2     0     9  1.0000
+ LINE      3   STR     2     4     0    26  1.0000
+ LINE      4   STR     3     4     0     9  1.0000
+ LINE     31  CIRC    22    21    25     2  1.0000
+ LINE     32  CIRC    23    22    25     4  1.0000
+ LINE     33  CIRC    24    23    25     2  1.0000
+ LINE     40   STR    24    21     0     8  1.0000
+ REGION     1     1    -1    -2    -3    -4
+ REGION     2     2   -33   -32   -31   -40
+ SCHEME    1 MYE
+ SCHEME    2 XYE
+ SCHEME    0 M
+ BODY       1     2
+ NODEBC     1    31    32    33
+ NODEBC     2    40
+ NODEBC    10     2
+ NODEBC    20     3
+ NODEBC    30     4
+ NODEBC    40     1
+ ELEMBC     1    31    32    33
+ ELEMBC     2    40
+ ELEMBC    10     2
+ ELEMBC    20     3
+ ELEMBC    30     4
+ ELEMBC    40     1
+ RENUM 
+ NINE  
+ EXIT  

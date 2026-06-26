@@ -1,0 +1,106 @@
+ FEM File Specifications
+ ---
+FEM file                         = sl_bilin_60.exoII
+Output EXODUS II file            = out_bilin_60.exoII
+GUESS file                       = contin.dat
+SOLN file                        = soln.dat
+Write intermediate results       = no
+ ---
+General Specifications
+ ---
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+Initial Guess                    = zero
+##Initial Guess                    = read_exoII_file restart2.exoII
+Pressure Datum                   = 1.01325E6
+Anneal Mesh on Output            = no
+ ---
+Time Integration Specifications
+ ---
+Time integration                 = transient
+delta_t                          = 1.0
+Maximum number of time steps     = 10
+Maximum time                     = 3600
+Minimum time step                = 1e-10
+Maximum time step                = 50.
+Time step parameter              = 0.0
+Time step error                  = -1.e-2  1  1  1  1  1  1
+Printing Frequency               = 1
+
+ ---
+Solver Specifications
+ ---
+Solution Algorithm               = lu
+UMF XDIM = 17000000
+UMF IDIM = 17000000
+Preconditioner                   = dom_decomp
+Matrix subdomain solver          = ilut
+Matrix Scaling                   = row_sum
+Size of Krylov subspace          = 200
+Matrix output type               = 10
+Matrix reorder                   = rcm
+Orthogonalization                = classical
+Maximum Linear Solve Iterations  = 200
+Matrix ILUT fill factor          = 5
+Number of Newton Iterations      = 15
+Newton correction factor         = 1.0
+Normalized Residual Tolerance    = 1.e-6
+Residual Ratio Tolerance         = 1.e-6
+Pressure Stabilization           = yes
+Pressure Stabilization Scaling   = 0.01
+##Filter Concentration             = 0  0. 0.667
+ ---
+Boundary Condition Specifications
+ ---
+Number of BC			 =   -1
+
+BC      = POROUS_LIQ_PRESSURE NS 1   1.013250E6
+BC      = POROUS_LIQ_PRESSURE NS 3  -0.676592E6 
+
+END OF BC
+
+----
+Problem Description
+---
+ 
+Number of Materials = 1
+ 
+ MAT =   substrate_part    1
+ 
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = LAGRANGIAN
+  Number of bulk species = 0
+ 
+	Number of EQ	 = 1
+  	 EQ = porous_unsat  Q1 P_liq Q1      1.   1.   1.   1.   1.
+                                  	ms  adv  bnd  dif  src por
+
+
+
+Post Processing Specifications
+
+Stream Function = no
+Streamwise normal stress = no
+Pressure contours = no
+Second Invarient of Strain = no
+Mesh Dilatation = no
+Navier Stokes Residuals = no
+Moving Mesh Residuals = no
+Mass Diffusion Vectors = yes
+Mass Fluxlines = yes
+Energy Conduction Vectors = no
+Energy Fluxlines = no
+Time Derivatives = yes
+Mesh Stress Tensor = yes
+Porous Saturation = yes
+Bulk density of species in porous media = yes
+Gas concentration of species in porous media = yes
+Liquid concentration of species in porous media = yes
+Gas phase convection vectors in porous media = yes
+Liquid phase convection vectors in porous media = yes
+Porosity in deformable porous media = yes
+Capillary pressure in porous media = yes
+
+

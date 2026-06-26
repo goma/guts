@@ -1,0 +1,17 @@
+# Units cm-g-s
+# {die_width = 1}
+# {die_thickness = 0.001}
+# {air_gap = 0.5}
+# {gap_elem_count = 3*30}
+# {width_elem_count = 3*20}
+# {thickness_elem_count = 2}
+# {mesh_bias = 1.02}
+# {h1 = 0.001}
+
+# {viscosity = 1000}
+# {D_R = 10.}
+# w1 {w1 = 0.02}
+# w2 {w2 = w1*D_R}
+# Wi {Wi = 0.4}
+# lambda {lambda = Wi * air_gap / w2}
+# L {air_gap}

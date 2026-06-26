@@ -1,0 +1,130 @@
+4.3.0
+EXODUS: m_matl_test.exoII ->       out.exoII
+ASCII:       contin.dat ->        soln.dat
+          : Solver                                   = aztec
+Defaulting: UMF IDIM                                 = 5 * nnz
+Defaulting: UMFPACK XDIM = 5*NNZ
+          : Preconditioner                           = dom_decomp
+          : Matrix subdomain solver                  = ilu
+Defaulting: Matrix Scaling                           = none
+          : Matrix residual norm type                = r0
+Defaulting: Matrix output type                       = none
+Defaulting: Matrix factorization reuse               = recalc
+Defaulting: Matrix graph fillin                      = 0
+          : Matrix factorization overlap             = none
+Defaulting: Matrix overlap type                      = standard
+Defaulting: Matrix auxiliary vector                  = resid
+          : Matrix drop tolerance                    = 0
+          : Matrix polynomial order                  = 3
+Defaulting: Matrix reorder                           = none
+Defaulting: Matrix factorization save                = 0
+Defaulting: Matrix ILUT fill factor                  = 1
+Defaulting: Matrix RILU relax factor                 = 1
+Defaulting: Matrix BILU Threshold                    = 0
+          : Size of Krylov subspace                  = 175
+          : Orthogonalization                        = modified
+          : Maximum Linear Solve Iterations          = 175
+Defaulting to constant Newton relaxation. Use 6 flts for dynamic relaxation.
+
+Number of boundary conditions = 12
+   1. V @ NS 4
+   2. U @ NS 4
+   3. U @ NS 7
+   4. V @ NS 7
+   5. V @ NS 3
+   6. V @ NS 5
+   7. T @ NS 7
+   8. T @ NS 4
+   9. Y @ NS 7
+  10. Y @ NS 1
+  11. Y @ NS 7
+  12. Y @ NS 1
+
+Number of rotation conditions = 0
+
+Number of materials           = 2
+
+Number of bulk C/D equations  = 2
+
+Number of equation lines         = 5 (sample)
+
+
+================================================================================
+
+	Material Property Printout for Material 0: sample
+	Default Database = Goma Material Property Default
+
+Media Type = 0
+FlowingViscosity Model = 0
+
+		Description of Species in the Material
+
+  Name    Phase  Weight  Species_Var_Type
+--------------------------------------------------------------------------------
+Species_0	0	-1	SPECIES_UNDEFINED_FORM
+Species_1	0	-1	SPECIES_UNDEFINED_FORM
+--------------------------------------------------------------------------------
+
+
+
+
+================================================================================
+
+
+Number of equation lines         = 4 (sample1)
+
+
+================================================================================
+
+	Material Property Printout for Material 1: sample1
+	Default Database = Goma Material Property Default
+
+Media Type = 0
+FlowingViscosity Model = 0
+
+
+
+
+================================================================================
+
+MDE                           = 27
+MAX_PROB_VAR                  = 9
+MAX_CONC                      = 4
+MAX_VARIABLE_TYPES            = 126
+HAVE_CONFIG_H                 = no
+PARALLEL             Num_Proc = 2
+HAVE_MPI_H                    = yes
+USE_CHEMKIN                   = no
+HAVE_FRONT                    = yes
+HAVE_UMFPACK                  = yes
+HAVE_SPARSE                   = yes
+HAVE_BLAS                     = yes
+HAVE_LAPACK                   = yes
+HAVE_Y12M                     = yes
+HAVE_ARPACK                   = no
+HAVE_PARPACK                  = no
+HAVE_AZTEC                    = yes
+TRILINOS                      = no
+COUPLED_FILL                  = no
+USE_CGM                       = no
+DEBUG                         = no
+Pressure Stabilization        = yes
+Stabilization Scaling         = 0.050000
+Linear Stability              = no
+
+
+----------------- Communications Stats ------------
+
+		Number of Neighbors
+		Max :     1(Proc = 0)		 Avg:  1.000		Min: 1 (Proc = 0)
+
+		Size of Messages
+		Max:    73 (Proc = 1)		 Avg: 78.000		Min: 73 (Proc = 0
+--------------------------------------------------
+
+
+
+##################################### PRINT_SYNC_START #########################
+
+-done
+

@@ -1,0 +1,5 @@
+EOF found in input file while searching for:
+AC or END OF AC
+### EOF found while counting list of AC ###
+You should use termination string "END OF AC" to indicate end of list
+Will use 1 as number of AC

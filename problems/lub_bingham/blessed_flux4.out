@@ -1,0 +1,20 @@
+Time/iteration = 1.000000e+00 
+ SHELL_VOLUME_FLUX  Side_Set  4 Block  1 Species 0
+ flux=  3.82019 0  area= 76.2  
+
+Time/iteration = 9.302326e-01 
+ SHELL_VOLUME_FLUX  Side_Set  4 Block  1 Species 0
+ flux=  3.79508 0  area= 76.2  
+
+Time/iteration = 7.488005e-01 
+ SHELL_VOLUME_FLUX  Side_Set  4 Block  1 Species 0
+ flux=  3.81288 0  area= 76.2  
+
+Time/iteration = 3.905620e-01 
+ SHELL_VOLUME_FLUX  Side_Set  4 Block  1 Species 0
+ flux=  5.82631 0  area= 76.2  
+
+Time/iteration = 2.500000e-01 
+ SHELL_VOLUME_FLUX  Side_Set  4 Block  1 Species 0
+ flux=  16.8729 0  area= 76.2  
+

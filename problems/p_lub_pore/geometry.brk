@@ -1,0 +1,14 @@
+### DEFINITIONS FOR MATERIAL 1
+1          # Element block
+1          # Number of basic equations
+162 1 1 1  # Lubrication
+
+# Variable interactions
+1
+
+# Node-variable distribution
+4
+162
+162
+162
+162

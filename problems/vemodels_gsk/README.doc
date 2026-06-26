@@ -1,0 +1,48 @@
+Test Case 2:
+
+Viscoelastic die swell in cylindrical geometry
+
+Description:
+Fluid enters at left geometry under fully developed conditions.
+Lower boundary is a symmetry (r=0) plane.  Upper boundary is
+no slip for half its length and the becomes a kinematic surface.
+Fluid swells as it exits pipe.
+
+Two viscoelastic fluid models can be used, giesekus or phan thien
+tanner.  Switching between them is accomplished by commenting and
+uncommenting several cards in the input deck
+
+Features:
+A TABLE_BC card is used to specify the inlet non-newtonian velocity
+profiles.  These are contained in the files giesekus_inlet.table 
+and ptt_inlet.table.  The velocity profiles here are specific to the
+parameters appearing in giesekus.mat or ptt.mat.  These files
+should not be changed.
+
+Portions of code exercise:
+
+Viscoelasticity, viscoelasticity and free surfaces, TABLE_BC boundary
+conditions.
+
+Solution method:
+
+UMF 
+
+Runtime:
+
+Runtime on the compute server( sass2153) is roughly 5 minutes
+for both fluid models.
+
+
+Files:
+
+input			input deck for both fluids
+newtonian_swell.exoII	newtonain die swell solution used as starting guess
+solution_ptt.exoII	phan thien tanner solution file
+solution_giesekus.exoII	giesekus solutino file
+giesekus.mat		giesekus material file
+ptt.mat			phan thien tanner material file
+giesekus_inlet.table	inlet velocity profile for giesekus model	
+ptt_inlet.table		inlet velocity profile for phan thien tanner model
+giesekus_output.txt	goma screen output for giesekus model
+ptt_output.txt		goma screen output for phan thien tanner model

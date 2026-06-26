@@ -1,0 +1,51 @@
+$  BASE UNITS are CGS
+$ Conversion for Length change new scale = cm * conv
+$ So to convert from cm to mm -> conv = 10.0
+$ Length conversion		{L =10.0}
+$ Mass conversion		{K =1.0}
+$ Time conversion		{S =1000.0}10000.0
+$ moles conversion		{M =K}
+
+$ Geometry 
+$ 1 Cell Square side	See journal file!
+
+$ Ambient Pressure 			{ambpres = 1.0133e6*K/L/S^2}
+$ Permeability of Substrate 		{permeab = 300.*9.8e-9*L^2} (300 darcies)
+$ Measured Pore Size 			{poresize = 0.0000864*L}
+$ Surface Tension of Slurry Fluid 	{surftens = 20.5*K/S^2} 22
+$ Liquid Viscosity 			{lqvisc = 0.1*K/L/S} 0.5
+$ Lite Liquid Viscosity			{lqvisc_lt = lqvisc/70.0} 0.5
+$ Density of Substrate			{subsdens = 2.0*K/L^3} 2.0
+$ Density of Liquid 			{sldens = 1.0*K/L^3} 0.985
+$ Density of lite Liquid 		{sldens_lt = sldens/20.0} 0.985
+$ Air Viscosity 			{airvisc = 1.82e-4*K/L/S}
+$ Air Density				{airdens = 1.269e-3*K/L^3}
+$ Porosity of Substrate 		{poros = 0.95} .45
+$ Gas Phase Diffusion Coeff		{gpdiff = 0.26*L^2/S}
+$ Capillary Pressure 			{cappres = 4.0*surftens/poresize}
+$ Capillary pressure at Satmax		{pcmin = 1000.0*K/L/S^2} 54241.3
+$ Capillary pressure at Satmin		{pcmax = 50000.0*K/L/S^2} 50000.0 1.24e6 1.3e6
+$ Tanh model constant C                 {const_c = 2.4}
+$ tanh model constant D                 {const_d = 5000 * K/L/S^2}
+$ Equilibrium Vapor Pressure		{vappres = 13.0*K/L/S^2}
+$ Molecular Weight of Slurry Liquid	{mwsl = 18.0*K/M}
+$ Gas Constant				{rgas = 83140000*K*L^2/S^2/M}
+$ Temperature				{temp = 300.0}
+$ Molecular Weight Air			{mwair = 29.0*K/M}
+$ Gravity				{grav = 981.0*L/S/S}
+$ {LT = 1.0*L}{por_thick=4.0}
+
+
+$ Static CA  (nozzle)       		{theta_s_ss160 = 70 }
+$ Static CA  (porous/continuous)       	{theta_s_ss100 = 45 }
+
+$ Porous/Continuous cT value        { cT_ss100 = 0.1*S/L }
+$ Non-porous cT value               { cT_ss160 = 0.1*S/L }
+
+$Ca {dt_phys_ca = 0.5*L*lqvisc_lt/surftens }
+$P  {dt_phys_porous = lqvisc*L*L*0.019*0.019/permeab/(pcmax - pcmin)} 
+$N  {dt_num_ca = sqrt( sldens_lt*L*L*L*0.014*0.014*0.014/surftens) }
+
+{dt_max1 = min( dt_phys_ca, dt_num_ca) }
+$dt_max = {dt_max  = min( dt_max1, dt_phys_porous ) }
+$dt_min = {dt_min = 0.1*dt_max }

@@ -1,0 +1,32 @@
+Copyright (c) 2002  Sandia Corporation.
+
+Under the terms of Contract DE-AC04-94AL85000, there is a non-exclusive
+license for use of this work by or on behalf of the U.S. Government. Export
+of this program may require a license from the United States Government.
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN ...
+
+WARNING:  mm_post_proc.c:8635: Bad nodal post process variable count 
+Fatal error; unknown error handler
+May be MPI call before MPI_INIT.  Error message is MPI_COMM_SIZE and code is 197
+Fatal error; unknown error handler
+May be MPI call before MPI_INIT.  Error message is MPI_COMM_RANK and code is 197
+
+Number of unknowns            = 5889
+
+Number of matrix nonzeroes    = 620986
+
+
+               R e s i d u a l         C o r r e c t i o n
+
+  ToD    itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)
+-------- --- ------- ------- ------- ------- ------- ------- --- ---------------
+11:05:10 [0] 4.5e-03 1.7e-02 5.8e-03 1.3e+00 3.9e+01 2.8e+00  1  9.7e-01/1.5e+00
+11:05:12 [1] 4.2e-05 4.1e-04 6.4e-05 2.6e-02 9.1e-01 7.0e-02  1  9.8e-01/1.5e+00
+11:05:15 [2] 2.3e-08 2.3e-07 3.7e-08 4.5e-05 1.5e-03 9.4e-05  1  9.7e-01/1.5e+00
+11:05:17 [3] 3.3e-14 1.1e-12 8.1e-14 5.5e-11 2.4e-09 1.7e-10  1  9.8e-01/1.5e+00
+scaled solution norms   3.730000e+02  5.321559e+01  1.370067e+02 
+
+Proc 0 runtime:       0.17 Minutes.
+

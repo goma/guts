@@ -1,0 +1,150 @@
+# Goma input file for single phase lubp_liq comparison
+# Author Andrew Cochrane (acochrane@gmail.com)
+{include(variables.inc)}
+
+# FEM File Specifications
+FEM file                    = domain_stretched_sat.exoII
+Output EXODUS II file       = output.exoII
+GUESS file                  = no
+SOLN file                   = no
+Write intermediate results  = no
+Write initial solution      = yes
+
+# General Specifications
+Number of Processors        = 1
+Output Level                = 0
+Debug                       = 0
+Initial Guess               = read_exoII
+#Initial Guess               = random
+#Initialize                  = SHELL_NORMAL3 0 1.0
+Initialize                  = TFMP_PRES 0 1013250
+
+# Time Integration Specifications
+Time integration            = transient
+delta_t                     = 1.0e-2
+Maximum number of time steps = 5
+Maximum time                = 2000
+Minimum time step           = 1e-15
+Maximum time step           = 1e1
+Time step parameter         = {tsp}
+Time step error             = 5e2 1 1 1 1 1 1 1 1 1 
+Initial Time                = -1
+  Printing Frequency          = 1 
+
+# Solver Specifications
+#Matrix storage format        = epetra
+
+#Solution Algorithm          = umf
+Solution Algorithm          = amesos
+#Solution Algorithm          = stratimikos
+#Stratimikos File            = stratimikos.xml
+Amesos Solver Package       = superlu
+#Amesos Solver Package       = mumps
+#Solution Algorithm           = aztecoo
+#AztecOO Solver               = cgs
+
+#Solution Algorithm          = bicgstab
+#Preconditioner              = dom_decomp
+
+Matrix reorder              = rcm
+
+Matrix subdomain solver     = ilu
+Matrix ILUT fill factor     = 1.
+Matrix drop tolerance       = 0.1
+
+Size of Krylov subspace     = 1000
+Maximum Linear Solve Iterations = 1000
+Residual Ratio Tolerance    = 1e-8
+
+Number of Newton Iterations = 10
+
+
+Newton correction factor      = 1
+  Normalized Residual Tolerance = {nrt}
+
+Residual Relative Tolerance      = 1.0e-06
+
+# Boundary Condition Specifications
+Number of BC                  = -1
+BC = SHELL_TFMP_PRES_BC NS 1       1013250
+BC = SHELL_TFMP_PRES_BC NS 2       1013250
+BC = SHELL_TFMP_PRES_BC NS 3       1013250
+BC = SHELL_TFMP_PRES_BC NS 4       1013250
+#BC = SHELL_TFMP_FREE_LIQ_BC SS 1
+#BC = SHELL_TFMP_FREE_LIQ_BC SS 2
+#BC = SHELL_TFMP_FREE_LIQ_BC SS 3
+#BC = SHELL_TFMP_FREE_LIQ_BC SS 4
+#BC = SHELL_TFMP_NUM_DIFF_BC SS 1
+#BC = SHELL_TFMP_NUM_DIFF_BC SS 2
+#BC = SHELL_TFMP_NUM_DIFF_BC SS 3
+#BC = SHELL_TFMP_NUM_DIFF_BC SS 4
+
+
+# pull on top edge
+BC = SH_S11_WEAK SS 2 0.0 {stretch} 0.0
+#BC = SH_S11_WEAK SS 2 0.0 {-stretch} 0.0
+
+# keep top and bottom edges from poisson shrinking
+#BC = DX NS 2 0.0
+#BC = DX NS 4 0.0
+
+# anchor the top and bottom to z=0
+BC = DZ NS 2 0.0
+BC = DZ NS 4 0.0
+
+#hold the sides
+#BC = DX NS 1 0.0
+#BC = DX NS 3 0.0
+
+# lock z deformation on whole domain
+#BC = DZ NS 100 0.0
+
+# hold bottom steady
+BC = DY NS 4 0.0
+BC = DX NS 5 0.0
+  
+  
+END OF BC
+
+# Problem Description
+Number of Materials           = 1
+MAT                           = ptm 1
+Coordinate System             = CARTESIAN
+Element Mapping                    = isoparametric
+Mesh Motion                        = ARBITRARY
+Number of bulk species             = 0
+Number of bulk species equations   = 0
+
+Number of EQ = -1                    #  mas adv bnd dif src por
+EQ = tfmp_mass        Q1  TFMP_SAT  Q1   1   1       1
+EQ = tfmp_bound       Q1  TFMP_PRES Q1   1   1       0   0
+
+EQ = shell_normal1    Q1  SH_N1     Q1               1
+EQ = shell_normal2    Q1  SH_N2     Q1               1
+EQ = shell_normal3    Q1  SH_N3     Q1               1
+EQ = mesh1            Q1  D1        Q1   0   0   1   1   1
+EQ = mesh2            Q1  D2        Q1   0   0   1   1   1
+EQ = mesh3            Q1  D3        Q1   0   0   1   1   1
+EQ = shell_curvature  Q1  K         Q1               1  
+EQ = shell_curvature2 Q1  K2        Q1               1  
+
+END OF EQ
+  
+
+Post Processing Specifications
+$Lubrication Saturation = no
+$Pressure contours = no
+TFMP_gas_velo = yes
+TFMP_liq_velo = yes
+$TFMP_Peclet = yes
+$TFMP_Krg = yes
+$TFMP_rho = yes
+$TFMP_mu = yes
+$TFMP_rho_mu = yes
+Shell Tangents = yes
+Shell Stress Tensor = yes
+Lubrication Height = yes
+Volumetric Integration Output Format = CSV
+Post Processing Volumetric Integration = 
+VOLUME_INT = POROUS_LIQ_INVENTORY 1 0 volume.csv
+END OF VOLUME_INT

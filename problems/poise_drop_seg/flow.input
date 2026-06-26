@@ -1,0 +1,133 @@
+$ {include("properties.aprepro")}
+
+------------------------------------------------------------
+                 FEM Problem Specifications
+------------------------------------------------------------
+FEM file				= channel.e
+Output EXODUS II file			= out.exoII
+GUESS file				= contin.dat
+SOLN file				= soln.dat
+Write intermediate results		= no
+------------------------------------------------------------
+                 General Specifications
+------------------------------------------------------------
+Output Level				= 0
+Debug					= 0
+Initial Guess				= zero
+------------------------------------------------------------
+                 Time Integration Specifications
+------------------------------------------------------------
+Time integration			= transient
+delta_t					= 0.5
+Maximum number of time steps		= 20
+Maximum time				= 150
+Minimum time step			= 1e-06
+Maximum time step			= 0.5
+Time step parameter			= 0.0
+Time step error				= -0.1  0  1 1 1 1 0
+Initial Time				= 0
+Printing Frequency			= 1
+
+$ Level set specifications
+Fill Weight Function			= Taylor-Galerkin
+Courant Number Limit			= 0.1
+Level Set Interface Tracking		= on
+Level Set Length Scale			= {0.75}
+Level Set Adaptive Mesh = no
+Level Set Initialization Method		= Surfaces 1
+      SURF = CIRCLE {dropX} {dropY} {R}
+Level Set Renormalization Method	= Smolianski_Like_Negative
+Level Set Renormalization Frequency = 1
+Level Set Subgrid Integration Depth	= 0
+Level Set Renormalization Tolerance	= 0.1
+
+------------------------------------------------------------
+                 Solver Specifications
+------------------------------------------------------------
+Total Number of Matrices = 2
+Solution Algorithm               = amesos
+Amesos Solver Package            = mumps
+Matrix storage format = epetra
+Number of Newton Iterations      = 15
+Newton correction factor         = 1
+Normalized Residual Tolerance    = 1.0e-9
+Pressure Stabilization = pspg_shakib
+Pressure Stabilization Scaling = 1.0
+
+------------------------------------------------------------
+	Boundary Condition Specifications                 
+------------------------------------------------------------
+
+Number of BC = -1
+
+# No slip on upper plate
+BC = U NS 3 0.
+BC = V NS 3 0.
+
+# No slip on lower plate
+BC = U NS 1 0.
+BC = V NS 1 0.
+
+# inflow velocity
+$ {sv = -rho * g / (2.0 * mu_fluid)}
+$ {sh = -(H/2.0) * (H/2.0)}
+BC = GD_PARAB  SS 4 R_MOMENTUM1 0 MESH_POSITION2    0 {sh*sv}    0.   {sv}
+BC = GD_LINEAR SS 4 R_MOMENTUM1 0 VELOCITY1         0 0 -1   
+BC = V NS 4 0.
+
+# Outflow velocities
+BC = V NS 2 0.
+BC = GD_PARAB  SS 2 R_MOMENTUM1 0 MESH_POSITION2    0 {sh*sv}    0.   {sv}
+BC = GD_LINEAR SS 2 R_MOMENTUM1 0 VELOCITY1         0 0 -1   
+
+BC = LS_CAP_DIV_N LS 0
+BC = LS_CAP_DENNER_DIFF LS 0 1.0
+
+END OF BC
+
+-------------------
+Problem Description
+-------------------
+
+Number of Materials = 1
+
+MAT = fluid 1
+
+    Coordinate System = CARTESIAN
+
+    Element Mapping = isoparametric
+
+    Mesh Motion = ARBITRARY
+
+    Number of bulk species = 0
+
+    Number of viscoelastic modes = 0
+
+Number of Matrices = 2
+
+MATRIX = 1
+Disable time step control = yes
+Number of EQ = 3
+	EQ = level_set  Q1	F	Q1	     1.    1.   1.
+	EQ = normal1  Q1	N1	Q1	     1.    1.   
+	EQ = normal2  Q1	N2	Q1	     1.    1.   
+
+MATRIX = 2
+Number of EQ = 3
+	EQ = momentum1  Q1	U1	Q1	     1.    1.   1.   1.   1.   0.
+	EQ = momentum2  Q1	U2	Q1	     1.    1.   1.   1.   1.   0.
+	EQ = continuity	Q1	P 	Q1	           1.             0.
+                                             ms   adv  bnd  dif  src  porous
+
+Post Processing Specifications
+
+Density = yes                                                                             
+Viscosity = yes                                                                           
+Pressure contours = yes
+
+
+Post Processing Volumetric Integration =
+
+#VOLUME_INT = NEGATIVE_FILL 1 0 negf.dat 0.0
+
+END OF VOLUME_INT

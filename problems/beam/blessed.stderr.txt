@@ -1,0 +1,5 @@
+Aprepro: WARNING: User-defined Variable 'k_gel' redefined (Defs, line 26)
+WARNING: Defaulting on Time step error norm indicators
+ (/opt/workdir/goma/src/mm_input.c:1612)
+Aprepro: WARNING: User-defined Variable 'k_gel' redefined (Defs, line 26)
+Aprepro: WARNING: User-defined Variable 'k_gel' redefined (Defs, line 26)

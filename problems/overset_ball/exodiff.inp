@@ -1,0 +1,6 @@
+DEFAULT TOLERANCE  relative 1.E-3 floor 1.E-10
+GLOBAL VARIABLES all relative 1.E-3 floor 1.E-10
+NODAL VARIABLES (all) relative 1.0E-3 floor 1.0E-9
+	DMX relative 1.0E-3 floor 1.0E-7
+	DMXDOT  relative 1.0E-3 floor 1.0E-7
+	VXDOT   relative 1.0E-3 floor 1.0E-6

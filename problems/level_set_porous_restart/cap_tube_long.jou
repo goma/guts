@@ -1,0 +1,61 @@
+#{include(defs)}
+
+brick x {hh=0.5*LT} y {LL=0.5*LT} z {LT} 
+body all move {hh/2.0} {LL/2.0} 0.0
+brick x {hh2=0.55*LT} y {LL2=0.4*LL} z {LT}
+body 2 move {hh2/2.0+hh} {LL2/2.0} 0.0
+webcut body 1 with plane xplane offset {2.0*hh/3.0}
+webcut body 2 with plane yplane offset {0.8*LL2}
+body all move {-hh-0.2*LL2+0.001} {-LL2+0.001} 0.0
+webcut body 4 with cylinder radius {0.2*LL2} axis z
+delete body 5 7
+unite body 1 2 6
+body all move {0.} {LL2}  0.
+imprint all
+merge all
+
+$brick x {hh2=0.15*LT} y {LL2=0.4*LL} z {LT}
+$body 8 move {0.15*LT} {-.2*LL} 0
+$body 8 copy move {0.22*LT}
+
+
+
+group "porous" add surface 21
+group "fluid" add surface 14
+
+surface 14 scheme pave
+surface 14 size {base=0.08}
+curve 60 size {base/2.0}
+mesh surface 14
+
+surface 21 scheme pave
+surface 21 size {base}
+curve 3 size {base*3.0}
+curve 38 scheme bias {1.0/0.95}
+curve 40 scheme bias {0.95}
+mesh surface 21
+
+## interface
+Sideset 100 Curve 27 
+Nodeset 100 Curve 27
+Sideset 101 Curve 27 wrt surface 14
+
+Sideset 150 curve 89 60 91
+Nodeset 150 curve 89 60 91
+
+Sideset 200 curve 46 
+Nodeset 200 curve 46 
+
+Sideset 400 curve 16 
+Nodeset 400 curve 16 
+
+nodeset 500 curve 30
+sideset 500 curve 30
+
+block 1 porous
+block 2 fluid
+
+block all Element Type quad4
+
+export genesis "long_neck.exoII"
+

@@ -1,0 +1,10 @@
+Aprepro-6.41: ERROR: syntax error, unexpected UNDVAR (Defs, line 2)
+Aprepro: WARNING: Pre-defined Variable 'FALSE' redefined (Defs, line 25)
+WARNING: Defaulting on Time step error norm indicators
+ (/opt/workdir/goma/src/mm_input.c:1612)
+WARNING: Use CAP_ENDFORCE_SCALAR for consistent sign convention (/opt/workdir/goma/src/mm_input_bc.c:416)
+reconcile_bc_to_matrl:  WARNING Global Pressure Datum 1.01325e+06 and VL_EQUIL Pressure Datum 1.0133e+06 Differ
+reconcile_bc_to_matrl:  WARNING Global Pressure Datum set to 1.0133e+06 by VL_EQUIL card
+WARNING: Cant do flux function in transient (/opt/workdir/goma/src/mm_post_proc.c:10390)
+WARNING: Bad nodal post process variable count  (/opt/workdir/goma/src/mm_post_proc.c:12292)
+WARNING: Bad elem post process variable count  (/opt/workdir/goma/src/mm_post_proc.c:12495)

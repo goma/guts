@@ -1,0 +1,247 @@
+{include("edge_coat.defs")}
+
+FEM File Specifications
+-- ---- --------------
+#FEM file                         = edge_coat5.exoII
+FEM file                         = contin.exoII
+Output EXODUS II file            = out.exoII
+GUESS file                       = contin.dat
+SOLN file                        = soln.dat
+Write intermediate results       = no
+Anneal Mesh on Output            = yes
+
+General Specifications
+------- --------------
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = {Debug}
+#Initial Guess                    = zero
+Initial Guess                    = read_exoII
+
+
+Time Integration Specifications
+---- ----------- --------------
+Time integration                 = steady
+delta_t                          = 5.0e-6
+Maximum number of time steps     = 200
+Maximum time                     = 1
+Minimum time step                = 1e-9
+Maximum time step                = .008
+Time step parameter		 = 0.5
+Time step error                  = 1e-1 0 1 1 0 0 0 0
+Printing Frequency		 = 10
+Initial Time 			 = 0.0
+
+Solver Specifications
+------ --------------
+Solution Algorithm	        = gmres	
+Preconditioner                  = dom_decomp
+Matrix subdomain solver          = ilut
+Matrix Scaling                   = row_sum
+Matrix ILUT fill factor		 = 1.0
+Matrix reorder                   = rcm
+Matrix drop tolerance            = 1.e-8
+#Matrix Scaling                   = sym_diag
+Matrix residual norm type        = r0
+#Matrix output type               = 10
+Matrix factorization overlap     = none
+#Matrix factorization reuse       = calc
+Matrix drop tolerance            = 0
+Matrix polynomial order          = 3
+Size of Krylov subspace          = 600
+Orthogonalization                = modified
+Maximum Linear Solve Iterations  = 602
+Number of Newton Iterations      = 30 
+Newton correction factor         = 1  
+Normalized Residual Tolerance    = 1e-7
+Residual Ratio Tolerance         = 1e-7
+Pressure Stabilization           = yes
+Pressure Stabilization Scaling   = 0.10
+
+
+Boundary Condition Specifications
+-------- --------- --------------
+Number of BC			 = -1
+
+#die walls
+BC = U NS 20 0.0
+BC = V NS 20 0.0
+BC = W NS 20 0.0
+
+BC = U NS 25 0.0
+BC = V NS 25 0.0
+BC = W NS 25 0.0
+
+#inlet 
+BC = U NS 10 0.0
+BC = V NS 10 {-3.50613/1.875}
+BC = W NS 10 0.0
+
+#symmetry plane
+BC = U NS 30 0.0
+
+#free surface
+BC = CAPILLARY SS 40 {1.0/Ca} 0. 0.
+
+#exit plane
+#BC = U NS 50 0.0
+#BC = V NS 50 0.0
+BC = W NS 50 -1.0
+
+BC = SURFTANG_EDGE SS 40 50 0. 0. -1. {1.0/Ca} 
+
+#moving web.
+BC = U NS 60 0.0
+BC = V NS 60 0.0
+BC = W NS 60 -1.0
+
+#slip region
+BC = V NS 100 0.0
+BC = VELO_SLIP SS 100 0.01 0 0 -1
+
+#DCL Edge conditions
+BC = VELO_NORMAL_EDGE SS 100 40 0.0
+BC = VELO_TANGENT_EDGE SS 100 40 0. 0. -1.0
+
+#MESH conditions
+
+#die walls
+BC = DX NS 20 0.0
+BC = DY NS 20 0.0
+BC = DZ NS 20 0.0
+
+BC = PLANEY SS 25 0. 1. 0. {-die_base}
+
+#Static CL conditions 
+
+BC = DY NS 500 0.0
+BC = CA_EDGE_INT SS 40 25 {theta_s}  0.  1.  0.
+#BC = VAR_CA_EDGE SS 40 25 {2.0*theta_s} 0. 0. 0. 0. 0.  1.  0.
+
+#Downstream meniscus is fixed 
+BC = DY NS 600 0.0
+BC = DZ NS 600 0.0
+
+
+
+#inlet 
+BC = PLANEY SS 10 0. 1. 0. {-inlet_plane}
+
+#symmetry plane
+BC = PLANEX SS 30 1. 0. 0. 0.
+
+#exit plane
+BC = PLANEZ SS 50 0. 0. 1. {-exit_plane}
+
+#moving web
+BC = PLANEY SS 60 0. 1. 0. {-web_plane}
+
+#slip region
+BC = PLANEY SS 100 0. 1. 0. {-web_plane}
+
+#free surface
+BC = KINEMATIC SS 40 0.0
+#BC = KINEMATIC SS 45 0.0
+
+#DCL conditions
+BC = VAR_CA_EDGE SS 40 100  {theta_s} {cT} 0. 0. -1.0  0. -1. 0.
+
+#Symmetry plane conditions
+BC = SURFTANG_EDGE SS 40 30 -1 0 0 {1.0/Ca}
+
+END OF BC
+
+Rotation Specifications =
+
+#ROT = MOM SURFACE 45 T1 0 VELO_NORMAL 45 T2 0 BASIS_RESEED
+
+ROT = MOM EDGE 100 40 VELO_NORMAL_EDGE 100 V 100 VELO_TANGENT_EDGE 100 NONE
+
+ROT = MOM VERTEX 100 30 40 U 30 V 100 VELO_NORMAL_EDGE 100 NONE
+
+ROT = MESH SURFACE 40   T2 0 KINEMATIC 40 T1 0  BASIS_RESEED
+
+ROT = MESH EDGE 40 30 PLANEX 30 KINEMATIC 40 T 0 NONE
+ROT = MESH EDGE 100 40  VAR_CA_EDGE 40 PLANEY 100  T 0 NONE
+ROT = MESH EDGE 40 50  T 0 KINEMATIC 40 PLANEZ 50 NONE
+ROT = MESH EDGE 25 45 T 0 DY 600 DZ 600 NONE
+ROT = MESH EDGE 25 40  T 0 DY 500  CA_EDGE_INT 40 NONE
+
+ROT = MESH VERTEX 100 40 30  PLANEX 30 PLANEY 100 VAR_CA_EDGE 40 NONE
+ROT = MESH VERTEX 25 40 30  PLANEX 30 PLANEY 25 CA_EDGE_INT 40 NONE
+ROT = MESH VERTEX 100 50 40 VAR_CA_EDGE 40 PLANEY 100 PLANEZ 50 NONE
+ROT = MESH VERTEX 40 30 50  PLANEX 30 KINEMATIC 40 PLANEZ 50 NONE
+ROT = MESH VERTEX 40 30 25  PLANEX 30 DY 600  DZ 600 NONE
+
+
+
+END OF ROT
+
+
+Problem Description
+------- -----------
+Number of Materials		= 2
+MAT = newt 1
+	Coordinate System	= CARTESIAN
+	Element Mapping		= isoparametric
+	Mesh Motion		= ARBITRARY
+	Number of bulk species	= 0
+	Number of EQ		= 7
+
+	EQ = momentum1   Q1 U1 Q1   1 1 1 1 1 0 
+	EQ = momentum2   Q1 U2 Q1   1 1 1 1 1 0 
+	EQ = momentum3   Q1 U3 Q1   1 1 1 1 1 0 
+	EQ = continuity  Q1 P  Q1   1         0 
+	EQ = mesh1       Q1 D1 Q1   0 0 0 1 0 0 
+	EQ = mesh2       Q1 D2 Q1   0 0 0 1 0 0 
+	EQ = mesh3       Q1 D3 Q1   0 0 0 1 0 0 
+				  - - - - - - -
+                                  d m a b d s p
+				  i a d n i r o
+				  v s v d f c r
+				    s     f   o
+			                      u
+					      s
+MAT = stiff_newt 2
+	Coordinate System	= CARTESIAN
+	Element Mapping		= isoparametric
+	Mesh Motion		= ARBITRARY
+	Number of bulk species	= 0
+	Number of EQ		= 7
+
+	EQ = momentum1   Q1 U1 Q1   1 1 1 1 1 0 
+	EQ = momentum2   Q1 U2 Q1   1 1 1 1 1 0 
+	EQ = momentum3   Q1 U3 Q1   1 1 1 1 1 0 
+	EQ = continuity  Q1 P  Q1   1         0 
+	EQ = mesh1       Q1 D1 Q1   0 0 0 1 0 0 
+	EQ = mesh2       Q1 D2 Q1   0 0 0 1 0 0 
+	EQ = mesh3       Q1 D3 Q1   0 0 0 1 0 0 
+				  - - - - - - -
+                                  d m a b d s p
+				  i a d n i r o
+				  v s v d f c r
+				    s     f   o
+			                      u
+					      s
+Post Processing Specifications
+---- ---------- -------------- 
+Stream Function			= no
+Streamwise normal stress	= no
+Pressure contours		= no
+Second Invarient of Strain	= no
+Mesh Dilatation			= no
+Navier Stokes Residuals		= no
+Moving Mesh Residuals		= no
+Mass Diffusion Vectors		= no
+Mass Fluxlines			= no
+Energy Conduction Vectors	= no
+Energy Fluxlines		= no
+Time Derivatives		= no
+Mesh Stress Tensor		= no
+
+
+Post Processing Fluxes =
+	FLUX = VOLUME_FLUX 10 1 0 area.dat
+	FLUX = VOLUME_FLUX 50 1 0 area.dat
+	FLUX = VOLUME_FLUX 50 2 0 area.dat
+END OF FLUX

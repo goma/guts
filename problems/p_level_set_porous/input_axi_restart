@@ -1,0 +1,182 @@
+{include(defs)}
+
+FEM Problem Specifications
+--- ------- --------------
+FEM file                         = restart.exoII
+Output EXODUS II file            = out1.exoII
+GUESS file                       = contin.dat
+SOLN file                        = soln.dat
+Write intermediate results       = no
+
+ ---
+General Specifications
+ ---
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+Initial Guess                    = read_exoII_file restart.exoII
+$Initial Guess                    = zero
+$Initialize = VELOCITY1 0 -0.8
+
+
+---
+Time Integration Specifications
+---- ----------- --------------
+Time integration                 = transient
+delta_t                          = 1.0e-4
+Initial Time                     = 11.30
+Maximum number of time steps     = 40
+Maximum time                     = 11.50
+Minimum time step                = {dt_min/100}
+Maximum time step                = 0.2
+Time step parameter              = 0.
+Time step error  		 = -10.2e-3  0   1   1   1   0   1 0
+Printing Frequency               = 2
+Fill Weight Function	         = Explicit
+Courant Number Limit             = 0.2
+
+Level Set Interface Tracking     = ON
+Level Set Subelement Integration = OFF
+Level Set Subgrid Integration Depth = 2
+Level Set Length Scale           = {LSLS=0.2}
+$Level Set Initialization Method  = Surfaces 1
+				SURF = PLANE -1.0 0.0 0.0 -0.
+$Level Set Initialization Method = Surfaces 1
+	                        SURF = CIRCLE -0.5 -0.0 1.0
+Level Set Initialization Method  = Exodus
+
+#Force Initial Level Set Renormalization = yes
+Level Set Renormalization Method = Huygens_Constrained
+Level Set Renormalization Tolerance = 0.3
+$Level Set Renormalization Frequency = 15
+Level Set Reconstruction Method  = POINTS
+Restart Time Integration After Renormalization = no
+---
+Solver Specifications
+------ --------------
+Amesos Solver Package            = umf
+Solution Algorithm               = amesos
+Preconditioner                  = dom_decomp
+Matrix subdomain solver          = ilu
+##Matrix reorder                   = rcm
+Matrix Scaling                   = row_sum
+Matrix ILUT fill factor		 = 1.0
+##Matrix Relative Threshold	 = 1.0
+##Matrix Absolute Threshold	 = 1.e-5
+Matrix drop tolerance            = 1.e-8
+##Matrix Scaling                   = sym_diag
+Matrix residual norm type        = r0
+##Matrix output type               = 10
+##Matrix factorization overlap     = diag
+##Matrix factorization reuse       = calc
+Size of Krylov subspace          = 300
+Orthogonalization                = modified
+Maximum Linear Solve Iterations  = 100
+Number of Newton Iterations      = 7
+Newton correction factor         = 1  
+Normalized Residual Tolerance    = 1e-6
+Normalized Correction Tolerance    = 1e-5
+Residual Ratio Tolerance         = 1e-12
+Pressure Stabilization           = pspp
+Pressure Stabilization Scaling   = 0.01
+
+
+
+
+Boundary Condition Specifications
+-------- --------- --------------
+Number of BC                     = -1
+######################################
+## Level Set BC's
+
+# Interface of porous & fluid
+
+##{h_elem = 0.1}
+BC = POR_LIQ_FLUX_FILL SS 100 1 2 {permeab/lqvisc/(h_elem/2.0)} {-pcmin}  {dt_min/100.0} {LSLS/2.0}
+BC = DARCY_CONTINUOUS SS 100 1 2 {LSLS} {time_threshold = 0}
+/* Notice the one-sided application of this */
+$Must have this no-slippage on the porous-continuous interface. 
+BC = LINEAR_WETTING_SIC SS 100 {theta_s_ss100} {cT_ss100} {3.*LSLS} {1.e-8*L*L} 0.0 0.0 0.0 {dt_max/10.0}
+
+# External wall for slip
+BC = VELO_NORMAL SS 150 0.0
+$BC = U NS 150 0.
+$BC = V NS 150 0.
+
+# Free Surface
+BC = LS_CAPILLARY LS 0
+
+# Entrance BC
+#BC = FLOW_PRESSURE SS 200 1.0
+BC = U NS 200 -0.2
+BC = V NS 200 0.0
+
+#Exit BC
+BC = VELO_TANGENT SS 500 0 0. 0. 0.
+
+
+## Symmetry Plane BC's
+$BC = VELO_NORMAL SS 400 0.0
+BC = V NS 400 0.0
+END OF BC
+######################################
+
+Problem Description
+---
+Number of Materials = 2
+
+MAT = porous    1
+
+        Coordinate System = CYLINDRICAL
+        Element Mapping   = isoparametric
+        Mesh Motion = LAGRANGIAN
+        Number of bulk species = 0
+
+	Number of EQ			 = 1
+         EQ = porous_unsat Q1 P_LIQ Q1     1.   1.   1.   1.   1.
+
+MAT = liquid_gas      2
+ 
+  Coordinate System = CYLINDRICAL
+  Element Mapping   = isoparametric
+  Mesh Motion = ARBITRARY
+  Number of bulk species = 0
+ 
+	Number of EQ			 = 4
+	 EQ = momentum1   Q1 U1 Q1        1.   1.   1.   1.   1.  0.
+	 EQ = momentum2   Q1 U2 Q1        1.   1.   1.   1.   1.  0.
+	 EQ = continuity  Q1 P  Q1        1.                      0.
+         EQ = level_set   Q1 F  Q1        1 1     1   
+#         EQ = normal1     Q1 N1 Q1   1 1
+#         EQ = normal2     Q1 N2 Q1   1 1
+{Endif}
+                              	    ms  adv  bnd  dif  src por
+
+
+END OF EQ
+
+
+
+Post Processing Specifications
+---- ---------- --------------
+Stream Function                 = no
+Streamwise normal stress        = no
+Pressure contours               = yes
+Second Invarient of Strain      = no
+Mesh Dilatation                 = no
+Navier Stokes Residuals         = no
+Moving Mesh Residuals           = no
+Mass Diffusion Vectors          = no
+Mass Fluxlines                  = no
+Energy Conduction Vectors       = no
+Energy Fluxlines                = no
+Time Derivatives                = no
+Viscosity = yes
+Mesh Stress Tensor              = no
+Porous Saturation = yes
+Bulk density of species in porous media = yes
+Gas concentration of species in porous media = no
+Liquid phase convection vectors in porous media = no
+Porosity in deformable porous media = no
+Capillary pressure in porous media = yes
+Liquid phase Darcy velocity in porous media = yes

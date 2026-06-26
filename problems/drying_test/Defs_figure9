@@ -1,0 +1,119 @@
+/*
+ * This file defines (parameterizes) a one-layer 
+ *  drying film problem. 
+ *  Model for toluene/polyester
+ *  Price, Wang, & Romdhane, 1997
+ *
+ */
+
+$Initial substrate thickness (cm)   {h_s = 3.556E-3}
+$Initial coating film - guess (cm)  {h_1 = h_s+0.020857}
+
+$Number elements across substrate { ne_s = 1}
+$Number elements across film 1    { ne_1 = 45}
+$Number elements horizontally     { ne_h = 1}
+
+$surface_tension        {surf_tens=30.0}
+$surf_tens_thermal_elasticity   {dsurfdT=-0.1}
+$surf_tens_composition_elasticity       {dsurfdX=0.0}
+
+$ Initial Temperature
+$  {T_init= 317.594} kelvin
+$ Sink temperature of oven
+$  {T_inf = 353.15} kelvin 
+
+$ thermal conductivity
+$ { k_poly = 4.5e-4 } cal/s/cm/K
+$ { k_sub = 3.22e-4 } cal/s/cm/K
+$ { k_sol = 3.475e-4 } cal/s/cm/K
+
+$ Sink Concentration in overlying gass
+$  {X1_inf   =  0}  Toluene
+$ Initial weight fraction of solvent 
+$  {X1_init = 0.7}
+
+$ Densities
+$  {rho_poly = 1.17} gm/cm3
+$  {rho_sub  = 1.38} gm/cm
+$  {rho_sol  = 0.866} gm/cm
+$  {rho_init = (rho_sol*rho_poly)/(rho_sol+((rho_poly-rho_sol)*X1_init))} rho_init (gm/cm3)
+
+
+$ Heat capacities
+$ {cp_poly = 0.35} cal/g/K
+$ {cp_sub = 0.45} cal/g/K
+$ {cp_sol = 0.44} cal/g/K
+
+$ Molar volumes
+$ {mv_poly = 96538.0} cm3/mol
+$ {mv_sol = 106.4} cm3/mol
+
+$ Antoine coefficients Toluene
+$  {ln10 = log(10)}
+$  {A = ln10*4.07383}
+$  {B = ln10*1344.8}
+$  {C = -53.668}
+$  {conv = 1.} assume atmospheric pressure
+$  {Tmin = 0.1}
+$  {Tmax = 1000.}
+
+$ Free volume diffusivity parameters
+$  {D01 = 3.998e-4} cm2/s
+$  {E0 = 0.00 } kcal/mol
+$  {V1_crit = 0.917} cm3
+$  {V2_crit = 1.} cm3
+$  {epsilon = 0.958 }
+$  {k11 = 2.21e-3} cm3/g/K
+$  {k12 = 6.145e-4} cm3/g/K
+$  {k21 = -103.0 } Kelvin
+$  {k22 = -223.9} kelvin
+$  {chi = 0.39}
+
+$ Molecular weight of carbon tetrachloride
+$ {mw_ccl4 = 153.82}
+$ Molecular weight of air
+$ {mw_inert = 35.703}
+$ Molecular weight of toluene
+$ {mw_tol = 92.141} MW of toluene
+$ Molecular weight of PVAC
+$ {mw_pvac = 1.11295E+05}
+
+$  D_0_polymer 
+$ {D0_pvac = 1.0/mw_pvac}
+$ {D0_polymer = D0_pvac}
+$  E_0_polymer 
+$ {E0_polymer = 0.0}
+
+$  Assumes solvent is toluene
+$ {D_air = 0.0844} solvent diffusivity in air cm2/sec from Pete Price
+
+$ Mass transfer coefficient based on
+$ heat/mass correlation of Colburn
+$ {rho_air = 1.052e-03 }  gms/cm3 @80C
+$ {k_air = 6.951e-5} cal/s/cm/K BSL pg 263
+$ {cp_air = 0.240} cal/gm/K from Pete Price
+$ {gas_const = 82.05} atm cm3/K gmmol
+$ {T_avg = T_inf/2+T_init/2} T_ave K
+
+$ heat transfer coefficient
+$  {Kh = 6.8e-4} cal/s/cm2/K
+$ heat of vaporization
+%  {h_vap = 98.9}  cal/gm
+$  {coeff1 = rho_air*cp_air*gas_const*T_avg}
+$  {coeff2 = rho_air*cp_air*D_air/k_air}
+$  {coeff2 **=-0.67}
+$ Surface Mass Transfer Coefficient
+$  {k1_gas = Kh*mw_tol/(coeff1*coeff2)} Price's units gm/atm/s/cm2
+$  {k1_sol = k1_gas/rho_init} GOMA's units cm/atm/sec
+$  {K1_ben = 0.0104 } cm/sec from Ben Blackwell
+$ Radiative Terms
+$   {e_polymer = 0.95} polymer emissivity
+$   {e_substrate = 0.95} substrate emissivity
+$   {e_wall_lower = 0.30} lower surface emissivity
+$   {e_wall_upper = 0.30} upper surface emissivity
+$   lower emissivity
+$   {e_total_lower =  1.0/( (1.0/e_substrate) + (1.0/e_wall_lower) - 1.0)} 
+$   upper emissivity
+$   {e_total_upper =  1.0/( (1.0/e_polymer) + (1.0/e_wall_upper) - 1.0)}
+$   {SB_constant = 1.35519e-12} SB constant (cal/cm2-s)
+

@@ -1,0 +1,40 @@
+GD_TABLE Input Test: GOMA Version Information
+=============================================
+# Information on the version of Goma used to create the base files.
+#
+# Tom Baer developed this test problem to test gd_table reading of a file.
+# The version of Goma used to set the baseline results is the Dec 18, 1999
+# Goma. The Goma header reads:
+
+	GOMA 3 Rev 1999/12/19
+	3.8.0
+
+
+# This was used to create the base1 files which form the standard
+# used in testing Goma results.
+
+
+Directory:   .../VandV/problems/v2.2/gd_table
+
+
+Dec 2, 99 baseline #1
+**********************
+     goma_991201 executable
+     output files:
+        base1.sout
+        base1.serr
+
+     initial updates - 2.0e+00 2.8e+01 6.7e+00
+     1st iteration updates - 4.0e+01 1.6e+03 2.0e+02 
+
+
+Jul 7, 00 baseline #2
+**********************
+     goma_000620 executable
+     output files:
+        base2.sout
+        base2.serr
+        base2_out.exoII
+
+     initial updates - 2.0e+00 2.8e+01 6.7e+00     
+     1st iteration updates - 4.0e+01 1.6e+03 2.0e+02 

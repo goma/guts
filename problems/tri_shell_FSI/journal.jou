@@ -1,0 +1,37 @@
+# {include("journal.aprepro")}
+
+reset
+cylinder height {Clen} radius {R1}
+webcut volume 1 with cylinder radius {R1/10} axis z center 0 0 0
+delete volume 2
+
+imprint all
+merge all
+
+delete mesh
+surface 1 size {6.283*R1/nx/2}
+surface 1 scheme trimesh
+mesh surface 1
+volume 1 size {Clen/nz}
+volume 1 scheme tetmesh
+mesh volume 1
+
+block 1 surface 1
+block 1 element type TRISHELL3
+block 2 volume 1 
+block 2 element type TETRA4
+
+nodeset 1 vertex 1
+sideset 1 vertex 1
+nodeset 2 vertex 2
+sideset 2 vertex 2
+nodeset 10 surface 1
+sideset 10 surface 1 wrt volume 1
+nodeset 11 surface 5
+sideset 11 surface 5
+nodeset 12 surface 4
+sideset 12 surface 4
+
+set large exodus file off
+export mesh "journal.tri.g" 3 overwrite
+

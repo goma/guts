@@ -1,0 +1,37 @@
+$ {init = 0.5}
+$ {keff = 1.}  micron/sec                                                                                                                                                                                                           
+
+$ {h_ref = 10} micron
+$ {width = 50000/h_ref} micron/micron
+$ {h_silicon = 150/h_ref} micron/micron
+$ {h_gel = 10/h_ref} micron/micron
+$ {ne_silicon = 3}
+$ {ne_gel = 5}
+$ {ne_width = 30}
+
+$Properties of silicon
+$ {mw_sil = 28.0855 } gm/gm-mol
+$ {rho_sil = 2.33} gm/cc
+$ {cp_sil = 4.78/mw_sil} cal/gm-K
+$ {k_sil = 0.353} cal/sec-cm-K
+$ {lame_ref = 352750} dynes/cm2
+$ {lame_mu = 352750/lame_ref} 
+$ {lame_lambda = 627120/lame_ref} 
+
+$Properties of gelatin
+$ use water for now
+$ {rho_gel = 0.8 } gm/cc
+$ {cp_gel = 1.} cal/gm-K
+$ {k_gel = 5.92*0.860421} cal/hr-cm-K
+$ {k_gel = k_gel/3600.} cal/sec-cm-K
+$ {mu_gel = 0.8904*.01} gm/cm/sec
+$ {d_gel = 2.e-9*1.e4*1.e4} micron2/sec
+$ {lame_mu_gel = 1000/lame_ref} 
+$ {lame_mu_exp = 4.}
+$ {lame_lambda_gel = 0.} 
+
+$Initial conditions
+$  {Xinf = 0.3}
+$  {charac_time = d_gel/h_ref/h_ref}
+$  {diffu_gel = d_gel/d_gel}
+$  {keff_gel = h_ref*keff/d_gel}

@@ -1,0 +1,25 @@
+Copyright (c) 2002  Sandia Corporation.
+
+Under the terms of Contract DE-AC04-94AL85000, there is a non-exclusive
+license for use of this work by or on behalf of the U.S. Government. Export
+of this program may require a license from the United States Government.
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN ...
+
+
+Number of unknowns            = 27
+
+Number of matrix nonzeroes    = 441
+
+
+               R e s i d u a l         C o r r e c t i o n
+
+  ToD    itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)
+-------- --- ------- ------- ------- ------- ------- ------- --- ---------------
+14:25:30 [0] 1.2e-01 3.4e-01 2.0e-01 5.5e-01 1.7e+00 9.5e-01  1  0.0e+00/0.0e+00
+14:25:30 [1] 6.8e-17 8.4e-17 6.9e-17 2.1e-16 2.4e-16 2.1e-16  1  0.0e+00/0.0e+00
+scaled solution norms   1.000000e+00  1.833333e-01  3.818813e-01 
+
+Proc 0 runtime:       0.00 Minutes.
+

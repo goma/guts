@@ -1,0 +1,22 @@
+
+{rho_liq = 1.0 } g/cm^3
+{rho_gas = 0.001} g/cm^3
+
+{sigma = 60.0 } dyn/cm
+
+{mu_liq = 12.0 } P
+{mu_gas = mu_liq/500} P
+
+
+{elem_size = 0.0014}
+
+{CA_s = 45}
+
+$ Time step analysis
+
+{dt_phys_ca = 0.1*mu_gas/sigma }
+{dt_num_ca = sqrt( rho_liq*elem_size*elem_size*elem_size/sigma) }
+
+{dt_max = 1.e-4}
+{dt_min = 1.e-7 }
+

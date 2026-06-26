@@ -1,0 +1,119 @@
+#{include("properties.aprepro")}
+------------------------------------------------------------
+                 FEM File Specifications
+------------------------------------------------------------
+FEM file                         = simple_backward.g
+Output EXODUS II file            = out.exoII
+#Output EXODUS II file            = out_simple_{inflow_u}.exoII
+GUESS file                       = no
+SOLN file                        = no
+Write intermediate results       = no
+------------------------------------------------------------
+                 General Specifications
+------------------------------------------------------------
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+Initial Guess                    = zero
+#Initial Guess                    = random
+#Initial Guess                    = read_exoII_file restart.exoII
+#Initialize = EDDY_NU 0 {inflow_eddy/4}
+#External Field                   = DIST Q1 dist_m0.e
+------------------------------------------------------------
+                 Time Integration Specifications
+------------------------------------------------------------
+Time integration                        = transient
+delta_t                                 = 1e-3
+Maximum number of time steps            = 100
+Maximum time                            = 15
+Minimum time step                       = 6e-09
+Maximum time step                       = 1e-2
+Time step parameter                     = 0.0
+Time step error                     = -5e-2  1 1 1 1 0 1 1 1 1
+Initial Time                        = 0
+Printing Frequency                  = 5
+March to Steady State = yes
+Steady State Tolerance = 1e-3
+-----
+Turbulence
+-----
+Turbulence Calculate Wall Distance = yes
+Turbulence Wall Node Sets = 1
+
+------------------------------------------------------------
+                 Solver Specifications
+------------------------------------------------------------
+Total Number of Matrices = 1
+Solution Algorithm               = petsc
+Number of Newton Iterations      = 50
+Newton correction factor         = 1
+Normalized Residual Tolerance    = 1.0e-9
+------------------------------------------------------------
+	Boundary Condition Specifications                 
+------------------------------------------------------------
+
+Number of BC			 = -1
+
+### Momentum BC ####
+
+# inflow
+BC	= U NS 3 {inflow_u}
+BC      = V NS 3 0.0
+
+BC      = V NS 2 0.0
+
+# outflow
+#BC	= FLOW_STRESSNOBC SS 2 {P_out = 0.0}
+BC	= FLOW_PRESSURE SS 4 {P_out = 0.0}
+
+# walls
+BC	= U NS 1 0.
+BC	= V NS 1 0.
+
+
+### Turbulent viscosity BC ###
+# inflow
+BC      = EDDY_NU NS 3 {inflow_eddy}
+BC      = EDDY_NU NS 2 {inflow_eddy}
+
+# walls
+BC      = EDDY_NU NS 1 0.
+
+
+END OF BC
+###########
+----
+Problem Description
+---
+
+Number of Materials = 1
+
+MAT = air    1
+
+	Coordinate System = CARTESIAN
+ 
+	Element Mapping  = isoparametric
+
+	Mesh Motion = ARBITRARY
+ 
+	Number of bulk species = 0
+
+Number of Matrices = 1
+	Number of EQ   = 4
+	EQ = momentum1  Q2  U1	        Q2	  1.   1.   1.   1.   1.   0.
+	EQ = momentum2  Q2  U2	        Q2	  1.   1.   1.   1.   1.   0.
+	EQ = continuity	P1  P           P1   1.                       0.
+	EQ = eddy_visc  Q2  eddy_nu	Q2	  1.   1.   1.   1.   1
+                                            div   ms  adv  bnd  dif  src  por
+#MATRIX = 2
+#	Disable time step control = yes
+#	Number of EQ   = 1
+#	EQ = eddy_visc  Q1  eddy_nu	Q1	  1.   1.   1.   1.   1
+
+
+Post Processing Specifications
+Wall Distance = yes
+Pressure contours = yes
+
+
+

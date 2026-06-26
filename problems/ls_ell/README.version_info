@@ -1,0 +1,49 @@
+ 2D Test of Level Set  Advection in ell geometry
+==================================================
+
+October 25, 01 baseline #1
+**************************
+     goma_000707 executable
+     output files:
+        base1.sout
+        base1.serr
+        blessed_ell_out.exoII
+
+     initial residuals - 1.5e+00 7.9e+00 3.1e+00
+     1st iteration updates - 3.4e+01 1.6e+03 1.5e+02
+
+
+The point at which renormalization occurs in the code flow has
+changed. Previously, this was done after subcycling but before
+the next velocity step; the more correct way is to check
+renormalization prior to subcycling, which is the way it is
+currently done. The following rebaseline brings results up to
+date under the current formulation.  (tab/dal Nov 02)
+
+November 12, 02 baseline #2
+****************************
+     goma_021112 executable
+     output files:
+        base2.sout
+        base2.serr
+        blessed2_ell_out.exoII
+
+     initial residuals - 1.5e+00 7.9e+00 3.1e+00
+     1st iteration updates - 3.4e+01 1.6e+03 1.5e+02
+
+
+It's been a year since this problem was re-baselined and much
+has been done to level sets; this brings the problem blessed
+files up to date.
+
+December 2, 03 baseline #3
+**************************
+     goma_031125 executable
+     output files:
+        blessed.sout
+        blessed.serr
+        blessed_ell_out.exoII
+
+     initial residuals - 1.5e+00 7.9e+00 3.1e+00
+     1st iteration updates - 3.4e+01 1.6e+03 1.5e+02
+

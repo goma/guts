@@ -1,0 +1,26 @@
+#{include("armature.apre")}
+
+reset
+undo on
+
+create cylinder height {bar_l} radius {bar_r}
+rotate volume 1 angle -90 about X  
+
+
+surface 3 scheme circle
+surface 3 size {bar_r/2}
+mesh surface 3
+
+volume 1 scheme sweep
+volume 1 size {bar_r/3}
+mesh volume 1
+
+block 1 volume 1
+block 1 element type HEX8
+
+nodeset 1 surface 2
+sideset 1 surface 2
+nodeset 2 surface 3
+sideset 2 surface 3
+
+export genesis "geometry.exoII" dimension 3 block all overwrite

@@ -1,0 +1,24 @@
+Here are all the files to do a viscoelastic flow problem in a four to one
+contraction.
+
+The fastq input file to build the mesh is:
+four_one.fas
+
+The exodus file containing the mesh: 
+four_one.exoII
+
+When doing viscoelastic flow calculations, generally you start with a Newtonian
+solution and then use zeroeth order continuation in the time constant
+to increase the amount of elasticity of the fluid. The Newtonian solutions 
+files are:
+newt.exoII
+with the goma input for the Newtonian solution:
+newt.input
+newt.mat
+
+A viscoelastic problem, with a time constant of 0.02 has been run from the 
+Newtonian initial guess. The results are in:
+ve.exoII
+and the goma input files are:
+ve.input
+ve.mat

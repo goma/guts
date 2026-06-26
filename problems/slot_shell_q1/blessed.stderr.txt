@@ -1,0 +1,4 @@
+WARNING: bf[] struct isn't general enough to handle variables with multiple interpolations in a single problem
+ We will carefully reset bf for each element (/opt/workdir/goma/src/mm_as_alloc.c:1565)
+  REMOVING BC VELO_TANGENT at SS 60/70 because of KINEMATIC_PETROV 
+		converged SS!

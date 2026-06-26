@@ -1,0 +1,296 @@
+WARNING: Defaulting on Time step error norm indicators
+ (/opt/workdir/goma/src/mm_input.c:1612)
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.694444         0.694444
+               Angle                   1                1
+               Triangle                1                1
+               COMBINED         0.898148         0.694444     0.898148
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.694024         0.678086
+               Angle            0.999431         0.982983
+               Triangle         0.997761         0.847134
+               COMBINED         0.897072         0.678086     0.836067
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.693749         0.672706
+               Angle            0.998915         0.981678
+               Triangle         0.996178         0.810415
+               COMBINED          0.89628         0.672706       0.8216
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.693536         0.670322
+               Angle            0.998429         0.981309
+               Triangle         0.994902         0.795405
+               COMBINED         0.895622         0.670322     0.815678
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.693333         0.668753
+               Angle            0.997964         0.980971
+               Triangle         0.993715          0.78555
+               COMBINED         0.895004         0.668753     0.811758
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.693006         0.666283
+               Angle            0.997298         0.979924
+               Triangle         0.991881         0.769339
+               COMBINED         0.894061         0.666283     0.805182
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.692502         0.660214
+               Angle            0.996325         0.970484
+               Triangle         0.989088         0.729096
+               COMBINED         0.892638         0.660214     0.786598
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.691811         0.645877
+               Angle            0.994994         0.958717
+               Triangle         0.985288         0.642983
+               COMBINED         0.890698         0.642983     0.749192
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.690903         0.629138
+               Angle            0.993236         0.945474
+               Triangle         0.980307          0.55776
+               COMBINED         0.888149          0.55776     0.710791
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.690117         0.614238
+               Angle            0.991723         0.933715
+               Triangle         0.975991         0.492991
+               COMBINED         0.885944         0.492991     0.680315
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.689442          0.60074
+               Angle            0.990452          0.92309
+               Triangle         0.972258         0.441826
+               COMBINED         0.884051         0.441826     0.655218
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.688861         0.589262
+               Angle            0.989402          0.91369
+               Triangle         0.969012         0.403216
+               COMBINED         0.882425         0.403216     0.635389
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.688358          0.57962
+               Angle            0.988552          0.90551
+               Triangle         0.966167         0.373865
+               COMBINED         0.881026         0.373865     0.619665
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.687922         0.571601
+               Angle            0.987885         0.898449
+               Triangle         0.963666         0.351423
+               COMBINED         0.879824         0.351423     0.607158
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.687543          0.56506
+               Angle             0.98737         0.892377
+               Triangle         0.961455         0.334378
+               COMBINED         0.878789         0.334378     0.597272
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian          0.68721         0.559847
+               Angle             0.98698         0.887181
+               Triangle         0.959496          0.32161
+               COMBINED         0.877895          0.32161     0.589546
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.686917         0.555798
+               Angle            0.986701         0.882766
+               Triangle         0.957752         0.312231
+               COMBINED         0.877123         0.312231     0.583598
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.686658         0.552763
+               Angle             0.98652         0.879054
+               Triangle         0.956195         0.305577
+               COMBINED         0.876458         0.305577     0.579132
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.686427         0.550612
+               Angle            0.986423         0.875979
+               Triangle         0.954801         0.301152
+               COMBINED         0.875884         0.301152     0.575914
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian          0.68622         0.549224
+               Angle            0.986396         0.873485
+               Triangle         0.953546          0.29857
+               COMBINED         0.875388          0.29857      0.57376
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.686033         0.548496
+               Angle            0.986414         0.871523
+               Triangle          0.95241         0.297531
+               COMBINED         0.874952         0.297531     0.572517
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.685861         0.548336
+               Angle            0.986466         0.870054
+               Triangle         0.951372         0.297796
+               COMBINED         0.874567         0.297796     0.572062
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.685704         0.548666
+               Angle            0.986546         0.869043
+               Triangle         0.950413         0.299182
+               COMBINED         0.874221         0.299182     0.572297
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.685557         0.549419
+               Angle             0.98664         0.868462
+               Triangle         0.949514         0.301544
+               COMBINED         0.873904         0.301544     0.573142
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.685417          0.55054
+               Angle            0.986731         0.868288
+               Triangle         0.948658         0.304771
+               COMBINED         0.873602         0.304771     0.574533
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.685284         0.551984
+               Angle            0.986811         0.868504
+               Triangle         0.947829         0.308777
+               COMBINED         0.873308         0.308777     0.576422
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.685154         0.553714
+               Angle            0.986876         0.869098
+               Triangle         0.947005         0.313504
+               COMBINED         0.873012         0.313504     0.578772
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.685024         0.555703
+               Angle            0.986911         0.870065
+               Triangle         0.946163         0.318915
+               COMBINED           0.8727         0.318915     0.581561
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.684893         0.557832
+               Angle            0.986916         0.871403
+               Triangle         0.945279         0.324995
+               COMBINED         0.872363         0.324995     0.584743
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.684756         0.559726
+               Angle            0.986888         0.873119
+               Triangle         0.944317         0.331756
+               COMBINED         0.871987         0.331756       0.5882
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.684612         0.561915
+               Angle            0.986812         0.875228
+               Triangle         0.943242         0.339234
+               COMBINED         0.871555         0.339234     0.592125
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.684455         0.564414
+               Angle            0.986687         0.877756
+               Triangle         0.942016         0.347502
+               COMBINED         0.871052         0.347502     0.596557
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.684282         0.567256
+               Angle             0.98651         0.880743
+               Triangle         0.940578         0.356682
+               COMBINED         0.870457         0.356682      0.60156
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.684084         0.570488
+               Angle            0.986275         0.884253
+               Triangle          0.93885         0.366963
+               COMBINED         0.869736         0.366963     0.607234
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.683852         0.574187
+               Angle            0.985966         0.888381
+               Triangle         0.936719         0.378647
+               COMBINED         0.868845         0.378647     0.613738
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.683572         0.578475
+               Angle            0.985561         0.893286
+               Triangle         0.934013         0.392231
+               COMBINED         0.867715         0.392231     0.621331
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.683217         0.583569
+               Angle            0.985016         0.899239
+               Triangle         0.930463         0.408596
+               COMBINED         0.866232         0.408596     0.630468
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.682738         0.589893
+               Angle            0.984239         0.906779
+               Triangle         0.925493         0.429529
+               COMBINED         0.864157         0.429529     0.642067
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.681998         0.598522
+               Angle             0.98296         0.917276
+               Triangle         0.917534          0.45973
+               COMBINED         0.860831          0.45973     0.658509
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.681251         0.606876
+               Angle              0.9811         0.928644
+               Triangle         0.907379          0.49234
+               COMBINED         0.856577          0.49234     0.675953
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.681525         0.603638
+               Angle            0.982037         0.923557
+               Triangle         0.912038         0.478843
+               COMBINED         0.858533         0.478843     0.668679
+Element quality OK!
+
+ ELEMENT QUALITY METRIC         AVG              MIN
+               Jacobian         0.680847         0.610237
+               Angle            0.980605         0.930645
+               Triangle         0.903653         0.504993
+               COMBINED         0.855035         0.504993     0.681958
+Element quality OK!

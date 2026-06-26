@@ -1,0 +1,110 @@
+v7.11.0-1-g709cfe59
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2026 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+
+
+######################### __PRINT_SYNC_END__ #########################
+
+Number of unknowns            = 15795
+
+Number of matrix nonzeroes    = 1165101
+
+Initial guess read from "surf_rheo_cam3_m1_out2.exoII" ...(last soln in file)
+Nodal variable VX found in exoII database - reading.
+Nodal variable VY found in exoII database - reading.
+Nodal variable DMX found in exoII database - reading.
+Nodal variable DMY found in exoII database - reading.
+		 Values read time plane at time = 5.5e-05
+
+=> Try for soln at t=1e-05 with dt=1e-05 [0 for 0] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:08 [0] 5.2e-03 3.7e+00 7.5e-02 3.3e+02 1.2e+05 5.2e+03  1  1.1e+00/6.8e+00 
+17:08:16 [1] 5.2e-08 2.7e-06 9.7e-08 1.0e-03 2.4e-02 1.7e-03  1  1.1e+00/6.5e+00 
+17:08:24 [2] 5.9e-15 6.5e-13 1.8e-14                         skp 1.2e+00/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.270e+02  7.845e+00  4.113e+01 
+
+CONSTANT DELTA_T          [2.0e-08, 5.6e-04, 2.6e+01]
+Predictor-corrector norm: [  1 d  ,   1 v  ,   0 P  ]
+
+=> Try for soln at t=2e-05 with dt=1e-05 [1 for 1] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:26 [0] 5.1e-03 3.8e+00 7.7e-02 3.3e+02 1.2e+05 5.2e+03  1  1.1e+00/6.8e+00 
+17:08:34 [1] 9.1e-09 4.1e-07 2.2e-08 1.0e-04 2.7e-03 2.3e-04  1  1.2e+00/6.9e+00 
+17:08:42 [2] 2.4e-15 6.2e-13 1.4e-14                         skp 1.2e+00/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.270e+02  7.846e+00  4.113e+01 
+
+CONSTANT DELTA_T          [3.1e-09, 1.9e-05, 2.6e+01]
+Predictor-corrector norm: [  1 d  ,   1 v  ,   0 P  ]
+
+=> Try for soln at t=3e-05 with dt=1e-05 [2 for 2] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:44 [0] 1.0e-04 3.7e-03 2.0e-04 5.3e-02 1.3e+00 1.0e-01  1  1.3e+00/6.9e+00 
+17:08:52 [1] 5.0e-10 6.9e-09 9.2e-10 2.3e-06 1.0e-04 5.3e-06  1  1.2e+00/6.9e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.270e+02  7.847e+00  4.113e+01 
+
+CONSTANT DELTA_T          [3.1e-09, 1.7e-05, 5.1e-04]
+Predictor-corrector norm: [  1 d  ,   1 v  ,   0 P  ]
+
+=> Try for soln at t=4e-05 with dt=1e-05 [3 for 3] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:09:01 [0] 8.6e-05 3.7e-03 2.0e-04 5.0e-02 1.2e+00 1.0e-01  1  1.1e+00/6.9e+00 
+17:09:09 [1] 4.9e-10 6.3e-09 8.7e-10 1.9e-06 9.2e-05 4.7e-06  1  1.3e+00/6.9e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.270e+02  7.848e+00  4.114e+01 
+
+OK  1.5e-05 < 1.5 5.0e-02 [3.1e-09, 1.5e-05, 5.1e-04]
+Predictor-corrector norm: [  1 d  ,   1 v  ,   0 P  ]
+
+=> Try for soln at t=5.5e-05 with dt=1.5e-05 [4 for 4] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:09:18 [0] 1.3e-04 6.5e-03 3.4e-04 9.6e-02 2.3e+00 2.2e-01  1  1.1e+00/6.9e+00 
+17:09:26 [1] 2.0e-09 2.3e-08 3.3e-09 6.6e-06 2.9e-04 1.6e-05  1  1.2e+00/6.9e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.270e+02  7.850e+00  4.114e+01 
+
+OK  3.5e-05 < 1.5 5.0e-02 [7.4e-09, 3.5e-05, 1.2e-03]
+Predictor-corrector norm: [  1 d  ,   1 v  ,   0 P  ]
+
+-done
+
+
+Proc 0 runtime:       1.44 Minutes.
+

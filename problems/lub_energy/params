@@ -1,0 +1,87 @@
+$$  Parameters for block-by-block 3D printing $  units
+$       length - mm
+
+$material_file  {matfile="Carbo_30CY.par"}
+$thixotropic_factor     {thixo_factor=0}
+$Level_Set_Property_Ratio	{prop_ratio=1}
+$Surface_tension_multiplier     {surfX=0}
+$Density_multiplier     	{densX=1.0}
+$Mold_dimensions
+#Dimensions   {width=152.4}   {height=76.2}    {gap=5.08}
+$Inlet_Cylinder_dimensions
+#Cylinder_length   	{leng=5.715}  
+#Cylinder_radius	 {radius=1.905} 
+
+$mesh_mapped_intervals	{intervals=3}
+$Wall_bias_factor	{bias=1.0}
+$Element_size           {small_size=radius/intervals}
+$Normal_size            {size=4*small_size}
+$Big_size               {big_size=2*size}
+$Element_Interpolation	{do_biquad=1}
+$Obstacle_Included	{do_obstacle=1}
+$Wall_region_Included	{do_wall_mat=0}
+$Wall_Function_Included	{do_wall_fcn=1}
+$FnonWallFCN_Included	{do_Fwall=0}
+$Include_Kurvature_Eqn	{do_curvature=0}
+$Include_DivN_Kurvature_Eqn	{do_divnormal=0}
+$Obstacle_radius	{obs_rad=5.0}
+$Wall_fudge_factor	{wall_fudge=0.3}
+$Dynamic_Contact_angle	{dca=90}
+$Diffusive_Keqn_coefficient	{K_diff=10000.0}
+$Curvature_psuedo_relaxation	{K_relax=1.0}
+
+$Level_set_subgrid	{use_subgrid=1}
+$Subgrid_integ_depth	{subgrid_depth=3}
+$Level_Set_Length_Scale {LSLS=3*size*use_subgrid}
+$Taylor-Galerkin_Fill_weight	{use_TG=0}
+
+$yield_stress_factor         {Y=1.0}
+$yield_F_factor         {F=1.0}  Also used for Carreau function
+$Yield_epsilon_regularization	{epsilon=0.0}
+$Inlet_Flowrate(mm^3/sec)	{flowrate=10.}
+$Inlet_powerlaw_index		{inlet_pl=1.0 + F*(0.25-1.0)}  
+$Circle_Flow_prefactor	{arg1=0.5/inlet_pl}   
+$Continued   {prefactor=0.054*exp(lgamma(2.5+arg1))/exp(lgamma(2+arg1))/sqrt(PI)/radius^(3+1/inlet_pl)} 
+$Wall_Radius_Factor	{rad_factor=0.5*((1./inlet_pl+2.)*PI/(1./inlet_pl+3.))^(1./(2+1./inlet_pl))}
+$Table_temperature		{TableTemp=25}
+$Lub_heat_transfer_coeff	{ht_coeff=0.1}
+$Ambient_temperature		{T_amb=50}
+$Shell_temperature_supg		{do_Tsupg=0}
+$Amesos_solver_package		{solver="Mumps"}
+$Convergence_criterion_residual	{resid_eps=1E-6}
+$Convergence_criterion_solution	{soln_eps=1E-4}
+$Working Filenames
+$Mesh_File	{meshfile="mesh.exoII"}
+$Results_File	{resultsfile="out.exoII"}
+$Continuation_File	{contfile="cont.exoII"}
+$Steady_or_transient	{do_transient=1}
+$Direct_or_iterative	{direct=1}
+$--------------------------------------------------------------------------
+$scales {surface_tension=30*surfX}  {viscosity=0.067}  {density=0.000001*densX}
+{If(surfX != 0.0)}
+$Physical_steplimit     {dt_phys=gap*viscosity/surface_tension}
+$Numerical_limit        {dt_num=sqrt(density*size*size*size/surface_tension)}
+{Else}
+$Physical_steplimit     {"NaN"}
+$Numerical_limit        {"NaN"}
+{Endif}
+
+$initial_run_time       {initial_time=0}
+$total_run_time         {total_time=0.001}
+$Initial_timestep_factor	{init_factor=0.0001}
+$time_step_max          {time_step_max=1.0}
+$time_step_min          {time_step_min=0.01*init_factor}
+$time_step_error        {time_step_error=-0.0005}
+$time_step_init         {time_step_init=init_factor}
+$time_step_resolved     {time_step_resolved=5*time_step_min}
+$Transient_step_method	{trapezoidal=0}
+$Max_timesteps		{max_steps=5000}
+
+$Renormalization_frequency	{renorm_freq=1}
+$Renormalization_tolerance	{renorm_tol=0.25}
+$Renormalization_freeze		{freeze=1}
+$$Flag_for_continue_transient	{continue=0}
+$$No_of_Lub_Gauss_pts		{gpts=3}
+$$Viscosity_Integration_type	{I_type = "GAUSSIAN"}
+
+$$End of Params file

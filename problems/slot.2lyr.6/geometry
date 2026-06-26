@@ -1,0 +1,492 @@
+$
+$$
+$Operating Conditions
+$$
+$ Vacuum backpressure    [=] Pa            {vacuum = -800.}
+$ Substrate (web) speed  [=] m/s           {webspeed = 1.}
+
+$$layer 1
+$ Volumetric inflow rate/unit width m2/s   {volumetric_inflow1 = .0001}
+$ Viscosity (Newtonian)  [=] Pa-s          {viscosity1 = 0.1}
+$ Density   (Newtonian)  [=] m^3/s         {density1 = 1000.}
+$ Surface Tension        [=] N/m           {surface_tension1 = 0.04}
+$ Layer 2
+$ Volumetric inflow rate/unit width m2/s   {volumetric_inflow2 = .0001}
+$ Viscosity (Newtonian)  [=] Pa-s          {viscosity2 = 0.1}
+$ Density   (Newtonian)  [=] m^3/s         {density2 = 1000.}
+$ Surface Tension        [=] N/m           {surface_tension2 = 0.04}
+$
+$$
+$Set Geometrical paramters (all parameters in MKS)
+$ Please refer to picture in postscript file provided
+$$
+$  Original mesh          You have changed
+$  was built with:        it to:
+$-----------------------------------------
+$  {Gap = 0.0002 }      {Gap_new = 0.0002}
+$  {h1  = 0.00006} 	{h1_new  = 0.00006}
+$  {h2  = 0.00004}      {h2_new  = 0.00004}
+$  {h3  = 0.00004}      {h3_new  = 0.00004}
+004}
+$  {h4  = 0.00001}      {h4_new  = 0.00001}
+$  {h5  = 0.00001}      {h5_new  = 0.00001}
+$  {alpha = 0.}     	{alpha_new = 0.0}
+$
+$  {S3  = 0.0002}  	{S3_new = 0.0002}
+$  {S2  = 0.0002}  	{S2_new = 0.0002}
+$  {S1  = 0.0005}  	{S1_new = 0.0005}
+$  {L2  = 0.0004}  	{L2_new = 0.0004}
+$  {L1  = 0.0001}  	{L1_new = 0.0001}
+$  {L3  = 0.0004}  	{L3_new = 0.0004}
+$
+$  {L4  = 0.0012}  	{L4_new = 0.0012}
+$
+$  {slip_length = 0.00003}
+$
+$
+$$$
+$Do a simple calculation
+$$$
+$   {inflow_speed1 = volumetric_inflow1/S2_new}
+$   {inflow_speed2 = volumetric_inflow2/S3_new}
+$
+$
+$$Set mesh density
+{no_elem_L4 = 12}
+{no_elem_L2 = 12}
+{no_elem_S1 = 6}
+{no_elem_S2 = 6}
+{no_elem_L1 = 10}
+{no_elem_L3 = 12}
+{no_elem_film = 4}
+{no_elem_film1=4}
+{no_elem_along_slip_length = 3}
+
+
+$$
+$Define points
+$$
+
+$Die lips
+ {x1 = 0.}  {y1 = Gap}   0.
+ {x1_new = 0.}  {y1_new = Gap_new}   0.
+
+ {x2 = L2*cos(asin(h1/L2))} {y2 = h1+Gap}  0.
+ {x2_new = L2_new*cos(asin(h1_new/L2_new))} {y2_new = h1_new+Gap_new}  0.
+
+ {x3 = x2 + S2} {y3 = h2+Gap}   0.
+ {x3_new = x2_new + S2_new} {y3_new = h2_new+Gap_new}   0.
+
+ {x4 = x3 + L1*cos(asin((h3 - h2)/L1))} {y4 = h3+Gap} 0.
+ {x4_new = x3_new + L1_new*cos(asin((h3_new-h2_new)/L1_new))} {y4_new = h3_new+Gap_new}
+
+ {x5 = x2}  {y5 = Gap + h1 + S1}  0.
+ {x5_new = x2_new}  {y5_new = Gap_new + h1_new + S1_new}  0.
+
+ {x6 = x3}  {y6 = y5} 0.
+ {x6_new = x3_new}  {y6_new = y5_new} 0.
+
+$substrate
+ {x7 = x1}  {y7 = 0.} 0.
+ {x7_new = x1_new}  {y7_new = 0.} 0.
+
+ {x8 = x2}  {y8 = 0.} 0.
+ {x8_new = x2_new}  {y8_new = 0.} 0.
+
+ {x9 = x3}  {y9 = 0.} 0.
+ {x9_new = x3_new}  {y9_new = 0.} 0.
+
+ {x10 = x4} {y10 = 0.} 0.
+ {x10_new = x4_new} {y10_new = 0.} 0.
+
+
+$Upstream meniscus
+ {x15 = x1+slip_length*cos(asin(h1/L2))} {y15 = y1+slip_length*sin(asin(h1/L2))} 0.
+ {x15_new = x1_new+slip_length*cos(asin(h1_new/L2_new))} {y15_new = y1_new+slip_length*sin(asin(h1_new/L2_new))} 0.
+
+ {x16 = x7+slip_length} {y16 = 0.} 0.
+ {x16_new = x7_new+slip_length} {y16_new = 0.} 0.
+
+ {x17 = x16} {y17 = (y15+y16)/2.} 0.
+ {x17_new = x16_new} {y17_new = (y15_new+y16_new)/2.} 0.
+
+ {x177 = x7+5.*slip_length} {y177 = (y15+y16)/2.} 0.
+ {x177_new = x7_new+5.*slip_length} {y177_new = (y15_new+y16_new)/2.} 0.
+
+ {x18 = x1 - Gap/4.} {y18 = y17} 0.
+ {x18_new = x1_new - Gap_new/2.} {y18_new = y17_new} 0.
+
+ {x20 = x4} {y20 = Gap + h4 + S1}
+ {x20_new = x4_new} {y20_new = Gap_new + h4_new + S1_new}
+
+ {x22 = x4 + S3} {y22 = Gap + h4}
+ {x22_new = x4_new+S3_new} {y22_new = Gap_new + h4_new}
+
+ {x21 = x22} {y21 = y20}
+ {x21_new = x22_new} {y21_new = y20_new}
+
+ {x23 = x22 + L3*cos(asin((h5 - h4)/L3))} {y23 = h5+Gap} 0.
+ {x23_new = x22_new + L3_new*cos(asin((h5_new-h4_new)/L3_new))} {y23_new = h5_new+Gap_new}
+
+ {x24 = x23}  {y24 = 0.} 0.
+ {x24_new = x23_new}  {y24_new = 0.} 0.
+
+ {x25 = x22} {y25 = 0.} 0.
+ {x25_new = x22_new} {y25_new = 0.} 0.
+
+ {x11 = x23_new+L4_new/3.} {y11 = 0.} 0.
+ {x11_new = x23_new+L4_new/3.} {y11_new = 0.} 0.
+
+ {x12 = x23+L4} {y12 = 0.} 0.
+ {x12_new = x23_new+L4_new} {y12_new = 0.} 0.
+
+$Downstream  meniscus
+ {x13 = x11} {y13 = Gap} 0.
+ {x13_new = x11_new} {y13_new = Gap_new} 0.
+
+ {x14 = x12} {y14 = (volumetric_inflow1 + volumetric_inflow2)/webspeed} 0.
+ {x14_new = x12_new} {y14_new = Gap_new} 0.
+
+$$ These internal meniscus points assume equal flow rates of both layers
+
+ {x26 = x12} {y26 = y12 + volumetric_inflow1/webspeed}
+ {x26_new = x12_new} {y26_new = y12_new + volumetric_inflow1/webspeed}
+
+ {x27 = x11} {y27 = y11 + volumetric_inflow1/webspeed}
+ {x27_new = x11_new} {y27_new = y11_new + volumetric_inflow1/webspeed}
+
+ {x28 = x25} {y28 = y25 + volumetric_inflow1/webspeed}
+ {x28_new = x25_new}  {y28_new = y25_new + volumetric_inflow1/webspeed}
+
+ {x29 = x3 + L1*cos(asin((h3 - h2)/L1))/1.2} {y29 = (h2 + (h3-h2)/1.2) +Gap} 0.
+ {x29_new = x3_new + L1_new*cos(asin((h3_new - h2_new)/L1_new))/1.2} {y29_new = (h2_new + (h3_new-h2_new)/1.2) +Gap_new} 0.
+
+ {x30 = x23} {y30 = y24 + volumetric_inflow1/webspeed}
+ {x30_new = x23_new} {y30_new = y24_new + volumetric_inflow1/webspeed}
+ 
+
+ $$$Die lips
+ {Delta_alpha = alpha_new-alpha}
+ {Ifndef(Delta_alpha)}
+  point 1 {x1}  {y1}   0.
+  point 2 {x2} {y2}  0.
+  point 3 {x3} {y3}   0.
+  point 4 {x4} {y4} 0.
+  point 5 {x5}  {y5}  0.
+  point 6 {x6}  {y6} 0.
+
+  $$$Substrate
+  point 7  {x7}  {y7} 0.
+  point 8  {x8}  {y8} 0.
+  point 9  {x9}  {y9} 0.
+  point 10 {x10} {y10} 0.
+  point 11 {x11} {y11} 0.
+  point 12 {x12} {y12} 0.
+
+  $$$Downstream meniscus
+  point 13 {x13} {y13} 0.
+  point 14 {x14} {y14} 0.
+
+  $$$Upstream meniscus
+  point 15 {x15} {y15} 0.
+  point 16 {x16} {y16} 0.
+  point 17 {x17} {y17} 0.
+  point 177 {x177} {y177} 0.
+  point 18 {x18} {y18} 0.
+
+  $$$Second land and internal meniscus
+
+  point 20 {x20} {y20} 0.
+  point 21 {x21} {y21} 0.
+  point 22 {x22} {y22} 0.
+  point 23 {x23} {y23} 0.
+  point 24 {x24} {y24} 0.
+  point 25 {x25} {y25} 0.
+  point 26 {x26} {y26} 0.
+  point 27 {x27} {y27} 0.
+  point 28 {x28} {y28} 0.
+  point 29 {x29} {y29} 0.
+  point 30 {x30} {y30} 0.
+
+{Else}
+
+  point 1 {x1_new = 0.}  {y1_new = Gap_new}   0.
+
+  {r = sqrt((x2_new-x1_new)^2 + (y2_new-y1_new)^2)} {theta = atan((y2_new-y1_new)/(x2_new-x1_new))}
+  point 2 {x2_new = r*cos(theta+alpha_new-alpha) + x1_new} {y2_new = r*sin(theta+alpha_new-alpha)+y1_new} 0.
+
+  {r = sqrt((x3_new-x1_new)^2 + (y3_new-y1_new)^2)} {theta = atan((y3_new-y1_new)/(x3_new-x1_new))}
+  point 3 {x3_new = r*cos(theta+alpha_new-alpha) + x1_new} {y3_new = r*sin(theta+alpha_new-alpha)+y1_new} 0.
+
+  {r = sqrt((x4_new-x1_new)^2 + (y4_new-y1_new)^2)} {theta = atan((y4_new-y1_new)/(x4_new-x1_new))}
+  point 4 {x4_new = r*cos(theta+alpha_new-alpha) + x1_new} {y4_new = r*sin(theta+alpha_new-alpha)+y1_new} 0.
+
+  {r = sqrt((x5_new-x1_new)^2 + (y5_new-y1_new)^2)} {theta = atan((y5_new-y1_new)/(x5_new-x1_new))}
+  point 5 {x5_new = r*cos(theta+alpha_new-alpha) + x1_new} {y5_new = r*sin(theta+alpha_new-alpha)+y1_new} 0.
+
+  {r = sqrt((x6_new-x1_new)^2 + (y6_new-y1_new)^2)} {theta = atan((y6_new-y1_new)/(x6_new-x1_new))}
+  point 6 {x6_new = r*cos(theta+alpha_new-alpha) + x1_new} {y6_new = r*sin(theta+alpha_new-alpha)+y1_new} 0.
+
+  {r = sqrt((x20_new-x1_new)^2 + (y20_new-y1_new)^2)} {theta = atan((y20_new-y1_new)/(x20_new-x1_new))}
+  point 20 {x20_new = r*cos(theta+alpha_new-alpha) + x1_new} {y20_new = r*sin(theta+alpha_new-alpha)+y1_new} 0.
+
+  {r = sqrt((x21_new-x1_new)^2 + (y21_new-y1_new)^2)} {theta = atan((y21_new-y1_new)/(x21_new-x1_new))}
+  point 21 {x21_new = r*cos(theta+alpha_new-alpha) + x1_new} {y21_new = r*sin(theta+alpha_new-alpha)+y1_new} 0.
+
+  {r = sqrt((x22_new-x1_new)^2 + (y22_new-y1_new)^2)} {theta = atan((y22_new-y1_new)/(x22_new-x1_new))}
+  point 22 {x22_new = r*cos(theta+alpha_new-alpha) + x1_new} {y22_new = r*sin(theta+alpha_new-alpha)+y1_new} 0.
+
+  {r = sqrt((x23_new-x1_new)^2 + (y23_new-y1_new)^2)} {theta = atan((y23_new-y1_new)/(x23_new-x1_new))}
+  point 23 {x23_new = r*cos(theta+alpha_new-alpha) + x1_new} {y23_new = r*sin(theta+alpha_new-alpha)+y1_new} 0.
+
+  {r = sqrt((x29_new-x1_new)^2 + (y29_new-y1_new)^2)} {theta = atan((y29_new-y1_new)/(x29_new-x1_new))}
+  point 29 {x29_new = r*cos(theta+alpha_new-alpha) + x1_new} {y29_new = r*sin(theta+alpha_new-alpha)+y1_new} 0.
+
+  $$$Substrate
+  point 7  {x7_new}  {y7_new} 0.
+  point 8  {x8_new}  {y8_new} 0.
+  point 9  {x9_new}  {y9_new} 0.
+  point 10 {x10_new} {y10_new} 0.
+  point 11 {x11_new} {y11_new} 0.
+  point 12 {x12_new} {y12_new} 0.
+
+  $$$Downstream meniscus
+  point 13 {x13_new} {y13_new} 0.
+  point 14 {x14_new} {y14_new} 0.
+
+  $$$Upstream meniscus
+  point 15 {x15_new} {y15_new} 0.
+  point 16 {x16_new} {y16_new} 0.
+  point 17 {x17_new} {y17_new} 0.
+  point 177 {x177_new} {y177_new} 0.
+  point 18 {x18_new} {y18_new} 0.
+ 
+  $$$Second land and internal meniscus
+
+  point 20 {x20_new} {y20_new} 0.
+  point 21 {x21_new} {y21_new} 0.
+  point 22 {x22_new} {y22_new} 0.
+  point 23 {x23_new} {y23_new} 0.
+  point 24 {x24_new} {y24_new} 0.
+  point 25 {x25_new} {y25_new} 0.
+  point 26 {x26_new} {y26_new} 0.
+  point 27 {x27_new} {y27_new} 0.
+  point 28 {x28_new} {y28_new} 0.
+  point 29 {x29_new} {y29_new} 0.
+  point 30 {x30_new} {y30_new} 0.
+
+{Endif}
+
+$
+$$$$Define lines and coefficients
+$
+Line  1  STR   15   2  0  {no_elem_L2}  1.0
+Line  2  STR   2   5  0  {no_elem_S1}  1.0
+Line  3  STR   5   6  0  {no_elem_S2}  1.0
+Line  4  STR   6   3  0  {no_elem_S1}  1.0
+Line  5  STR   3   29  0  {no_elem_L1}  1.0
+Line  55  STR   29   4  0  {no_elem_L1-8}  1.0
+Line  6  STR   4   22  0  {no_elem_S2}  1.3
+Line  66  STR   22   23  0  {no_elem_L3}  0.8
+Line  666  STR   23   13  0  {no_elem_L4}  1.2
+Line  7  STR   13   14  0  {no_elem_L4}  1.0
+Line  8  STR   14   26  0  {no_elem_film1}  1.0
+Line  88  STR   26   12  0  {no_elem_film}  1.0
+Line  9  STR   12   11  0  {no_elem_L4}  1.0
+Line  10  STR   11   24  0  {no_elem_L4}  1.0
+Line  101  STR   24   25  0  {no_elem_L3}  1.0
+Line  102  STR   25   10  0  {no_elem_S2}  1.0
+Line  11  STR   10   9  0  {no_elem_L1}  1.0
+Line  12  STR   9   8  0  {no_elem_S2}  1.0
+Line  13  STR   8   16  0  {no_elem_L2}  1.0
+Line  14  STR   15   17  0  {no_elem_film}  1.0
+Line  144  STR   17   16  0  {no_elem_film}  1.0
+
+$
+$$$Internal lines
+$
+Line  15  STR   2   3  0  {no_elem_S2}  1.0
+Line  16  STR   2   8  0  {2*no_elem_film}  1.0
+Line  17  STR   3   9  0  {2*no_elem_film}  1.0
+$$Line  18  STR   4   10  0  {no_elem_film}  1.2
+Line  19  STR   13   27  0  {no_elem_film1}  1.0
+Line  190  STR   27   11  0  {no_elem_film}  1.0
+
+Line  20  STR   15   1  0  {no_elem_along_slip_length}  1.0
+Line  21  STR   16   7  0  {no_elem_along_slip_length}  1.0
+Line  22  STR   17   18  0  {no_elem_along_slip_length*2}  1.0
+Line  23  CIRC   1   18  177  {no_elem_along_slip_length*2}  1.2
+Line  24  CIRC   18  7  177  {no_elem_along_slip_length*2}  0.8
+
+$
+$$New lines for second slot
+$
+Line 30 STR 4 20 0 {no_elem_S1}   1.3
+Line 31 STR 20 21 0 {no_elem_S2}  1.3
+Line 32 STR 21 22 0 {no_elem_S1}  0.76
+Line 33 STR 22 28 0 {no_elem_film1}
+Line 34 STR 28 25 0 {no_elem_film}
+Line 35 STR 23 30 0 {no_elem_film1}
+Line 36 STR 30 24 0 {no_elem_film}
+
+$
+$$interface meniscus
+$
+Line 40 STR 26 27 0 {no_elem_L4}
+Line 41 STR 27 30 0 {no_elem_L4}
+Line 42 STR 30 28 0 {no_elem_L3}
+Line 43 CIRC 29 28 21 {no_elem_L3} 1.2
+
+$
+$$Regions
+$
+Region 1 1 -14 -144 -13 -16 -1 
+Region 2 1 -16 -12 -17 -15
+Region 3 1 -17 -11 -102 -34 -43 -5
+Region 6 1 -15 -4 -3 -2
+Region 7 1 -20 -23 -22 -14
+Region 8 1 -22 -24 -21 -144
+Region 10 1 -101 -36 -42 -34
+Region 12 1  -10 -190 -41 -36
+Region 13 1 -9 -88 -40 -190
+
+
+Region 4 2 -6 -30 -31 -32
+Region 5 2 -43 -33 -6 -55
+Region 9 2 -33 -42 -35 -66
+Region 11 2 -35 -666 -19 -41
+Region 14 2 -40 -8 -7 -19
+
+Scheme 1 X
+Scheme 2 m
+Scheme 3 x
+Scheme 4 m
+Scheme 5 x
+Scheme 6 m
+Scheme 7 x
+Scheme 8 x
+Scheme 9 x
+Scheme 10 m
+Scheme 11 m
+Scheme 12 m
+Scheme 13 m
+Scheme 14 m
+
+Body 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+
+elembc 1 1 20
+elembc 2 2
+elembc 3 3
+elembc 4 4
+elembc 5 5 55
+elembc 6 666  7
+elembc 8 8 88
+elembc 9 9 10 101 102 11 12 13 21
+elembc 21 21
+
+elembc 23 23 24
+
+elembc 30 30
+elembc 31 31
+elembc 32 32
+elembc 66 66
+
+$$interface
+elembc 40 40 41 42 43
+
+$ no-slip
+nodebc 1 1 2 4 5 55 30 32 66
+
+$Inflow
+nodebc 3 3
+nodebc 31 31
+
+$midplane
+nodebc 17 17
+
+$outflow
+nodebc 8 8 88
+
+$substrate
+nodebc 9 9 10 101 102 11 12 13
+
+
+$ouflow plane free surface intersection
+poinbc 400 14
+
+$Static separation line
+poinbc 1400 23
+
+$Static separation line upstream meniscus
+poinbc 100 1
+
+$DCl
+poinbc 700 7
+
+$Interface with wall
+poinbc 290 29
+
+$exit plane and interface
+poinbc 260 26
+
+RENUM
+NINE
+End
+
+
+$$ Coefficients for the PLANE equations in the goma input file.
+
+
+$ SET c's to zero for 2D problem 
+$   {c1=0} {c2=0} {c3=0} {c4=0} {c5=0} {c6=0} {c7=0} {c8=0} {c9=0}
+
+$
+$ Calculate coefficients for general equation a*x + b*y +c*z +d = 0
+
+$ Calculate coefficients for general equation a*x + b*y +c*z +d = 0
+$   {a1=(y2_new-y1_new)/(x1_new-x2_new)}
+$   {d1=(-y1_new-a1*x1_new)}
+$   {b1=1}
+$
+$   {b2=(x5_new-x2_new)/(y2_new-y5_new)}
+$   {d2=(-x5_new-b2*y5_new)}
+$   {a2=1}
+$
+$   {a3=(y6_new-y5_new)/(x5_new-x6_new)}
+$   {d3=(-y5_new-a3*x5_new)}
+$   {b3=1}
+$
+$   {b4=(x6_new-x3_new)/(y3_new-y6_new)}
+$   {d4=(-x6_new-b4*y6_new)}
+$   {a4=1}
+$
+$   {a5=(y4_new-y3_new)/(x3_new-x4_new)}
+$   {d5=(-y3_new-a5*x3_new)}
+$   {b5=1}
+$
+$ NB: this is a vertical line
+$
+$   {b8=(x14_new-x12_new)/(y12_new-y14_new)}
+$   {d8=-x12_new-b8*y12_new}
+$   {a8=1}
+$
+$   a9=(y12_new-y11_new)/(x11_new-x12_new)
+$   {a9= 1.0E-50}
+$   {d9=(-y12_new-a9*x12_new)}
+$   {b9=1}
+
+$   {b30=(x20_new-x4_new)/(y4_new-y20_new)}
+$   {d30=-x4_new-b30*y4_new}
+$   {a30=1}
+
+$   {a31=(y20_new-y21_new)/(x21_new-x20_new)}
+$   {d31=(-y20_new-a31*x20_new)}
+$   {b31=1}
+
+$   {b32=(x21_new-x22_new)/(y22_new-y21_new)}
+$   {d32=-x22_new-b30*y22_new}
+$   {a32=1}
+
+$   {a66=(y23_new-y22_new)/(x22_new-x23_new)}
+$   {d66=(-y22_new-a66*x22_new)}
+$   {b66=1}

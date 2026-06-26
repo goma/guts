@@ -1,0 +1,74 @@
+v7.11.0-1-g709cfe59
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2026 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+Annealing mesh on output
+
+Internal METIS decomposition using Recursive Bisection.
+
+
+
+----------------- Communications Stats ------------
+
+		Number of Neighbors
+		Max:     1 (Proc = 0)		 Avg:  1.000		Min: 1 (Proc = 0)
+
+		Size of Messages
+		Max:   966 (Proc = 0)		 Avg: 966.000		Min: 966 (Proc = 0)
+--------------------------------------------------
+
+
+######################### __PRINT_SYNC_START__ #########################
+P_0: rotating equations at 368 nodes.
+######################### __PRINT_SYNC_END__ #########################
+
+Number of unknowns            = 38780
+
+Number of matrix nonzeroes    = 6367060
+
+Initial guess read from "contin.exoII.2.0" ...(last soln in file)
+Nodal variable VX found in exoII database - reading.
+Nodal variable VY found in exoII database - reading.
+Nodal variable VZ found in exoII database - reading.
+Nodal variable DMX found in exoII database - reading.
+Nodal variable DMY found in exoII database - reading.
+Nodal variable DMZ found in exoII database - reading.
+Nodal variable P found in exoII database - reading.
+		 Values read time plane at time = 0
+
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:37 [0] 3.2e-02 6.2e+00 1.9e-01 1.9e+02 8.3e+03 6.0e+02 167 6.7e+00/5.1e+00 
+17:08:49 [1] 8.8e-04 9.6e-01 1.2e-02 4.3e-01 1.1e+02 2.1e+00 165 7.1e+00/5.4e+00 
+17:09:03 [2] 1.1e-05 8.6e-03 1.1e-04 2.0e-03 1.1e+00 1.5e-02 168 6.9e+00/4.9e+00 
+17:09:15 [3] 1.5e-07 1.0e-05 6.4e-07 6.0e-05 3.0e-02 4.4e-04 171 7.1e+00/5.4e+00 
+17:09:29 [4] 1.3e-08 5.9e-07 4.5e-08                         skp 7.1e+00/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   4.436e+02  3.698e+00  2.134e+01 
+
+Fixing exodus file anneal.exoII
+
+Fixing exodus file out.exoII
+
+-done
+
+
+Proc 0 runtime:       1.01 Minutes.
+

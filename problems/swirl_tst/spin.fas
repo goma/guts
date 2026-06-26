@@ -1,0 +1,27 @@
+ TITLE 
+  
+ POINT     1      0.0000000E+00      0.0000000E+00
+ POINT     2      3.0000000E-03      0.0000000E+00
+ POINT     3      0.0000000E+00      3.0000000E-03
+ POINT     4      0.0000000E+00      2.7500000E-03
+ POINT   100      1.9999999E-02      0.0000000E+00
+ LINE      1   STR     1     2     0   15  1.0000
+ LINE      2   STR     4     1   100   15  1.05
+ LINE      3  CIRC     2     3     1    28  0.850
+ LINE      4   STR     3     4   100     6  1.0000
+ REGION     1     1    -1    -2    -4    -3
+ SCHEME    0 X
+ BODY       1
+ POINBC   100     1
+ POINBC   200     2
+ POINBC   300     3
+ NODEBC    10     1
+ NODEBC    20     2
+ NODEBC    30     3
+ NODEBC    40     4
+ ELEMBC     1     1
+ ELEMBC     2     2 4
+ ELEMBC     3     3
+$$ ELEMBC     4     4 
+ NINE  
+ EXIT  

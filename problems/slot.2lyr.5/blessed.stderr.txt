@@ -1,0 +1,3 @@
+WARNING: Use CAP_ENDFORCE_SCALAR for consistent sign convention (/opt/workdir/goma/src/mm_input_bc.c:416)
+WARNING: CAUTION WITH SUBPARAMETRIC: DON'T USE WITH LAGRANGIAN OR TOTAL_ALE MESH MOTIONS (/opt/workdir/goma/src/mm_input.c:9218)
+		converged SS!

@@ -1,0 +1,111 @@
+ 
+ FEM File Specifications
+ ---
+FEM file                         = charge.exoII
+Output EXODUS II file            = charge.out.exoII
+GUESS file                       = contin.dat
+SOLN file                        = soln.dat
+Write intermediate results       = no
+ ---
+General Specifications
+ ---
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+Number of Jacobian File Dumps    = 2
+Initial Guess                    = zero
+#Initial Guess                    = read_exoII
+#Initial Guess                    = read
+Initialize = MASS_FRACTION 0 0.07742
+Initialize = MASS_FRACTION 1 0.07742
+#Initialize = MASS_FRACTION 0 0.1
+#Initialize = MASS_FRACTION 1 0.1
+#Initialize = VOLTAGE   0 -0.05 
+#Initialize = VELOCITY1 0.5e-2
+ --- 
+Time Integration Specifications
+ ---
+#Time integration                 = steady
+Time integration                 = transient
+Operator splitting               = consistent
+delta_t                          = 1.0e-3
+Maximum number of time steps     = 2000
+Maximum time                     = 50000.
+Minimum time step                = 1.0000e-9
+Time step parameter              = 0.5
+Time step error                  = 0.01  1  1  1  1  1  1  1
+Printing Frequency               = 1
+Initial Time 	                 =  0.0 
+ ---
+Solver Specifications
+ ---
+Solution Algorithm               = mumps
+Polynomial                       = LS,1
+Size of Krylov subspace          = 64
+Orthogonalization                = classical
+Maximum Linear Solve Iterations  = 1000
+Number of Newton Iterations      = 200
+Newton correction factor         = 1.0
+Normalized Residual Tolerance    = 1e-8
+Residual Ratio Tolerance         = 1e-2
+Residual Relative Tolerance      = 1.0e-06
+ ---
+Boundary Condition Specifications
+ ---
+Number of BC			 =    -1
+ BC =    YTOTALFLUX_CONST     SS   1 0  -2.176e-06  
+ BC =    YTOTALFLUX_CONST     SS   2 0   2.176e-06  
+ BC =    YTOTALFLUX_CONST     SS   1 1  0.  
+ BC =    YTOTALFLUX_CONST     SS   2 1  0.  
+ BC =    VOLT  NS   1    0.00
+ BC =    VOLT  NS   2   -0.04525
+BC =    U   NS      1      2.384e-06     
+BC =    V   NS      1      0.0   
+BC =    V   NS      2      0.0       
+#########
+END OF BC
+#########
+
+----
+Problem Description
+---
+ 
+Number of Materials = 1
+ 
+ MAT =   separator   1 
+ 
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = ARBITRARY
+  Number of bulk species = 2
+  Really meant number of bulk species equations in line above = TRUE
+  Number of chemical reactions = 0
+ 
+        Number of EQ  = 5
+        EQ = species_bulk  Q2    Y      Q2           1.   1.    1.     1.     0.
+        EQ = voltage       Q2    V      Q2           0.   0.    1.     1.     1.
+        EQ = momentum1  Q2      U1      Q2           1.   1.    1.     1.     0.    0.
+        EQ = momentum2  Q2      U2      Q2           1.   1.    1.     1.     0.    0.
+        EQ = continuity P1      P       P1                1.                  0.
+                              			div  ms  adv   bnd    dif    src   porous
+
+Post Processing Specifications
+
+Stream Function = yes
+Streamwise normal stress = yes
+Pressure contours = yes
+First Invariant of Strain = no
+Second Invariant of Strain = no
+Third Invariant of Strain = no
+Mesh Dilatation = no
+Navier Stokes Residuals = no
+Moving Mesh Residuals = no
+Mass Diffusion Vectors = no
+Mass Fluxlines = no
+Energy Conduction Vectors = no
+Energy Fluxlines = no
+Time Derivatives = no
+Mesh Stress Tensor = no
+Mesh Strain Tensor = no
+
+

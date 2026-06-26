@@ -1,0 +1,152 @@
+FEM File Specifications
+--- ---- --------------
+FEM file                         = newtonian_swell_new.exoII
+Output EXODUS II file            = out_ptt.exoII
+GUESS file                       = contin.dat
+SOLN file                        = soln.dat
+Write intermediate results       = no
+
+General Specifications
+------- --------------
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0 
+Initial Guess                    = read_exoII
+
+Time Integration Specifications
+---- ----------- --------------
+Time integration                 = steady
+#Time integration                 = transient
+delta_t                          = -0.05
+Maximum number of time steps     = 200
+Maximum time                     = 1
+Minimum time step                = 1e-9
+Maximum time step                = .05
+Time step parameter		 = 0.5
+Time step error                  = 1e-1 0 1 1 0 0 0 0
+Printing Frequency		 = 10
+Initial Time 			 = .0
+
+Solver Specifications
+------ --------------
+#  old parameters
+#Solution Algorithm               = lu
+#Preconditioner                   = ilu
+#  new parameters
+Solution Algorithm               = gmres
+Preconditioner                   = dom_decomp
+Matrix subdomain solver          = ilut
+Matrix reorder                   = rcm
+Matrix drop tolerance = 0.0
+Matrix ILUT fill factor = 3.5
+Matrix storage format   = vbr
+Polynomial                       = 5
+Matrix output type               = none
+Size of Krylov subspace          = 100
+Orthogonalization                = modified
+#Maximum Linear Solve Iterations  = 500
+Maximum Linear Solve Iterations  = 100
+Number of Newton Iterations      = 12
+Newton correction factor         = 1  
+Normalized Residual Tolerance    = 1e-9
+Residual Ratio Tolerance         = 1e-4
+Pressure Stabilization           = no
+Pressure Stabilization Scaling   = 0.0
+#       UMF IDIM =      6342687
+#       UMF XDIM =      6342687
+
+
+Boundary Condition Specifications
+-------- --------- --------------
+Number of BC			 = -1
+#
+# No slip on wall...
+#
+BC = U NS 3			0
+BC = V NS 3			0
+#
+# Fully developed inlet
+#
+
+#BC = TABLE SS 4 Y U LINEAR FILE = giesekus_inlet.table 
+BC = TABLE SS 4 Y U LINEAR FILE = ptt_inlet.table 
+BC  = V NS 4			0
+
+
+#centerline condition
+BC = V NS 1			0
+#
+
+#
+# Mesh displacement conditionsread
+BC = PLANE SS 1 	0.0  1.0  0.0  0.0
+BC = PLANE SS 4 	1.0  0.0  0.0  0.0
+BC = PLANE SS 6 	1.0  0.0  0.0 -8.0
+BC = PLANE SS 3 	0.0  1.0  0.0 -1.0
+BC = DX NS 100          0.0
+BC = DY NS 100		0.0
+
+
+#slip/swell surface
+
+BC = KINEMATIC SS 5             0 
+
+
+#exit conditions
+
+BC = FLOW_PRESSURE SS 6 0.0
+
+
+END OF BC
+
+
+
+Problem Description
+------- -----------
+Number of Materials		= 1
+#MAT = giesekus 1
+MAT = ptt 1
+	Coordinate System	= CYLINDRICAL
+	Element Mapping		= isoparametric
+	Mesh Motion		= ARBITRARY
+	Number of bulk species	= 0
+	Number of viscoelastic modes = 1
+	Number of EQ		= 14
+
+	EQ = momentum1   Q2 	U1 	Q2   1 1 1 1 1 0 
+	EQ = momentum2   Q2 	U2 	Q2   1 1 1 1 1 0 
+	EQ = continuity  Q1 	P  	Q1   1         0 
+	EQ = mesh1       Q2 	D1 	Q2   0 0 0 1 0 0 
+	EQ = mesh2       Q2 	D2 	Q2   0 0 0 1 0 0 
+#
+	EQ = stress11	 Q1 	S11	Q1   1 1 1 1 1 1 0
+	EQ = stress12	 Q1 	S12	Q1   1 1 1 1 1 1 0
+	EQ = stress22	 Q1 	S22	Q1   1 1 1 1 1 1 0
+	EQ = stress33	 Q1 	S33	Q1   1 1 1 1 1 1 0
+	EQ = gradient11	 Q1 	G11	Q1       1     1 
+	EQ = gradient12	 Q1 	G12	Q1       1     1 
+	EQ = gradient22	 Q1 	G22	Q1       1     1 
+	EQ = gradient21	 Q1 	G21	Q1       1     1 
+	EQ = gradient33	 Q1 	G33	Q1       1     1 
+					     - - - - - - -
+                                 	     d m a b d s p
+				 	     i a d n i r o
+				   	     v s v d f c r
+				  	       s     f   o
+			                 	         u
+					     		 s
+Post Processing Specifications
+---- ---------- -------------- 
+Stream Function			= yes
+Streamwise normal stress	= no
+Pressure contours		= no
+Second Invarient of Strain	= no
+Mesh Dilatation			= no
+Navier Stokes Residuals		= no
+Moving Mesh Residuals		= no
+Mass Diffusion Vectors		= no
+Mass Fluxlines			= no
+Energy Conduction Vectors	= no
+Energy Fluxlines		= no
+Time Derivatives		= no
+Mesh Stress Tensor		= no

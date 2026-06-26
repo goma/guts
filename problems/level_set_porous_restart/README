@@ -1,0 +1,25 @@
+this test suite problem needs ENABLE_AMESOS build for the parallel run, and a standard build for the serial run. 
+
+the two runs/tests that should be made:
+
+mpirun -np 2 -machinefile machinefile goma_exe -se stderr -so stdout -a -i input_axi_restart
+
+here the diffs should be of stderr and stdout with stderr1 and stdout1
+This run must have amesos build
+this run takes just under 6 min to complete
+Capability tested:
+All porous media continuous level-set and porous coupling for liquid-on-porous impact. 
+-parallel operation of bread-and-butter PG test problem. 
+-partially saturated porous media
+-interfacial bcs WETTING_LINEAR_SIC, DARCY_CONTINUOUS, POR_LIQ_FLUX_FILL 
+-amesos parallel direct solver
+
+
+The second run should be
+mpirun -np 1 goma_exe -se stderr -so stdout -a -i input_axi_wet_restart
+
+-diffs should be made with stderr2 and stdout2
+-Tests same capability above but with serial processing and standard solver liberary, viz. this test does not require an amesos build.
+
+Actually, we should run both of this and if the first fails, but the second succeeds, you can decipher immediately that the problem is the missing parallel direct solver capability.
+

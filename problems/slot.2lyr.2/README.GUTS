@@ -1,0 +1,14 @@
+April 4, 2002
+
+This problem actually consists of six different Goma runs
+and so it doesn't not fit with the way GUTS works.  So,
+I've split the problem into slot.2lyr.[1-6] and disabled
+the monolithic problem.   Many more tests are now performed
+as a result of the split.  
+
+I'm adding a six sub-problems but it may turn out that only
+one or a few are really useful and that intermediate problems
+don't exercise different parts of Goma (which is likely so).
+
+Pat Notz
+

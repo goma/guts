@@ -1,0 +1,47 @@
+
+brick x 10 y 10 z 10
+move Volume 1 z 5 include_merged 
+
+#imprint volume all 
+merge volume all 
+
+group "table" add surface in volume all with z_coord < 0.1
+group "topside" add surface in volume all with z_coord > 9.9
+group "side_surfs" add surface in volume all
+group "side_surfs" subtract surface in table from surface in side_surfs
+group "side_surfs" subtract surface in topside from surface in side_surfs
+
+volume all size 1.0
+volume all scheme map
+mesh volume all
+
+nodeset 1 add surface in table 
+sideset 1 add surface in table 
+nodeset 2 add surface in side_surfs
+sideset 2 add surface in side_surfs
+nodeset 3 add surface in topside
+sideset 3 add surface in topside
+
+group "center_nodes" add node in surface in table with x_coord < 2
+group "center_nodes" remove node in surface in table with x_coord < -2
+group "center_nodes" remove node in surface in table with y_coord < -2
+group "center_nodes" remove node in surface in table with y_coord > 2
+
+nodeset 100 center_nodes
+
+group "bottom_curves" add curve in surface in table
+group "top_surf_curves" add curve in surface in topside
+group "side_surf_curves" add curve in surface in side_surfs
+group "bottom_edge" intersect curve in bottom_curves with curve in side_surf_curves
+group "top_edge" intersect curve in top_surf_curves with curve in side_surf_curves
+
+nodeset 200 add curve in bottom_edge
+sideset 200 add curve in bottom_edge
+nodeset 300 add curve in top_edge
+sideset 300 add curve in top_edge
+
+block 1 add volume all
+block 1 element type hex8
+set exodus netcdf4 off
+set large exodus file on
+export mesh "3D_brick.exoII"  overwrite 

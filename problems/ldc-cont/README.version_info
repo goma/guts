@@ -1,0 +1,43 @@
+Automatic Continuation on Lid-Driven Cavity: GOMA Version Information
+=====================================================================
+
+Directory:   .../VandV/problems/v2.2/ldc_cont
+
+
+Matt Hopkins has remedied some difficulties with time stepping through the
+continuation path.  The pre-correction standard error and standard out are
+in
+
+    serr.cont.v1   and    sout.cont.v1
+
+respectively.  The corresponding input file is
+
+    ldc.input-cont.v1
+
+A new baseline has been setup using the Feb xx, 2000 verison of Goma. The
+corresponding 'blessed' results are now in base1.serr and base1.sout.
+
+dal/22800
+
+
+Feb 28, 00 baseline #1
+**********************
+     goma_000208 executable
+     output files:
+        base1.sout
+        base1.serr
+
+     initial residuals - 1.6e+00 5.8e+01 3.5e+00 
+     1st iteration updates - 5.0e+02 1.5e+04 1.3e+03
+
+
+July 7, 00 baseline #2
+**********************
+     goma_000620 executable
+     output files:
+        base2.sout
+        base2.serr
+        base2_out.exoII
+
+     initial residuals - 3.7e+05 9.7e+05 5.4e+05  
+     1st iteration updates - 9.3e+07 9.2e+09 9.3e+08 

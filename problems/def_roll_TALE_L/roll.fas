@@ -1,0 +1,127 @@
+ TITLE 
+  Flooded-roll nip
+
+$ GEOMETRY AND OPERATING CONDITIONS (MKS) 
+$ gap (leading edge to substrate)        {Gap = 0.001} {Gap_new = 0.001}
+$ displacement setting after anneal      {delta_gap    = 1.*(Gap - Gap_new)}
+$ displacement setting after anneal      {delta_gap_new = 1.*(Gap - Gap_new)}
+$ roll cover thickness (1" = 0.0254)     {d = 0.0254/2}
+$ 
+
+$ Roll Radius                            {R_I = 5.*0.0254}
+$ Outer Roll Radius                      {R_O = R_I + d}
+
+$ The bottom roll speed is set in the lower_roll.mat file through
+$ the Advected Lagrangian Velocity card.  The UNITS on that card with
+$ the rotational model require RADIANS/s.  So for 5.06 m/s linear speed
+$ the input is 2.*Pi*(rev/s)*R_O = 5.06 => 5.06/R_0 = 36.4
+$ For some realistic speeds, we want 3.06 for rollsp_t and 20.4 for rollsp_b
+$
+$ bottom roll speed			 {rollsp_b = 2.0/R_O}
+$ top roll speed			 {rollsp_t = 2.0}
+
+$ Roll extent   {theta1 = 55}   {theta2 = 125} {theta_intermediate = 90}
+
+$
+$  MESH PARAMETERS
+$
+${no_elem_along_roll1 = 10}
+${no_elem_along_roll2 = 10}
+${no_elem_across_roll_cover = 3}
+${no_elem_outflow = 4}
+
+ point  1   {x1= 0}           {y1=0}
+ point  2   {x2= R_I*cosd(theta1)}   {y2=R_I*sind(theta1)}
+ point  3   {x3= R_I*cosd(theta2)}   {y3=R_I*sind(theta2)}
+ point  4   {x4= R_O*cosd(theta1)}   {y4=R_O*sind(theta1)}
+ point  5   {x5= R_O*cosd(theta2)}   {y5=R_O*sind(theta2)}
+ point  6   {x6= R_O*cosd(theta_intermediate)}   {y6=R_O*sind(theta_intermediate)}
+ point  7   {x7= R_I*cosd(theta_intermediate)}   {y7=R_I*sind(theta_intermediate)}
+
+ {y11 = Gap + y1 + 2.*R_I + 2.*d}
+ {ym  = y1 + R_O + Gap/2}
+
+ point 11   {x11 = 0}    {y11}
+ point 12   {x12 = x2}   {y12 = 2.*ym - y2}
+ point 13   {x13 = x3}   {y13 = 2.*ym - y3}
+ point 14   {x14 = x4}   {y14 = 2.*ym - y4}
+ point 15   {x15 = x5}   {y15 = 2.*ym - y5}
+ point 16   {x16 = x6}   {y16 = 2.*ym - y6}
+ point 17   {x17 = x7}   {y17 = 2.*ym - y7}
+
+
+ LINE     1  CIRC     2     7    1    {no_elem_along_roll2}  0.8
+ LINE     111  CIRC     7     3    1    {no_elem_along_roll1}  1.1
+ LINE     2  CIRC     4     6    1    {no_elem_along_roll2}  0.8
+ LINE     22  CIRC     6     5    1    {no_elem_along_roll1}  1.1
+ LINE     3  CIRC     13    17   11    {no_elem_along_roll1}  0.91
+ LINE     33  CIRC     17    12   11    {no_elem_along_roll2}  1.25
+ LINE     4  CIRC     15    16   11    {no_elem_along_roll1}  0.91
+ LINE     44  CIRC     16    14   11    {no_elem_along_roll2}  1.25
+ LINE     5  STR     15     5    0    {no_elem_outflow}  1.0
+ LINE     6  STR     14     4    0    {no_elem_outflow}  1.0
+ LINE     7  STR     2     4    0    {no_elem_across_roll_cover}  1.0
+ LINE     8  STR     3     5    0    {no_elem_across_roll_cover}  1.0
+ LINE     9  STR     12     14    0    {no_elem_across_roll_cover}  1.0
+ LINE     10  STR    13     15    0    {no_elem_across_roll_cover}  1.0
+
+ LINE     11  STR    6      16    0    {no_elem_outflow} 1.0
+ LINE     12  STR    6      7    0    {no_elem_across_roll_cover} 1.0
+ LINE     13  STR    17      16    0    {no_elem_across_roll_cover} 1.0
+
+
+
+$lower roll
+ REGION     1     1  -111 -12 -22 -8
+ REGION     2     1  -12 -2 -7 -1
+
+$liquid
+ REGION     3     2  -22 -5 -4 -11
+ REGION     4     2  -11 -44 -6 -2
+
+$upper roll
+$$ REGION     5     3  -13 -3 -10 -4
+$$ REGION     6     3  -13 -44 -9 -33
+
+ SCHEME 1 M
+ SCHEME 2 3 4 M
+
+ BODY       1 2  3 4
+
+ NODEBC 1 1 111
+ NODEBC 2 2 22
+ NODEBC 3 3 33
+ NODEBC 4 4 44
+ NODEBC 5 5
+ NODEBC 6 6
+ NODEBC 7 7
+ NODEBC 8 8
+ NODEBC 9 9
+ NODEBC 10 10
+ NODEBC 11 11
+
+ ELEMBC 1 1 111
+ ELEMBC 2 2 22
+ ELEMBC 3 3 33
+ ELEMBC 4 4 44
+ ELEMBC 5 5
+ ELEMBC 6 6
+ ELEMBC 7 7
+ ELEMBC 8 8
+ ELEMBC 9 9
+ ELEMBC 10 10
+ ELEMBC 11 11
+
+ POINBC 600 6
+ POINBC 150 15
+ POINBC 50   5
+ POINBC 20   2
+ POINBC 40   4
+ POINBC 30   3
+ POINBC 130  13
+ POINBC 140  14
+ POINBC 120  12
+
+ RENUM
+ NINE
+ EXIT  

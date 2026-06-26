@@ -1,0 +1,57 @@
+# brk -- input file problem description for decomposition
+#	 for 3D slot with velocity, mesh, and pressure
+#
+
+1	# element block ID
+3	# number of basic eqnvars
+0 3 1 1 # momentum (3D)
+5 3 1 1 # mesh
+9 1 1 1 # continuity
+
+#
+# interactions...
+#
+
+#	v      Mesh	P
+#
+	1	0	1	# "fluid" momentum equation
+	1	1	0	#  mesh equation
+	1	0	1	#  continuity equation
+
+
+8	# number of nodes per element in this eb
+0 5 9
+0 5 9
+0 5 9
+0 5 9
+0 5 9
+0 5 9
+0 5 9
+0 5 9
+
+2	# element block ID
+3	# number of basic eqnvars
+0 3 1 1 # momentum (3D)
+5 3 1 1 # mesh
+9 1 1 1 # continuity
+
+#
+# interactions...
+#
+
+#	v      Mesh	P
+#
+	1	0	1	# "fluid" momentum equation
+	1	1	0	#  mesh equation
+	1	0	1	#  continuity equation
+
+
+8	# number of nodes per element in this eb
+0 5 9
+0 5 9
+0 5 9
+0 5 9
+0 5 9
+0 5 9
+0 5 9
+0 5 9

@@ -1,0 +1,23 @@
+LSA_eggroll: GOMA Version Information
+=============================================================================
+
+Directory:   .../VandV/problems/v2.2/LSA_eggroll
+
+Feb. 11, 2009 baseline #5
+**********************
+     goma_02112009 executable
+     output files:
+        blessed2.serr
+        blessed2.sout
+        out_blessed_2.exoII
+        LSA_1_of_5_out_blessed2.exoII
+        LSA_2_of_5_out_blessed2.exoII
+
+     initial residuals 2.1e-13 7.5e-11 2.1e-12 
+     1st iteration updates  7.8e-12 2.2e-09 5.6e-11
+
+
+    Note, I took the eigenvector calc out of the exodiff step
+because the eigenvector kept flipping sign arbitrarily. False
+positives are bad.
+

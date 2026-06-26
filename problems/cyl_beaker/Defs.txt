@@ -1,0 +1,82 @@
+$ Defs -- APREPRO definitions for Surface Rheometer
+$
+$ All units are in cgs!
+$
+$                         L_3
+$                 3------------------------4
+$                -|                        |
+$        L_5   --|                         |
+$           ---|                           |
+$       5---|                              |
+$	|	                           |
+$   L_4 |                R_1               | L_2
+$   	|	                           |
+$       |                                  |
+$	1 ---------------------------------2
+$	                   L_1
+$
+$
+$ 	x_origin = {x_origin = 0}
+$ 	y_origin = {y_origin = 0}
+$ 	width    = {width    = 0.3415}
+$ 	height  = {height  = 0.2825}
+$       z_dim = {z_dim = 1.0}
+$       cylRadius = {cylRadius = 240.E-4}
+$       Height_cylCenter = { Height_cylCenter = height + 0.5 * cylRadius}
+$
+$	Recipe for building up box corners from these specifications...
+$
+$	{x_1 = x_origin}
+$	{y_1 = y_origin}
+$
+$	{x_2 = x_1 + width }
+$	{y_2 = y_1 }
+$
+$	{x_3 = x_1 }
+$	{y_3 = y_1 + height }
+$
+$	{x_4 = x_2 }
+$	{y_4 = y_2 + height }
+$
+$ Points: {pc = 1} (point counter)
+$
+$	Point {P_1=pc++} is at (x,y) = ({x_1},{y_1})
+$	Point {P_2=pc++} is at (x,y) = ({x_2},{y_2})
+$	Point {P_3=pc++} is at (x,y) = ({x_3},{y_3})
+$	Point {P_4=pc++} is at (x,y) = ({x_4},{y_4})
+$
+$ Lines: {lc = 1} (line counter)
+$	Line {L_1 = P_1_P_2 = lc++} goes from Point {P_1} to Point {P_2}
+$	Line {L_2 = P_2_P_4 = lc++} goes from Point {P_2} to Point {P_4}
+$	Line {L_3 = P_4_P_3 = lc++} goes from Point {P_4} to Point {P_3}
+$	Line {L_4 = P_3_P_1 = lc++} goes from Point {P_3} to Point {P_1}
+$
+$ Regions: {rc = 1} (region counter)
+$	Region { R_1 = rc++ } circumscribed by lines {L_1}, {L_2}, {L_3}, {L_4}
+$
+$ Node set names...
+$	{ nc = 10 }	nc is a node set counter.
+$
+$	bottom: {bottom_ns	= nc++} with Line {L_1}
+$	right1:  {right1_ns	= 101} with Line {L_2}
+$	interface: {interface_ns = nc++} with Line {L_3}
+$	left1:	  {left1_ns	= nc++} with Line {L_4}
+$       leftInterfaceP: {leftInterfaceP_ns = 200 + P_3} at Point {P_3}
+$       rightInterfaceP: {rightInterfaceP_ns = 200 + P_4} at Point {P_4}
+$
+$ Side set names...{sc = 100}
+$
+$	bottom: {bottom_ss	= 1} with Line {L_1}
+$	right1:  {right1_ss	= 2} with Line {L_2}
+$	interface: {interface_ss = 3} with Line {L_3}
+$	left1:	  {left1_ss	= 4} with Line {L_4}
+$
+$ Mesh discretization, grading...
+$	Number of elements in x direction = { nex = 6 }
+$	Number of elements in y direction in region 1 = { ney1 = 10 }
+$	Number of elements in y direction in region 2 = { ney2 = 10 }
+$	Grading factor = { gf = 0.91 }
+$	Material 1 is {mat1 = 1}
+$	{biquadratic = TRUE}
+$
+$

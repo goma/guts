@@ -1,0 +1,25 @@
+ TITLE 
+ Diffusion in a Box 
+  
+ POINT     1      0.0000000E+00      0.0000000E+00
+ POINT     2      1.0000000E+00      0.0000000E+00
+ POINT     3      1.0000000E+00      1.0000000E+00
+ POINT     4      0.0000000E+00      1.0000000E+00
+ LINE      1   STR     1     2     0   10  1.0000
+ LINE      2   STR     2     3     0   10  1.0000
+ LINE      3   STR     3     4     0   10  1.0000
+ LINE      4   STR     4     1     0   10  1.0000
+ REGION     1     1    -1    -2    -3    -4
+ SCHEME    0 M
+ BODY       1     
+ NODEBC     1     1
+ NODEBC     2     2
+ NODEBC     3     3
+ NODEBC     4     4
+ ELEMBC     1     1
+ ELEMBC     2     2
+ ELEMBC     3     3
+ ELEMBC     4     4
+ RENUM 
+ NINE  
+ EXIT  

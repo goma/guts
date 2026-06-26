@@ -1,0 +1,10 @@
+Aprepro: WARNING: User-defined Variable 'blockid' redefined (pix_test.i, line 19)
+WARNING: Defaulting on Lubrication Curvature Normal (/opt/workdir/goma/src/mm_input_mp.c:11149)
+WARNING: Defaulting on Lubrication LS Interpolation (/opt/workdir/goma/src/mm_input_mp.c:11165)
+
+Mapping pixel image to mesh with original algorithm...
+
+#############
+# WARNING!! #  No user_defined post processing model implemented
+#############
+		converged SS!

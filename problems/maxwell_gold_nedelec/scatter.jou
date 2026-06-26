@@ -1,0 +1,40 @@
+## /home/wortiz/.local/opt/Cubit-16.06/bin/clarox
+## Cubit Version 16.06.0
+## Cubit Build 5830480
+## Revised Fri Jul 1 14:23:35 2022 -0600
+## Running 11/07/2022 11:26:52 AM
+## Command Options:
+undo on
+# {include("properties.aprepro")}
+reset
+create sphere radius {radius}
+create sphere radius {air_inner_radius}
+create sphere radius {air_radius}
+remove overlap volume 3 2 modify volume 3
+remove overlap volume 1 2 modify volume 2
+imprint all
+merge all
+block 1 volume 1
+block 2 volume 7
+block 3 volume 5
+sideset 1 surface 1
+nodeset 1 surface 1
+sideset 2 surface 2
+nodeset 2 surface 2
+sideset 3 surface 3
+nodeset 3 surface 3
+block 1 2 3 element type TETRA10
+volume 1 size 26
+set trimesher surface gradation 1.1
+set trimesher volume gradation 1.0
+volume 1 scheme tetmesh
+mesh volume 1
+volume 7 scheme tetmesh
+undo group begin
+volume 7 size 34
+mesh volume 7
+undo group end
+volume 5 size 40
+volume 5 scheme tetmesh
+mesh volume 5
+export mesh "scatter.g" overwrite

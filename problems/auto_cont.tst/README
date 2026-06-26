@@ -1,0 +1,17 @@
+In this example, for an exercise, do the following
+
+1) get a fixed grid solution
+2) release down stream meniscus
+
+3) determine the volume of the mesh. Either run one iteration 
+with the AC command turned on (i.e., just change number of ACs to -1
+or uncomment the AC card, whichever way you want to do it.
+
+Then you can use -n 1 and -r 0.0 as switches for a goma run.  The volume
+of the mesh will be output at the end of the run (VC) or as a global variable
+in out.exoII.  viz.   
+
+ncdump out.exoII | more
+(searchfor val  and you will se val_glob_var and the 5th number is the volume.)
+
+

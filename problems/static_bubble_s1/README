@@ -1,0 +1,14 @@
+Working Problem
+--------------------------------
+
+
+This problem works with goma. There are several others in the series that don't currently work within goma due to a bug of some sort. 
+
+Key issues
+
+
+1) This problem represents the oval as a single side set.
+
+2) This problem ties one point on the side set.
+
+3) It uses double-sided side sets.

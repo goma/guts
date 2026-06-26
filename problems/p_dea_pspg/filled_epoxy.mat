@@ -1,0 +1,108 @@
+Material Data File for SAMPLE
+
+/**********Form of each property card *********/
+PROPERTY   = MODEL   FLOAT#1 FLOAT#2 .....FLOAT#5
+
+/**********Form of each Constitutive card *********/
+MECHANICS_TYPE   = MODEL 
+
+Of the many available options, MODEL can be USER
+/************************************************/
+
+
+---Physical Properties
+Density		= SUSPENSION	0.  1.2085 0.32
+#Density		= CONSTANT	1.8
+
+---Mechanical Properties and Constitutive Equations
+Solid Constitutive Equation 	= NONLINEAR	
+Convective Lagrangian Velocity  = NONE
+Lame MU 			= CONSTANT 	1.
+Lame LAMBDA 			= CONSTANT 	1.
+Stress Free Solvent Vol Frac	= CONSTANT	0.
+#Liquid Constitutive Equation 	= NEWTONIAN
+#Viscosity			= CONSTANT	1.0
+#Liquid Constitutive Equation 	= SUSPENSION
+Liquid Constitutive Equation 	= FILLED_EPOXY
+Low Rate Viscosity		= CONSTANT	1.e10
+Power Law Exponent	 	= CONSTANT	-1.82
+#Power Law Exponent	 	= CONSTANT	1.
+Thermal Exponent		= CONSTANT	14.2
+Suspension Maximum Packing	= CONSTANT	0.68
+Suspension Species Number       = 0
+Cure Gel Point			= CONSTANT	.65
+Cure A Exponent			= CONSTANT	.20
+Cure B Exponent			= CONSTANT	40.4
+Cure Species Number		= 1
+Unreacted Gel Temperature       = CONSTANT      260.
+Polymer Constitutive Equation   = NOPOLYMER
+
+---Thermal Properties
+Conductivity		= CONSTANT   	90000.
+Heat Capacity		= CONSTANT      1.2e7.
+Volume Expansion	= CONSTANT	1.
+Reference Temperature	= CONSTANT	300.
+Liquidus Temperature	= CONSTANT	1.
+Solidus Temperature	= CONSTANT	1.
+
+---Electrical Properties
+Electrical Conductivity = CONSTANT      1
+
+---Microstructure Properties
+Media Type              = CONTINUOUS
+Permeability		= CONSTANT	1.
+
+---Brinkman-equation parameters
+Brinkman Porosity         = CONSTANT    0.9
+Brinkman Permeability     = CONSTANT    1.0e-04
+FlowingLiquid Viscosity   = CONSTANT    1.0
+Inertia Coefficient       = CONSTANT    0.0
+
+---Species Properties
+#Diffusion Constitutive Equation = FICKIAN
+Diffusion Constitutive Equation = HYDRODYNAMIC
+#Species Weight Function         = SUPG  0.1
+Species Weight Function         = GALERKIN
+#Diffusivity  			= HYDRO  0  1.64E-6 2.48e-6 8.88e-7  0. 0. 0.
+#Diffusivity  			= CONSTANT  0  1.
+Diffusivity  			= HYDRO  0 
+Shear Rate Diffusivity          = LINEAR   0  2.48e-6
+Viscosity Diffusivity           = CONSTANT 0  2.48e-6 
+Curvature Diffusivity           = CONSTANT 0 0
+Fickian Diffusivity             = ANISOTROPIC 0 4.96e-8 2.48e-8 0.
+#Fickian Diffusivity             = EXP_DECAY 0 1.e-7 20.
+Gravity-based Diffusivity       = CONSTANT 0  8.88e-7
+#Species Time Integration 	= STANDARD  0
+Species Time Integration 	= TAYLOR_GALERKIN  0
+Advective Scaling		= CONSTANT  0	1.
+Latent Heat Vaporization	= CONSTANT  0	0.
+Latent Heat Fusion		= CONSTANT  0	0.
+Vapor Pressure  		= CONSTANT  0	0.
+Species Volume Expansion	= CONSTANT  0	0.
+Reference Concentration         = CONSTANT  0   0.5
+
+Diffusivity  			= CONSTANT  1   0.
+Species Time Integration 	= STANDARD  1
+Advective Scaling		= CONSTANT  1	0.
+Latent Heat Vaporization	= CONSTANT  1	0.
+Latent Heat Fusion		= CONSTANT  1	0.
+Vapor Pressure  		= CONSTANT  1	0.
+Species Volume Expansion	= CONSTANT  1	0.
+Reference Concentration         = CONSTANT  1   0.3
+				            ^
+********Species Number**********************|
+
+----Source Terms
+Navier-Stokes Source		= SUSPENSION   -980.  0.   0. 0.35
+#Navier-Stokes Source		= CONSTANT     0.0  0.  0.
+Solid Body Source		= CONSTANT	0.  0.  0.
+Mass Source			= CONSTANT	0.
+Heat Source			= EPOXY         1.803e9
+#Heat Source			= CONSTANT	0.
+Species Source			= CONSTANT  0   0.
+#Species Source			= EPOXY  1 4.e5 8001.68 9.5e6 8001.68 2. 1.6
+Species Source			= EPOXY_DEA  1 4.e5 8001.68 9.5e6 8001.68 1.5e6
+Current Source			= CONSTANT  0. 
+#Initialize   =  PRESSURE 0 0.
+#Initialize   =  VELOCITY1 0 0.
+#Initialize   =  VELOCITY2 0 0.

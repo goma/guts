@@ -1,0 +1,192 @@
+v7.11.0-1-g709cfe59
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2026 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+
+
+######################### __PRINT_SYNC_END__ #########################
+
+Number of unknowns            = 9434
+
+Number of matrix nonzeroes    = 675546
+
+INITIAL ELEMENT QUALITY CHECK---
+
+	----------------------------------
+	Zero Order Continuation:
+	Step number:    1 of   20 (max)
+	Attempting solution at:
+	BCID= 14 DFID=    0 Parameter=  2.960000e+01 delta_s= 6.577778e-01
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:11 [0] 3.0e-04 7.5e-04 4.0e-04 5.8e+03 3.2e+04 6.3e+03  1  4.0e-01/3.6e-01 
+          AC 2.8e-17 2.8e-17 2.8e-17 1.0e+02 1.0e+02 1.0e+02  1  5.5e-01/3.7e-01 
+17:08:13 [1] 1.6e-03 2.5e-02 2.4e-03 2.4e+03 1.6e+04 3.0e+03  1  4.4e-01/3.6e-01 
+          AC 4.9e-05 4.9e-05 4.9e-05 1.2e+02 1.2e+02 1.2e+02  1  5.8e-01/3.6e-01 
+17:08:15 [2] 1.3e-04 2.3e-03 2.4e-04 9.3e+02 5.3e+03 1.0e+03  1  4.4e-01/3.7e-01 
+          AC 1.6e-06 1.6e-06 1.6e-06 4.9e+00 4.9e+00 4.9e+00  1  6.0e-01/3.6e-01 
+17:08:17 [3] 5.9e-05 1.7e-04 6.3e-05 1.0e+01 9.2e+01 1.4e+01  1  4.3e-01/3.6e-01 
+          AC 3.3e-08 3.3e-08 3.3e-08 5.6e-01 5.6e-01 5.6e-01  1  5.8e-01/3.6e-01 
+17:08:18 [4] 1.3e-08 9.6e-08 1.6e-08 1.5e-02 9.5e-02 2.1e-02  1  4.3e-01/3.5e-01 
+          AC 1.6e-10 1.6e-10 1.6e-10 1.6e-04 1.6e-04 1.6e-04  1  5.9e-01/3.5e-01 
+17:08:20 [5] 5.7e-15 1.4e-13 9.6e-15                         skp 4.3e-01/0.0e+00 
+          AC 2.0e-17 2.0e-17 2.0e-17 1.6e-04 1.6e-04 1.6e-04  1  5.7e-01/3.5e-01 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   1.149e+04  9.165e+01  4.634e+02 
+
+------------------------------
+Augmenting Conditions:       1
+Number of extra unknowns:    1
+
+	MT[   1] VC[   1]=1.198017e-02 Param=-2.946359e+03
+
+	Step accepted, parameter = 2.960000e+01
+
+	----------------------------------
+	Zero Order Continuation:
+	Step number:    2 of   20 (max)
+	Attempting solution at:
+	BCID= 14 DFID=    0 Parameter=  2.894222e+01 delta_s= 6.577778e-01
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:21 [0] 5.1e-04 1.5e-02 1.9e-03 2.1e+02 3.6e+04 1.9e+03  1  4.5e-01/3.6e-01 
+          AC 2.0e-17 2.0e-17 2.0e-17 1.3e+02 1.3e+02 1.3e+02  1  5.8e-01/3.7e-01 
+17:08:23 [1] 4.5e-04 4.8e-03 1.1e-03 6.9e+00 2.2e+02 1.3e+01  1  4.4e-01/3.6e-01 
+          AC 1.2e-07 1.2e-07 1.2e-07 5.3e-01 5.3e-01 5.3e-01  1  6.1e-01/3.7e-01 
+17:08:25 [2] 9.9e-07 8.7e-06 1.9e-06 2.3e-02 5.4e-01 5.8e-02  1  4.5e-01/3.6e-01 
+          AC 4.3e-10 4.3e-10 4.3e-10 3.6e-04 3.6e-04 3.6e-04  1  6.3e-01/3.6e-01 
+17:08:27 [3] 2.2e-12 2.6e-11 4.7e-12                         skp 4.5e-01/0.0e+00 
+          AC 6.2e-16 6.2e-16 6.2e-16 3.6e-04 3.6e-04 3.6e-04  1  5.9e-01/3.6e-01 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   1.139e+04  8.784e+01  4.444e+02 
+
+------------------------------
+Augmenting Conditions:       1
+Number of extra unknowns:    1
+
+	MT[   1] VC[   1]=1.198017e-02 Param=-2.811520e+03
+
+	Step accepted, parameter = 2.894222e+01
+
+	----------------------------------
+	Zero Order Continuation:
+	Step number:    3 of   20 (max)
+	Attempting solution at:
+	BCID= 14 DFID=    0 Parameter=  2.789971e+01 delta_s= 1.042508e+00
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:28 [0] 5.6e-04 1.8e-02 2.1e-03 3.2e+02 5.7e+04 3.0e+03  1  4.5e-01/3.6e-01 
+          AC 6.2e-16 6.2e-16 6.2e-16 2.1e+02 2.1e+02 2.1e+02  1  5.9e-01/3.5e-01 
+17:08:30 [1] 5.3e-04 7.4e-03 1.3e-03 1.3e+01 5.8e+02 3.1e+01  1  4.4e-01/3.6e-01 
+          AC 3.3e-07 3.3e-07 3.3e-07 1.4e+00 1.4e+00 1.4e+00  1  5.8e-01/3.7e-01 
+17:08:32 [2] 5.0e-06 5.0e-05 1.0e-05 1.7e-01 3.7e+00 3.8e-01  1  4.5e-01/3.6e-01 
+          AC 3.2e-09 3.2e-09 3.2e-09 4.7e-03 4.7e-03 4.7e-03  1  6.0e-01/3.5e-01 
+17:08:33 [3] 7.8e-11 9.7e-10 1.6e-10 1.4e-05 1.3e-04 2.0e-05  1  4.4e-01/3.6e-01 
+          AC 3.0e-14 3.0e-14 3.0e-14 9.5e-08 9.5e-08 9.5e-08  1  6.0e-01/3.6e-01 
+17:08:35 [4] 1.3e-15 5.0e-14 2.4e-15                         skp 4.5e-01/0.0e+00 
+          AC 0.0e+00 0.0e+00 0.0e+00 9.5e-08 9.5e-08 9.5e-08  1  6.0e-01/3.6e-01 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   1.123e+04  8.193e+01  4.150e+02 
+
+------------------------------
+Augmenting Conditions:       1
+Number of extra unknowns:    1
+
+	MT[   1] VC[   1]=1.198017e-02 Param=-2.601971e+03
+
+	Step accepted, parameter = 2.789971e+01
+
+	----------------------------------
+	Zero Order Continuation:
+	Step number:    4 of   20 (max)
+	Attempting solution at:
+	BCID= 14 DFID=    0 Parameter=  2.685721e+01 delta_s= 1.042508e+00
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:36 [0] 5.8e-04 1.9e-02 2.2e-03 3.2e+02 5.5e+04 2.9e+03  1  4.4e-01/3.8e-01 
+          AC 0.0e+00 0.0e+00 0.0e+00 2.0e+02 2.0e+02 2.0e+02  1  6.0e-01/3.7e-01 
+17:08:38 [1] 5.3e-04 7.5e-03 1.3e-03 1.6e+01 6.8e+02 3.8e+01  1  4.9e-01/3.7e-01 
+          AC 4.3e-07 4.3e-07 4.3e-07 1.7e+00 1.7e+00 1.7e+00  1  6.7e-01/3.8e-01 
+17:08:40 [2] 4.3e-06 5.1e-05 9.0e-06 6.8e-01 6.2e+00 9.9e-01  1  5.0e-01/3.7e-01 
+          AC 4.0e-09 4.0e-09 4.0e-09 1.1e-02 1.1e-02 1.1e-02  1  6.6e-01/3.7e-01 
+17:08:42 [3] 8.0e-11 1.6e-09 1.8e-10 3.4e-05 3.4e-04 5.9e-05  1  4.9e-01/3.7e-01 
+          AC 1.0e-14 1.0e-14 1.0e-14 3.2e-07 3.2e-07 3.2e-07  1  6.7e-01/3.6e-01 
+17:08:44 [4] 1.6e-15 5.0e-14 2.6e-15                         skp 4.9e-01/0.0e+00 
+          AC 1.6e-17 1.6e-17 1.6e-17 3.2e-07 3.2e-07 3.2e-07  1  6.6e-01/3.6e-01 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   1.108e+04  7.617e+01  3.865e+02 
+
+------------------------------
+Augmenting Conditions:       1
+Number of extra unknowns:    1
+
+	MT[   1] VC[   1]=1.198017e-02 Param=-2.397305e+03
+
+	Step accepted, parameter = 2.685721e+01
+
+	 ******** LAST PATH STEP!
+
+	----------------------------------
+	Zero Order Continuation:
+	Step number:    5 of   20 (max)
+	Attempting solution at:
+	BCID= 14 DFID=    0 Parameter=  2.631111e+01 delta_s= 5.460961e-01
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:45 [0] 6.1e-04 1.5e-02 2.0e-03 1.6e+02 2.9e+04 1.5e+03  1  4.8e-01/3.7e-01 
+          AC 1.6e-17 1.6e-17 1.6e-17 1.0e+02 1.0e+02 1.0e+02  1  6.7e-01/3.7e-01 
+17:08:47 [1] 4.8e-04 3.8e-03 9.4e-04 7.7e+00 2.2e+02 1.5e+01  1  4.8e-01/3.6e-01 
+          AC 1.6e-07 1.6e-07 1.6e-07 5.7e-01 5.7e-01 5.7e-01  1  6.6e-01/3.7e-01 
+17:08:49 [2] 3.3e-07 4.6e-06 7.1e-07 1.7e-01 8.2e-01 2.0e-01  1  5.1e-01/7.1e-01 
+          AC 3.9e-10 3.9e-10 3.9e-10 1.2e-03 1.2e-03 1.2e-03  1  8.2e-01/7.4e-01 
+17:08:52 [3] 8.9e-13 2.6e-11 2.8e-12                         skp 7.1e-01/0.0e+00 
+          AC 8.0e-16 8.0e-16 8.0e-16 1.2e-03 1.2e-03 1.2e-03  1  8.7e-01/7.4e-01 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   1.100e+04  7.320e+01  3.719e+02 
+
+------------------------------
+Augmenting Conditions:       1
+Number of extra unknowns:    1
+
+	MT[   1] VC[   1]=1.198017e-02 Param=-2.291911e+03
+
+	Step accepted, parameter = 2.631111e+01
+
+
+	 I will continue no more!
+	 No more continuation for you!
+
+-done
+
+
+Proc 0 runtime:       0.70 Minutes.
+

@@ -1,0 +1,140 @@
+{include(roll.fas)}
+ ---
+ FEM File Specifications
+ ---
+FEM file                         = roll.exoII
+Output EXODUS II file            = out.exoII
+GUESS file                       = contin.dat
+SOLN file                        = soln.dat
+Write intermediate results	 = no
+
+ ---
+General Specifications
+ ---
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+Number of Jacobian File Dumps    = 2
+Initial Guess                    = read
+Anneal Mesh on Output            = no
+Pad Sparse Matrix                = no
+ --- 
+Time integration                 = steady
+ ---
+Solver Specifications
+ ---
+Solution Algorithm               = lu
+UMF XDIM			 = 8000000
+UMF IDIM 			 = 8000000
+Number of Newton Iterations      = 10        
+Newton correction factor         = 1.0 1.e-4 .6 1.e-3 .1 1.e-1   
+Normalized Residual Tolerance    = 1.0e-12
+Residual Ratio Tolerance         = 1.0e-6
+
+
+ ---
+Boundary Condition Specifications
+ ---
+Number of BC			 = -1              
+BC = PLANE SS  5   1.   0.   0.  {-x5} 
+BC = PLANE SS  6   1.   0.   0.  {x5}  
+
+BC = GD_PARAB SS 4 R_MESH_NORMAL 0 MESH_POSITION2 0 {x11*x11 + y11*y11 - R_O*R_O} {-2.*y11} 1
+BC = GD_PARAB SS 4 R_MESH_NORMAL 0 MESH_POSITION1 0 {0.} {-2.*x11} 1
+
+BC = VELO_NORMAL SS 4 0.
+BC = VELO_TANGENT SS 4 0 {-rollsp_t} 0. 0. 0.
+
+
+$
+$ Roll inlets and outlets and cover/roll interface
+$ Comment:  really need a kinematic-displacement bc
+$           for SS 7 8 and 1 that is applied to the real-solid.
+$           rather than the pseudo solid, as is done now.
+$           This condition needs to be rotated though.
+$
+$${y1_new = y1 + Gap - Gap_new}
+$$BC = GD_PARAB SS 1 R_MESH_NORMAL 0 MESH_POSITION2 0 {x1*x1 + y1_new*y1_new - R_I*R_I} {-2.*y1_new} 1
+$$BC = GD_PARAB SS 1 R_MESH_NORMAL 0 MESH_POSITION1 0 {0.} {-2.*x1} 1
+BC = KIN_DISPLACEMENT SS 1 1  {R_I}
+
+BC =   DX_RS        NS     1       0.0 
+BC =   DY_RS        NS     1       {delta_gap_new + delta_gap} 1.0
+BC =   DX        NS     7       0.0 1.0
+BC =   DY        NS     7       {delta_gap_new} 1.0
+BC =   DX_RS        NS     7       0.0 1.0
+BC =   DY_RS        NS     7       {delta_gap_new + delta_gap} 1.0
+BC =   DX        NS     8       0.0 1.0
+BC =   DY        NS     8       {delta_gap_new} 1.0
+BC =   DX_RS        NS     8       0.0 1.0
+BC =   DY_RS        NS     8       {delta_gap_new + delta_gap} 1.0
+
+BC = NO_SLIP_RS     SS 2 1 2
+BC = SOLID_FLUID_RS SS 2 1 2
+BC = KIN_DISPLACEMENT SS 2 1  {R_O}
+
+######
+END OF BC 
+#####
+
+
+----
+Problem Description
+---
+ 
+Number of Materials  =  2
+ 
+ MAT =   lower_roll    1
+ 
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = TOTAL_ALE
+  Number of bulk species = 0
+ 
+   Number of EQ			 = 5
+	EQ = mesh1	Q2  D1     Q2        0.   0.   1.   1.   0.   0. 
+	EQ = mesh2	Q2  D2     Q2        0.	  0.   1.   1.   0.   0. 
+	EQ = mom_solid1	Q2  D1_RS  Q2        0.   0.   1.   1.   0.   0. 
+	EQ = mom_solid2	Q2  D2_RS  Q2        0.	  0.   1.   1.   0.   0. 
+	EQ = continuity	Q1  P      Q1	 1.                      1.
+                                        div  ms  adv  bnd  dif  src  por
+
+MAT = liquid   2
+
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = ARBITRARY
+  Number of bulk species = 0
+
+Number of EQ			 = 5
+	EQ = momentum1  Q2  U1	Q2	     0.   1.   1.   1.   0.  0.
+	EQ = momentum2  Q2  U2	Q2	     0.   1.   1.   1.   0.  0.
+	EQ = continuity	Q1  P 	Q1       1.                      0.
+	EQ = mesh1	Q2  D1	Q2	     0.   0.   1.   1.   0.  0.
+	EQ = mesh2	Q2  D2	Q2	     0.   0.   1.   1.   0.  0.
+                                        div  ms  adv  bnd  dif  src  por
+
+
+Post Processing Specifications
+ 
+
+Stream Function = yes 
+Streamwise normal stress = yes
+Pressure contours = yes
+Second Invarient of Strain = yes
+Mesh Dilatation = yes
+Navier Stokes Residuals = yes
+Moving Mesh Residuals = yes  
+Mass Diffusion Vectors = no
+Mass Fluxlines = no
+Energy Conduction Vectors = no
+Energy Fluxlines = no
+Time Derivatives = yes
+Mesh Stress Tensor = yes
+Real Solid Stress Tensor = yes
+ 
+Post Processing Data = -1
+$$DATA = PRESSURE 2 2 0 pressure.out
+END OF DATA
+
+

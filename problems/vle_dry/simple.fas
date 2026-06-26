@@ -1,0 +1,39 @@
+{include(Defs)}
+
+ TITLE 
+  
+ POINT     1      0.0000000E+00      0.0000000E+00
+ POINT     2       {h_s}      0.0000000E+00
+ POINT     3       {h_s}      {h_s}
+ POINT     4       {h_s}      {h_1}
+ POINT     5      0.0000000E+00      {h_1}
+ POINT     6      0.0000000E+00      {h_s}
+ LINE      1   STR     1     2  0  { ne_h}  1.000
+ LINE      2   STR     2     3  0   { ne_s}  1.000
+ LINE      3   STR     3     4  0   { ne_1} 0.9500
+ LINE      4   STR     4     5  0  {ne_h}  1.
+ LINE      5   STR     6     5  0  { ne_1} 0.9500
+ LINE      6   STR     1     6  0  { ne_s}  1.000
+ LINE      7   STR     6     3  0  {ne_h}  1.000
+ REGION     1     1    -1    -2    -7    -6
+ REGION     2     2    -7    -3    -4    -5
+ SCHEME    1 M
+ SCHEME    2 M
+ BODY       1     2
+ POINBC    10     1
+ POINBC    20     2
+ POINBC    30     3
+ POINBC    60     6
+ NODEBC     1     1
+ NODEBC     2     3
+ NODEBC     4     4
+ NODEBC     5     5 
+ NODEBC     7     7
+ ELEMBC     100     1
+ ELEMBC     200     3
+ ELEMBC     400     4
+ ELEMBC     500     5
+ ELEMBC     700     7
+ NINE
+RENUM
+ EXIT  

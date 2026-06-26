@@ -1,0 +1,60 @@
+v7.11.0-1-g709cfe59
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2026 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+
+
+######################### __PRINT_SYNC_END__ #########################
+
+Number of unknowns            = 87
+
+Number of matrix nonzeroes    = 4555
+
+Initial guess read from "volume2.exoII" ...(last soln in file)
+		 Values read time plane at time = 0
+
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:17 [0] 2.0e-01 5.7e-01 2.7e-01 1.4e+04 4.1e+04 2.4e+04  1  1.0e-02/0.0e+00 
+L_oo cause: R->(41 Y_0 n=8 (x=0 y=0))DelX->(56 P n=10 (x=0 y=0.05))
+          AC 5.0e-01 5.0e-01 5.0e-01 3.0e-01 3.0e-01 3.0e-01  1  1.0e-02/0.0e+00 
+17:10:17 [1] 2.2e-02 1.5e-01 3.9e-02 4.6e+05 1.4e+06 7.8e+05  1  0.0e+00/0.0e+00 
+L_oo cause: R->(67 SH n=12 (x=0.5 y=0.075))DelX->(44 P n=8 (x=0 y=0))
+          AC 0.0e+00 0.0e+00 0.0e+00 3.9e-03 3.9e-03 3.9e-03  1  1.0e-02/0.0e+00 
+17:10:17 [2] 3.9e-04 1.3e-03 6.0e-04 1.1e+04 2.9e+04 1.5e+04  1  1.0e-02/1.0e-02 
+L_oo cause: R->(82 Y_0 n=15 (x=1 y=0.1))DelX->(73 P n=13 (x=0 y=0.1))
+          AC 0.0e+00 0.0e+00 0.0e+00 3.4e-04 3.4e-04 3.4e-04  1  0.0e+00/0.0e+00 
+17:10:17 [3] 6.1e-07 2.9e-06 9.6e-07 4.0e+01 9.9e+01 5.2e+01  1  0.0e+00/0.0e+00 
+L_oo cause: R->(7 VX n=2 (x=1 y=0.025))DelX->(73 P n=13 (x=0 y=0.1))
+          AC 0.0e+00 0.0e+00 0.0e+00 4.0e-07 4.0e-07 4.0e-07  1  1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   4.789e+05  1.641e+04  8.726e+04 
+
+------------------------------
+Augmenting Conditions:       1
+Number of extra unknowns:    1
+
+	MT[   1] VC[   3]=5.000000e-02 Param=5.035093e-01
+
+-done
+
+
+Proc 0 runtime:       0.00 Minutes.
+

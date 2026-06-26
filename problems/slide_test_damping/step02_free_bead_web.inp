@@ -1,0 +1,239 @@
+#{include(phys_prop.inc)}
+
+##############################
+#                            #
+# FEM Problem Specifications #
+#                            #
+##############################
+FEM file                         = single.g
+Output EXODUS II file            = out_step02.exoII
+GUESS file                       = no
+SOLN file                        = no
+Brk file                         = brk.in
+Write intermediate results	 = no
+
+##########################
+#                        #
+# General Specifications #
+#                        #
+##########################
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+Initial Guess                    = read_exoII_file out_step01.exoII
+Anneal Mesh on Output            = no
+
+###################################
+#                                 #
+# Time Integration Specifications #
+#                                 #
+###################################
+Time integration                 = steady
+delta_t                          = 1.e-08
+Maximum number of time steps     = 1000
+Maximum time                     = 100
+Minimum time step                = 1.0e-9
+Maximum time step                = 0.01
+Time step parameter		 = 0.0
+Time step error                  = -0.05 1 1 0 0 0 0 0 0 0 0
+Printing Frequency		 = 1
+#March to Steady State = yes
+Steady State Tolerance = 1e-4
+
+#########################
+#                       #
+# Solver Specifications #
+#                       #
+#########################
+Solution Algorithm               = mumps
+Amesos Solver Package		 = mumps
+Number of Newton Iterations      = 200
+Newton line search type = BACKTRACK_MESH
+#Newton correction factor         = 0.1
+#Newton correction factor         = 0.5 1.0e-4 0.2 1.0e-4 0.1 1.0e-3
+Normalized Residual Tolerance    = 1.0e-9
+Disable Viscosity Sensitivities  = yes
+
+#####################################
+#                                   #
+# Boundary Condition Specifications #
+#                                   #
+#####################################
+Number of BC			 =  -1
+
+# Inlet
+# Average velocity of layer 1 = {velo_in_1 = flowrate_1/W_slot_1}
+BC = U NS 1 0 1.0
+BC = V NS 1 {velo_in_1} 1.0
+BC = DX NS 1 0.
+BC = DY NS 1 0.
+
+# Outlet
+BC = FLOW_STRESSNOBC SS 2 0. 1.0
+#BC = U NS 2 0. 1.
+BC = PLANE SS 2 0. 1. 0. {-(L_slot_1 + R_slot_1 + L_web_down)}
+#BC = DY NS 2 0.
+
+# Die 
+BC   = DOUBLE_FILLET_GEOM SS 3 {layer_1_xpt1=W_slot_1} {layer_1_ypt1=L_slot_1 + R_slot_1} {layer_1_theta1=270 * PI/180} {layer_1_r1=R_slot_1} {layer_1_xpt2=W_slot_1 + L_slide_1} {layer_1_ypt2=layer_1_ypt1} {layer_1_theta2 = 90*PI/180} {layer_1_r2=R_lip} {layer_1_curv_mid=0}
+BC   = DOUBLE_FILLET_GEOM SS 4 {xpt1=-L_slide_2} {ypt1=L_offset_1+R_slot_1+L_slot_1+R_offset_1} {theta1=270*PI/180} {r1=R_slot_2} {xpt2=0} {ypt2=L_offset_1+R_slot_1+L_slot_1+R_offset_1} {theta2 = 90*PI/180} {r2=R_offset_1} {curv_mid=0}
+#BC = DX NS 3 0.
+#BC = DY NS 3 0.
+#BC = DX NS 4 0.
+#BC = DY NS 4 0.
+
+BC = U NS 3 0.0
+BC = V NS 3 0.0
+BC = U NS 4 0.0
+BC = V NS 4 0.0
+
+
+# Free surface
+#BC = VELO_NORMAL SS 5 0.0
+#BC = DX NS 5 0.
+#BC = DY NS 5 0.
+#BC = KINEMATIC SS 5 0.
+#BC = CAPILLARY SS 5 1.0 0.0 0.0 
+#BC = CAP_ENDFORCE NS 100 0 1.0 0.0 1.0
+BC = VELO_NORMAL SS 51 0.0
+BC = DX NS 51 0.
+BC = DY NS 51 0.
+###
+BC = VELO_NORMAL SS 52 0.0
+BC = DX NS 52 0.
+BC = DY NS 52 0.
+
+#BC = VELO_NORMAL SS 53 0.0
+#BC = DX NS 53 0.
+#BC = DY NS 53 0.
+###
+#BC = KINEMATIC SS 53 0.0
+#BC = CAPILLARY SS 53 1.0 0.0 0.0 
+##BC = DX NS 53 0.
+###BC = DY NS 53 0.
+##
+BC = KINEMATIC SS 54 0.
+BC = CAPILLARY SS 54 1.0 0.0 0.0 
+BC = CAP_ENDFORCE NS 100 0 1.0 0.0 1.0
+
+
+# Web
+#BC = V NS 6 {U_web} 1.0 
+BC = VELO_SLIP SS 6 {beta_slip} 0 {U_web} 0 300 {slip_dist}  
+BC = U NS 6 {0} 1.0
+BC = DX NS 6 0.
+BC = DY NS 6 0.
+
+# upstream 
+BC = VELO_NORMAL SS 7 0.0
+BC = DX NS 7 0.
+BC = DY NS 7 0.
+
+# mesh fences
+BC = PLANE SS 800 0. 1. 0. {-L_slot_1}
+BC = PLANE SS 805 0. 1. 0. {-(L_slot_1 + R_slot_1 + T_thick_1 + L_landing)}
+
+BC = PLANE SS 700 1. 0. 0. {-(W_slot_1 + R_slot_1)}
+BC = PLANE SS 705 1. 0. 0. {-(W_slot_1+L_slide_1 - R_lip - L_takeoff_1)}
+
+END OF BC
+
+#######################
+#                     #
+# Problem Description #
+#                     #
+#######################
+
+Number of Materials = 5
+
+MAT = layer_1    1
+
+	Coordinate System = CARTESIAN
+
+	Element Mapping                  = isoparametric
+
+	Mesh Motion = ARBITRARY
+
+	Number of bulk species = 0
+
+	Number of EQ			= 5
+	EQ = momentum1  Q2  U1	Q2        1.   1.   1.   1.   1.   0.
+	EQ = momentum2  Q2  U2	Q2        1.   1.   1.   1.   1.   0.
+	EQ = continuity	P1  P 	P1        1.                       0.
+	EQ = mesh1	Q2  D1	Q2        0.   0.   1.   1.   0.   0.
+	EQ = mesh2	Q2  D2	Q2        0.   0.   1.   1.   0.   0.
+                                     div  ms  adv  bnd  dif  src  por
+MAT = layer_1    2
+
+	Coordinate System = CARTESIAN
+
+	Element Mapping                  = isoparametric
+
+	Mesh Motion = ARBITRARY
+
+	Number of bulk species = 0
+
+	Number of EQ			= 5
+	EQ = momentum1  Q2  U1	Q2        1.   1.   1.   1.   1.   0.
+	EQ = momentum2  Q2  U2	Q2        1.   1.   1.   1.   1.   0.
+	EQ = continuity	P1  P 	P1        1.                       0.
+	EQ = mesh1	Q2  D1	Q2        0.   0.   1.   1.   0.   0.
+	EQ = mesh2	Q2  D2	Q2        0.   0.   1.   1.   0.   0.
+                                     div  ms  adv  bnd  dif  src  por
+MAT = layer_1    3
+
+	Coordinate System = CARTESIAN
+
+	Element Mapping                  = isoparametric
+
+	Mesh Motion = ARBITRARY
+
+	Number of bulk species = 0
+
+	Number of EQ			= 5
+	EQ = momentum1  Q2  U1	Q2        1.   1.   1.   1.   1.   0.
+	EQ = momentum2  Q2  U2	Q2        1.   1.   1.   1.   1.   0.
+	EQ = continuity	P1  P 	P1        1.                       0.
+	EQ = mesh1	Q2  D1	Q2        0.   0.   1.   1.   0.   0.
+	EQ = mesh2	Q2  D2	Q2        0.   0.   1.   1.   0.   0.
+                                     div  ms  adv  bnd  dif  src  por
+
+MAT = layer_1    4
+
+	Coordinate System = CARTESIAN
+
+	Element Mapping                  = isoparametric
+
+	Mesh Motion = ARBITRARY
+
+	Number of bulk species = 0
+
+	Number of EQ			= 5
+	EQ = momentum1  Q2  U1	Q2        1.   1.   1.   1.   1.   0.
+	EQ = momentum2  Q2  U2	Q2        1.   1.   1.   1.   1.   0.
+	EQ = continuity	P1  P 	P1        1.                       0.
+	EQ = mesh1	Q2  D1	Q2        0.   0.   1.   1.   0.   0.
+	EQ = mesh2	Q2  D2	Q2        0.   0.   1.   1.   0.   0.
+                                     div  ms  adv  bnd  dif  src  por
+
+MAT = layer_1    5
+
+	Coordinate System = CARTESIAN
+
+	Element Mapping                  = isoparametric
+
+	Mesh Motion = ARBITRARY
+
+	Number of bulk species = 0
+
+	Number of EQ			= 5
+	EQ = momentum1  Q2  U1	Q2        1.   1.   1.   1.   1.   0.
+	EQ = momentum2  Q2  U2	Q2        1.   1.   1.   1.   1.   0.
+	EQ = continuity	P1  P 	P1        1.                       0.
+	EQ = mesh1	Q2  D1	Q2        0.   0.   1.   1.   0.   0.
+	EQ = mesh2	Q2  D2	Q2        0.   0.   1.   1.   0.   0.
+                                     div  ms  adv  bnd  dif  src  por
+
+---- ---------- --------------
+Post Processing Specifications
+---- ---------- --------------

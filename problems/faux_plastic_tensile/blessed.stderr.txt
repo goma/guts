@@ -1,0 +1,8 @@
+Aprepro: WARNING: User-defined Variable 'Cp_steel' redefined (armature.apre, line 68)
+Aprepro: WARNING: User-defined Variable 'T_cond_steel' redefined (armature.apre, line 69)
+Aprepro: WARNING: User-defined Variable 'E_cond_steel' redefined (armature.apre, line 70)
+WARNING: Defaulting on Time step error norm indicators
+ (/opt/workdir/goma/src/mm_input.c:1612)
+Aprepro: WARNING: User-defined Variable 'Cp_steel' redefined (armature.apre, line 68)
+Aprepro: WARNING: User-defined Variable 'T_cond_steel' redefined (armature.apre, line 69)
+Aprepro: WARNING: User-defined Variable 'E_cond_steel' redefined (armature.apre, line 70)

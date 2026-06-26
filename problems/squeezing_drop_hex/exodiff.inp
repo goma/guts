@@ -1,0 +1,9 @@
+DEFAULT TOLERANCE relative 1.E-8 floor 1.E-14
+GLOBAL VARIABLES all relative 1.E-4 floor 1.E-12
+	CONVRATE relative 0.5 floor 0.1
+	CONVORDER relative 0.5 floor 0.1
+NODAL VARIABLES all relative 1.0E-4 floor 1.0E-9
+	PRESSURE relative 5e-1 floor 1e-4
+	P relative 5e-1 floor 1e-4 
+ELEMENT VARIABLES all relative 1.0E-4 floor 1.0E-9
+

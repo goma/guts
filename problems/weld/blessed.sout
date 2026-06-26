@@ -1,0 +1,12 @@
+4.6.0
+Warning: Time step error prefers 1 flt 8 ints
+Best guess:   d=0, v=1, T=1, y=0, P=0, S=0, V=0, sd=0
+
+
+
+	 Using Coupled Level Set evolution!
+
+	Subelement Integration of level set interface active.
+
+-done
+

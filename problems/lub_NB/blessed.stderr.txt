@@ -1,0 +1,7 @@
+WARNING: Solver Output greater than 80 characters...
+ (/opt/workdir/goma/src/mm_input.c:6918)
+MAT 0 Thixotropic Factor = 0
+WARNING: Defaulting Thixotropic Factor to Zero (/opt/workdir/goma/src/mm_input_mp.c:2160)
+WARNING: Defaulting on Lubrication Curvature Normal (/opt/workdir/goma/src/mm_input_mp.c:11149)
+WARNING: Defaulting on Lubrication LS Interpolation (/opt/workdir/goma/src/mm_input_mp.c:11165)
+WARNING: get_side_info for BIQUAD_SHELL needs to be checked (/opt/workdir/goma/src/mm_fill_fill.c:3080)

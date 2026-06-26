@@ -1,0 +1,11 @@
+2/1/2001
+------------
+   This test verifies the Richardson equation formulation (with
+gravity) within goma for the POROUS_UNSATURATED formulation of
+porous flow.
+   out_bilin_60_long_blessed.exoII has been verified (at least the 
+saturation output variable) against porSalsa for this case. The 
+shorter version should be considered as verified, therefore.
+
+
+

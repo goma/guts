@@ -1,0 +1,30 @@
+Copyright (c) 2002  Sandia Corporation.
+
+Under the terms of Contract DE-AC04-94AL85000, there is a non-exclusive
+license for use of this work by or on behalf of the U.S. Government. Export
+of this program may require a license from the United States Government.
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN ...
+
+
+Number of unknowns            = 6169
+
+Number of matrix nonzeroes    = 339405
+
+
+               R e s i d u a l         C o r r e c t i o n
+
+  ToD    itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)
+-------- --- ------- ------- ------- ------- ------- ------- --- ---------------
+17:28:16 [0] 2.1e-13 7.5e-11 2.1e-12 7.8e-12 2.2e-09 5.6e-11  1  2.0e-01/3.3e-01
+scaled solution norms   1.500000e+03  2.584496e+02  4.958978e+02 
+
+WARNING: Linear Stability Analysis is not (and cannot be) compatible
+  with all user-supplied boundary conditions (i.e., BC cards with
+  the term USER in them).  If you are using some, and you want LSA,
+  then you must modify your boundary conditions accordingly.
+
+
+Proc 0 runtime:       0.06 Minutes.
+

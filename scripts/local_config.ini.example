@@ -1,0 +1,40 @@
+# GUTS local configuration — copy to local_config.ini and edit.
+# Values here override environment variables; CLI flags override values here.
+
+[paths]
+# Path to GOMA executable. May be overridden by -g / --goma on the CLI.
+goma =
+
+# Directory containing exodiff, decomp, epu (SEACAS / Trilinos bin dir).
+# Overridable via --exodiff-bin on the CLI.
+dp_utils_bin =
+
+# MPI installation root (used to derive mpirun when mpirun is not set directly).
+mpitop =
+
+# Full path to mpirun. If empty, derived as mpitop/bin/mpirun or found on PATH.
+mpirun =
+
+# MPI machine file path. May contain just "localhost" for single-node runs.
+goma_machinefile =
+
+[chemkin]
+# ChemKin installation directory.
+chemkin_home = /home/goma/chemkin_dev
+
+# Path to lqinterp binary. Defaults to chemkin_home/bin/lqinterp.
+lqinterp =
+
+[tolerances]
+# Suite-level default tolerances (per-problem overrides come from problem.json).
+exo_abs_tol = 1e-11
+exo_rel_tol = 1e-6
+
+[environment]
+# Colon-separated paths prepended to LD_LIBRARY_PATH for all subprocesses.
+# Example: /opt/goma-libs/openmpi/lib:/opt/goma-libs/lib
+ld_library_path_prepend =
+
+[email]
+# Set to "none" to suppress result notification emails.
+user_email = none

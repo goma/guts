@@ -1,0 +1,60 @@
+4.6.0
+
+
+
+Initial guess read from "rb-in.exoII" ...
+Nodal variable VX found in exoII database - reading.
+Nodal variable VY found in exoII database - reading.
+Nodal variable T found in exoII database - reading.
+Nodal variable P found in exoII database - reading.
+
+	Starting Eigenvalue Calculation (2 matrix fills and an ARPACK call):
+	CAYLEY: sigma, mu, ncv = 100 1000 50
+
+	    Eigensolver Initial Guess Generation
+	    Requiring 2 extra orders resid reduction: 3.33322e-11
+
+	Before poleze: sigma and mu = 100  1000
+	After  poleze: sigma and mu = 10.0371  115.108 
+
+	8 converged of 50 candidate eigenvalues found
+Printing real eigenvector with value  -1.63745
+Printing real eigenvector with value  -3.08856
+Printing real eigenvector with value  -4.1188
+Printing real eigenvector with value  -7.25423
+Printing real eigenvector with value  -9.86963
+
+ Ritz values (Real,Imag) and direct residuals
+ --------------------------------------------
+               Col   1       Col   2       Col   3
+  Row   1:   -1.63745E+00   0.00000E+00   1.46071E-14
+  Row   2:   -3.08856E+00   0.00000E+00   2.92763E-14
+  Row   3:   -4.11880E+00   0.00000E+00   3.27089E-13
+  Row   4:   -7.25423E+00   0.00000E+00   3.70446E-14
+  Row   5:   -9.86963E+00   0.00000E+00   1.02688E-12
+  Row   6:   -1.03433E+01   0.00000E+00   2.97054E-14
+  Row   7:   -1.98675E+01   0.00000E+00   5.79415E-14
+  Row   8:   -3.23319E+01   0.00000E+00   1.81887E-09
+  
+
+Maximum number of iterations reached.
+
+Eigenvalue Calculation Summary
+
+The number of Ritz values requested is 10
+The number of Arnoldi vectors generated (NCV) is 50
+What portion of the spectrum: LR
+The number of converged Ritz values is 8
+Number of Implicit Arnoldi update iterations taken is 1
+The number of OP*x is 50
+The convergence criterion is 1.000000e-06
+
+CONTINUATION ROUTINE HAS FINISHED: 
+	Ending Parameter value     = 0
+	Number of steps            = 1
+	Number of Matrix fills     = 1
+	Number of Residual fills   = 2
+
+
+-done
+

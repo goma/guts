@@ -1,0 +1,69 @@
+{
+  "name": "condens_layer_1d",
+  "description": "#################################################\n#\n#          Condensation problem using \n#          Discontinuous variables and the \n#          DISCONTINUOUS_VELO bc\n#\n################################################",
+  "contact": {
+    "name": "Goma Developers",
+    "email": "contact@gomafem.com"
+  },
+  "estimated_time_minutes": 2,
+  "disabled": false,
+  "features": [
+    "discontinuous_variables",
+    "transient",
+    "species",
+    "umf",
+    "moving_mesh",
+    "2d",
+    "serial",
+    "cartesian",
+    "no_chemkin"
+  ],
+  "requirements": {
+    "max_prob_var": 6,
+    "max_conc": 3,
+    "mde": 12,
+    "solver_package": "umfpack",
+    "use_arpack": "no",
+    "enable_omega_h": ""
+  },
+  "run": {
+    "use_aprepro": true,
+    "aprepro_flags": "",
+    "use_chemkin": false,
+    "chemkin_input": "",
+    "use_mpi": false,
+    "num_processors": 1,
+    "use_decomp": false,
+    "brk_input": "",
+    "brk_exo_in": "",
+    "fix_exo_basename": "",
+    "goma_input": "condens1dp_5b.gap",
+    "goma_serr": "stderr.txt",
+    "goma_sout": "stdout.txt",
+    "goma_opts": ""
+  },
+  "blessed": {
+    "serr": "blessed.stderr.txt",
+    "sout": "blessed.stdout.txt",
+    "exo_output": [
+      "condens1dp_o_b.exoII"
+    ],
+    "blessed_exo_output": [
+      "blessed.exoII"
+    ],
+    "exo_abs_tol": [
+      1e-11
+    ],
+    "exo_rel_tol": [
+      0.001
+    ],
+    "exodiff_input_file": [
+      "exodiff.inp"
+    ]
+  },
+  "extra": {
+    "whacked_files": [],
+    "extra_tests": false,
+    "extra_test_scripts": []
+  }
+}

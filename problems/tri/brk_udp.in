@@ -1,0 +1,24 @@
+# brk -- input file problem description for decomposition
+#	 for 3D edge coater with velocity, mesh, and pressure
+#
+
+1	# element block ID
+2	# number of basic eqnvars
+0 3 1 1 # momentum (3D)
+9 1 1 1 # continuity
+
+#
+# interactions...
+#
+
+#	v      Mesh	P
+#
+	1		1	# "fluid" momentum equation
+	1		1	#  continuity equation
+
+
+4	# number of nodes per element in this eb
+0  9
+0  9
+0  9
+0  9

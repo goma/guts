@@ -1,0 +1,7 @@
+# {H = 0.0127}
+# {nu = 1.57e-5}
+# {rho = 1.18}
+# {mu = rho * nu}
+# {inflow_u = 5.5}
+# {inflow_eddy = 3 * nu}
+

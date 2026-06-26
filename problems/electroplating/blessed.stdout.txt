@@ -1,0 +1,394 @@
+v7.11.0-1-g709cfe59
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2026 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+
+Internal METIS decomposition using Recursive Bisection.
+
+
+
+----------------- Communications Stats ------------
+
+		Number of Neighbors
+		Max:     1 (Proc = 0)		 Avg:  1.000		Min: 1 (Proc = 0)
+
+		Size of Messages
+		Max:    75 (Proc = 1)		 Avg: 109.500		Min: 75 (Proc = 0)
+--------------------------------------------------
+
+Leaky KIN_LEAK BC found on SS 1
+Leaky BC connection found to flux 13 12
+
+######################### __PRINT_SYNC_START__ #########################
+######################### __PRINT_SYNC_END__ #########################
+
+Number of unknowns            = 9225
+
+Number of matrix nonzeroes    = 550235
+	Setting MASS_FRACTION number 0 (variable [4]) to 0.00126
+	Setting MASS_FRACTION number 1 (variable [4]) to 0.00126
+	Setting VOLTAGE (variable [28]) to -0.01
+
+=> Try for soln at t=0.01 with dt=0.01 [0 for 0] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:08 [0] 1.5e-04 2.0e-03 4.6e-04 9.9e-03 1.3e+01 3.0e-01  1  1.9e-01/1.9e-01 
+          AC 2.0e-07 2.0e-07 2.0e-07 6.6e-02 6.6e-02 6.6e-02  1  2.2e-01/1.4e-01 
+17:08:09 [1] 4.6e-08 9.0e-07 1.8e-07 1.6e-04 2.0e-01 4.7e-03  1  1.3e-01/1.6e-01 
+          AC 3.5e-09 3.5e-09 3.5e-09 2.1e-02 2.1e-02 2.1e-02  1  1.6e-01/1.6e-01 
+17:08:10 [2] 3.4e-09 6.5e-08 1.3e-08 2.0e-06 2.4e-03 5.7e-05  1  1.2e-01/1.5e-01 
+          AC 4.1e-11 4.1e-11 4.1e-11 2.0e-03 2.0e-03 2.0e-03  1  1.5e-01/1.5e-01 
+17:08:11 [3] 2.5e-11 4.9e-10 9.7e-11                         skp 1.5e-01/0.0e+00 
+          AC 2.3e-12 2.3e-12 2.3e-12 2.0e-03 2.0e-03 2.0e-03  1  1.4e-01/1.5e-01 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   9.748e-03  3.708e-03  4.196e-03 
+
+CONSTANT DELTA_T          [4.4e-09, 5.9e-08, 1.8e-03, 5.4e-04]
+Predictor-corrector norm: [  1 d  ,   1 y  ,   1 V  ,   1 AC ]
+
+------------------------------
+Augmenting Conditions:       1
+Number of extra unknowns:    1
+
+	BC[  12] DF[   5]=-5.608380e-01
+
+=> Try for soln at t=0.02 with dt=0.01 [1 for 1] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:11 [0] 1.5e-04 2.0e-03 4.6e-04 9.9e-03 1.3e+01 3.0e-01  1  1.5e-01/1.6e-01 
+          AC 2.0e-07 2.0e-07 2.0e-07 1.3e-01 1.3e-01 1.3e-01  1  1.4e-01/1.5e-01 
+17:08:12 [1] 6.9e-08 1.4e-06 2.7e-07 7.7e-05 9.5e-02 2.2e-03  1  1.4e-01/1.6e-01 
+          AC 1.6e-09 1.6e-09 1.6e-09 3.3e-02 3.3e-02 3.3e-02  1  1.4e-01/1.5e-01 
+17:08:12 [2] 8.4e-09 1.6e-07 3.2e-08 8.2e-07 1.0e-03 2.4e-05  1  1.4e-01/1.6e-01 
+          AC 1.5e-11 1.5e-11 1.5e-11 5.0e-03 5.0e-03 5.0e-03  1  1.5e-01/1.5e-01 
+17:08:13 [3] 1.6e-10 3.1e-09 6.1e-10 7.1e-08 8.8e-05 2.1e-06  1  1.4e-01/1.6e-01 
+          AC 1.2e-12 1.2e-12 1.2e-12 9.7e-05 9.7e-05 9.7e-05  1  1.6e-01/1.6e-01 
+17:08:14 [4] 7.3e-14 1.3e-12 2.5e-13                         skp 1.4e-01/0.0e+00 
+          AC 2.4e-14 2.4e-14 2.4e-14 9.7e-05 9.7e-05 9.7e-05  1  1.5e-01/1.6e-01 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   9.595e-03  3.670e-03  4.136e-03 
+
+CONSTANT DELTA_T          [4.1e-09, 3.2e-08, 1.8e-03, 5.2e-04]
+Predictor-corrector norm: [  1 d  ,   1 y  ,   1 V  ,   1 AC ]
+
+------------------------------
+Augmenting Conditions:       1
+Number of extra unknowns:    1
+
+	BC[  12] DF[   5]=-5.587209e-01
+
+=> Try for soln at t=0.03 with dt=0.01 [2 for 2] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:14 [0] 1.9e-08 8.3e-07 6.8e-08 1.4e-04 1.8e-01 4.1e-03  1  1.4e-01/1.5e-01 
+          AC 1.8e-09 1.8e-09 1.8e-09 2.0e-03 2.0e-03 2.0e-03  1  1.5e-01/1.5e-01 
+17:08:15 [1] 5.5e-11 5.3e-10 1.1e-10 6.4e-07 7.9e-04 1.8e-05  1  1.4e-01/3.3e-01 
+          AC 1.1e-11 1.1e-11 1.1e-11 4.7e-06 4.7e-06 4.7e-06  1  1.6e-01/3.4e-01 
+17:08:16 [2] 6.4e-13 2.6e-12 9.9e-13 8.6e-08 1.1e-04 2.5e-06  1  1.9e-01/3.2e-01 
+          AC 1.8e-12 1.8e-12 1.8e-12 1.2e-06 1.2e-06 1.2e-06  1  1.6e-01/3.3e-01 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   9.585e-03  3.667e-03  4.132e-03 
+
+CONSTANT DELTA_T          [7.2e-13, 7.1e-09, 2.5e-05, 1.2e-05]
+Predictor-corrector norm: [  1 d  ,   1 y  ,   1 V  ,   1 AC ]
+
+------------------------------
+Augmenting Conditions:       1
+Number of extra unknowns:    1
+
+	BC[  12] DF[   5]=-5.586307e-01
+
+=> Try for soln at t=0.04 with dt=0.01 [3 for 3] (CN)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:17 [0] 1.6e-08 7.9e-07 6.4e-08 1.4e-04 1.7e-01 4.0e-03  1  1.7e-01/2.2e-01 
+          AC 1.8e-09 1.8e-09 1.8e-09 1.9e-03 1.9e-03 1.9e-03  1  1.5e-01/1.5e-01 
+17:08:18 [1] 3.8e-11 4.0e-10 8.1e-11 4.3e-07 5.3e-04 1.2e-05  1  1.3e-01/3.1e-01 
+          AC 7.1e-12 7.1e-12 7.1e-12 1.9e-05 1.9e-05 1.9e-05  1  1.4e-01/3.2e-01 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   9.581e-03  3.666e-03  4.130e-03 
+
+OK  2.7e-05 < 1.5 1.0e-02 [5.5e-13, 4.8e-09, 2.4e-05, 1.2e-05]
+Predictor-corrector norm: [  1 d  ,   1 y  ,   1 V  ,   1 AC ]
+
+------------------------------
+Augmenting Conditions:       1
+Number of extra unknowns:    1
+
+	BC[  12] DF[   5]=-5.586099e-01
+
+=> Try for soln at t=0.055 with dt=0.015 [4 for 4] (CN)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:19 [0] 2.4e-09 4.1e-07 2.3e-08 3.8e-06 4.7e-03 1.1e-04  1  1.6e-01/3.3e-01 
+          AC 7.3e-12 7.3e-12 7.3e-12 5.7e-05 5.7e-05 5.7e-05  1  1.7e-01/3.4e-01 
+17:08:20 [1] 2.0e-12 8.3e-12 3.2e-12 1.1e-07 1.3e-04 3.1e-06  1  1.7e-01/3.4e-01 
+          AC 2.3e-12 2.3e-12 2.3e-12 1.5e-06 1.5e-06 1.5e-06  1  1.6e-01/3.3e-01 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   9.580e-03  3.666e-03  4.130e-03 
+
+OK  7.6e-07 < 1.5 1.0e-02 [3.7e-14, 2.3e-09, 6.8e-07, 3.5e-07]
+Predictor-corrector norm: [  1 d  ,   1 y  ,   1 V  ,   1 AC ]
+
+------------------------------
+Augmenting Conditions:       1
+Number of extra unknowns:    1
+
+	BC[  12] DF[   5]=-5.586540e-01
+
+=> Try for soln at t=0.0775 with dt=0.0225 [5 for 5] (CN)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:21 [0] 7.1e-09 8.9e-07 5.6e-08 1.4e-05 1.7e-02 3.9e-04  1  1.7e-01/3.3e-01 
+          AC 1.6e-11 1.6e-11 1.6e-11 1.8e-04 1.8e-04 1.8e-04  1  1.6e-01/3.2e-01 
+17:08:22 [1] 1.4e-11 5.8e-11 2.3e-11 4.7e-07 5.8e-04 1.4e-05  1  1.6e-01/3.3e-01 
+          AC 9.7e-12 9.7e-12 9.7e-12 6.9e-06 6.9e-06 6.9e-06  1  1.7e-01/3.4e-01 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   9.579e-03  3.666e-03  4.130e-03 
+
+OK  2.8e-06 < 1.5 1.0e-02 [5.1e-13, 7.5e-09, 2.6e-06, 1.2e-06]
+Predictor-corrector norm: [  1 d  ,   1 y  ,   1 V  ,   1 AC ]
+
+------------------------------
+Augmenting Conditions:       1
+Number of extra unknowns:    1
+
+	BC[  12] DF[   5]=-5.587027e-01
+
+=> Try for soln at t=0.11125 with dt=0.03375 [6 for 6] (CN)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:23 [0] 7.2e-09 9.6e-07 5.5e-08 2.7e-06 3.3e-03 7.8e-05  1  1.6e-01/3.4e-01 
+          AC 6.1e-12 6.1e-12 6.1e-12 5.1e-05 5.1e-05 5.1e-05  1  1.6e-01/3.3e-01 
+17:08:24 [1] 3.4e-12 1.5e-11 5.7e-12 4.7e-07 5.8e-04 1.4e-05  1  1.7e-01/3.4e-01 
+          AC 1.0e-11 1.0e-11 1.0e-11 6.7e-06 6.7e-06 6.7e-06  1  1.6e-01/3.4e-01 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   9.579e-03  3.666e-03  4.130e-03 
+
+OK  5.0e-07 < 1.5 1.0e-02 [1.6e-13, 9.0e-09, 4.1e-07, 2.8e-07]
+Predictor-corrector norm: [  1 d  ,   1 y  ,   1 V  ,   1 AC ]
+
+------------------------------
+Augmenting Conditions:       1
+Number of extra unknowns:    1
+
+	BC[  12] DF[   5]=-5.587817e-01
+
+=> Try for soln at t=0.161875 with dt=0.050625 [7 for 7] (CN)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:25 [0] 7.6e-09 1.1e-06 5.9e-08 3.3e-06 4.1e-03 9.6e-05  1  1.6e-01/3.4e-01 
+          AC 2.0e-12 2.0e-12 2.0e-12 3.1e-05 3.1e-05 3.1e-05  1  1.7e-01/3.4e-01 
+17:08:26 [1] 6.4e-12 2.8e-11 1.1e-11 6.1e-07 7.6e-04 1.8e-05  1  1.7e-01/3.4e-01 
+          AC 1.3e-11 1.3e-11 1.3e-11 8.8e-06 8.8e-06 8.8e-06  1  1.7e-01/3.5e-01 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   9.579e-03  3.665e-03  4.130e-03 
+
+OK  7.7e-07 < 1.5 1.0e-02 [2.4e-13, 1.2e-08, 7.2e-07, 2.5e-07]
+Predictor-corrector norm: [  1 d  ,   1 y  ,   1 V  ,   1 AC ]
+
+------------------------------
+Augmenting Conditions:       1
+Number of extra unknowns:    1
+
+	BC[  12] DF[   5]=-5.588736e-01
+
+=> Try for soln at t=0.237812 with dt=0.0759375 [8 for 8] (CN)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:27 [0] 8.1e-09 1.3e-06 6.5e-08 2.6e-06 3.2e-03 7.4e-05  1  1.6e-01/3.4e-01 
+          AC 9.3e-13 9.3e-13 9.3e-13 5.7e-05 5.7e-05 5.7e-05  1  1.6e-01/3.4e-01 
+17:08:28 [1] 2.0e-12 1.3e-11 3.7e-12 7.5e-07 9.3e-04 2.2e-05  1  1.6e-01/3.3e-01 
+          AC 1.6e-11 1.6e-11 1.6e-11 1.1e-05 1.1e-05 1.1e-05  1  1.7e-01/3.4e-01 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   9.579e-03  3.665e-03  4.130e-03 
+
+OK  4.4e-07 < 1.5 1.0e-02 [1.3e-13, 1.6e-08, 3.3e-07, 2.9e-07]
+Predictor-corrector norm: [  1 d  ,   1 y  ,   1 V  ,   1 AC ]
+
+------------------------------
+Augmenting Conditions:       1
+Number of extra unknowns:    1
+
+	BC[  12] DF[   5]=-5.589977e-01
+
+=> Try for soln at t=0.351719 with dt=0.113906 [9 for 9] (CN)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:29 [0] 8.8e-09 1.5e-06 7.3e-08 1.4e-06 1.8e-03 4.2e-05  1  1.6e-01/3.2e-01 
+          AC 1.4e-12 1.4e-12 1.4e-12 5.6e-06 5.6e-06 5.6e-06  1  1.8e-01/3.4e-01 
+17:08:30 [1] 3.9e-12 2.0e-11 6.9e-12 9.7e-07 1.2e-03 2.8e-05  1  1.7e-01/3.4e-01 
+          AC 2.1e-11 2.1e-11 2.1e-11 1.4e-05 1.4e-05 1.4e-05  1  1.6e-01/3.4e-01 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   9.579e-03  3.665e-03  4.129e-03 
+
+OK  4.5e-07 < 1.5 1.0e-02 [1.7e-13, 2.2e-08, 4.4e-07, 5.3e-08]
+Predictor-corrector norm: [  1 d  ,   1 y  ,   1 V  ,   1 AC ]
+
+------------------------------
+Augmenting Conditions:       1
+Number of extra unknowns:    1
+
+	BC[  12] DF[   5]=-5.591446e-01
+
+=> Try for soln at t=0.522578 with dt=0.170859 [10 for 10] (CN)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:31 [0] 9.6e-09 1.7e-06 8.3e-08 2.9e-06 3.7e-03 8.5e-05  1  1.6e-01/3.3e-01 
+          AC 9.6e-14 9.6e-14 9.6e-14 7.4e-05 7.4e-05 7.4e-05  1  1.7e-01/3.4e-01 
+17:08:33 [1] 1.0e-12 1.5e-11 3.3e-12 1.2e-06 1.5e-03 3.5e-05  1  1.7e-01/3.3e-01 
+          AC 2.6e-11 2.6e-11 2.6e-11 1.7e-05 1.7e-05 1.7e-05  1  1.6e-01/3.4e-01 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   9.579e-03  3.665e-03  4.129e-03 
+
+OK  4.8e-07 < 1.5 1.0e-02 [1.0e-13, 3.0e-08, 3.2e-07, 3.6e-07]
+Predictor-corrector norm: [  1 d  ,   1 y  ,   1 V  ,   1 AC ]
+
+------------------------------
+Augmenting Conditions:       1
+Number of extra unknowns:    1
+
+	BC[  12] DF[   5]=-5.593336e-01
+
+=> Try for soln at t=0.778867 with dt=0.256289 [11 for 11] (CN)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:34 [0] 1.1e-08 2.0e-06 9.5e-08 4.1e-07 6.3e-04 1.3e-05  1  1.7e-01/3.3e-01 
+          AC 1.6e-12 1.6e-12 1.6e-12 3.5e-05 3.5e-05 3.5e-05  1  1.6e-01/3.0e-01 
+17:08:35 [1] 2.2e-12 1.4e-11 4.2e-12 1.5e-06 1.9e-03 4.4e-05  1  2.1e-01/3.2e-01 
+          AC 3.3e-11 3.3e-11 3.3e-11 2.2e-05 2.2e-05 2.2e-05  1  1.8e-01/3.3e-01 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   9.579e-03  3.665e-03  4.129e-03 
+
+OK  3.7e-07 < 1.5 1.0e-02 [1.3e-13, 4.1e-08, 3.6e-07, 8.5e-08]
+Predictor-corrector norm: [  1 d  ,   1 y  ,   1 V  ,   1 AC ]
+
+------------------------------
+Augmenting Conditions:       1
+Number of extra unknowns:    1
+
+	BC[  12] DF[   5]=-5.595597e-01
+
+=> Try for soln at t=1.1633 with dt=0.384434 [12 for 12] (CN)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:36 [0] 1.2e-08 2.3e-06 1.1e-07 3.6e-06 4.6e-03 1.0e-04  1  1.7e-01/3.1e-01 
+          AC 6.5e-13 6.5e-13 6.5e-13 1.0e-04 1.0e-04 1.0e-04  1  1.7e-01/2.9e-01 
+17:08:37 [1] 2.8e-12 3.3e-11 8.3e-12 1.9e-06 2.3e-03 5.5e-05  1  1.7e-01/3.8e-01 
+          AC 4.1e-11 4.1e-11 4.1e-11 2.7e-05 2.7e-05 2.7e-05  1  1.7e-01/3.4e-01 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   9.580e-03  3.665e-03  4.129e-03 
+
+OK  5.7e-07 < 1.5 1.0e-02 [8.2e-14, 5.4e-08, 3.1e-07, 4.8e-07]
+Predictor-corrector norm: [  1 d  ,   1 y  ,   1 V  ,   1 AC ]
+
+------------------------------
+Augmenting Conditions:       1
+Number of extra unknowns:    1
+
+	BC[  12] DF[   5]=-5.598450e-01
+
+=> Try for soln at t=1.73995 with dt=0.57665 [13 for 13] (CN)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:38 [0] 1.4e-08 2.8e-06 1.3e-07 6.3e-07 1.0e-03 2.1e-05  1  1.8e-01/3.1e-01 
+          AC 2.4e-12 2.4e-12 2.4e-12 7.2e-05 7.2e-05 7.2e-05  1  1.8e-01/3.3e-01 
+17:08:39 [1] 1.5e-12 1.8e-11 3.6e-12 2.4e-06 2.9e-03 6.9e-05  1  2.3e-01/3.3e-01 
+          AC 5.1e-11 5.1e-11 5.1e-11 3.4e-05 3.4e-05 3.4e-05  1  1.8e-01/3.0e-01 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   9.581e-03  3.664e-03  4.129e-03 
+
+OK  4.1e-07 < 1.5 1.0e-02 [1.2e-13, 7.1e-08, 3.3e-07, 2.4e-07]
+Predictor-corrector norm: [  1 d  ,   1 y  ,   1 V  ,   1 AC ]
+
+------------------------------
+Augmenting Conditions:       1
+Number of extra unknowns:    1
+
+	BC[  12] DF[   5]=-5.601896e-01
+
+=> Try for soln at t=2.60493 with dt=0.864976 [14 for 14] (CN)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:40 [0] 1.6e-08 3.2e-06 1.5e-07 4.6e-06 6.1e-03 1.3e-04  1  1.7e-01/3.8e-01 
+          AC 2.1e-12 2.1e-12 2.1e-12 1.4e-04 1.4e-04 1.4e-04  1  1.8e-01/3.3e-01 
+17:08:41 [1] 8.1e-12 9.0e-11 2.4e-11 2.9e-06 3.6e-03 8.5e-05  1  1.8e-01/3.1e-01 
+          AC 6.3e-11 6.3e-11 6.3e-11 4.2e-05 4.2e-05 4.2e-05  1  1.8e-01/3.4e-01 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   9.582e-03  3.664e-03  4.129e-03 
+
+OK  7.2e-07 < 1.5 1.0e-02 [9.6e-14, 9.3e-08, 3.1e-07, 6.5e-07]
+Predictor-corrector norm: [  1 d  ,   1 y  ,   1 V  ,   1 AC ]
+
+------------------------------
+Augmenting Conditions:       1
+Number of extra unknowns:    1
+
+	BC[  12] DF[   5]=-5.606202e-01
+
+Fixing exodus file plating.out.exoII
+
+-done
+
+
+Proc 0 runtime:       0.58 Minutes.
+

@@ -1,0 +1,97 @@
+$$
+$$
+$$            Dimensional Keyhole Welding Model
+$$            ====================================
+$$
+$$           <<<< ALL UNITS MUST BE SET IN MKS>>>>
+$$
+$$-----------------------------------------------------------------------
+$$-----------------------------------------------------------------------
+$$
+$$---Thermophysical Material Properties----------------------------------
+  {rho_metal   =   7900.0} --- Density  (kg/m^3)
+  {t_cond      =     15.0} --- Thermal conductivity (W/m-K)
+  {t_cond_refT =    300.0} --- Reference temperature for t_cond (K)
+  {dcond_dT    =10.0/700.0} --- Slope of Thermal conductivity  wrt tenperature (N/m-K)
+  {sp_heat     =    477.0} --- Specific heat (heat capacity) (J/Kg-K) at 300K
+  {sp_heat_refT=    300.0} --- Reference temperature for sp_heat (K)
+  {dsp_heat_dT =205.0/1200.0} --- Slope of heat capacity wrt tenperature (N/m-K)
+  {visc_mu     =    0.004} --- Viscosity (Pa-s)
+  {visc_mu_c0  = 4.0*0.0390390} --- Viscosity versus Temperature Constant0
+  {visc_mu_c1  =-3.3696e-5} --- Viscosity versus Temperature Constant1
+  {visc_mu_c2  = 1.0191e-8} --- Viscosity versus Temperature Constant2
+  {visc_mu_c3  =-1.0413e-12} --- Viscosity versus Temperature Constant3
+
+  {beta        = 0.000016} --- Thermal expansion coefficient (1/K)
+  {lat_hfs     = 260000.0} --- Latent heat of fusion (J/kg)
+  {lat_hfg     =6300000.0} --- Latent heat of evaporation (J/Kg)
+  {sigma       =   1.943} --- Surface tension coefficient (N/m)1.76
+  {sigma_refT  =   1809.0} --- Reference temperature for sigma (K)
+  {dsigma_dT   = -4.3e-4} --- Slope of sigma wrt tenperature (N/m-K)1.06
+  {T_liquidus  =   1623.0} --- Liquidus temperature of metal part (K)
+  {T_solidus   =   1473.0} --- Solidus  temperature of metal part (K)
+  {T_boil      =   3000.0} --- Boiling  temperature of metal part (K)
+  {T_90_fsolid =   1528.0} --- 90% fraction solid (FS) Temperature (K)
+$$
+$$---Laser Input Parameters----------------------------------------------
+  {sw_vn=1} 0 is off, 1 is on
+  {sw_trv_spt   =        0} --- Set to 1 for traveling weld to 0 for spot weld
+  {trav_rad     =       -1}
+  {num_spots    =        1} --- Number of spot welds
+  {freq_spot    =     25.0} --- Set frequency of spot welds (Hz)
+  {laser_tophat =        1} --- Set this to 1 to use qlaser as f(r)
+				 If set to 0 will use qlaser as f(x,y)
+  {spot_space   =0.2032e-3} --- Spot weld spacing
+  {beam_travel_u=      0.0} --- Beam travel speed (m/s) set to 0 for spot weld
+  {beam_travel_v=      0.0} --- Beam travel speed (m/s) set to 0 for spot weld
+  {beam_travel_w=      0.0} --- Beam travel speed (m/s) set to 0 for spot weld
+  {L_radius     = 0.0001} --- Laser beam radius (m)
+  {factor=3.0}
+  {laser_x      = 0.005/1000.}
+  {laser_y      = 0.0*(2.0*factor)*L_radius/2.0}
+  {laser_z      =      0.0}
+  {laser_axisx  =       -1}--- Direction of normal from face!
+  {laser_axisy  =        0}
+  {laser_axisz  =        0}
+  {T_ref        =    300.0} --- Reference (initial) temperature of workpiece (K)
+  {t_pulse      =  0.00300} --- Pulse duration (sec)
+  {t_ramp_up    =  0.00001} --- Laser pulse ramp_up time (sec)
+  {t_ramp_st    =  0.00001} --- Laser pulse time to reach L_power (sec)
+  {t_ramp_down  =  0.00001} --- Laser pulse ramp_down time (sec)
+  {L_power      =    200.0} --- Laser power in (J/pulse) 335 at 0.97
+  {L_power_up   =     1.00} --- Laser power overshoot in (% of L_power)
+  {L_power_base =     0.00} --- Laser power base level after pulse in (% of L_power)
+  {absorp_min   =     0.40} --- Minimum value of absorptivity for flat part surface 42
+  {q_loss       =     40.0} --- Heat transfer coefficient for energy loss from
+                                top surface of workpiece (W/m^2/K)
+  {h_env	=      1.0}
+
+$$
+$$---Run Time Parameters-------------------------------------------------
+  {run_flow    	=        1}
+  {run_init     =        1}
+  {time_delta  	=   1.0e-8}
+  {time_init   	=       0.}
+  {time_final  	=      5.0}
+  {time_nsteps 	=    20000}
+  {time_maxstep	=   1.e-6} 5e-8 5e-6
+
+
+$$
+$$---Scales & quantities  
+  {gravity = 9.81}
+
+
+
+$$$  DO NOT CHANGE ANYTHING BELOW THIS LINE-------------------------------------------
+  {a_base  = absorp_min}
+  {a_enh   = absorp_max - absorp_min}
+ $
+  {L_efficiency =      1.0} --- Efficiency of laser ==> net flux onto part is given
+                                by: (L_power * L_efficiency) /( t_pulse*PI*L_radius^2)
+  {e_concen     =   0.4825} --- Fraction of incident radiation that fall within
+                                circle defined by laser beam radius
+  {steps = 1}
+
+{ddr = 0.03}
+{include(unit_conv)}

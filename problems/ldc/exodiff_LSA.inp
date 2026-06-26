@@ -1,0 +1,4 @@
+DEFAULT TOLERANCE relative 1.E-7 floor 1.E-13
+GLOBAL VARIABLES (all) relative 1.E-4 floor 1.E-12
+NODAL VARIABLES (all) eigen_relative 1.0E-4 floor 1.0E-8
+ELEMENT VARIABLES (all) eigen_relative 1.0E-4 floor 1.0E-8

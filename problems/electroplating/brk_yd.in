@@ -1,0 +1,59 @@
+# brk -- input file problem description for decomposition
+#	    of LIGA electroplating in trenches 
+#
+#                                   block 1
+
+1	  # element block ID
+2	  # number of basic eqnvars
+4  1 1 1  # species equation
+28 1 1 1  # voltage equation
+
+#
+# interactions...
+#
+#	Y  VOLT    
+#
+	1   0     # species equation
+        0   1     # voltage equation
+
+
+9	# number of nodes per element in this eb
+4  28
+4  28
+4  28
+4  28
+4  28
+4  28
+4  28
+4  28
+4  28
+
+
+#
+#                                 block 2
+
+2    	 # element block ID
+3        # number of basic eqnvars
+4  1 1 1  # species equation
+5  2 1 1  # mesh equation
+28 1 1 1  # voltage equation  
+
+#
+# interactions...
+#
+#      Y   D   VOLT
+#
+       1   0    0     # species equation
+       0   1    0     # mesh  equation
+       0   0    1     # voltage equation  
+
+9	# number of nodes per element in this eb
+4 5 28 
+4 5 28
+4 5 28
+4 5 28
+4 5 28
+4 5 28
+4 5 28
+4 5 28
+4 5 28

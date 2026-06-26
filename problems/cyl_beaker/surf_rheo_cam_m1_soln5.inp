@@ -1,0 +1,237 @@
+#
+$ GOMA input file
+$ CREATION_DATE USER_NAME_AND_SITE
+$ {ECHO(OFF)} 
+$     {include(Defs.txt)}
+$ {ECHO(ON)}
+
+FEM Problem Specifications
+--- ------- --------------
+FEM file                         = surf_rheo_m1_q2.g
+Output EXODUS II file            = surf_rheo_cam3_m1_out5.exoII
+GUESS file                       = none
+SOLN file                        = none
+Write intermediate results	 = no
+
+General Specifications
+------- --------------
+
+Number of processors = 1
+Output level = 0
+Debug        = 0
+Number of Jacobian File Dumps = 0
+Initial Guess = read_exoII_file surf_rheo_cam3_m1_out2.exoII
+
+Time Integration Specifications
+---- ----------- --------------
+Time integration                 = transient
+#Time integration                 = steady
+delta_t                          = 1.0E-5
+Maximum number of time steps     = 5
+Maximum time                     = 3000.0
+Minimum time step                = 1.0E-10
+Maximum time step                = 500.0
+Time step parameter              = 0.0
+Time step error                  = 0.05 1 1 1 1 0 1 0 0
+Printing Frequency               = 1
+Initial Time                     = 0.0
+
+
+Solver Specifications
+------ --------------
+Solution Algorithm             = umf
+Preconditioner                 = ilu
+Polynomial                       = LS,1
+Size of Krylov subspace          = 64
+Orthogonalization                = classical
+Maximum Linear Solve Iterations  = 1000
+Number of Newton Iterations      = 35
+Newton correction factor         = 1.0
+Normalized Residual Tolerance    = 1.0e-8
+Residual Ratio Tolerance         = 2.0e-3
+Residual Relative Tolerance      = 1.0e-06
+
+
+Boundary Condition Specifications
+-------- --------- --------------
+Number of BC			 = -1
+#
+#
+#    Bottom of the domain - fixed and inert
+#
+# left bottom
+BC = DX NS 11 0.0
+BC = DY NS 11 0.0
+BC = U NS  11 0.0
+BC = V NS  11 0.0
+# Center bottom
+BC = DX NS 12 0.0
+BC = DY NS 12 0.0
+#BC = FLOW_GRADV SS 12 274.0 -1
+BC = FLOW_GRADV SS 12 334.0 -1
+#BC = V  NS 12 0.0
+BC = U  NS 12 0.0
+# Right Bottom
+BC = DX NS 13 0.0
+BC = DY NS 13 0.0
+BC = U NS  13 0.0
+BC = V NS  13 0.0
+#
+# ----------------------------------------------------------
+#    Right Side of the domain - bottom made up of liquid
+#
+# -> Force mesh to be fixed at a x=constant value
+#    There are three ways to do this: 
+#                DX     -> NS,  DC
+#                PLANEX -> SS,  PCC
+#                PLANE  -> SS,  PCC-ROT
+BC = DX NS 2       0.0
+#BC = PLANE SS 2  1.0 0.0 0.0 {-width}
+# 
+# Normal component of the velocity = U
+# set noflow out of the right side of the domain
+#BC = U NS 2  0.0
+#
+# Tangential component of the velocity = V
+#     set the tangential stress = dv/dx + du/dy
+#               du/dy = 0 to be consistent with BC on u
+#           Set dv/dx = 0 to make the problem 1D
+#            -> Implies zero tangential stress condition is good
+#               and thus we don't need a boundary condition
+#  Also can set the velocity to zero for a wall condition
+#
+#BC = V NS 2 0.0
+BC = VELO_NORMAL SS 2 0.0 
+#BC = VELO_SLIP   SS 2 100.0 0.0 0.0 0.0 103 0.3
+#
+# Temperature -> adiabatic
+# Species -> no flux bc 
+# Pressure -> Don't need a boundary condition
+#
+# Specification of the contact angle
+#
+#         -> we'll try the most straightforward approach atm
+#
+#BC = CA_MOMENTUM NS 103 1.850049 0.0 0.0 0.0
+#BC = CA_MOMENTUM NS 103 0.523333 0.0 0.0 0.0
+#BC = CA_MOMENTUM NS 103 1.4 0.0 0.0 0.0
+#
+# Added the sign term to correct the error
+BC = CAP_ENDFORCE_SCALAR NS 103 72.88 -1
+#BC = CAP_ENDFORCE NS 103 1.0 0.0 0.0 72.88
+#
+# ----------------------------------------------------------
+#    Left Side of the domain - bottom made up of liquid
+#
+BC = DX NS 4    0.0
+BC = DY NS 4    0.0
+BC = U  NS 4    0.0
+BC = V  NS 4    0.0
+#
+# -> Force mesh to be fixed at a x=constant value
+#    There are three ways to do this: 
+#                DX     -> NS,  DC
+#                PLANEX -> SS,  PCC
+#                PLANE  -> SS,  PCC-ROT
+#
+#  rcyl = {rcyl = cylRadius }
+#  ypos = {ypos = Height_cylCenter}
+#
+BC = GD_PARAB SS 5  R_MESH_NORMAL 0 MESH_POSITION1 0 {-rcyl*rcyl}        0   1
+BC = GD_PARAB SS 5  R_MESH_NORMAL 0 MESH_POSITION2 0 {ypos*ypos} {-2.0*ypos} 1
+#BC = DX NS 5 0.0
+#BC = DY NS 5 0.0
+# 
+#              SIC/Rotated Momentum
+BC = VELO_NORMAL SS 5 0.0 
+#              WIC/Vector Momentum
+#BC = VELO_SLIP   SS 5 100.0 0.0 0.0 0.0 104 0.2
+#
+# Tangential component of the velocity = V
+#     set the tangential stress = dv/dx + du/dy
+#               du/dy = 0 to be consistent with BC on u
+#           Set dv/dx = 0 to make the problem 1D
+#            -> Implies zero tangential stress condition is good
+#               and thus we don't need a boundary condition
+#
+# Specification of the contact angle
+#
+#         -> we'll try the most straightforward approach atm
+#
+#  Make it greater than 90Deg
+#   106 degrees = 1.850049
+BC = CA_MOMENTUM NS 104 1.850049 0.0 0.0 0.0
+#
+# ----------------------------------------------------------
+#    Top of the domain -> interface
+#
+# -> Force mesh to follow the material domain
+#
+BC = KINEMATIC SS 3 0.0
+#
+# apply capillary forces (surface tension) to the momentum
+# equation on a free surface
+#               1.0 = multiplier for the surface tension value
+#               0.0 = external appllied pressure on the free surface
+#               0.0 = unused
+#
+#
+BC = CAPILLARY SS 3 72.88 0.0 0.0 
+#
+# ----------------------------------------------------------
+#
+# Set the pressure datum for the problem
+#
+#BC = P NS {right1_ns} 0
+#
+# END OF BC
+#         This card signals the end of boundary condition processing
+END OF BC
+#
+#
+----
+Problem Description
+---
+Number of Materials = 1
+
+MAT = water   1
+
+  	Coordinate System = CARTESIAN
+  	Element Mapping   = isoparametric
+  	Mesh Motion = ARBITRARY
+#            Number of bulk species is one less than the
+#            total number in the problem
+  	Number of bulk species = 0
+
+	Number of EQ			 = 5
+#                                       Mass  Adv  Bnd  diff src por
+	EQ = mesh1       Q2   D1 Q2      0.   0.   1.   1.   0.   0.
+	EQ = mesh2       Q2   D2 Q2      0.   0.   1.   1.   0.   0.
+	EQ = momentum1   Q2   U1 Q2      1    1    1    1    1    0 
+	EQ = momentum2   Q2   U2 Q2  	 1    1    1    1    1    0 
+#                                       div                  src
+	EQ = continuity  P1 P  P1        1.                   0. 
+
+
+	
+Post Processing Specifications
+---- ---------- --------------
+Stream Function			= yes
+Streamwise normal stress	= no
+Pressure contours		= yes
+Second Invarient of Strain	= no
+Mesh Dilatation			= yes
+Navier Stokes Residuals		= yes
+Moving Mesh Residuals		= yes
+Mass Diffusion Vectors		= yes
+Mass Fluxlines			= yes
+Energy Conduction Vectors	= no
+Energy Fluxlines		= no
+Time Derivatives		= yes
+Mesh Stress Tensor		= no
+
+
+Post Processing Volumetric Integration
+  VOLUME_INT = VOLUME   1   0  soln3.out 1
+END OF VOLUME_INT
+

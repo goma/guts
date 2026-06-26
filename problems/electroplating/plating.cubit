@@ -1,0 +1,93 @@
+title 'Model problem for electrodeposition in trenchs'
+  
+nodeset associativity on
+merge tolerance 1e-6
+
+create vertex -0.2500E+00      0.0000E+00             # vertex 1
+create vertex -0.0250E+00      0.0000E+00             # vertex 2
+create vertex -0.0250E+00      0.0030E+00             # vertex 3
+create vertex  0.0250E+00      0.0030E+00             # vertex 4
+create vertex  0.0250E+00      0.0000E+00             # vertex 5
+create vertex  0.2500E+00      0.0000E+00             # vertex 6
+create vertex  0.2500E+00      1.0000E+00             # vertex 7
+create vertex -0.2500E+00      1.0000E+00             # vertex 8
+create vertex -0.0250E+00     -0.1000E+00             # vertex 9
+create vertex  0.0000E+00     -0.1000E+00             # vertex 10
+create vertex  0.0250E+00     -0.1000E+00             # vertex 11
+
+create curve 1 2                                      # curve 1
+create curve 2 3                                      # curve 2
+create curve 3 4                                      # curve 3
+create curve 4 5                                      # curve 4
+create curve 5 6                                      # curve 5
+create curve 6 7                                      # curve 6
+create curve 7 8                                      # curve 7
+create curve 1 8                                      # curve 8
+create curve 9 2                                      # curve 9
+create curve 11 5                                     # curve 10
+create curve 9 10                                     # curve 11
+create curve 10 11                                    # curve 12
+
+create surface curve  1 14  2 15  3  4  5  6  7  8    # surface 1   
+create surface curve  2  9 11 12 10  4  3             # surface 2
+ 
+merge all 
+
+sideset 1 curve 11 12
+sideset 2 curve 1 3 5 
+sideset 3 curve 7   
+sideset 4 curve 2  9   
+sideset 5 curve 4 10 
+sideset 6 curve 3  
+sideset 7 curve 8   
+sideset 8 curve 6   
+
+nodeset 1 curve 11 12
+nodeset 2 curve 1 3 5 
+nodeset 3 curve 7   
+nodeset 4 curve 2  9   
+nodeset 5 curve 4 10 
+nodeset 6 curve 3  
+nodeset 7 curve 8   
+nodeset 8 curve 6   
+
+nodeset 100 vertex 9
+nodeset 200 vertex 11
+nodeset 300 vertex 2
+nodeset 400 vertex 5
+nodeset 500 vertex 10
+
+block 1 surface 1  
+block 1 element type quad9
+block 2 surface 2
+block 2 element type quad9
+
+surface 1 scheme pave
+surface 1 size 0.3
+curve 1 int fact 3.0 
+curve 1 scheme bias factor 0.99 start vertex 1
+curve 5 int fact 3.0 
+curve 5 scheme bias factor 0.99 start vertex 6
+curve 6 int fact 2.0 
+curve 6 scheme bias factor 1.05 start vertex 6
+curve 8 int fact 2.0 
+curve 8 scheme bias factor 1.045 start vertex 1
+
+surface 2 scheme map
+surface 2 size 0.02
+curve 2 int fact 1.0 
+curve 2 scheme bias factor 0.85 start vertex 3
+curve 4 int fact 1.0 
+curve 4 scheme bias factor 0.85 start vertex 4
+curve 9 int fact 1.0 
+curve 9 scheme bias factor 1.15 start vertex 9
+curve 10 int fact 1.0 
+curve 10 scheme bias factor 1.15 start vertex 11
+curve 3  scheme dualbias factor 1.1 
+curve 11 scheme bias factor 0.8 start vertex 10
+curve 12 scheme bias factor 0.8 start vertex 10
+
+mesh surface all 
+
+export genesis "plating.exoII"
+

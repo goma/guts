@@ -1,0 +1,83 @@
+v7.10.1-16-g2199db68-dirty
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2026 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+
+
+######################### __PRINT_SYNC_END__ #########################
+
+Number of unknowns            = 6169
+
+Number of matrix nonzeroes    = 339405
+
+Initial guess read from "rb-in.exoII" ...(last soln in file)
+Nodal variable VX found in exoII database - reading.
+Nodal variable VY found in exoII database - reading.
+Nodal variable T found in exoII database - reading.
+Nodal variable P found in exoII database - reading.
+		 Values read time plane at time = 1500
+
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+22:56:16 [0] 1.1e-13 2.9e-11 9.9e-13 1.3e-12 7.8e-10 2.1e-11  1  1.9e-01/4.1e-01 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   1.500e+03  2.584e+02  4.959e+02 
+Assembling J...
+Assembling B...
+ Initializing variables and allocating space... 
+ Arnoldi Eigenvalue Extractor
+
+ Allocated work vectors
+ Allocated work martices
+ Pass  1  New Shift =  1.000000e+02 +0.000000e+00 i
+ Pass  2
+ Pass  3  New Shift = -1.637450e+00 +0.000000e+00 i
+ De-allocated work storage
+ ARN-IT done. 
+
+-------------------------------------------------------------------------------
+ Eigensolver required 183 iterations.
+ Found 10 converged eigenvalues.
+ Leading Eigenvalue  = -1.637450e+00-0.000000e+00 i RES =  4.058136e-16
+    Real           Imag           RES
+ -1.637450e+00 -0.000000e+00 i  4.058136e-16
+ -3.088563e+00 -0.000000e+00 i  7.225536e-16
+ -4.118804e+00 -0.000000e+00 i  2.375475e-15
+ -7.254228e+00 -0.000000e+00 i  2.041221e-13
+ -8.938881e+00 -0.000000e+00 i  1.866936e-37
+ -9.869628e+00 -0.000000e+00 i  3.416489e-15
+ -1.034329e+01 -0.000000e+00 i  1.160141e-12
+ -1.986754e+01 -0.000000e+00 i  1.223686e-12
+ -3.233193e+01 -0.000000e+00 i  5.795966e-08
+ -6.190661e+01 -0.000000e+00 i  1.738553e-25
+ push_mode                          =            5  
+ Writing modes to file ...
+		 Mode    0 ... recorded.
+		 Mode    1 ... recorded.
+		 Mode    2 ... recorded.
+		 Mode    3 ... recorded.
+		 Mode    4 ... recorded.
+Deallocating memory ... done.
+
+-done
+
+
+Proc 0 runtime:       0.04 Minutes.
+

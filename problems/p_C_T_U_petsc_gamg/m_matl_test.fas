@@ -1,0 +1,36 @@
+ TITLE  Mesh for C_T_U Test
+  
+ POINT     1      0.0000000E+00      0.0000000E+00
+ POINT     2      1.0000000E+00      0.0000000E+00
+ POINT     3      1.0000000E+00      5.0000000E-01
+ POINT     4      1.0000000E+00      1.0000000E+00
+ POINT     5      0.0000000E+00      1.0000000E+00
+ POINT     6      0.0000000E+00      5.0000000E-01
+ LINE      1   STR     1     2     0     4  1.0000
+ LINE      2   STR     2     3     0     2  1.0000
+ LINE      3   STR     3     4     0     2  1.0000
+ LINE      4   STR     4     5     0     4  1.0000
+ LINE      5   STR     5     6     0     2  1.0000
+ LINE      6   STR     6     1     0     2  1.0000
+ LINE      7   STR     6     3     0     4  1.0000
+ REGION     1     1    -1   -2   -7   -6
+ REGION     2     2   -3   -4   -5   -7
+ SCHEME    0 M
+ BODY 1 2
+ NODEBC 1 1
+ NODEBC 2 2
+ NODEBC 3 3
+ NODEBC 4 4
+NODEBC 5 5
+NODEBC 6 6
+NODEBC 7 7
+ ELEMBC 1 1
+ ELEMBC 2 2
+ ELEMBC 3 3
+ ELEMBC 4 4
+ ELEMBC 5 5
+ ELEMBC 6 6
+ ELEMBC 7 7
+ NINE
+ EXIT  
+

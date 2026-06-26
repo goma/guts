@@ -1,0 +1,65 @@
+# brk -- input file problem description for decomposition
+#        for 2D problem with velocity, temperature, and species
+#        in cylindrical coordinates
+
+1       # element block ID
+5       # number of basic eqnvars
+3 1 1 1 # energy equation
+0 2 1 1 # momentum (2D)
+9 1 1 3 # continuity
+5 2 1 1 # mesh (2D)
+4 1 2 1 # species_bulk
+
+#
+# interactions...
+#
+
+#      v       T       Y      DM       P
+#
+       1       1       0       0       0       # energy equation
+       1       0       0       0       1       # "fluid" momentum equation
+       1       0       0       0       1       # continuity equation
+       1       0       0       1       0       # mesh equation
+       1       1       1       0       0       # species equation
+
+
+9           # number of nodes per element in this eb
+0 3 4 5  
+0 3 4 5  
+0 3 4 5  
+0 3 4 5  
+0 3 4 5  
+0 3 4 5  
+0 3 4 5  
+0 3 4 5  
+0 3 4 5 9
+
+2       # element block ID
+4       # number of basic eqnvars
+3 1 1 1 # energy equation
+0 2 1 1 # momentum (2D)
+9 1 1 3 # continuity
+5 2 1 1 # mesh (2D)
+
+#
+# interactions...
+#
+
+#      v       T      DM       P
+#
+       1       1       0       0       # energy equation
+       1       0       0       1       # "fluid" momentum equation
+       1       0       0       1       # continuity equation
+       1       0       1       0       # mesh equation
+
+
+9           # number of nodes per element in this eb
+0 3 5  
+0 3 5  
+0 3 5  
+0 3 5  
+0 3 5  
+0 3 5  
+0 3 5  
+0 3 5  
+0 3 5 9

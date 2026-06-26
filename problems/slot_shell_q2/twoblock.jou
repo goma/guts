@@ -1,0 +1,59 @@
+## /usr/local/bin/../cubit/cubit_LINUX.8.1_exe
+## Cubit Version 8.1
+## Cubit Build 45
+## Revised 01/19/2004 14:07:30 MST
+## Running 02/04/2004 01:39:43 PM
+## Command Options:
+## -warning = On
+## -information = On
+## tmp.jou 
+nodeset associativity on 
+set associativity complete on 
+cylinder z 1 radius 8 
+body 1 move 0 2 0 
+brick x 5 y 6 z 1 
+body 2 move 2.5 0 0 
+body 2 move 0 1 0 
+webcut body 1 with plane surface 8 
+delete body 3 
+webcut body 1 with plane surface 7 
+delete body 4 
+body 2 move 0 -4 0 
+webcut body 1 with plane surface 8 
+delete body 1 
+brick x 2.745966692 y 6 z 1 
+body 6 move 6.372983346 0 0 
+body 6 move 0 -3 0 
+brick x 8 y 6 z 1 
+body 7 move 11.745966692 0 0 
+body 7 move 0 -3 0 
+imprint body 5 with body 2 6 
+merge all 
+curve 55 56 interval 10 
+curve 34 72 interval 10 
+curve 4 interval 5 
+curve 60 interval 5 
+mesh surface 34 
+mesh curve 72 
+block 1 surface 34 
+block 1 element type quad9 
+block 2 curve 4 60
+block 2 element type bar3 
+block 3 curve 72 
+block 3 element type bar3 
+sideset 10 curve 34 
+sideset 50 curve 56 
+sideset 60 curve 4 60 
+sideset 70 curve 55 
+sideset 99 curve 60 
+nodeset 10 curve 34 
+nodeset 50 curve 56 
+nodeset 60 curve 4 60 
+nodeset 70 curve 55 
+nodeset 99 curve 60 
+nodeset 100 vertex 12 
+nodeset 200 vertex 32 
+nodeset 500 vertex 5 
+nodeset 600 vertex 44 
+title "Partially wetted shell test grid" 
+export genesis "twoblock.exoII" 

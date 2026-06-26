@@ -1,0 +1,42 @@
+set geometry engine acis
+set default element hex
+cd '/Users/tabaer/goma/test/testsuite'
+cylinder radius 2 z 1
+cylinder radius .25 z 1
+webcut body 1 with tool body 2
+delete body 2 3
+section body 1 with yplane
+brick x 5 y 3 z 1
+body 4 move 0 1.5 0
+
+
+body 4 rotate 10 about z 
+
+webcut body 1 with tool body 4
+
+delete body 4 5
+
+
+surf 26 size smallest curve factor .33
+surf 26 scheme pave
+mesh surf 26
+block 1 surf 26
+block 1 element type quad9
+nodeset 1 curve 14
+nodeset 2 curve 38
+nodeset 3 curve 36
+nodeset 4 curve 37
+
+sideset 1 curve 14
+sideset 2 curve 38
+sideset 3 curve 36
+sideset 4 curve 37
+
+
+nodeset 100 vert 24
+nodeset 200 vert 6
+
+transform mesh output scale 0.1
+
+export genesis "wedge.exoII" overwrite
+

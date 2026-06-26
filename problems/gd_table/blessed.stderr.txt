@@ -1,0 +1,2 @@
+WARNING: Warning no time steps found in pois.exoII (/opt/workdir/goma/src/rf_util.c:2582)
+		converged SS!

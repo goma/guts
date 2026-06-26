@@ -1,0 +1,68 @@
+From: idgates@mmm.com                                         Feb 15, 1999
+X-Lotus-FromDomain: 3M-CORPORATE                              ************
+To: "Duane A. Labreche" <dalabre@engsci.sandia.gov>
+Subject: expected output
+
+
+Duane, this is what I get from ldc.input:
+
+ Initializing variables ...     mat :        37949
+
+ Allocating gevp work vectors:
+    EVECT:    35 x  1187 =        41545
+    SCHUR:    35 x  1187 =        41545
+
+ Allocating RC work vectors:
+     v1 :         1187
+     v2 :         1187
+ Dimension of system                =         1182
+ Number of non-zeroes               =        37944
+ Krylov subspace dimension          =           30
+ Tolerance                          = 1.000000e-06
+ Max iterations                     =            2
+ Filter                             =            1
+ NEV_WANT                           =           10
+ Recycle                            =            0
+ Initial Shifts:
+                   -5.000000e+01
+                   -5.100000e+01
+                   -5.200000e+01
+                   -5.400000e+01
+ Initial vector weight              = 1.000000e-01
+
+ Arnoldi Eigenvalue Extractor
+
+ Allocated work vectors
+ Allocated work martices
+ Pass  1  New Shift = -5.000000e+01 +0.000000e+00 i
+ Pass  2
+ De-allocated work storage
+ ARN-IT done.
+
+ ----------------------------------
+ Found 8 converged eigenvalues.
+ Leading Eigenvalue  = -5.235398e+01+0.000000e+00 i RES =  8.241888e-49
+    Real           Imag           RES
+ -5.235398e+01 +0.000000e+00 i  8.241888e-49
+ -9.219072e+01 -3.614410e-01 i  8.113267e-30
+ -9.219072e+01 +3.614410e-01 i  8.113267e-30
+ -1.283342e+02 +0.000000e+00 i  3.819179e-21
+ -1.544776e+02 +0.000000e+00 i  2.463063e-16
+ -1.675191e+02 +0.000000e+00 i  3.360164e-14
+ -1.899878e+02 +8.558143e-01 i  5.957659e-12
+ -1.899878e+02 -8.558143e-01 i  5.957659e-12
+ push_mode                          =            5
+ Writing modes to file ...
+                 Mode    0  recorded.
+                 Mode    1  recorded.
+                 Mode    2  recorded.
+                 Mode    3  recorded.
+                 Mode    4  recorded.
+ done.
+
+ Deallocating memory:
+         Storage matrices.
+         Work Vectors.
+         EV Work Vectors.
+
+-done

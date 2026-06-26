@@ -1,0 +1,95 @@
+ 
+ FEM File Specifications
+ ---
+FEM file                         = mcd.exoII
+Output EXODUS II file            = mcd.out.exoII
+GUESS file                       = contin.dat
+SOLN file                        = soln.dat
+Write intermediate results       = no
+ ---
+General Specifications
+ ---
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+Number of Jacobian File Dumps    = 1
+Initial Guess                    = zero
+#Initial Guess                    = read_exoII
+#Initial Guess                    = read
+Initialize = MASS_FRACTION 0 0.15
+Initialize = MASS_FRACTION 1 0.35
+ --- 
+Time Integration Specifications
+ ---
+Time integration                 = steady
+Operator splitting               = consistent
+delta_t                          = 1.0e-3
+Maximum number of time steps     = 200
+Maximum time                     = 5.00e+06
+Minimum time step                = 1.0000e-9
+Time step parameter              = 0.0
+Time step error                  = 0.002  1  1  1  1  1  1  1
+Printing Frequency               = 1
+ ---
+Solver Specifications
+ ---
+Solution Algorithm               = lu
+Polynomial                       = LS,1
+Size of Krylov subspace          = 64
+Orthogonalization                = classical
+Maximum Linear Solve Iterations  = 1000
+Number of Newton Iterations      = 15
+Newton correction factor         = 1.0
+Normalized Residual Tolerance    = 1e-12
+Residual Ratio Tolerance         = 1e-2
+ ---
+Boundary Condition Specifications
+ ---
+Number of BC			 =    -1
+BC =    Y   NS      4      0   0.25      
+BC =    Y   NS      2      0   0.05 
+BC =    Y   NS      4      1   0.50     
+BC =    Y   NS      2      1   0.20 
+#########
+END OF BC
+#########
+
+----
+Problem Description
+---
+ 
+Number of Materials = 1
+ 
+ MAT =   liquid    1
+ 
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = ARBITRARY
+  Number of bulk species = 2
+  Really meant number of bulk species equations in line above = TRUE
+ 
+        Number of EQ  = 1
+        EQ = species_bulk  Q2    Y      Q2           1.     1.  1.     1.      0.  
+                              			div  ms  adv   bnd  dif    src   porous
+
+
+Post Processing Specifications
+
+Stream Function = no
+Streamwise normal stress = no
+Pressure contours = no
+First Invariant of Strain = no
+Second Invariant of Strain = no
+Third Invariant of Strain = no
+Mesh Dilatation = no
+Navier Stokes Residuals = no
+Moving Mesh Residuals = no
+Mass Diffusion Vectors = no
+Mass Fluxlines = no
+Energy Conduction Vectors = no
+Energy Fluxlines = no
+Time Derivatives = no
+Mesh Stress Tensor = no
+Mesh Strain Tensor = no
+
+

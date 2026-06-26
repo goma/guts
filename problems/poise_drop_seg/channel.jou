@@ -1,0 +1,32 @@
+## Command Options:
+#{include("properties.aprepro")}
+reset
+
+create vertex -{L/2.0} -{H/2.0} 0
+create vertex -{L/2.0} {H/2.0} 0
+create vertex {L/2.0} {H/2} 0
+create vertex {L/2.0} -{H/2} 0
+
+create surface vertex 1 to 4
+
+nodeset 1 curve 4
+sideset 1 curve 4
+nodeset 2 curve 3
+sideset 2 curve 3
+nodeset 3 curve 2
+sideset 3 curve 2
+nodeset 4 curve 1
+sideset 4 curve 1
+
+#nodeset 100 vertex 4
+
+surface 1 size {mesh_size}
+
+block 1 surface 1
+surface 1  scheme QTri
+Trimesher surface gradation 1.3
+Trimesher geometry sizing on
+block 1 element type tri3
+mesh surface 1
+
+export mesh "channel.e" dimension 2 overwrite 

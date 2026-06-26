@@ -1,0 +1,74 @@
+Flexible Blade on a Substrate: GOMA Version Information
+=======================================================
+
+Directory:   .../VandV/problems/v2.2/flex_blade_subst
+
+Sept 8, 99 baseline #1
+**********************
+     goma_Aug3099 executable
+     output files:
+        base1.sout
+        base1.serr
+        base1_out.exoII
+
+     initial residuals - 9.8e-17 2.0e-15 2.3e-16 
+     1st iteration updates - 2.5e-09 7.5e-08 7.3e-09 
+
+July 8, 00 baseline #2
+**********************
+     goma_000620 executable
+     output files:
+        base2.sout
+        base2.serr
+        base2_out.exoII
+
+     initial residuals - 3.7e-10 2.1e-09 8.4e-10 
+     1st iteration updates - 2.3e-06 3.2e-05 3.4e-06 
+
+
+1/20/01
+-------------
+     Solution changed slightly, becuase a strong integral condition
+wasn't being overloaded with an unneeded weak surface integral. 
+
+NB: Mulitple changes have been made in goma affecting
+fluid-solid interface variables and bc conflict
+resolution. This is an interim rebaseline pending
+a review of this problem and some recent changes by hkm and prs.
+
+Mar 27, 00 baseline #3
+**********************
+     goma_010315 executable
+     output files:
+        base3.sout
+        base3.serr
+        base3_out.exoII
+
+     initial residuals - 3.6e-08 4.1e-08 3.6e-08
+     1st iteration updates - 2.4e+01 7.4e+02 7.2e+01
+
+
+Sep 19, 02 baseline #4
+**********************
+     goma_020918 executable
+     output files:
+        base4.sout
+        base4.serr
+        base4_out.exoII
+
+     initial residuals - 3.6e-08 4.1e-08 3.6e-08
+     1st iteration updates - 2.4e+01 7.4e+02 7.2e+01
+
+Feb. 11 09 rebaseline #5
+********************************
+     goma_021109
+     output files:
+        base4.sout
+        base4.serr
+        out_blessed_3.exoII
+
+     initial residuals - 3.6e-08 4.1e-08 3.6e-08
+     1st iteration updates - 2.4e+01 7.4e+02 7.2e+01
+
+    Rebaselined due to T33 change from Secor bug fix.
+

@@ -1,0 +1,7 @@
+WARNING: Defaulting on Time step error norm indicators
+ (/opt/workdir/goma/src/mm_input.c:1612)
+WARNING: Defaulting on Lubrication Curvature Normal (/opt/workdir/goma/src/mm_input_mp.c:11149)
+WARNING: Defaulting on Lubrication LS Interpolation (/opt/workdir/goma/src/mm_input_mp.c:11165)
+WARNING: "Thin Film Multiphase Diffusivity Model" adds a diffusion term to the liquid volume balance equation for the express purpose of numerical stabilization, proceed with caution. (/opt/workdir/goma/src/mm_input_mp.c:11684)
+WARNING: By default, dissolution is inactive. Use "Thin Film Multiphase Dissolution Model" to activate it. (/opt/workdir/goma/src/mm_input_mp.c:11745)
+WARNING: By default, "Thin Film Multiphase Drop Lattice" is a square lattice with spacing of 160 microns and 6 pL drop volume, units in cgs. (/opt/workdir/goma/src/mm_input_mp.c:11874)

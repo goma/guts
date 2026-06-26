@@ -1,0 +1,204 @@
+ FEM File Specifications
+ ---
+FEM file                         = long_valve.gen
+Output EXODUS II file            = out_ls.exoII
+GUESS file                       = contin.dat
+SOLN file                        = soln.dat
+Write intermediate results       = no
+Write initial solution           = yes
+
+General Specifications
+ ---
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+Initial Guess                    = zero
+ --- 
+Time Integration Specifications
+ ---
+Time integration                 = transient
+delta_t                          = 0.075
+Maximum time step                = 4.0e+0
+Maximum number of time steps     = 10
+Maximum time                     = 2.2e+3
+Minimum time step                = 1.0e-2
+Time step parameter		 = 0.0
+Time step error                  = -0.2 0   1   1   0   0 0
+Printing Frequency		 = 1
+Fill Subcycle                    = 1
+Level Set Interface Tracking     = yes
+Level Set Initialization Method  = Surfaces 1 SURF = CIRCLE -0.7777777 0. 0.15
+
+Level Set Renormalization Method = Huygens_Constrained
+Level Set Length Scale           = 0.05
+$Level Set Renormalization Tolerance = 0.010000
+Level Set Renormalization Frequency = 5
+
+
+Number of phase functions = 1
+Phase Function Slave Surface          = yes
+$$Phase Function Initialization Methods  = Nodeset NS 1 EB 1
+Phase Function Initialization Method   = Surfaces 1
+    SURF = SS 1
+Phase Function Length Scale           = 0.
+
+$$Overlap Quadrature Points = 10
+ ---
+Solver Specifications
+ ---
+Solution Algorithm               = umf
+Preconditioner                   = dom_decomp
+Matrix storage format            = msr
+Matrix subdomain solver          = ilut
+Matrix Scaling                   = row_sum
+Matrix output type               = 10
+Size of Krylov subspace          = 300
+$Matrix reorder                   = rcm
+Orthogonalization                = classical
+Maximum Linear Solve Iterations  = 300
+UMF IDIM                         = 7500000
+UMF XDIM                         = 7500000
+$$$Matrix drop tolerance            = 10.0
+Matrix graph fillin = 3
+$Matrix ILUT fill factor = 3
+$$Matrix BILU Threshold = 1.e-02
+Matrix Relative Threshold        = 1.0
+Matrix Absolute Threshold        = 1.e-06
+
+Number of Newton Iterations      = 15
+Newton correction factor        = 1.0
+Normalized Residual Tolerance    = 1.0e-8
+Residual Ratio Tolerance         = 1.0e-3
+Pressure Stabilization           = no
+Pressure Stabilization Scaling   = 0.0001
+PRESSURE DATUM                   = 0 0.
+
+-----------------
+Augmenting Conditions Specifications
+--------------------
+Number of augmenting conditions = -1
+$AC = OV 1 2 1 0
+END OF AC
+
+-----------------
+Continuation Specs
+--------------------
+Continuation = none
+Continuation Type = BC
+$$Boundary condition ID            = 4
+Boundary condition data float tag= 1
+Material id                      = 1
+Material property tag            = 1700
+Material property tag subindex   = 0
+Initial parameter value          = 0.
+Final parameter value            = 0.
+delta_s                          = 1.0
+Maximum number of path steps     = 40
+Minimum path step                = 1.0e-05
+Maximum path step                = 100.0
+Continuation Printing Frequency               = 2
+-----------------------
+
+ ---
+Boundary Condition Specifications
+ ---
+Number of BC			 =    -1
+
+BC = LS_CAPILLARY LS 0
+
+#symmetry plane
+#BC = U NS 40  0.0
+BC = V NS 40  0.0
+
+BC = V NS 20 0.0
+BC = U NS 20 0.0
+BC = V NS 30 0.0
+#BC = U NS 30 0.0
+
+#BC = VELO_NORMAL SS 10 -0.00001
+BC = VELO_TANGENT SS 10 0 0. 0. 0. 
+$BC = F NS 10 1.0
+
+BC =  BAAIJENS_FLUID_SOLID PF 1 1 2
+BC = LS_NO_SLIP PF 1 1 2
+
+$Clamp the flapper with some motion
+BC = GD_LINEAR SS 2 R_MESH1 0 MESH_DISPLACEMENT1 0 {velo=0.01} 0.
+BC = GD_TIME SS 2 R_MESH1 0 LINEAR 0 0. 1.
+BC = GD_LINEAR SS 2 R_MESH1 0 MESH_DISPLACEMENT1 0 0. -1.
+BC = DY NS 2 0.
+
+
+#########
+END OF BC
+#########
+
+----
+Problem Description
+---
+ 
+Number of Materials = 2
+ 
+MAT =   fluid    1
+ 	Coordinate System	= CARTESIAN
+	Element Mapping		= isoparametric
+	Mesh Motion		= ARBITRARY
+	Number of bulk species	= 0
+	Number of EQ		= 7
+	EQ = momentum1   Q2 U1 Q2   1 0 1 1 1 0 
+	EQ = momentum2   Q2 U2 Q2   1 0 1 1 1 0 
+	EQ = continuity  P0 P  P0   1         0
+        EQ = level_set   Q2 F  Q2   1 1     1
+        EQ = lagr_mult_1 P0 LM1 P0  1
+        EQ = lagr_mult_2 P0 LM2 P0  1
+	EQ = phase1      Q2 F1  Q2   1 1     1   
+
+				  - - - - - - -
+                                  d m a b d s p
+				  i a d n i r o
+				  v s v d f c r
+				    s     f   o
+			                      u
+
+MAT = solid   2
+
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = LAGRANGIAN
+  Number of bulk species = 0
+
+	Number of EQ			 = 2
+	EQ = mesh1	Q2	D1	Q2   1.   0.  1.   1.      1.   0. 
+	EQ = mesh2	Q2	D2	Q2   1.	  0.  1.   1.      1.   0. 
+#	EQ = lagr_mult_1 P0 LM1 P0  1
+#	EQ = lagr_mult_2 P0 LM2 P0  1
+                                       div  ms  adv   bnd  dif    src   porous					      s
+
+
+
+--
+Post Processing Specifications
+
+Stream Function = yes
+Streamwise normal stress = no
+Pressure contours = yes
+Second Invarient of Strain = no
+Mesh Dilatation = no
+Navier Stokes Residuals = no
+Moving Mesh Residuals = no
+Mass Diffusion Vectors = no
+Mass Fluxlines = no
+Energy Conduction Vectors = no
+Energy Fluxlines = no
+Time Derivatives = yes
+Mesh Stress Tensor = yes
+Mesh Strain Tensor = no
+
+Post Processing Fluxes =
+
+$FLUX = VOLUME_FLUX  1000  1  0  flux.out
+$FLUX = VOLUME_FLUX  2000 1  0  flux.out
+
+END OF FLUX
+
+

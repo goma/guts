@@ -1,0 +1,43 @@
+## /usr/local/sandia/linux/SEAMS/../cubit_10.2/bin/clarox
+## Cubit Version 10.2
+## Cubit Build 19
+## Revised 11/02/2006 17:15:05 MST
+## Running 03/13/2007 01:06:01 PM
+## Command Options:
+## -warning = On
+## -information = On
+import mesh geometry "mesh_org.exoII" block all use nodeset sideset feature_angle 135 linear merge
+#{include("params")}
+# {size_big=R_syringe/3}
+# {size=0.2*size_big}
+# {size_int=3*size}
+delete mesh surface 1 propagate
+surface 1 size {size_big}
+curve 1 interval default
+curve 1 scheme bias fine size {size_int} coarse size {size_big} start vertex 7
+curve 5 size {size}
+curve 6 size {size}
+curve 3 scheme bias fine size {size_int} coarse size {size_big} start vertex 5
+curve 4 scheme bias fine size {size_int} coarse size {size_big} start vertex 3
+curve 7 scheme bias fine size {size_int} coarse size {size_big} start vertex 2
+surface 1 scheme pave
+mesh surface 1
+nodeset 1 curve 1
+nodeset 2 curve 2
+nodeset 3 curve 3
+nodeset 4 curve 4
+nodeset 5 curve 5
+nodeset 6 curve 6
+nodeset 7 curve 7
+nodeset 300 vertex 3
+nodeset 400 vertex 1
+sideset 1 curve 1
+sideset 2 curve 2
+sideset 3 curve 3
+sideset 5 curve 5
+sideset 4 curve 4
+sideset 65 curve 6
+sideset 75 curve 7
+block 1 surface 1
+block 1 element type QUAD9
+export genesis "mesh2.exoII" overwrite

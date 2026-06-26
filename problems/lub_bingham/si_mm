@@ -1,0 +1,21 @@
+{_C_} This is the si_mm units file: mm, sec, g
+{_C_} Outputs:
+{_C_}   Time:		{tout = "second"}
+{_C_}   Length:	{lout = "mm"}
+{_C_}   Accel:	{aout = "mm/sec^2"}
+{_C_}   Mass:		{mout = "kilogram"}
+{_C_}   Force:	{fout = "millinewton"}
+{_C_}   Velocity:     {vout = "mm/sec"}
+{_C_}   Volume:	{Vout = "mm^3"}
+{_C_}   Density:	{dout = "kg/mm^3"}
+{_C_}   Energy:	{eout = "microjoule"}
+{_C_}   Power:	{Pout = "microwatt"}
+{_C_}   Pressure:	{pout = "kPa"}
+{_C_}   Temp:		{Tout = "degK"}
+{_C_}   Angular:	{Aout = "radian"}
+{_C_} 
+{_C_} 1 meter  = {m = 1000} {lout}
+{_C_} 1 second = {sec = 1} {tout}
+{_C_} 1 kg     = {kg = 1} {mout}
+{_C_} 1 kelvin = {degK = 1} {Tout}
+{_C_} 1 radian = {rad = 1} {Aout}

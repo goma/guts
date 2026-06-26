@@ -1,0 +1,44 @@
+###############################################################################
+### Material parameters for generic liquid                                  ###
+### Author:  Scott A Roberts (sarober@sandia.gov)                           ###
+###############################################################################
+# {include('slidertop.aprepro")}
+
+###########################
+### Physical Properties ###
+###########################
+Density                            = CONSTANT 3.65
+
+########################################################
+### Mechanical Properties and Constitutive Equations ###
+########################################################
+
+# Solid parameters
+Solid Constitutive Equation        = NONLINEAR
+Lame MU                            = CONSTANT 3.13e7
+Lame LAMBDA                        = CONSTANT 1.34e7
+Stress Free Solvent Vol Frac       = CONSTANT 0.0
+
+# Fluid parameters
+Liquid Constitutive Equation       = NEWTONIAN
+Viscosity                          = CONSTANT 0.01
+Surface Tension                    = CONSTANT 20
+
+# Thermal Properties
+Conductivity                       = CONSTANT 1.0
+Heat Capacity                      = CONSTANT 1.0
+
+# Porous term terms for linking lubrication to level set field
+Media Type	 	           = CONTINUOUS
+
+####################
+### Source Terms ###
+####################
+Navier-Stokes Source               = CONSTANT 0.0 0.0 -980.0 
+Solid Body Source                  = CONSTANT 0.0 0.0 0.0
+Mass Source                        = CONSTANT 0.0
+Heat Source                        = CONSTANT 0.0
+Current Source                     = CONSTANT 0.0
+
+
+

@@ -1,0 +1,39 @@
+/*
+ * This file defines (parameterizes) a two-layer 
+ *  drying film problem. 
+ *
+ *  Created 5/15/97  PRS
+ *
+ */
+
+$Initial substrate thickness    {h_s = 0.001}
+$Initial thickness film 1       {h_1 = 0.001}
+$Initial thickness film 2       {h_2 = 0.001}
+
+$Number elements across substrate { ne_s = 1}
+$Number elements across film 1    { ne_1 = 16}
+$Number elements across film 2    { ne_2 = 23}
+
+$ Information for Layer 1
+$  Initial mass fraction component 1 { X1_l1 = 0.9}
+$  Initial mass fraction component 2 { X2_l1 = 0.3}
+
+$ Information for Layer 2
+$  Initial mass fraction component 1 { X1_l2 = 0.6}
+$  Initial mass fraction component 2 { X2_l2 = 0.1}
+
+$ Initial Temperature
+$  {T_init = 293}
+
+$ Heat Transfer Coefficient
+$  {Kh = -100.0}
+$ Sink temperature of oven
+$  {T_inf = 370}
+
+$ Surface Mass Transfer Coefficient
+$  {K_s_1   = 300}  Component 1
+$  {K_s_2   = 50}   Component 2
+
+$ Sink Concentration in overlying gass
+$  {X1_inf   =  0}  Component 1
+$  {X2_inf   =  0}   Component 2

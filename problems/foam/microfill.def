@@ -1,0 +1,12 @@
+
+{rho_liq = 1.03 } g/cm^3
+{rho_gas = 0.001} g/cm^3
+
+{sigma = 20.0 } dyn/cm
+
+{mu_liq = 31.0 } P
+{mu_gas = 0.001} P
+
+{Uinlet = 0.05 } cm/s
+
+{elem_size = 0.01}

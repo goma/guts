@@ -1,0 +1,24 @@
+# {include("tri.aprepro")}
+
+
+############
+
+reset
+cylinder height {Clen} radius {R1}
+#rotate volume 1 angle 30 about y
+
+surface 1 interval {nz}
+curve 1 2 interval {nx}
+surface 1 scheme trimesh
+mesh surface 1
+
+block 1 surface 1
+block 1 element type TRISHELL3
+
+nodeset 1 curve 1
+nodeset 2 curve 2
+nodeset 3 vertex 1
+
+set large exodus file off
+export mesh "trimesh.exoII" 3 overwrite
+

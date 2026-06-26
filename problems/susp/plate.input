@@ -1,0 +1,141 @@
+------------------------------------------------------------
+                 FEM Problem Specifications
+------------------------------------------------------------
+FEM file                         = simple0.exoII
+#FEM file                         = plate.exoII
+Output EXODUS II file            = pp_out.exoII 
+GUESS file                       = guess.dat
+SOLN file                        = soln.dat
+Write intermediate results       = no
+------------------------------------------------------------
+                 General Specifications
+------------------------------------------------------------
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+Initial Guess                    = zero
+#Initial Guess                    = read_exoII
+Initialize			 = MASS_FRACTION 0 0.5
+Initialize			 = VELOCITY3 0  .21143
+------------------------------------------------------------
+                Time Integration Specifications
+#------------------------------------------------------------
+Time integration                 = transient
+delta_t                          = 1.e-3
+Maximum number of time steps     = 15
+Maximum time                     = 1.
+Minimum time step                = 1.0e-6
+Maximum time step                = 0.5
+Time step parameter		 = 0.5
+#Time step error  		 = err=.005  mesh=1  v=1  T=0   C=0  p=0 st =0
+Time step error  		 = .01  0   1   1  1   0   0
+Printing Frequency		 = 5
+Initial Time			 = 0.
+------------------------------------------------------------
+                 Solver Specifications
+------------------------------------------------------------
+#Solution Algorithm               = lu
+Solution Algorithm               = cgs
+#Solution Algorithm               = bicgstab
+Preconditioner                   = ilu
+Polynomial                       = 1
+Size of Krylov subspace          = 64
+Orthogonalization                = classical
+Maximum Linear Solve Iterations  = 75
+Number of Newton Iterations      = 50
+Newton correction factor         = 1.
+Normalized Residual Tolerance    = 1.0e-9
+Residual Ratio Tolerance         = 1.0e-5
+Residual Relative Tolerance      = 1.0e-06
+Pressure Stabilization           = yes
+Pressure Stabilization Scaling   = .1
+#Filter Concentration             = 0  0. 1.
+#PRESSURE DATUM                   = 0 0.
+------------------------------------------------------------
+	Boundary Condition Specifications                 
+------------------------------------------------------------
+# Bottom plate satisfies no-slip
+# Top plate rotate in theta direction by r*RPM
+# (corresponding to 2.s^-1 shear rate)
+# The free surface allows no penetration
+
+$ {shear=2.} {H=.185} {R=1.75}
+$ {rps=shear*H/R}
+
+Number of BC = -1 
+BC = W     NS     4       0.
+BC = V     NS     4       0.
+BC = U     NS     4       0.
+BC = V     NS     2       0.
+BC = U     NS     2       0.
+BC = GD_LINEAR SS 20 R_MOMENTUM3 0 VELOCITY3  0 0. -1.
+BC = GD_LINEAR SS 20 R_MOMENTUM3 0 MESH_POSITION2 0 0. {rps}
+
+BC = VELO_NORMAL SS 30     0.
+BC = P    NS     100      0.
+BC = V    NS      1       0.
+#BC = W    NS      1       0.
+
+END OF BC
+
+----
+Problem Description
+---
+
+Number of Materials = 1
+
+MAT = susp_new   1
+
+	Coordinate System = SWIRLING
+
+	Element Mapping = isoparametric
+
+	Mesh Motion = ARBITRARY
+
+	Number of bulk species = 1
+
+
+Number of EQ	= 6
+EQ = momentum1  Q2	U1	Q2	     1.    1.   1.   1.   1.   0.
+EQ = momentum2  Q2	U2	Q2	     1.    1.   1.   1.   1.   0.
+EQ = momentum3  Q2	U3	Q2	     1.    1.   1.   1.   1.   0.
+EQ = continuity	Q1	P 	Q1	           1.             0.
+EQ = species_bulk Q1    Y       Q1           1     1    1    1    1    0
+EQ = shear_rate Q1 SH Q1                           1         0.   1
+
+EQ = mesh1	Q2	D1	Q2	     0.    0.   0.   1.   0.   0.
+EQ = mesh2	Q2	D2	Q2	     0.    0.   0.   1.   0.   0.  
+EQ = energy     Q1      T       Q1           1.    1.   1.   1.   1.   0.
+                                             ms   adv  bnd  dif  src  porous
+
+Post Processing Specifications
+
+Stream Function = no
+Streamwise normal stress = no
+Pressure contours = no
+Second Invarient of Strain = no
+Velocity Divergence = yes
+Mesh Dilatation = no
+Navier Stokes Residuals = no
+Moving Mesh Residuals = no
+Mass Diffusion Vectors = yes
+Mass Fluxlines = no
+Energy Conduction Vectors = no
+Energy Fluxlines = no
+Time Derivatives = no
+Mesh Stress Tensor = no
+Mesh Strain Tensor = no
+Viscosity = yes
+Density = yes
+
+Post Processing Fluxes =
+FLUX = TORQUE 20 1 1 torqnew.out
+END OF FLUX
+
+
+
+
+
+
+
+

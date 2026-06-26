@@ -1,0 +1,33 @@
+# brk -- input file problem description for decomposition
+#        of ve_4to1 problem with velocity, pressure,
+#        stress, and velocity gradient residual
+#
+
+1       # element block ID
+4       # number of basic eqnvars
+0  2 1 1 # momentum (3D)
+9  1 1 1 # continuity
+10 3 1 1 # stress     
+19 4 1 1 # velo-gradient residual
+
+#
+# interactions...
+#
+
+#      u       P       s       G
+#
+       1       1       0       0       # fluid momentum equation
+       1       1       0       0       # continuity
+       1       1       1       0       # stress equation
+       0       0       1       1       # velo grad residual equation
+
+9             # number of nodes per element in this eb
+0 9 10 19
+0 9 10 19
+0 9 10 19
+0 9 10 19
+0 9 10 19
+0 9 10 19
+0 9 10 19
+0 9 10 19
+0 9 10 19

@@ -1,0 +1,3 @@
+MAT 0 Thixotropic Factor = 0
+WARNING: Defaulting Thixotropic Factor to Zero (/opt/workdir/goma/src/mm_input_mp.c:2160)
+		converged SS!

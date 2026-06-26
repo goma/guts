@@ -1,0 +1,7 @@
+Aprepro: WARNING: User-defined Variable 'q2' redefined (geometry.in, line 20)
+Aprepro: WARNING: Undefined variable 'thisl3' (geometry.in, line 34)
+Aprepro: WARNING: Undefined variable 'thisl3' (geometry.in, line 35)
+WARNING: Use CAP_ENDFORCE for consistent sign convention (/opt/workdir/goma/src/mm_input_bc.c:916)
+WARNING: CAUTION WITH SUBPARAMETRIC: DON'T USE WITH LAGRANGIAN OR TOTAL_ALE MESH MOTIONS (/opt/workdir/goma/src/mm_input.c:9218)
+  REMOVING BC VELO_TANGENT at SS 4/3 because of KINEMATIC 
+		converged SS!

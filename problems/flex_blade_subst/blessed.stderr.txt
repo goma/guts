@@ -1,0 +1,2 @@
+WARNING: Use CAP_ENDFORCE for consistent sign convention (/opt/workdir/goma/src/mm_input_bc.c:916)
+		converged SS!

@@ -1,0 +1,68 @@
+{
+  "name": "lub_pix",
+  "description": "",
+  "contact": {
+    "name": "Goma Developers",
+    "email": "contact@gomafem.com"
+  },
+  "estimated_time_minutes": 0,
+  "disabled": false,
+  "features": [
+    "serial",
+    "transient",
+    "umf",
+    "cartesian",
+    "3d",
+    "no_chemkin",
+    "shell_mechanics",
+    "level_set"
+  ],
+  "requirements": {
+    "max_prob_var": 4,
+    "max_conc": 1,
+    "mde": 12,
+    "solver_package": "umfpack",
+    "use_arpack": "no",
+    "enable_omega_h": ""
+  },
+  "run": {
+    "use_aprepro": true,
+    "aprepro_flags": "",
+    "use_chemkin": false,
+    "chemkin_input": "",
+    "use_mpi": false,
+    "num_processors": 1,
+    "use_decomp": false,
+    "brk_input": "",
+    "brk_exo_in": "",
+    "fix_exo_basename": "",
+    "goma_input": "pix_test.i",
+    "goma_serr": "stderr.txt",
+    "goma_sout": "stdout.txt",
+    "goma_opts": ""
+  },
+  "blessed": {
+    "serr": "blessed.stderr.txt",
+    "sout": "blessed.stdout.txt",
+    "exo_output": [
+      "out.exoII"
+    ],
+    "blessed_exo_output": [
+      "blessed.exoII"
+    ],
+    "exo_abs_tol": [
+      1e-11
+    ],
+    "exo_rel_tol": [
+      0.001
+    ],
+    "exodiff_input_file": [
+      "exodiff.inp"
+    ]
+  },
+  "extra": {
+    "whacked_files": [],
+    "extra_tests": false,
+    "extra_test_scripts": []
+  }
+}

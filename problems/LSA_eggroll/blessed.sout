@@ -1,0 +1,48 @@
+4.6.0
+
+
+
+Initial guess read from "rb-in.exoII" ...
+Nodal variable VX found in exoII database - reading.
+Nodal variable VY found in exoII database - reading.
+Nodal variable T found in exoII database - reading.
+Nodal variable P found in exoII database - reading.
+Assembling J...
+Assembling B...
+ Initializing variables and allocating space... 
+ Arnoldi Eigenvalue Extractor
+
+ Allocated work vectors
+ Allocated work martices
+ Pass  1  New Shift =  1.000000e+02 +0.000000e+00 i
+ Pass  2
+ Pass  3  New Shift = -1.637450e+00 +0.000000e+00 i
+ De-allocated work storage
+ ARN-IT done. 
+
+-------------------------------------------------------------------------------
+ Eigensolver required 183 iterations.
+ Found 10 converged eigenvalues.
+ Leading Eigenvalue  = -1.637450e+00-0.000000e+00 i RES =  4.058134e-16
+    Real           Imag           RES
+ -1.637450e+00 -0.000000e+00 i  4.058134e-16
+ -3.088563e+00 -0.000000e+00 i  7.225531e-16
+ -4.118804e+00 -0.000000e+00 i  2.375474e-15
+ -7.254228e+00 -0.000000e+00 i  2.041219e-13
+ -9.869628e+00 -0.000000e+00 i  3.416487e-15
+ -1.034329e+01 -0.000000e+00 i  1.160140e-12
+ -1.282914e+01 +2.414418e+00 i  3.788851e-23
+ -1.282914e+01 -2.414418e+00 i  3.788851e-23
+ -1.986754e+01 -0.000000e+00 i  1.223686e-12
+ -3.233193e+01 -0.000000e+00 i  5.795962e-08
+ push_mode                          =            5  
+ Writing modes to file ...
+		 Mode    0 ... recorded.
+		 Mode    1 ... recorded.
+		 Mode    2 ... recorded.
+		 Mode    3 ... recorded.
+		 Mode    4 ... recorded.
+Deallocating memory ... done.
+
+-done
+

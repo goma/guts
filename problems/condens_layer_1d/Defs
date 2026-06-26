@@ -1,0 +1,113 @@
+{ifndef(
+$ Defs -- APREPRO definitions for 
+$		Growth of a film in a simple 1D geometry	
+$
+$ This rectangular region is described below. It is parameterized so that
+$ it may be translated in the x-y plane and rotated about point 1. The width
+$ and height of the box are also parameters.
+$
+$	
+$	       L_6
+$	5---------------6
+$       |               |
+$       |      R_2      |
+$   L_7	|		| L_5
+$       |      L_3	| 
+$	3--------------	4
+$	|		|
+$   L_4 |      R_1	| L_2
+$   	|		|
+$       |               |
+$	1 ------------- 2
+$	       L_1
+$
+$	{TRUE  = 1}
+$	{FALSE = 0}
+$
+$ 	x_origin = {x_origin = 0}
+$ 	y_origin = {y_origin = 0}
+$ 	width    = {width    = 2}
+$ 	height1  = {height1  = 1}
+$       height2  = {height2  = 2}
+$       angle    = {angle = 0.0}
+$
+$	Recipe for building up box corners from these specifications...
+$
+$	{x_1 = x_origin}
+$	{y_1 = y_origin}
+$
+$	{x_2 = x_1 + width }
+$	{y_2 = y_1 }
+$
+$	{x_3 = x_1 }
+$	{y_3 = y_1 + height1 }
+$
+$	{x_4 = x_2 }
+$	{y_4 = y_2 + height1 }
+$
+$	{x_5 = x_3 }
+$	{y_5 = y_3 + height2 }
+$
+$	{x_6 = x_4 }
+$	{y_6 = y_4 + height2 }
+$
+$ Points: {pc = 1} (point counter)
+$
+$	Point {P_1=pc++} is at (x,y) = ({x_1},{y_1})
+$	Point {P_2=pc++} is at (x,y) = ({x_2},{y_2})
+$	Point {P_3=pc++} is at (x,y) = ({x_3},{y_3})
+$	Point {P_4=pc++} is at (x,y) = ({x_4},{y_4})
+$	Point {P_5=pc++} is at (x,y) = ({x_5},{y_5})
+$	Point {P_6=pc++} is at (x,y) = ({x_6},{y_6})
+$
+$ Lines: {lc = 1} (line counter)
+$	Line {L_1 = P_1_P_2 = lc++} goes from Point {P_1} to Point {P_2}
+$	Line {L_2 = P_2_P_4 = lc++} goes from Point {P_2} to Point {P_4}
+$	Line {L_3 = P_4_P_3 = lc++} goes from Point {P_4} to Point {P_3}
+$	Line {L_4 = P_3_P_1 = lc++} goes from Point {P_3} to Point {P_1}
+$	Line {L_5 = P_4_P_6 = lc++} goes from Point {P_4} to Point {P_6}
+$	Line {L_6 = P_6_P_5 = lc++} goes from Point {P_6} to Point {P_5}
+$	Line {L_7 = P_5_P_3 = lc++} goes from Point {P_5} to Point {P_3}
+
+$
+$ Regions: {rc = 1} (region counter)
+$	Region { R_1 = rc++ } circumscribed by lines {L_1}, {L_2}, {L_3}, {L_4}
+$	Region { R_2 = rc++ } circumscribed by lines {L_3}, {L_5}, {L_6}, {L_7}
+$
+$ Node set names...
+$	{ nc = 10 }	nc is a node set counter.
+$
+$	bottom: {bottom_ns	= nc++} with Line {L_1}
+$	right1:  {right1_ns	= nc++} with Line {L_2}
+$	interface: {interface_ns = nc++} with Line {L_3}
+$	left1:	  {left1_ns	= nc++} with Line {L_4}
+$	left2:	  {left2_ns	= nc++} with Line {L_7}
+$	right2:	  {right2_ns	= nc++} with Line {L_5}
+$	top:	  {top_ns	= nc++} with Line {L_6}
+$       topRightP: {topRightP_ns = 200+P_6} at Point {P_6}
+$       leftInterfaceP: {leftInterfaceP_ns = 200 + P_3} at Point {P_3}
+$       rightInterfaceP: {rightInterfaceP_ns = 200 + P_4} at Point {P_4}
+$
+$ Side set names...{sc = 100}
+$
+$	bottom: {bottom_ss	= sc++} with Line {L_1}
+$	right1:  {right1_ss	= sc++} with Line {L_2}
+$	interface: {interface_ss = sc++} with Line {L_3}
+$	left1:	  {left1_ss	= sc++} with Line {L_4}
+$	left2:	  {left2_ss	= sc++} with Line {L_7}
+$	right2:	  {right2_ss	= sc++} with Line {L_5}
+$	top:	  {top_ss	= sc++} with Line {L_6}
+$
+$ Mesh discretization, grading...
+$	Number of elements in x direction = { nex = 1 }
+$	Number of elements in y direction in region 1 = { ney1 = 10 }
+$	Number of elements in y direction in region 2 = { ney2 = 10 }
+$	Grading factor = { gf = 0.91 }
+$	Material 1 is {mat1 = 1}
+$	Material 2 is {mat2 = 2}
+$	{biquadratic = TRUE}
+
+
+$	Inlet normal stress (driving pressure) is {P_inlet=1}
+$	Inlet normal stress (driving pressure) is {P_outlet=0}
+$

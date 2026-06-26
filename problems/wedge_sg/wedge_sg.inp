@@ -1,0 +1,192 @@
+
+{include("wedge.def")}
+
+FEM File Specifications
+-- ---- --------------
+FEM file                         = wedge.exoII
+#FEM file                         = contin.exoII
+Output EXODUS II file            = out.exoII
+GUESS file                       = contin.dat
+SOLN file                        = No
+Write intermediate results       = no
+
+General Specifications
+------- --------------
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+Initial Guess                    = read_exoII
+#Initial Guess                    = read_exoII_file contin.exoII
+#Initialize                       = PRESSURE 0 30.0
+
+Time Integration Specifications
+---- ----------- --------------
+#Time integration                 = steady
+Time integration                 = transient
+delta_t                          = {dt_max/100.}
+Maximum number of time steps     = 30
+Maximum time                     = 0.001
+Minimum time step                = {dt_min/10}
+Minimum Resolved Time Step       = {dt_min}
+Maximum time step                = {dt_max}
+Time step parameter		 = 0.0
+Time step error                  = -1.0e-1 0 1 1 0 0 0 0 0
+Printing Frequency		 = 10
+Initial Time 			 = 0.0
+Fill Subcycle			 = 4
+Fill Weight Function             = Explicit
+Courant Number Limit             = 0.2
+
+
+Level Set Interface Tracking     = on
+Level Set Length Scale		 = {elem_size*1.1}
+#Level Set Initialization Method  = Exodus
+#Level Set Output Filename        = out_the_way
+#Level Set Initialization Method  = Projection
+#Level Set Initialization Method  = Nodeset NS 10 EB 1
+{alpha=10}
+{R=0.2}
+{D=0.05}
+{theta=CA_s}
+{x0=R*cosd(alpha)}
+{y0=R*sind(alpha)}
+{ax = x0 -D}
+{ay = 0.0}
+{h  = y0 - D*sind(alpha)}
+{beta = 90 - theta + alpha }
+{r = h/sind(beta)}
+{cx = ax - r*cosd(beta)}
+{cy = 0.0}
+{nx = -1}
+{ny = 0.0}
+{d = ax*nx + ay*ny}
+Level Set Initialization Method  = Surfaces 1
+                                   SURF = ARC {cx} {cy} {r} {nx} {ny} {d}
+                                   SURF = PLANE 1. 0. 0. 0.075
+#Level Set Semi_Lagrange         = TRUE
+#Level Set Reconstruction Method = FACETS
+Level Set Renormalization Method = Huygens_Constrained
+Level Set Renormalization Tolerance = 0.10
+#Force Initial Level Set Renormalization = yes
+Level Set Renormalization Frequency = 250
+#Level Set Search Option  = GRID_SEARCH 0
+Level Set Subgrid Integration Depth = 3
+Level Set Contact Tolerance = 0.5
+#Level Set Subelement Integration = on
+#No XFEM on nodesets = 10 20
+
+Solver Specifications
+------ --------------
+Solution Algorithm               = umf
+#Solution Algorithm               = amesos
+#Amesos Solver Package            = superlu
+Preconditioner                  = dom_decomp
+Matrix reorder                   = rcm
+Matrix Scaling                   = row_sum
+Matrix subdomain solver          = ilut
+Matrix ILUT fill factor		 = 1.0
+#Matrix drop tolerance            = 1.e-9
+#Matrix Scaling                   = sym_diag
+Matrix residual norm type        = r0
+#Matrix output type               = 10
+Matrix factorization overlap     = none
+#Matrix factorization reuse       = calc
+Matrix drop tolerance            = 0
+Matrix polynomial order          = 3
+Size of Krylov subspace          = 300
+Orthogonalization                = modified
+Maximum Linear Solve Iterations  = 300
+Number of Newton Iterations      = 10
+Newton correction factor         = 1  
+Normalized Residual Tolerance    = 1e-10
+Residual Ratio Tolerance         = 1e-10
+Pressure Stabilization           = no
+Pressure Stabilization Scaling   = 0.010
+
+------------------------------------------------------------
+	Augmenting Conditions Specifications                 
+------------------------------------------------------------
+Augmenting Conditions Initial Guess = read
+Number of augmenting conditions = -1
+#AC = FC  1 0 0 VOLUME_FLUX 30 -1.0
+END OF AC
+
+
+Boundary Condition Specifications
+-------- --------- --------------
+Number of BC			 = -1
+
+BC = V NS 1 0.0
+
+BC = VELO_TANGENT SS 2 0.0 0. 0.
+
+BC = VELO_NORMAL SS 3 0.0
+#BC = VELO_SLIP SS 3 1.e-8 0. 0. 0. 0.
+BC = BLAKE_DIRICHLET SS 3 {CA_s} 1.0 {1.0/sigma} {2.0*elem_size} {0.0} 0. 0. 0.
+
+
+BC = VELO_TANGENT SS 4 0.0 0. 0.
+
+BC = LS_CAPILLARY LS 0
+
+END OF BC
+
+Rotation Specifications =
+
+
+END OF ROT
+
+
+
+
+Problem Description
+------- -----------
+Number of Materials		= 1
+MAT = newt 1
+	Coordinate System	= CARTESIAN
+
+	Element Mapping		= isoparametric
+	Mesh Motion		= ARBITRARY
+	Number of bulk species	= 0
+	Number of EQ		= 4
+
+	EQ = momentum1   Q2 U1 Q2   1 1 1 1 1 0 
+	EQ = momentum2   Q2 U2 Q2   1 1 1 1 1 0 
+	EQ = continuity  Q1_XV P  Q1_XV   1         0 
+	EQ = level_set   Q2 F  Q2   1 1     1   
+   				  - - - - - - -
+                                  d m a b d s p
+				  i a d n i r o
+				  v s v d f c r
+				    s     f   o
+			                      u
+					      s
+
+
+Post Processing Specifications
+---- ---------- -------------- 
+Stream Function			= yes
+Streamwise normal stress	= no
+Pressure contours		= no
+Second Invarient of Strain	= no
+Mesh Dilatation			= no
+Navier Stokes Residuals		= no
+Moving Mesh Residuals		= no
+Mass Diffusion Vectors		= no
+Mass Fluxlines			= no
+Energy Conduction Vectors	= no
+Energy Fluxlines		= no
+Time Derivatives		= no
+Mesh Stress Tensor		= no
+Viscosity                       = yes
+Fill contours		  	= yes
+
+
+Post Processing Fluxes
+#FLUX = VOLUME_FLUX 10 1 0 micro.dat
+END OF FLUX
+
+Post Processing Volumetric Integration = 
+	#VOLUME_INT = POSITIVE_FILL 1 0 ell.dat    
+	#VOLUME_INT = NEGATIVE_FILL 1 0 ell.dat
+END OF VOLUME_INT

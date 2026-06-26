@@ -1,0 +1,19 @@
+Porous Saturated flow -> test of post processing solution fields
+================================================================
+
+Directory:   ...goma_VandV/problems/sat
+
+This problem was disabled on March 28, 2002. Significant changes
+were being implemented for porous media and this problem had stopped
+working. This test is now re-established/re-activated.  (dal)
+
+Dec 9, 03 (new)baseline #1
+**************************
+     goma_Dec503 executable
+     output files:
+        blessed.sout
+        blessed.serr
+        out_blessed.exoII
+
+     initial residuals - 1.2e-01 3.4e-01 2.0e-01
+     1st iteration updates - 5.5e-01 1.7e+00 9.5e-01

@@ -1,0 +1,69 @@
+{
+  "name": "electroplating",
+  "description": "################################\n#\n#      LIGA Electroplating\n#\n################################",
+  "contact": {
+    "name": "Goma Developers",
+    "email": "contact@gomafem.com"
+  },
+  "estimated_time_minutes": 15,
+  "disabled": false,
+  "features": [
+    "transient",
+    "gmres",
+    "species",
+    "voltage",
+    "2d",
+    "cartesian",
+    "moving_mesh",
+    "parallel",
+    "no_chemkin"
+  ],
+  "requirements": {
+    "max_prob_var": 4,
+    "max_conc": 3,
+    "mde": 12,
+    "solver_package": "aztec",
+    "use_arpack": "no",
+    "enable_omega_h": ""
+  },
+  "run": {
+    "use_aprepro": false,
+    "aprepro_flags": "",
+    "use_chemkin": false,
+    "chemkin_input": "",
+    "use_mpi": true,
+    "num_processors": 2,
+    "use_decomp": false,
+    "brk_input": "brk_yd.in",
+    "brk_exo_in": "plating.exoII",
+    "fix_exo_basename": "plating.out",
+    "goma_input": "input",
+    "goma_serr": "stderr.txt",
+    "goma_sout": "stdout.txt",
+    "goma_opts": ""
+  },
+  "blessed": {
+    "serr": "blessed.stderr.txt",
+    "sout": "blessed.stdout.txt",
+    "exo_output": [
+      "plating.out.exoII"
+    ],
+    "blessed_exo_output": [
+      "blessed.exoII"
+    ],
+    "exo_abs_tol": [
+      1e-11
+    ],
+    "exo_rel_tol": [
+      0.001
+    ],
+    "exodiff_input_file": [
+      ""
+    ]
+  },
+  "extra": {
+    "whacked_files": [],
+    "extra_tests": false,
+    "extra_test_scripts": []
+  }
+}

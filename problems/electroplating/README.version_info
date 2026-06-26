@@ -1,0 +1,66 @@
+Multicomponent Diffusion Test: GOMA Version Information
+========================================================
+
+Sept 12, 00 baseline #1
+***********************
+     goma_Sep1200 executable
+     output files:
+        base1.sout
+        base1.serr
+        base1.plating.out.exoII
+
+     initial residuals - 2.8e-04 6.3e-03 1.0e-03
+     1st iteration updates - 9.8e-03 3.3e+00 1.4e-01 
+
+NB: Changes and bug fixes during the Sept-Dec, 00 time
+frame by Ken Chen and Rich Larson for Stefan-Maxwell diffusion
+and transport of charged species (Butler-Volmer kinetic model)
+were completed in early December 00. Rebaseline after these
+changes/upgrades.
+
+
+May 8, 01 baseline #2
+**********************
+     goma_010118 executable
+     output files:
+        base2.sout
+        base2.serr
+        base2.plating.out.exoII
+
+     initial residuals - 2.1e-04 5.4e-03 8.4e-04
+     1st iteration updates - 9.8e-03 3.3e+00 1.4e-01
+
+
+Modifications were made to this problem by Ken Chen
+in May 02 which were not fully implemented in this
+problem setup; this re-baseline completes that
+update and gets the new files into the repository.
+
+
+November 14, 02 baseline #3
+****************************
+     goma_021113 executable
+     output files:
+        base3.sout
+        base3.serr
+        base3.plating.out.exoII
+
+     initial residuals - 1.5e-04 2.0e-03 4.6e-04
+
+
+A zero row sum detected in row_sum_scaling_scale_AC()
+was causiiing a failure of this problem. Fixed by
+David Noble (12-8-03). Problem re-baselined and slightly
+modified (in duration) from before.
+
+
+December 8, 03 baseline #4
+**************************
+     goma_031208 executable
+     output files:
+        blessed.sout
+        blessed.serr
+        blessed.plating.out.exoII
+
+     initial residuals - 1.5e-04 2.0e-03 4.6e-04
+     1st iteration updates - 9.9e-03 1.3e+01 3.0e-01

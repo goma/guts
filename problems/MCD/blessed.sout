@@ -1,0 +1,99 @@
+4.3.0
+EXODUS:       mcd.exoII ->   mcd.out.exoII
+ASCII:       contin.dat ->        soln.dat
+          : Solver                                   = lu
+Defaulting: Matrix storage format                    = msr
+Defaulting: UMF IDIM                                 = 5 * nnz
+Defaulting: UMFPACK XDIM = 5*NNZ
+Defaulting: Preconditioner                           = none
+Defaulting: Matrix subdomain solver                  = ilut
+Defaulting: Matrix Scaling                           = none
+Defaulting: Matrix residual norm type                = r0
+Defaulting: Matrix output type                       = none
+Defaulting: Matrix factorization reuse               = recalc
+Defaulting: Matrix graph fillin                      = 0
+Defaulting: Matrix factorization overlap             = none
+Defaulting: Matrix overlap type                      = standard
+Defaulting: Matrix auxiliary vector                  = resid
+Defaulting: Matrix drop tolerance                    = 0
+Defaulting: Matrix polynomial order                  = 3
+Defaulting: Matrix reorder                           = none
+Defaulting: Matrix factorization save                = 0
+Defaulting: Matrix ILUT fill factor                  = 1
+Defaulting: Matrix RILU relax factor                 = 1
+Defaulting: Matrix BILU Threshold                    = 0
+          : Size of Krylov subspace                  = 64
+          : Orthogonalization                        = classical
+          : Maximum Linear Solve Iterations          = 1000
+Defaulting to constant Newton relaxation. Use 6 flts for dynamic relaxation.
+
+Number of boundary conditions = 4
+   1. Y @ NS 4
+   2. Y @ NS 2
+   3. Y @ NS 4
+   4. Y @ NS 2
+
+Number of rotation conditions = 0
+
+Number of materials           = 1
+
+Number of bulk C/D equations  = 2
+Nondilute approximation: # species is not equal to number of species equations
+Number of Species = 3
+
+Number of equation lines         = 1 (liquid)
+
+Number of chemical reactions in Material Block No. 0  = 0
+
+
+================================================================================
+
+	Material Property Printout for Material 0: liquid
+	Default Database = Goma Material Property Default
+
+Media Type = 0
+FlowingViscosity Model = 0
+
+		Description of Species in the Material
+
+  Name    Phase  Weight  Species_Var_Type
+--------------------------------------------------------------------------------
+Species_0	0	58.08	SPECIES_UNDEFINED_FORM
+Species_1	0	32.04	SPECIES_UNDEFINED_FORM
+Species_2	0	29	SPECIES_UNDEFINED_FORM	(SUM OF FRACTIONS DIRICHLET CONDITION)
+--------------------------------------------------------------------------------
+
+
+
+
+================================================================================
+
+MDE                           = 27
+MAX_PROB_VAR                  = 9
+MAX_CONC                      = 4
+MAX_VARIABLE_TYPES            = 126
+HAVE_CONFIG_H                 = no
+PARALLEL             Num_Proc = 1
+HAVE_MPI_H                    = yes
+USE_CHEMKIN                   = no
+HAVE_FRONT                    = yes
+HAVE_UMFPACK                  = yes
+HAVE_SPARSE                   = yes
+HAVE_BLAS                     = yes
+HAVE_LAPACK                   = yes
+HAVE_Y12M                     = yes
+HAVE_ARPACK                   = no
+HAVE_PARPACK                  = no
+HAVE_AZTEC                    = yes
+TRILINOS                      = no
+COUPLED_FILL                  = no
+USE_CGM                       = no
+DEBUG                         = no
+Pressure Stabilization        = no
+Stabilization Scaling         = 0.000000
+Linear Stability              = no
+
+
+
+-done
+

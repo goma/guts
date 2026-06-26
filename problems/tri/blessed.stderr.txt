@@ -1,0 +1,3 @@
+WARNING: Beware that SUPG for trishells is held constant so you need a uniform, non-stretchnig grid (/opt/workdir/goma/src/mm_fill_aux.c:927)
+WARNING: Stream function with Q1 mapping may not be accurate  (/opt/workdir/goma/src/mm_post_proc.c:7537)
+		converged SS!

@@ -1,0 +1,14 @@
+# Units cm-g-s
+# {die_width = 1}
+# {die_thickness = 0.1}
+# {air_gap = 1}
+# {gap_elem_count = 40}
+# {width_elem_count = 40}
+# {thickness_elem_count = 2}
+# {mesh_bias = 1.02}
+# {h1 = 0.002}
+
+# {viscosity = 10000}
+# {w2 = 1}
+# {D_R = 1.}
+# {w1 = w2/D_R}

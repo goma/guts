@@ -1,0 +1,81 @@
+Material Data File for SAMPLE
+
+/**********Form of each property card *********/
+PROPERTY   = MODEL   FLOAT#1 FLOAT#2 .....FLOAT#5
+
+/**********Form of each Constitutive card *********/
+MECHANICS_TYPE   = MODEL 
+
+Of the many available options, MODEL can be USER
+/************************************************/
+
+
+---Physical Properties
+Density			= CONSTANT 	0.97892
+
+---Mechanical Properties and Constitutive Equations
+Solid Constitutive Equation 	= NONLINEAR	
+Convective Lagrangian Velocity	= NONE
+Lame MU 			= CONSTANT 	200 0.4 1000. 0.00025 
+Lame LAMBDA 			= CONSTANT 	1.
+Stress Free Solvent Vol Frac	= CONSTANT	0.
+Liquid Constitutive Equation 	= NEWTONIAN
+Viscosity			= CONSTANT	0.007944
+Low Rate Viscosity		= CONSTANT	0.
+Power Law Exponent		= CONSTANT	0.
+High Rate Viscosity		= CONSTANT	0.
+Time Constant			= CONSTANT	0.
+Aexp 				= CONSTANT	0.
+Polymer Constitutive Equation   = NOPOLYMER
+
+---Thermal Properties
+Conductivity		= CONSTANT 	6.303e+04
+Heat Capacity		= CONSTANT	4.20115e+07
+Volume Expansion	= CONSTANT	1.
+Reference Temperature	= CONSTANT	0.
+Liquidus Temperature	= CONSTANT	1.
+Solidus Temperature	= CONSTANT	1.
+
+---Electrical Properties
+Electrical Conductivity = CONSTANT	1.
+
+---Microstructure Properties
+Media Type		= CONTINUOUS
+Porosity                = CONSTANT     1.0
+Permeability		= CONSTANT	9.
+
+---Brinkman-equation parameters
+Brinkman Porosity   =  CONSTANT     1.0
+Brinkman Permeability   =  CONSTANT     0.9
+FlowingLiquid Viscosity   =  CONSTANT     1.5
+Inertia Coefficient   =  CONSTANT     0.
+
+---Species Properties
+Diffusion Constitutive Equation = FICKIAN
+Diffusivity  			= CONSTANT  0   1.00e+5
+Latent Heat Vaporization	= CONSTANT  0	2.2534e+10
+Latent Heat Fusion		= CONSTANT  0	0.
+Vapor Pressure  		= CONSTANT  0	51.2955e+04
+Species Volume Expansion	= CONSTANT  0   1.0
+Reference Concentration         = CONSTANT  0   0.
+Molecular Weight                = CONSTANT  0   18.
+
+Diffusivity                     = CONSTANT  1   1.0e+5
+Latent Heat Vaporization        = CONSTANT  1   0.
+Latent Heat Fusion              = CONSTANT  1   0.
+Vapor Pressure                  = CONSTANT  1   6.e+0
+Species Volume Expansion        = CONSTANT  1   1.0
+Reference Concentration         = CONSTANT  1   0.
+Molecular Weight                = CONSTANT  1   18.
+
+				            ^
+********Species Number**********************|
+
+----Source Terms
+Navier-Stokes Source		= CONSTANT	0.  -1000. 0.
+Solid Body Source		= CONSTANT	0.  0.  0.
+Mass Source			= CONSTANT	0.
+Heat Source			= CONSTANT	0.
+Species Source			= CONSTANT  0   0.
+Species Source                  = CONSTANT  1   0.
+Current Source			= CONSTANT	0.

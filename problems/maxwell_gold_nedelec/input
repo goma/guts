@@ -1,0 +1,149 @@
+{include("properties.aprepro")}
+
+FEM File Specifications
+--- ---- --------------
+FEM file                         = scatter.g
+#FEM file                         = contin.exoII
+Output EXODUS II file            = out.exoII
+GUESS file                       = contin.dat
+SOLN file                        = none
+Write intermediate results       = no
+Disable Viscosity Sensitivities  =  no 
+
+General Specifications
+------- --------------
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+Initial Guess                    = zero
+Anneal Mesh on Output             = no
+
+Time Integration Specifications
+---- ----------- --------------
+Time integration                 = steady
+delta_t                          = 0.5e-2
+Maximum number of time steps     = 10000
+Maximum time                     = 5
+Minimum time step                = 1e-5
+Maximum time step                = 0.5e-1
+Time step parameter		 = 0.5
+Time step error                  = -1e-3 1 1 1 1 1 1 1 1 1
+Printing Frequency		 = 1
+Initial Time 			 = 0.0
+
+Solver Specifications
+------ --------------
+Solution Algorithm               = amesos
+Amesos Solver Package = Mumps
+Preconditioner                   = Jacobi
+Matrix output type = 10
+Matrix subdomain solver = ilut
+Matrix ILUT fill factor          = 4.0
+Matrix Relative Threshold = 1.e-14
+Matrix Absolute Threshold = 1.e-14
+Size of Krylov subspace          = 500 
+Orthogonalization                =  modified
+Maximum Linear Solve Iterations  = 500
+Number of Newton Iterations      = 10
+Jacobian Reform Time Stride = 2
+Newton correction factor         = 1  
+Normalized Residual Tolerance    = 1e-9 
+#Normalized Correction Tolerance    = 1e-8
+PETSc solve post proc = no
+
+------------------------------------------------------------
+                 Continuation Specifications
+------------------------------------------------------------
+Continuation                     = none
+Continuation Type                = MT
+Boundary condition ID            = 1
+Boundary condition data float tag= 2
+Material id                      = 1
+Material property tag            = 8013
+Material property tag subindex   = 0
+# {lambda_st = 2000}
+# {lambda_end = 200}
+# {nsteps = 1}
+Initial parameter value          = {ip = c0/lambda_st}
+Final parameter value            = {ip} # {fp = c0/lambda_end}
+delta_s                          = {ss = (fp-ip) / nsteps}
+Maximum number of path steps     = {nsteps+1}
+Minimum path step                = {ss/2}
+Maximum path step                = {ss}
+Continuation Printing Frequency  = 1
+
+EM Frequency = {ip}
+EM Free Space Permittivity = {eps0}
+EM Free Space Permeability = {mu0}
+
+Boundary Condition Specifications
+---------------------------------
+Number of BC			 = -1
+
+BC = EM_ABSORBING_REAL SS 3
+BC = EM_ABSORBING_IMAG SS 3
+
+END OF BC
+
+Problem Description
+------- -----------
+Number of Materials		= 3
+
+
+MAT = au 1
+
+	Coordinate System	= CARTESIAN
+	Element Mapping		= N1
+	Mesh Motion		= ARBITRARY
+	Number of bulk species	= 1
+        Number of viscoelastic modes = 0
+	Number of EQ		= 2
+	EQ = em_e1_real	 N1 	EM_E1_REAL	N1   1 1 1 1 1 1 
+	EQ = em_e1_imag	 N1 	EM_E1_IMAG	N1   1 1 1 1 1 1 
+
+MAT = air 2
+
+	Coordinate System	= CARTESIAN
+	Element Mapping		= N1
+	Mesh Motion		= ARBITRARY
+	Number of bulk species	= 1
+        Number of viscoelastic modes = 0
+	Number of EQ		= 2
+	EQ = em_e1_real	 N1 	EM_E1_REAL	N1   1 1 1 1 1 1 
+	EQ = em_e1_imag	 N1 	EM_E1_IMAG	N1   1 1 1 1 1 1 
+
+MAT = air 3
+
+	Coordinate System	= CARTESIAN
+	Element Mapping		= N1
+	Mesh Motion		= ARBITRARY
+	Number of bulk species	= 1
+        Number of viscoelastic modes = 0
+	Number of EQ		= 2
+	EQ = em_e1_real	 N1 	EM_E1_REAL	N1   1 1 1 1 1 1 
+	EQ = em_e1_imag	 N1 	EM_E1_IMAG	N1   1 1 1 1 1 1 
+
+Post Processing Specifications
+---- ---------- -------------- 
+#EM contours = yes
+#Total EM = yes
+#Poynting Vectors = yes
+
+Post Processing Fluxes =
+FLUX = SCATTERING_CROSS_SECTION 1 1 0 sigma_scattering.out
+END OF FLUX
+
+Post Processing Volumetric Integration = 
+VOLUME_INT = ABSORPTION_CROSS_SECTION 1 0 abs_cs.out
+#VOLUME_INT = VOLUME 1 0 vol.out
+END OF VOLUME_INT
+
+Post Processing Averages =
+AVERAGE = EM 0
+AVERAGE = EMSCAT 0
+AVERAGE = EMINC 0
+AVERAGE = EM_INC_MAG 0
+AVERAGE = EM_MAG 0
+AVERAGE = EM_SCAT_MAG 0
+END OF AVERAGES
+

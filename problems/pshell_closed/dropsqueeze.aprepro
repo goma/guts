@@ -1,0 +1,22 @@
+### Drop squeeze parameters ###
+
+### Mesh / LS parameters
+# Domain size = {Xlen = 0.005} cm
+# Solid height = {Zlen = 0.1} cm
+# Mesh interval = {nx = 20}
+# Level set length scale = {LSLS = Xlen/nx*2} cm
+
+### Fluid parameters
+# Surface tension = {sigma = 25.0}
+# Lower contact angle = {caL = 30.0} degrees
+# Upper contact angle = {caU = 30.0} degrees
+# Ambient pressure = {p0 = 0.0e6} P
+
+### Initial condition
+# Drop radius = {dropR = 0.0015} cm
+
+### Template movement
+# Upper initial height = {H_init_top = 0.000563} cm
+# Upper squeeze velocity = {V_squeeze_top = -0.0e2} cm/s
+# Upper dz = {V_dz_top = 0.0e0} cm/s
+# Upper force = {Force_top = 0.0e4} 

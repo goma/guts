@@ -1,0 +1,314 @@
+##{include("params")}
+FEM Problem Specifications
+--- ------- --------------
+FEM file                         = {meshfile}
+Output EXODUS II file            = {resultsfile}
+GUESS file                       = contin.dat
+SOLN file                        = no
+Write intermediate results       = no
+
+ ---
+General Specifications
+ ---
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+{Ifdef(continue)}
+Initial Guess                    = read_exoII_file cont.exoII 
+{Else}
+Initial Guess                    = read_exoII_file init.exoII 
+{Endif}
+{Ifdef(do_biquad)}
+##External Field			 = USER Q2 init.exoII
+External Field			 = WALL_DISTANCE Q2 init.exoII
+{Else}
+##External Field			 = USER Q1 init.exoII
+External Field			 = WALL_DISTANCE Q1 init.exoII
+{Endif}
+
+---
+Time Integration Specifications
+---- ----------- --------------
+
+Time integration                 = transient
+delta_t                          = {time_step_init}
+Maximum number of time steps     = {max_steps}
+Maximum time                     = {total_time}
+Minimum time step                = {time_step_min} 
+Maximum time step                = {time_step_max}
+Time step parameter              = {0.5*trapezoidal}
+Time step error  		 = {time_step_error}
+Printing Frequency               = 1
+#Minimum Resolved Time Step       = {time_step_resolved}
+$$Courant Number Limit             = 0.1
+Restart Time Integration After Renormalization = no
+Initial Time                     = {initial_time}
+
+Steps of constant delta_t after failure	= 3
+Time step decelerator		 = 0.5
+
+
+$$Turbulence Calculate Wall Distance = yes
+$$Turbulence Wall Node Sets = 20 5
+$$Turbulence Wall Node Sets = 20
+
+
+{Ifdef(use_TG)}
+Fill Weight Function	         = Taylor-Galerkin
+{Else}
+Fill Weight Function	         = Galerkin
+{Endif}
+Fill Equation			 = Advection
+
+
+
+Level Set Interface Tracking     = ON
+Level Set Length Scale           = {LSLS}
+{Ifdef(continue)}
+Level Set Initialization Method  = Exodus
+{Else}
+Level Set Initialization Method  = Surfaces 1
+	                        SURF = CIRCLE 0. 0.0  6.35
+{Endif}
+Level Set Control Width		 = 1.0
+Level Set Timestep Control = YES
+Level Set Renormalization Tolerance = {renorm_tol}
+Level Set Renormalization Method = Huygens
+Ignore Level Set Dependencies	 = FALSE
+Level Set Renormalization Frequency = {renorm_freq}
+Force Initial Level Set Renormalization = yes
+Level Set Reconstruction Method  = POINTS
+Level Set Contact Extension	 = FALSE
+
+{Ifdef(use_subgrid)}
+Level Set Subgrid Integration Depth = {subgrid_depth}
+Level Set Subelement Integration = OFF
+{Else}
+Level Set Subelement Integration = ON
+Level Set Adaptive Integration = OFF
+Level Set Adaptive Order = 2
+{Endif}
+Overlap Quadrature Points = 0
+Level Set PSPP filtering = NO
+Level Set Toure Penalty             = off
+
+{Ifdef(freeze)}
+Huygens Freeze Nodes                = on
+{Else}
+Huygens Freeze Nodes                = off
+{Endif}
+Level Set Enable Div Term	= NO
+Level Set Semi-Implicit Time Integration = NO
+
+$$Turbulence Calculate Wall Distance = yes
+$$Turbulence Wall Node Sets = 20 5
+
+---
+Solver Specifications
+------ --------------
+Solution Algorithm               = amesos
+Amesos Solver Package            = {solver}
+Preconditioner                  = Jacobi
+Matrix subdomain solver          = ilut
+Matrix reorder                   = rcm
+Matrix Scaling                   = row_sum
+Matrix ILUT fill factor          = 2.0
+#Matrix Relative Threshold        = 1.0
+#Matrix Absolute Threshold        = 1.e-5
+Matrix drop tolerance            = 1.e-6
+#Matrix Scaling                   = sym_diag
+Matrix residual norm type        = r0
+$Matrix output type               = 10
+#Matrix factorization overlap     = diag
+#Matrix factorization reuse       = calc
+Size of Krylov subspace          = 250
+Orthogonalization                = modified
+Maximum Linear Solve Iterations  = 250
+
+Number of Newton Iterations      = 8
+Newton correction factor         = 1.0
+Normalized Residual Tolerance    = {resid_eps}
+#Residual Ratio Tolerance         = 1e-10
+Normalized Correction Tolerance  = {soln_eps}
+Solver Output Format Bitmap      = {2^12-1}
+Output Variable Statistics       = yes
+Disable Viscosity Sensitivities  = no
+$$Pressure Stabilization           = yes
+$$Pressure Stabilization Scaling   = 0.1
+
+Boundary Condition Specifications
+-------- --------- --------------
+Number of BC                     = -1
+######################################
+
+BC = LUB_PRESS_HYDROSTATIC SS 3 0. {-9810*prop_ratio*0.000001} 0. 0.
+BC = LUB_PRESS_HYDROSTATIC SS 4 0. {-9810*prop_ratio*0.000001} 0. 0.
+$$BC = GRAD_LUBP_NOBC SS 4 0.0  0.0  0.0
+BC = GRAD_LUB_PRESS SS 1  0.0  {-prefactor*flowrate}  {inlet_pl}
+BC = GRAD_LUB_PRESS SS 2  0.0
+$$BC = GRAD_LUB_PRESS SS 5  0.0
+BC = GRAD_LUB_PRESS SS 6  0.0
+
+{Ifdef(do_obstacle)}
+{Ifndef(do_wall_mat)}
+$$BC = SHELL_LUB_WALL SS 20  {inlet_pl}  {wall_fudge}
+{Endif}
+{Endif}
+
+{Ifdef(do_curvature)}
+BC = LUB_CURV_NOBC SS 2  0.0  1
+BC = LUB_CURV_NOBC SS 3  0.0  1
+BC = LUB_CURV_NOBC SS 4  0.0  1
+BC = LUB_CURV_NOBC SS 5  {dca}  -1
+BC = LUB_CURV_NOBC SS 6  0.0  1
+BC = LUB_CURV_NOBC SS 20  {dca}  -1
+{Endif}
+$$BC = FILL_CA SS 5 90.0
+
+END OF BC
+######################################
+
+Problem Description
+---
+Number of Materials = 2
+
+MAT = carbo_LS     1
+ 
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = ARBITRARY
+  Number of bulk species = 0
+ 
+	Number of EQ			 = -1
+{Ifdef(do_biquad)}
+	 EQ = lubp      Q2 LUBP  Q2           1    1     1   
+{Ifdef(do_advection)}
+	 EQ = momentum1 Q2 U1  Q2             0  0  0  0  0  1 
+	 EQ = momentum2 Q2 U2  Q2             0  0  0  0  0  1 
+	 EQ = momentum3 Q2 U3  Q2             0  0  0  0  0  1 
+{Endif}
+	 EQ = level_set Q2 F     Q2  1   1     1
+{Ifdef(do_curvature)}
+	 EQ = shell_lub_curv Q1 sh_l_curv     Q1  1   1     1 1 1
+{Endif}
+{Ifdef(do_divnormal)}
+	 EQ = normal1 Q2 N1  Q2  1   1  
+	 EQ = normal2 Q2 N2  Q2  1   1  
+	 EQ = normal3 Q2 N3  Q2  1   1  
+{Endif}
+{Else}
+	 EQ = lubp      Q1 LUBP  Q1           1    1     1   
+{Ifdef(do_advection)}
+	 EQ = momentum1 Q1 U1  Q1             0  0  0  0  0  1 
+	 EQ = momentum2 Q1 U2  Q1             0  0  0  0  0  1 
+	 EQ = momentum3 Q1 U3  Q1             0  0  0  0  0  1 
+{Endif}
+	 EQ = level_set Q1 F     Q1  1   1     1
+{Ifdef(do_curvature)}
+	 EQ = shell_lub_curv Q1 sh_l_curv     Q1  1   1     1 1 1
+{Endif}
+{Ifdef(do_divnormal)}
+	 EQ = normal1 Q1 N1  Q1  1   1     1
+	 EQ = normal2 Q1 N2  Q1  1   1     1
+	 EQ = normal3 Q1 N3  Q1  1   1     1
+{Endif}
+{Endif}
+                              	    mass adv bnd  dif  src porous
+END OF EQ
+
+MAT = carbo_tube_LS     2
+ 
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = ARBITRARY
+  Number of bulk species = 0
+ 
+	Number of EQ			 = -1
+{Ifdef(do_biquad)}
+	 EQ = lubp      Q2 LUBP  Q2           1    1     1   
+{Ifdef(do_advection)}
+	 EQ = momentum1 Q2 U1  Q2             0  0  0  0  0  1 
+	 EQ = momentum2 Q2 U2  Q2             0  0  0  0  0  1 
+	 EQ = momentum3 Q2 U3  Q2             0  0  0  0  0  1 
+{Endif}
+	 EQ = level_set Q2 F     Q2  1   1     1
+{Ifdef(do_curvature)}
+	 EQ = shell_lub_curv Q1 sh_l_curv     Q1  1   1     1 1 1
+{Endif}
+{Ifdef(do_divnormal)}
+	 EQ = normal1 Q2 N1  Q2  1   1  
+	 EQ = normal2 Q2 N2  Q2  1   1  
+	 EQ = normal3 Q2 N3  Q2  1   1  
+{Endif}
+{Else}
+	 EQ = lubp      Q1 LUBP  Q1           1    1     1   
+{Ifdef(do_advection)}
+	 EQ = momentum1 Q1 U1  Q1             0  0  0  0  0  1 
+	 EQ = momentum2 Q1 U2  Q1             0  0  0  0  0  1 
+	 EQ = momentum3 Q1 U3  Q1             0  0  0  0  0  1 
+{Endif}
+	 EQ = level_set Q1 F     Q1  1   1     1
+{Ifdef(do_curvature)}
+	 EQ = shell_lub_curv Q1 sh_l_curv     Q1  1   1     1 1 1
+{Endif}
+{Ifdef(do_divnormal)}
+	 EQ = normal1 Q1 N1  Q1  1   1     1
+	 EQ = normal2 Q1 N2  Q1  1   1     1
+	 EQ = normal3 Q1 N3  Q1  1   1     1
+{Endif}
+{Endif}
+                              	    mass adv bnd  dif  src porous
+END OF EQ
+
+Post Processing Specifications
+---- ---------- --------------
+Stream Function                 = no
+Mean shear rate 		= yes
+Lubrication Height              = yes
+Lubrication Upper Velocity      = no
+Lubrication Lower Velocity      = no
+Lubrication Velocity Field      = yes
+Lubrication Convection          = no
+Streamwise normal stress        = no
+Pressure contours               = no
+Second Invarient of Strain      = no
+Mesh Dilatation                 = no
+Navier Stokes Residuals         = no
+Moving Mesh Residuals           = no
+Mass Diffusion Vectors          = no
+Mass Fluxlines                  = no
+Energy Conduction Vectors       = no
+Energy Fluxlines                = no
+Time Derivatives                = no
+Viscosity = yes
+Mesh Stress Tensor              = no
+Porous Saturation = no
+Wall Distance = yes
+
+Post Processing Fluxes =
+END OF FLUX
+FLUX = SHELL_VOLUME_FLUX  1  2  0  flux.out
+FLUX = SHELL_VOLUME_FLUX  2  2  0  flux.out
+FLUX = SHELL_VOLUME_FLUX  3  1  0  flux.out
+FLUX = SHELL_VOLUME_FLUX  4  1  0  flux.out
+FLUX = SHELL_VOLUME_FLUX  5  1  0  flux.out
+FLUX = SHELL_VOLUME_FLUX  6  2  0  flux.out
+FLUX = SHELL_VOLUME_FLUX  11  1  0  flux.out
+FLUX = SHELL_VOLUME_FLUX  12  2  0  flux.out
+FLUX = LS_DCA  2  1  0  profile.out profile
+FLUX = LS_DCA  5  1  0  profile.out profile
+FLUX = SHELL_FORCE_NORMAL  1  2  0  flux.out
+
+
+Post Processing Data =
+END OF DATA
+DATA = VELOCITY3 20 1 0 data.out
+
+Post Processing Volumetric Integration =
+VOLUME_INT = SHELL_VOLUME       1 0 volume.out
+VOLUME_INT = SHELL_VOLUME       2 0 volume.out
+END OF VOLUME_INT
+VOLUME_INT = POSITIVE_FILL      1 0 volume.out  {LSLS}
+VOLUME_INT = NEGATIVE_FILL      1 0 volume.out  {LSLS}
+
+

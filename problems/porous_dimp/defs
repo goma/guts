@@ -1,0 +1,55 @@
+$  BASE UNITS are CGS
+$ Conversion for Length change new scale = cm * conv
+$ So to convert from cm to mm -> conv = 10.0
+$ Length conversion		{L =10.0}
+$ Mass conversion		{K =1.0}
+$ Time conversion		{S =1000.0}10000.0
+$ moles conversion		{M =K}
+
+$ Geometry 
+$ 1 Cell Square side	See journal file!
+
+$ Ambient Pressure 			{ambpres = 1.0133e6*K/L/S^2}
+$ Permeability of Substrate 		{permeab = 10.*9.8e-9*L^2} (300 darcies)
+$ Measured Pore Size 			{poresize = 0.0001*L}
+$ Surface Tension of Slurry Fluid 	{surftens = 20.5*K/S^2} 22
+$ Liquid Viscosity 			{lqvisc = 0.1*K/L/S} 0.5
+$ Lite Liquid Viscosity			{lqvisc_lt = lqvisc/70.0} 0.5
+$ Density of Substrate			{subsdens = 2.0*K/L^3} 2.0
+$ Density of Liquid 			{sldens = 1.0*K/L^3} 0.985
+$ Density of lite Liquid 		{sldens_lt = sldens/20.0} 0.985
+$ Air Viscosity 			{airvisc = 1.82e-4*K/L/S}
+$ Air Density				{airdens = 1.269e-3*K/L^3}
+$ Porosity of Substrate 		{poros = 0.75} .45
+$ Gas Phase Diffusion Coeff		{gpdiff = 0.26*L^2/S}
+$ Capillary Pressure 			{cappres = 4.0*surftens/poresize}
+$ Capillary pressure at Satmax		{pcmin =  1000.0*K/L/S^2} 54241.3
+$ Capillary pressure at Satmin		{pcmax =  5000.0*K/L/S^2} 50000.0 1.24e6 1.3e6
+$ Tanh model constant C                 {const_c = 1.0}
+$ tanh model constant D                 {const_d = 1000 * K/L/S^2}
+$ Equilibrium Vapor Pressure		{vappres = 13.0*K/L/S^2}
+$ Molecular Weight of Slurry Liquid	{mwsl = 18.0*K/M}
+$ Gas Constant				{rgas = 83140000*K*L^2/S^2/M}
+$ Temperature				{temp = 300.0}
+$ Molecular Weight Air			{mwair = 29.0*K/M}
+$ Gravity				{grav = 981.0*L/S/S}
+$ Time Threshold Darcy Continous BC	{time_threshold = 2.00}
+$ {LT = 1.0*L}{por_thick=4.0}
+
+
+$ Contact line data
+$ Porous/Continuous static angle    { theta_s_ss60 = 60 }
+$ Non-porous static angle           { theta_s_ss70 = 60 }
+
+$ Porous/Continuous cT value        { cT_ss60 = 0.1 }
+$ Non-porous cT value               { cT_ss70 = 0.1 }
+
+
+$ Time step analysis
+
+{dt_phys_ca = 0.5*lqvisc_lt/surftens }
+{dt_phys_porous = 1.e6} don't quite know a 
+{dt_num_ca = sqrt( sldens_lt*0.05*0.05*0.05/surftens) }
+
+{dt_max = 1.0*min( dt_phys_ca, dt_num_ca) }
+{dt_min = 0.1*min( dt_phys_ca, dt_num_ca) }

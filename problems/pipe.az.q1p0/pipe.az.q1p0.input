@@ -1,0 +1,87 @@
+$ Aprepro ($Revision: 1.1 $) Tue Apr 25 16:36:35 1995
+# Note: hash marks are comment characters. Everything following a hash mark
+# will be deleted. Lines beginning with a hash mark will be deleted.
+#
+$ GOMA input file
+$ CREATION_DATE USER_NAME_AND_SITE
+$ 
+FEM Problem Specifications
+--- ------- --------------
+FEM file                         = pipe.exoII
+Output EXODUS II file            = pipe_o.exoII
+GUESS file                       = pipe.d
+SOLN file                        = pipe_o.d
+Write intermediate results	 = no
+
+Time Integration Specifications
+---- ----------- --------------
+Time integration                 = steady
+
+Solver Specifications
+------ --------------
+Solution Algorithm               = gmres
+Preconditioner                   = ilu
+Matrix Scaling                   = row_sum
+Polynomial                       = LS,1
+Size of Krylov subspace          = 200
+Orthogonalization                = classical
+#Matrix drop tolerance            = 1.0-e9
+Maximum Linear Solve Iterations  = 200
+Number of Newton Iterations      = 12 1
+Modified Newton Tolerance        = 1.9 1.
+Newton correction factor         = 1
+Normalized Residual Tolerance    = 1e-10
+Residual Ratio Tolerance         = 1e-2
+
+Boundary Condition Specifications
+-------- --------- --------------
+Number of BC			 = -1
+#
+#	Tangential velocities
+#	---------- ----------
+#
+# Again, these aren't robust enough for corners yet...
+#
+#
+BC = U NS 12			0
+BC = V NS 11			0
+BC = V NS 13			0
+BC = V NS 12			0
+BC = CAPILLARY SS 103		0 1 0
+BC = CAPILLARY SS 101		0 0 0
+END OF BC
+#
+
+----
+Problem Description
+---
+
+Number of Materials = 1
+
+MAT = mat1    1
+
+  	Coordinate System = CYLINDRICAL
+  	Element Mapping   = isoparametric
+  	Mesh Motion = ARBITRARY
+  	Number of bulk species = 1
+
+	Number of EQ			 = 3
+	EQ = momentum1   Q1 U1 Q1        0    1    1    1    1    0 
+	EQ = momentum2   Q1 U2 Q1	 0    1    1    1    1    0 
+	EQ = continuity  P0 P  P0   1                        0 
+
+Post Processing Specifications
+---- ---------- --------------
+Stream Function			= no
+Streamwise normal stress	= no
+Pressure contours		= yes
+Second Invarient of Strain	= no
+Mesh Dilatation			= no
+Navier Stokes Residuals		= yes
+Moving Mesh Residuals		= no
+Mass Diffusion Vectors		= no
+Mass Fluxlines			= no
+Energy Conduction Vectors	= no
+Energy Fluxlines		= no
+Time Derivatives		= no
+Mesh Stress Tensor		= no

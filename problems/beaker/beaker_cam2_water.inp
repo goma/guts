@@ -1,0 +1,208 @@
+# Trying out modified CA
+#
+$ GOMA input file
+$ CREATION_DATE USER_NAME_AND_SITE
+$ {ECHO(OFF)} 
+$     {include(Defs)}
+$ {ECHO(ON)}
+
+FEM Problem Specifications
+--- ------- --------------
+FEM file                         = beaker_m2_q2.g
+Output EXODUS II file            = beaker_cam2_water_out.exoII
+GUESS file                       = none
+SOLN file                        = none
+Write intermediate results	 = no
+
+General Specifications
+------- --------------
+
+Number of processors = 1
+Output level = 1
+Debug        = 0
+Number of Jacobian File Dumps = 0
+
+Time Integration Specifications
+---- ----------- --------------
+Time integration                 = transient
+#Time integration                 = steady
+delta_t                          = 1.0E-5
+Maximum number of time steps     = 500
+Maximum time                     = 3000.0
+Minimum time step                = 1.0E-10
+Maximum time step                = 500.0
+Time step parameter              = 0.0
+Time step error                  = 0.1 1 1 1 1 0 1 0 0
+Printing Frequency               = 1
+Initial Time                     = 0.0
+
+
+Solver Specifications
+------ --------------
+Solution Algorithm             = umf
+Preconditioner                 = ilu
+Polynomial                       = LS,1
+Size of Krylov subspace          = 64
+Orthogonalization                = classical
+Maximum Linear Solve Iterations  = 1000
+Number of Newton Iterations      = 15
+Newton correction factor         = 1.
+Normalized Residual Tolerance    = 1.0e-8
+Residual Ratio Tolerance         = 2.0e-3
+
+
+Boundary Condition Specifications
+-------- --------- --------------
+Number of BC			 = -1
+#
+#
+#    Bottom of the domain - fixed and inert
+#
+BC = DX NS 1 0.0
+BC = DY NS 1 0.0
+BC = U NS  1 0.0
+BC = V NS  1 0.0
+#
+# ----------------------------------------------------------
+#    Right Side of the domain - bottom made up of liquid
+#
+# -> Force mesh to be fixed at a x=constant value
+#    There are three ways to do this: 
+#                DX     -> NS,  DC
+#                PLANEX -> SS,  PCC
+#                PLANE  -> SS,  PCC-ROT
+#BC = DX NS 2       0.0
+BC = PLANE SS 2  1.0 0.0 0.0 -0.5
+# 
+# Normal component of the velocity = U
+# set noflow out of the right side of the domain
+#BC = U NS 2  0.0
+#
+# Tangential component of the velocity = V
+#     set the tangential stress = dv/dx + du/dy
+#               du/dy = 0 to be consistent with BC on u
+#           Set dv/dx = 0 to make the problem 1D
+#            -> Implies zero tangential stress condition is good
+#               and thus we don't need a boundary condition
+#  Also can set the velocity to zero for a wall condition
+#
+#BC = V NS 2 0.0
+BC = VELO_NORMAL SS 2 0.0 
+BC = VELO_SLIP   SS 2 100.0 0.0 0.0 0.0 102 0.3
+#
+# Temperature -> adiabatic
+# Species -> no flux bc 
+# Pressure -> Don't need a boundary condition
+#
+# Specification of the contact angle
+#
+#         -> we'll try the most straightforward approach atm
+#
+#BC = CA_MOMENTUM NS 102 0.7853981 -1.0 0.0 0.0
+BC = CA_MOMENTUM NS 102 0.7853981 0.0 0.0 0.0
+#
+# BC = CAP_ENDFORCE_SCALAR NS 102 72.88
+#
+# ----------------------------------------------------------
+#    Left Side of the domain - bottom made up of liquid
+#
+# -> Force mesh to be fixed at a x=constant value
+#    There are three ways to do this: 
+#                DX     -> NS,  DC
+#                PLANEX -> SS,  PCC
+#                PLANE  -> SS,  PCC-ROT
+# BC = DX NS 4        0.0
+BC = PLANE SS 4  1.0 0.0 0.0 0.5
+# 
+# Normal component of the velocity = U
+# set noflow out of the right side of the domain
+#BC = U NS 4 	0.0
+#BC = V NS 4     0.0
+#              SIC/Rotated Momentum
+BC = VELO_NORMAL SS 4 0.0 
+#              WIC/Vector Momentum
+BC = VELO_SLIP   SS 4 100.0 0.0 0.0 0.0 103 0.3
+#
+# Tangential component of the velocity = V
+#     set the tangential stress = dv/dx + du/dy
+#               du/dy = 0 to be consistent with BC on u
+#           Set dv/dx = 0 to make the problem 1D
+#            -> Implies zero tangential stress condition is good
+#               and thus we don't need a boundary condition
+#
+# Specification of the contact angle
+#
+#         -> we'll try the most straightforward approach atm
+#
+BC = CA_MOMENTUM NS 103 0.7853981 0.0 0.0 0.0
+#BC = CA_MOMENTUM NS 103 0.7853981 0.0 0.0 0.0
+#
+# BC = CAP_ENDFORCE_SCALAR NS 103 72.88
+#
+# ----------------------------------------------------------
+#    Top of the domain -> interface
+#
+# -> Force mesh to follow the material domain
+#
+BC = KINEMATIC SS 3 0.0
+#
+# apply capillary forces (surface tension) to the momentum
+# equation on a free surface
+#               1.0 = multiplier for the surface tension value
+#               0.0 = external appllied pressure on the free surface
+#               0.0 = unused
+#
+#
+BC = CAPILLARY SS 3 72.88 0.0 0.0 
+#
+# ----------------------------------------------------------
+#
+# Set the pressure datum for the problem
+#
+#BC = P NS {right1_ns} 0
+#
+# END OF BC
+#         This card signals the end of boundary condition processing
+END OF BC
+#
+#
+----
+Problem Description
+---
+Number of Materials = 1
+
+MAT = water   1
+
+  	Coordinate System = CARTESIAN
+  	Element Mapping   = isoparametric
+  	Mesh Motion = ARBITRARY
+#            Number of bulk species is one less than the
+#            total number in the problem
+  	Number of bulk species = 0
+
+	Number of EQ			 = 5
+#                                       Mass  Adv  Bnd  diff src por
+	EQ = mesh1       Q2   D1 Q2      0.   0.   1.   1.   0.   0.
+	EQ = mesh2       Q2   D2 Q2      0.   0.   1.   1.   0.   0.
+	EQ = momentum1   Q2   U1 Q2      1    1    1    1    1    0 
+	EQ = momentum2   Q2   U2 Q2  	 1    1    1    1    1    0 
+#                                       div                  src
+	EQ = continuity  P1 P  P1        1.                   0. 
+
+
+	
+Post Processing Specifications
+---- ---------- --------------
+Stream Function			= yes
+Streamwise normal stress	= no
+Pressure contours		= yes
+Second Invarient of Strain	= no
+Mesh Dilatation			= yes
+Navier Stokes Residuals		= yes
+Moving Mesh Residuals		= yes
+Mass Diffusion Vectors		= yes
+Mass Fluxlines			= yes
+Energy Conduction Vectors	= no
+Energy Fluxlines		= no
+Time Derivatives		= yes
+Mesh Stress Tensor		= no

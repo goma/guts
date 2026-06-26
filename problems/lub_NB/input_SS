@@ -1,0 +1,170 @@
+##{include("params")}
+FEM Problem Specifications
+--- ------- --------------
+FEM file                         = {meshfile}
+Output EXODUS II file            = {resultsfile}
+GUESS file                       = contin.dat
+SOLN file                        = no
+Write intermediate results       = no
+
+ ---
+General Specifications
+ ---
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+Initial Guess                    = zero
+---
+Time Integration Specifications
+---- ----------- --------------
+Time integration                 = steady
+---
+##Turbulence Calculate Wall Distance = yes
+##Turbulence Wall Node Sets = 20 5
+---
+Solver Specifications
+------ --------------
+Solution Algorithm               = mumps
+Amesos Solver Package            = {solver}
+Preconditioner                  = Jacobi
+Matrix subdomain solver          = ilut
+Matrix reorder                   = rcm
+Matrix Scaling                   = row_sum
+Matrix ILUT fill factor          = 2.0
+#Matrix Relative Threshold        = 1.0
+#Matrix Absolute Threshold        = 1.e-5
+Matrix drop tolerance            = 1.e-6
+#Matrix Scaling                   = sym_diag
+Matrix residual norm type        = r0
+$Matrix output type               = 10
+#Matrix factorization overlap     = diag
+#Matrix factorization reuse       = calc
+Size of Krylov subspace          = 250
+Orthogonalization                = modified
+Maximum Linear Solve Iterations  = 250
+
+Number of Newton Iterations      = 15
+Newton correction factor         = 1.0
+Normalized Residual Tolerance    = {resid_eps}
+#Residual Ratio Tolerance         = 1e-10
+Normalized Correction Tolerance  = {soln_eps}
+Solver Output Format Bitmap      = {2^12-1}
+Output Variable Statistics       = yes
+Disable Viscosity Sensitivities  = no
+$$Pressure Stabilization           = yes
+$$Pressure Stabilization Scaling   = 0.1
+ 
+------------------------------------------------
+Continuation Specifications
+------------------------------------------------
+Continuation                     = hfirst
+Continuation Type                = BC
+Boundary condition ID            = 2
+Boundary condition data float tag= 0
+Material id                      = 1
+Material property tag            = 1700
+Material property tag subindex   = 0
+Initial parameter value          = -0.06
+Final parameter value            = -0.03
+delta_s                          = 0.0003
+Maximum number of path steps     = 200
+Minimum path step                = 3e-05
+Maximum path step                = 0.003
+Continuation Printing Frequency  = 1
+$$LOCA method			 = alc
+LOCA method			 = first
+Step control aggressiveness	 = 1.5
+Number of continuation conditions     = -1
+END OF CC
+------------------------------------------
+Hunting Specifications
+-----------------------------------------
+Number of hunting conditions     = -1
+HC = MT 1  4100  2  1  0.25  0.015  0.0075 0.0375
+HC = MT 1  17032  2  0.0001  1  0.019998  0.009999 0.049995
+HC = BC 0  2  2  1  0.25  0.015  0.0075 0.0375
+END OF HC
+
+Process Temperature = {25.0}
+
+Boundary Condition Specifications
+-------- --------- --------------
+Number of BC                     = -1
+######################################
+
+BC = GRAD_LUB_PRESS SS 1  {flowrate}  {0.0}  {inlet_pl}
+##BC = LUB_PRESS NS 1  {P_inlet}  1.0
+BC = GRAD_LUB_PRESS SS 2  0.0
+BC = GRAD_LUB_PRESS SS 4  0.0
+
+##BC = LUB_PRESS_HYDROSTATIC SS 3 0. {0.} 0. 0.
+BC = LUB_PRESS NS 3  0.0  1.0
+
+END OF BC
+######################################
+
+Problem Description
+---
+Number of Materials = 1
+
+MAT = carbo_app     1
+ 
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = ARBITRARY
+  Number of bulk species = 0
+ 
+	Number of EQ			 = -1
+{Ifdef(do_biquad)}
+	 EQ = lubp      Q2 LUBP  Q2           1    1     1   
+{Else}
+	 EQ = lubp      Q1 LUBP  Q1           1    1     1   
+{Endif}
+                              	    mass adv bnd  dif  src porous
+END OF EQ
+
+Post Processing Specifications
+---- ---------- --------------
+Stream Function                 = no
+Lubrication Height              = yes
+Lubrication Upper Velocity      = no
+Lubrication Lower Velocity      = no
+Lubrication Velocity Field      = yes
+{Ifdef(do_advection)}
+Lubrication Convection          = yes
+{Endif}
+Streamwise normal stress        = no
+Mean shear rate			= yes
+Pressure contours               = no
+Second Invarient of Strain      = no
+Mesh Dilatation                 = no
+Navier Stokes Residuals         = no
+Moving Mesh Residuals           = no
+Mass Diffusion Vectors          = no
+Mass Fluxlines                  = no
+Energy Conduction Vectors       = no
+Energy Fluxlines                = no
+Time Derivatives                = no
+Viscosity = yes
+Mesh Stress Tensor              = no
+Porous Saturation = no
+Wall Distance = no
+
+Post Processing Fluxes =
+FLUX = SHELL_VOLUME_FLUX  1  1  0  flux.out
+FLUX = SHELL_VOLUME_FLUX  2  1  0  flux.out
+FLUX = SHELL_VOLUME_FLUX  3  1  0  flux.out
+FLUX = SHELL_VOLUME_FLUX  4  1  0  flux.out
+END OF FLUX
+FLUX = FORCE_NORMAL  1  2  0  flux.out
+
+
+Post Processing Data =
+END OF DATA
+DATA = VELOCITY3 20 1 0 data.out
+
+Post Processing Volumetric Integration =
+VOLUME_INT = SHELL_VOLUME       1 0 volume.out
+END OF VOLUME_INT
+
+

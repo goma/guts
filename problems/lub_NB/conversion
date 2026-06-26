@@ -1,0 +1,113 @@
+{_C_}{_C_}{_C_}  Time (T)
+{_C_} 1 Second 		= {second = sec} {tout}
+{_C_} 1 micro-s		= {usec = microsecond = sec / 1e6} {tout}
+{_C_} 1 millisec	= {msec = millisecond = sec / 1e3} {tout}
+{_C_} 1 Minute 		= {minute = 60 * sec}  {tout}
+{_C_} 1 Hour   		= {hr  = hour = 60 * minute} {tout}
+{_C_} 1 Day    		= {day = 24 * hr} {tout}
+{_C_} 1 Year   		= {yr = year = 365.25 * day} {tout}
+{_C_} 1 Decade 		= {decade = 10 * year} {tout}
+{_C_} 1 Century		= {century = 100 * year} {tout}
+{_C_} 
+{_C_}{_C_}{_C_}  Length (L)
+{_C_} 1 Meter 		= {meter = metre = m} {lout}
+{_C_} 1 cm    		= {cm = centimeter = centimetre = m / 100} {lout}
+{_C_} 1 mm    		= {mm = millimeter = millimetre = m / 1000} {lout}
+{_C_} 1 um    		= {um = micrometer = micrometre = m / 1e6} {lout}
+{_C_} 1 km    		= {km = kilometer  = kilometre = 1000 * m} {lout}
+{_C_} 1 foot  		= {ft = foot = .3048 * m} {lout}
+{_C_} 1 mile  		= {mi = mile = ft * 5280} {lout}
+{_C_} 1 yard  		= {yd = yard = ft * 3} {lout}
+{_C_} 1 inch  		= {in = inch = ft / 12} {lout}
+{_C_} 1 mil   		= {mil = inch / 1000} {lout}
+{_C_} 
+{_C_}{_C_}{_C_}  Acceleration (L/T^2)
+{_C_} Grav. Accel.	= {ga = 9.806650 * m / second^2} {aout}
+{_C_} 
+{_C_}{_C_}{_C_}  Force  (ML/T^2)
+{_C_} 1 Newton 		= {newton = N = 1 * kg * meter / sec^2} {fout}
+{_C_} 1 milliNewton 	= {millinewton = mN = 1e-3 * newton} {fout}
+{_C_} 1 microNewton 	= {micronewton = uN = 1e-6 * newton} {fout}
+{_C_} 1 dyne   		= {dyne = 1e-5  * newton} {fout}
+{_C_} 1 lbf    		= {lbf   = 4.4482216152605 * newton} {fout}
+{_C_} 1 kip    		= {kip = 1000 * lbf} {fout}
+{_C_} 1 kgf    		= {kgf   = 9.806650 * newton} {fout}
+{_C_} 1 gf     		= {gf = kgf / 1000} {fout}
+{_C_} 1 poundal		= {pdl = poundal = 1.382550e-1 * newton} {fout}
+{_C_} 1 ounce  		= {ounce = lbf / 16} {fout}
+{_C_} 
+{_C_}{_C_}{_C_}  Mass (M)
+{_C_} 1 gram       	= {gram = g = kg / 1000} {mout}
+{_C_} 1 lbm        	= {lbm = 453.59237 * g} {mout}
+{_C_} 1 slug       	= {slug = lbm * 32.17404856} {mout}
+{_C_} 1 lbf s^2/in 	= {lbfs2pin = lbf * sec^2 / in} {mout} 
+{_C_} 
+{_C_}{_C_}{_C_}  Velocity (L/T)
+{_C_} 1 meter/second 	= {mps = m/sec} {vout}
+{_C_} 1 foot/second  	= {fps = foot / sec} {vout}
+{_C_} 1 mile/hour       = {mph = mile / hour} {vout}
+{_C_} 1 inch/second     = {ips = inch / sec} {vout}
+{_C_} 1 km/hour         = {kph = km / hour} {vout}
+{_C_} 1 km/second       = {kps = km / sec} {vout}
+{_C_} 
+{_C_}{_C_}{_C_}  Volume (L^3)
+{_C_} 1 liter           = {liter = m^3/1000} {Vout}
+{_C_} 1 gallon          = {gal = gallon = 3.785412 * liter} {Vout}
+{_C_} 
+{_C_}{_C_}{_C_}  Density (M/L^3)
+{_C_} 1 g / cc          = {gpcc      = gram /cm^3} {dout}
+{_C_} 1 kg / m^3        = {kgpm3     = kg /   m^3} {dout}
+{_C_} 1 lbf s^2/in^4    = {lbfs2pin4 = lbf * sec^2 / in^4} {dout}
+{_C_} 1 lb / in^3       = {lbmpin3   = lbm / in^3} {dout}
+{_C_} 1 lb / ft^3       = {lbmpft3   = lbm / ft^3} {dout}
+{_C_} 1 slug /ft^3      = {slugpft3  = slug /ft^3} {dout}
+{_C_} 
+{_C_}{_C_}{_C_}  Power: (M L^2 / T^3)
+{_C_} 1 watt            = {W = watt = 1 * newton * m / sec} {Pout}
+{_C_} 1 Hp              = {Hp = 746 * watt} {Pout}  --- (electric horsepower)
+{_C_} 
+{_C_}{_C_}{_C_}  Energy (ML^2/T^2)
+{_C_} 1 joule           = {joule = J = 1 * newton * m}   {eout}
+{_C_} 1 millijoule       = {millijoule = mJ = 1e-3 * joule}   {eout}
+{_C_} 1 microjoule       = {microjoule = uJ = 1e-6 * joule}   {eout}
+{_C_} 1 nanojoule       = {nanojoule = nJ = 1e-9 * joule}   {eout}
+{_C_} 1 ft-lbf          = {ftlbf = 1.355818 * J} {eout}
+{_C_} 1 Btu             = {Btu   = 1.05505585262e3 * J} {eout} --- I18n Table
+{_C_} 1 erg             = {erg   = 1.0e-7 * J} {eout}
+{_C_} 1 calorie         = {calorie= 4.18680 * J} {eout}  --- I18n Table
+{_C_} 1 kwh             = {kwh = 1000 * watt * hour} {eout}
+{_C_} 1 therm           = {therm = 1.054804e8 * J} {eout}        --- U.S.
+{_C_} 1 ton TNT         = {tonTNT = 4.184e9 * J} {eout}
+{_C_} 
+{_C_}{_C_}{_C_}  Pressure: (M/L/T^2)
+{_C_} 1 Pa              = {Pa  = pascal = N / m^2} {pout}
+{_C_} 1 kPa             = {kPa = 1e3 * Pa} {pout}
+{_C_} 1 MPa             = {MPa = 1e6 * Pa} {pout}
+{_C_} 1 GPa             = {GPa = 1e9 * Pa} {pout}
+{_C_} 1 bar             = {bar = 1e5 * Pa} {pout}
+{_C_} 1 kbar            = {kbar = 1e3 * bar} {pout}
+{_C_} 1 Mbar            = {Mbar = 1e6 * bar} {pout}
+{_C_} 1 psi             = {psi = lbf / inch^2} {pout}
+{_C_} 1 ksi             = {ksi = 1000 * lbf / inch^2} {pout}
+{_C_} 1 psf             = {psf = lbf / foot^2} {pout}        
+{_C_} 1 atmosphere      = {atm = 1.013250e5 * Pa} {pout}     --- std atmosphere
+{_C_} 1 torr            = {torr = atm / 760} {pout}
+{_C_} 1 mHg             = {mHg = 1000 * torr} {pout}
+{_C_} 1 mmHg            = {mmHg = torr} {pout}
+{_C_} 1 inHg            = {inHg = 25.4 * mmHg} {pout}
+{_C_} 1 inH2O           = {inH2O = 249.082 * Pa} {pout}
+{_C_} 1 ftH2O           = {ftH2O = 12 * inH2O} {pout}
+{_C_} 
+{_C_}{_C_}{_C_}  Temperature:
+{_C_} 1 Kelvin          = {kelvin = degK} {Tout}
+{_C_} 1 deg C           = {degC = degK} {Tout}
+{_C_} 1 deg F           = {degF = 5/9 * degC} {Tout}
+{_C_} 1 Rankine         = {rankine = degR = degF} {Tout}
+{_C_} 1 eV              = {eV = 11605 * kelvin} {Tout}
+{_C_} 
+{_C_}{_C_}{_C_}  Angular
+{_C_} 1 revolution      = {rev = 2 * PI * rad} {Aout}
+{_C_} 1 degree          = {deg = degree = rev / 360} {Aout}
+{_C_} 1 arcmin          = {arcmin = degree / 60} {Aout}
+{_C_} 1 arcsec     	= {arcsec = arcmin / 60} {Aout}
+{_C_} 1 grade      	= {grade = degree * 0.9} {Aout}

@@ -1,0 +1,365 @@
+
+
+$                  inflow
+$  -------------5         6---------------
+$  \            |         |              /
+$   \           |         |             /
+$    \          |         |            /
+$     \         |         |           / 
+$      \        |         3----------4        14 
+$     1 --------2         
+$     
+$       
+$  7-----------8--web-----9----------10--------8
+$
+$Geometrical paramterization:
+$
+$Define: x is parallel with the web, y is perpendicular to it. 
+$Gap [=] y1-y7, PERIOD!  All rotation is done about point 1
+$Lip 1:  Specify y position of 2, relative to 1
+$Lip 3:  Specify y position of 3 and 4, relative to 1
+$Slot [=] x6 - x5 == x3 - x2
+$
+$
+$Also, x and y are just generic orthogonal directions here.  Actually
+$the model can be rotated with an angle alpha with the web, about point
+$1, and so the distances specified above remain the same, because
+$they will be relative to an imaginary line that goes through point 1
+$and theta=0 means parallel to the web. 
+$
+$
+$Operating Conditions
+$$
+$ Average Velocity at inflow cm/s           {inflow_speed = 6.0}
+$ Vacuum backpressure    [=] cgs            {vacuum = -2963.}
+$ Substrate (web) speed  [=] cm/s           {webspeed = 29.6}
+$ Viscosity (Newtonian)  [=] cgs            {viscosity = 0.29}
+$ Density   (Newtonian)  [=] cm^3/s         {density = 1.2}
+$ Surface Tension        [=] dyn/cm         {surface_tension = 61}
+$
+$$
+$Set Geometrical paramters (all parameters in MKS)
+$$
+$$ To make geometrical changes after having obtained a solution (btw
+$$ see accompanying README file for details on how to obtain a solution)
+$$ Please change the *_new parameter and leave the original geometry
+$$ parameter the same because GOMA needs to know the difference and magnitude
+$$ of the change.  If you want to start with a different mesh, change both
+$$ parameters and run fastq.  
+$$
+$$
+$  Original mesh          You have changed
+$  was built with:        it to:
+$-----------------------------------------
+$  {Gap = 0.05 }      {Gap_new = 0.050}
+$  {Initial_film_thickness = Gap/3.}
+$  {h1  = 0.000}     {h1_new  = 0.00}
+$  {h2  = 0.00}      {h2_new  = 0.00}
+$  {h3  = 0.00}      {h3_new  = 0.00}
+$  {alpha = 0.}     	{alpha_new = .0}
+$
+$  {S2  = 0.05}  	{S2_new = 0.05}
+$  {S1  = 0.08}  	{S1_new = 0.08}
+$  {L2  = 0.02}  	{L2_new = 0.02}
+$  {L1  = 0.04}  	{L1_new = 0.04}
+$
+$  {L3  = 0.19}  	{L3_new = 0.19}
+$
+$  {slip_length = 0.003}
+$
+$
+$
+$$Set mesh density
+{no_elem_L2 = 12}
+{no_elem_S1 = 6}
+{no_elem_S2 = 6}
+{no_elem_L1 = 10}
+{no_elem_L3 = 15}
+{no_elem_film = 4}
+{no_elem_along_slip_length = 3}
+
+
+
+$$
+$Define points
+$$
+
+$Die lips
+ {x1 = 0.}  {y1 = Gap}   0.
+ {x1_new = 0.}  {y1_new = Gap_new}   0.
+
+ {x2 = L2*cos(asin(h1/L2))} {y2 = h1+Gap}  0.
+ {x2_new = L2_new*cos(asin(h1_new/L2_new))} {y2_new = h1_new+Gap_new}  0.
+
+ {x3 = x2 + S2} {y3 = h2+Gap}   0.
+ {x3_new = x2_new + S2_new} {y3_new = h2_new+Gap_new}   0.
+
+ {x4 = x3 + L1*cos(asin((h3 - h2)/L1))} {y4 = h3+Gap} 0.
+ {x4_new = x3_new + L1_new*cos(asin((h3_new-h2_new)/L1_new))} {y4_new = h3_new+Gap_new}
+
+ {x5 = x2}  {y5 = Gap + h1 + S1}  0.
+ {x5_new = x2_new}  {y5_new = Gap_new + h1_new + S1_new}  0.
+
+ {x6 = x3}  {y6 = y5} 0.
+ {x6_new = x3_new}  {y6_new = y5_new} 0.
+
+$substrate
+ {x7 = x1}  {y7 = 0.} 0.
+ {x7_new = x1_new}  {y7_new = 0.} 0.
+
+ {x8 = x2}  {y8 = 0.} 0.
+ {x8_new = x2_new}  {y8_new = 0.} 0.
+
+ {x9 = x3}  {y9 = 0.} 0.
+ {x9_new = x3_new}  {y9_new = 0.} 0.
+
+ {x10 = x4} {y10 = 0.} 0.
+ {x10_new = x4_new} {y10_new = 0.} 0.
+
+ {x11 = x4_new+L3_new/5.} {y11 = 0.} 0.
+ {x11_new = x4_new+L3_new/5.} {y11_new = 0.} 0.
+
+ {x12 = x4+L3} {y12 = 0.} 0.
+ {x12_new = x4_new+L3_new} {y12_new = 0.} 0.
+
+$Downstream  meniscus
+ {x13 = x11} {y13 = Initial_film_thickness} 0.
+ {x13_new = x11_new} {y13_new = Gap_new} 0.
+
+ {xc = x11} {yc = Gap} 0.
+
+ {x14 = x12} {y14 = Initial_film_thickness} 0.
+ {x14_new = x12_new} {y14_new = Gap_new} 0.
+
+$Upstream meniscus
+ {x15 = x1+slip_length*cos(asin(h1/L2))} {y15 = y1+slip_length*sin(asin(h1/L2))} 0.
+ {x15_new = x1_new+slip_length*cos(asin(h1_new/L2_new))} {y15_new = y1_new+slip_length*sin(asin(h1_new/L2_new))} 0.
+
+ {x16 = x7+slip_length} {y16 = 0.} 0.
+ {x16_new = x7_new+slip_length} {y16_new = 0.} 0.
+
+ {x17 = x16} {y17 = (y15+y16)/2.} 0.
+ {x17_new = x16_new} {y17_new = (y15_new+y16_new)/2.} 0.
+
+ {x177 = x7+5.*slip_length} {y177 = (y15+y16)/2.} 0.
+ {x177_new = x7_new+5.*slip_length} {y177_new = (y15_new+y16_new)/2.} 0.
+
+ {x18 = x1 - Gap/4.} {y18 = y17} 0.
+ {x18_new = x1_new - Gap_new/2.} {y18_new = y17_new} 0.
+
+
+ $$$Die lips
+ {Delta_alpha = alpha_new-alpha}
+ {Ifndef(Delta_alpha)}
+  point 1 {x1}  {y1}   0.
+  point 2 {x2} {y2}  0.
+  point 3 {x3} {y3}   0.
+  point 4 {x4} {y4} 0.
+  point 5 {x5}  {y5}  0.
+  point 6 {x6}  {y6} 0.
+
+  $$$Substrate
+  point 7  {x7}  {y7} 0.
+  point 8  {x8}  {y8} 0.
+  point 9  {x9}  {y9} 0.
+  point 10 {x10} {y10} 0.
+  point 11 {x11} {y11} 0.
+  point 12 {x12} {y12} 0.
+
+  $$$Downstream meniscus
+  point 13 {x13} {y13} 0.
+  point 133 {xc} {yc} 0.
+  point 14 {x14} {y14} 0.
+
+  $$$Upstream meniscus
+  point 15 {x15} {y15} 0.
+  point 16 {x16} {y16} 0.
+  point 17 {x17} {y17} 0.
+  point 177 {x177} {y177} 0.
+  point 18 {x18} {y18} 0.
+
+{Else}
+
+  point 1 {x1_new = 0.}  {y1_new = Gap_new}   0.
+
+  {r = sqrt((x2-x1)^2 + (y2-y1)^2)} {theta = atan((y2-y1)/(x2-x1))}
+  point 2 {x2_new = r*cos(theta+alpha_new-alpha) + x1_new} {y2_new = r*sin(theta+alpha_new-alpha)+y1_new} 0.
+
+  {r = sqrt((x3-x1)^2 + (y3-y1)^2)} {theta = atan((y3-y1)/(x3-x1))}
+  point 3 {x3_new = r*cos(theta+alpha_new-alpha) + x1_new} {y3_new = r*sin(theta+alpha_new-alpha)+y1_new} 0.
+
+  {r = sqrt((x4-x1)^2 + (y4-y1)^2)} {theta = atan((y4-y1)/(x4-x1))}
+  point 4 {x4_new = r*cos(theta+alpha_new-alpha) + x1_new} {y4_new = r*sin(theta+alpha_new-alpha)+y1_new} 0.
+
+  {r = sqrt((x5-x1)^2 + (y5-y1)^2)} {theta = atan((y5-y1)/(x5-x1))}
+  point 5 {x5_new = r*cos(theta+alpha_new-alpha) + x1_new} {y5_new = r*sin(theta+alpha_new-alpha)+y1_new} 0.
+
+  {r = sqrt((x6-x1)^2 + (y6-y1)^2)} {theta = atan((y6-y1)/(x6-x1))}
+  point 6 {x6_new = r*cos(theta+alpha_new-alpha) + x1_new} {y6_new = r*sin(theta+alpha_new-alpha)+y1_new} 0.
+
+  $$$Substrate
+  point 7  {x7_new}  {y7_new} 0.
+  point 8  {x8_new}  {y8_new} 0.
+  point 9  {x9_new}  {y9_new} 0.
+  point 10 {x10_new} {y10_new} 0.
+  point 11 {x11_new} {y11_new} 0.
+  point 12 {x12_new} {y12_new} 0.
+
+  $$$Downstream meniscus
+  point 13 {x13_new} {y13_new} 0.
+  point 14 {x14_new} {y14_new} 0.
+
+  $$$Upstream meniscus
+  point 15 {x15_new} {y15_new} 0.
+  point 16 {x16_new} {y16_new} 0.
+  point 17 {x17_new} {y17_new} 0.
+  point 177 {x177_new} {y177_new} 0.
+  point 18 {x18_new} {y18_new} 0.
+ 
+
+
+{Endif}
+
+$
+$$$$Define lines and coefficients
+$
+Line  1  STR   15   2  0  {no_elem_L2}  1.0
+Line  2  STR   2   5  0  {no_elem_S1}  1.0
+Line  3  STR   5   6  0  {no_elem_S2}  1.0
+Line  4  STR   6   3  0  {no_elem_S1}  1.0
+Line  5  STR   3   4  0  {no_elem_L1}  0.8
+$$Line  6  STR   4   13  0  {no_elem_L3}  1.2
+Line  6  CIRC   4   13  133  {no_elem_L3}  1.2
+Line  7  STR   13   14  0  {no_elem_L3}  1.0
+Line  8  STR   14   12  0  {2*no_elem_film}  1.0
+Line  9  STR   12   11  0  {no_elem_L3}  1.0
+Line  10  STR   11   10  0  {no_elem_L3}  1.0
+Line  11  STR   10   9  0  {no_elem_L1}  1.0
+Line  12  STR   9   8  0  {no_elem_S2}  1.0
+Line  13  STR   8   16  0  {no_elem_L2}  1.0
+Line  14  STR   15   17  0  {no_elem_film}  1.0
+Line  144  STR   17   16  0  {no_elem_film}  1.0
+
+$
+$$$Internal lines
+$
+Line  15  STR   2   3  0  {no_elem_S2}  1.0
+Line  16  STR   2   8  0  {2*no_elem_film}  1.0
+Line  17  STR   3   9  0  {2*no_elem_film}  1.0
+Line  18  STR   4   10  0  {2*no_elem_film}  1.2
+Line  19  STR   13   11  0  {2*no_elem_film}  1.0
+
+Line  20  STR   15   1  0  {no_elem_along_slip_length}  1.0
+Line  21  STR   16   7  0  {no_elem_along_slip_length}  1.0
+Line  22  STR   17   18  0  {no_elem_along_slip_length*2}  1.0
+Line  23  CIRC   1   18  177  {no_elem_along_slip_length*2}  1.2
+Line  24  CIRC   18  7  177  {no_elem_along_slip_length*2}  0.8
+
+
+$
+$$Regions
+$
+Region 1 1 -14 -144 -13 -16 -1 
+Region 2 1 -16 -12 -17 -15
+Region 3 1 -17 -11 -10 -19 -6 -5
+$$Region 4 1 -10 -19 -6 -18
+Region 5 1 -19 -9 -8 -7
+Region 6 1 -15 -4 -3 -2
+$$Region 7 1 -20 -23 -22 -14
+$$Region 8 1 -22 -24 -21 -144
+
+Scheme 1 m
+Scheme 2 m
+Scheme 3 x
+$$Scheme 4 m
+Scheme 5 m
+Scheme 6 m
+$$Scheme 7 x
+$$Scheme 8 x
+
+Body 1 2 3 5 6 
+
+elembc 1 1 20
+elembc 2 2
+elembc 3 3
+elembc 4 4
+elembc 5 5
+elembc 6 6 7
+elembc 8 8
+elembc 9 9 10 11 12 13 21
+elembc 21 21
+
+elembc 23 14 144
+
+$ no-slip
+nodebc 1 1 2 4 5 20
+
+$Inflow
+nodebc 3 3
+
+$midplane
+nodebc 17 17
+
+$outflow
+nodebc 8 8
+
+$substrate
+nodebc 9 9 10 11 12 13
+
+
+$ouflow plane free surface intersection
+poinbc 400 4
+
+$Static separation line
+poinbc 1400 14
+
+$Static separation line upstream meniscus
+poinbc 100 15
+
+$DCl
+poinbc 700 16
+
+RENUM
+NINE
+End
+
+
+$$ Coefficients for the PLANE equations in the goma input file.
+
+
+$ SET c's to zero for 2D problem 
+$   {c1=0} {c2=0} {c3=0} {c4=0} {c5=0} {c6=0} {c7=0} {c8=0} {c9=0}
+
+$
+$ Calculate coefficients for general equation a*x + b*y +c*z +d = 0
+
+$ Calculate coefficients for general equation a*x + b*y +c*z +d = 0
+$   {a1=(y2_new-y1_new)/(x1_new-x2_new)}
+$   {d1=(-y1_new-a1*x1_new)}
+$   {b1=1}
+$
+$   {b2=(x5_new-x2_new)/(y2_new-y5_new)}
+$   {d2=(-x5_new-b2*y5_new)}
+$   {a2=1}
+$
+$   {a3=(y6_new-y5_new)/(x5_new-x6_new)}
+$   {d3=(-y5_new-a3*x5_new)}
+$   {b3=1}
+$
+$   {b4=(x6_new-x3_new)/(y3_new-y6_new)}
+$   {d4=(-x6_new-b4*y6_new)}
+$   {a4=1}
+$
+$   {a5=(y4_new-y3_new)/(x3_new-x4_new)}
+$   {d5=(-y3_new-a5*x3_new)}
+$   {b5=1}
+$
+$ NB: this is a vertical line
+$
+$   {b8=(x14_new-x12_new)/(y12_new-y14_new)}
+$   {d8=-x12_new-b8*y12_new}
+$   {a8=1}
+$
+$   {a9=(y12_new-y11_new)/(x11_new-x12_new)}
+$   {d9=(-y12_new-a9*x12_new)}
+$   {b9=1}

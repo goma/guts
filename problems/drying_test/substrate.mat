@@ -1,0 +1,61 @@
+{Include(Defs_figure9)}
+Material Data File for substrate
+
+
+---Physical Properties
+Density		= CONSTANT {rho_sub}
+
+---Mechanical Properties and Constitutive Equations
+Solid Constitutive Equation 	= NONLINEAR	
+#Solid Constitutive Equation 	= HOOKEAN_PSTRAIN	
+Lame MU 			= CONSTANT 	1.
+Lame LAMBDA 			= CONSTANT 	1.
+Stress Free Solvent Vol Frac	= CONSTANT	0.
+Liquid Constitutive Equation 	= NEWTONIAN
+Viscosity			= CONSTANT	1.
+Low Rate Viscosity		= CONSTANT	0.
+Power Law Exponent		= CONSTANT	0.
+High Rate Viscosity		= CONSTANT	0.
+Time Constant			= CONSTANT	0.
+Aexp 				= CONSTANT	0.
+
+---Thermal Properties
+Conductivity		= CONSTANT	{k_sub}
+Heat Capacity		= CONSTANT	{cp_sub}
+Volume Expansion	= CONSTANT	1.
+Reference Temperature	= CONSTANT	0.
+Liquidus Temperature	= CONSTANT	1.
+Solidus Temperature	= CONSTANT	1.
+ 
+---Electrical Properties
+Electrical Conductivity = CONSTANT      1.
+
+---Microstructure Properties
+Media Type          = CONTINUOUS
+Permeability		= CONSTANT	1.
+---Brinkman-equation parameters
+Brinkman Porosity         = CONSTANT    0.9
+Brinkman Permeability     = CONSTANT    1.0e-04
+FlowingLiquid Viscosity   = CONSTANT    1.0
+Inertia Coefficient       = CONSTANT    0.0
+
+
+---Species Properties
+Diffusion Constitutive Equation = FICKIAN
+Diffusivity  			= CONSTANT  0   1.
+Latent Heat Vaporization	= CONSTANT  0	0.
+Latent Heat Fusion		= CONSTANT  0	0.
+Vapor Pressure  		= CONSTANT  0	0.
+Species Volume Expansion	= CONSTANT	0  1.
+Reference Concentration         = CONSTANT  0   0.
+				            ^
+********Species Number**********************|
+
+----Source Terms
+Navier-Stokes Source		= CONSTANT	0.  0.  0.
+Solid Body Source		= CONSTANT	0.  0.  0.
+Mass Source			= CONSTANT	0.
+Heat Source			= CONSTANT	0.
+Species Source			= CONSTANT  0   0.
+Current Source                  = CONSTANT      0.
+

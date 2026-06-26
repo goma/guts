@@ -1,0 +1,32 @@
+Time/iteration = 0.000000e+00 
+ VOLUME_FLUX  Side_Set  20 Block  0 
+ flux=  3.833333e+00 0.000000e+00  area= 1.000000e+00  
+
+Time/iteration = 0.000000e+00 
+ VOLUME_FLUX  Side_Set  40 Block  0 
+ flux=  3.855745e-18 0.000000e+00  area= 1.900000e+01  
+
+Time/iteration = 0.000000e+00 
+ VOLUME_FLUX  Side_Set  20 Block  0 
+ flux=  nan 0.000000e+00  area= 0.000000e+00  
+
+Time/iteration = 0.000000e+00 
+ VOLUME_FLUX  Side_Set  40 Block  0 
+ flux=  nan 0.000000e+00  area= 0.000000e+00  
+
+Time/iteration = 0.000000e+00 
+ VOLUME_FLUX  Side_Set  20 Block  0 
+ flux=  nan 0.000000e+00  area= 0.000000e+00  
+
+Time/iteration = 0.000000e+00 
+ VOLUME_FLUX  Side_Set  40 Block  0 
+ flux=  nan 0.000000e+00  area= 0.000000e+00  
+
+Time/iteration = 0.000000e+00 
+ VOLUME_FLUX  Side_Set  20 Block  0 
+ flux=  nan 0.000000e+00  area= 0.000000e+00  
+
+Time/iteration = 0.000000e+00 
+ VOLUME_FLUX  Side_Set  40 Block  0 
+ flux=  nan 0.000000e+00  area= 0.000000e+00  
+

@@ -1,0 +1,39 @@
+# {include("slidertop.aprepro")}
+
+reset
+brick x {Xlen} y {Xlen} z {Zlen}
+move volume 1 z {Zlen/2}
+
+curve 9 10 11 12 interval 2
+surface 1 2 interval {nx}
+mesh volume 1
+
+block 1 surface 2
+block 1 element type SHELL4
+block 2 volume 1
+block 2 element type HEX8
+
+nodeset 1 curve 5
+nodeset 2 curve 8
+nodeset 3 curve 7
+nodeset 4 curve 6
+Sideset 1 curve 5
+Sideset 2 curve 8
+Sideset 3 curve 7
+Sideset 4 curve 6
+
+nodeset 10 surface 6
+nodeset 20 surface 5
+nodeset 30 surface 4
+nodeset 40 surface 3
+nodeset 50 surface 2
+nodeset 60 surface 1
+Sideset 10 surface 6
+Sideset 20 surface 5
+Sideset 30 surface 4
+Sideset 40 surface 3
+Sideset 50 surface 2 wrt volume 1
+Sideset 60 surface 1
+
+set large exodus file off
+export mesh "geometry.exoII" all overwrite

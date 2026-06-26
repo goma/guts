@@ -1,0 +1,69 @@
+{
+  "name": "rb_turning_point",
+  "description": "*********************************************************\n\t*\t\t\t\t\t\t\t*\n\t*\tRayleigh-Benard Convection with PSPG\t\t*\n\t*\tPART 4: Continuation along a stability boundary *\n\t*\tTest of LOCA Turning point tracking\t\t*\n\t*\t\t\t\t\t\t\t*\n\t*********************************************************",
+  "contact": {
+    "name": "Goma Developers",
+    "email": "contact@gomafem.com"
+  },
+  "estimated_time_minutes": 2,
+  "disabled": false,
+  "features": [
+    "serial",
+    "steady",
+    "continuation",
+    "gmres",
+    "pspg",
+    "cylindrical",
+    "2d",
+    "energy",
+    "no_chemkin"
+  ],
+  "requirements": {
+    "max_prob_var": 4,
+    "max_conc": 1,
+    "mde": 12,
+    "solver_package": "aztec",
+    "use_arpack": "no",
+    "enable_omega_h": ""
+  },
+  "run": {
+    "use_aprepro": true,
+    "aprepro_flags": "",
+    "use_chemkin": false,
+    "chemkin_input": "",
+    "use_mpi": false,
+    "num_processors": 1,
+    "use_decomp": false,
+    "brk_input": "",
+    "brk_exo_in": "",
+    "fix_exo_basename": "",
+    "goma_input": "rbtpt.input",
+    "goma_serr": "stderr.txt",
+    "goma_sout": "stdout.txt",
+    "goma_opts": ""
+  },
+  "blessed": {
+    "serr": "blessed.stderr.txt",
+    "sout": "blessed.stdout.txt",
+    "exo_output": [
+      "rbtpt-out.exoII"
+    ],
+    "blessed_exo_output": [
+      "blessed.exoII"
+    ],
+    "exo_abs_tol": [
+      1e-11
+    ],
+    "exo_rel_tol": [
+      0.001
+    ],
+    "exodiff_input_file": [
+      ""
+    ]
+  },
+  "extra": {
+    "whacked_files": [],
+    "extra_tests": false,
+    "extra_test_scripts": []
+  }
+}

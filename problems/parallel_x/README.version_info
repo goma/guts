@@ -1,0 +1,14 @@
+27-Node Hex Test: X-Flow: GOMA Version Information
+==================================================
+
+Directory:   .../VandV/problems/v2.2/parallel_x
+
+Sept 8, 99 baseline #1
+**********************
+     goma_Aug3099 executable
+     output files:
+        base1.sout
+        base1.serr
+
+     initial residuals - 1.4e+00 5.8e+01 7.7e+00 
+     1st iteration updates - 4.8e+01 8.1e+03 4.0e+02 

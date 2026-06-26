@@ -1,0 +1,61 @@
+Mutiple-Species Drying of Two-Layers on Substrate: GOMA Version Information
+===========================================================================
+
+Directory:   .../problems/roll_f9rr
+
+Jan 10, 01 baseline #1
+**********************
+     goma_Jan??01 executable
+     output files:
+        base1.sout
+        base1.serr
+        base1_out.exoII
+
+     initial residuals -  8.7e-05 6.6e-03 3.8e-04
+     initial updates -  4.6e+02 2.6e+04 2.6e+03
+
+2/23/01
+--------
+  The solution to this problem changed due to a bug fix from Randy
+on 2/23/01. base2.serr contains the new convergence history, while
+out2_blessed.exoII contains the new solution.
+
+March 1, 01 baseline #2
+***********************
+     goma_Mar??01 executable
+     output files:
+        base2.sout
+        base2.serr
+        base2_out.exoII
+
+     initial residuals -  1.4e-07 1.2e-05 1.2e-06
+     initial updates - 6.1e-01 4.2e+01 4.0e+00
+
+August 19, 02 baseline #3
+*************************
+     goma_Sep102 executable
+     output files:
+        base3.sout
+        base3.serr
+        base3_out.exoII
+
+     initial residuals -  1.4e-07 1.2e-05 1.2e-06
+     initial updates - 6.1e-01 4.2e+01 4.0e+00
+
+Feb 09, 2009 baseline #4
+*************************
+     goma_02092009 executable
+     output files:
+        base3.sout
+        base3.serr
+        out_blessed_4.exoII
+
+     initial residuals -  1.4e-07 1.2e-05 1.2e-06
+     initial updates - 6.1e-01 4.2e+01 4.0e+00
+
+     Rebaselined due to a bug fix in T33 by Secor. Had to 
+     change the blessed exodus file.
+
+
+
+

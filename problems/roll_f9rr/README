@@ -1,0 +1,11 @@
+To get a solution to forward.9, it is the exact set of conditions
+as in forward.8, the lower deformable roll case. This case simply
+has a rigid lower roll, so some of the conditions on sset 2 are
+different than in the TALE memo.   However, the startup procedure
+is basically the same.  On the release of the upstream meniscus
+we can do by applying a much larger backpressure at a nip of
+0.02 cm.   That backpressure is about 23000 dyn/cm2.   Otherwise,
+follow CAREFULLY everything the TALE roll coating tutorial says.
+
+After you get a solution, you can lower the backpressure as you squeeze
+the rolls or change the speeds.  

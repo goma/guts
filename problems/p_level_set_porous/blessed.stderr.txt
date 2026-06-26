@@ -1,0 +1,5 @@
+Aprepro-6.41: ERROR: Improperly Nested ifdef/ifndef statements (input_axi_restart, line 151)
+WARNING: Defaulting on Time step error norm indicators
+ (/opt/workdir/goma/src/mm_input.c:1612)
+WARNING: Boundary condition 4, LS_CAPILLARY, applied on NS 0, is never used
+ (/opt/workdir/goma/src/mm_bc_conflict.c:2001)

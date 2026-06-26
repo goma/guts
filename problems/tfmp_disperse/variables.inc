@@ -1,0 +1,33 @@
+$ Contact Angle 				 {contact_angle = 0.0}
+$ Surface Tension 	 {surface_tension = 0.0}
+$ Element Size			 {element_size = 15e-3}
+$ Streamline-Upwind/Petrov Galerkin weighting factor 	 {supg = .25}
+#$ SUPG model		   	    	      		 {supg_model = "MASS_LUMPED_SUPG"}
+$ SUPG model		   	    	      		 {supg_model = "SUPG"}
+$ Time Step Parameter				{tsp = 0.0}
+$ Gas Viscosity				{mu_g = 18.6e-5}
+$ Liquid Viscosity				{mu_l = 1.0}
+$ Gas Density				{rho_g = 0.00118}
+$ Liquid Density				{rho_l = 0.998}
+$ Viscosity Error				{beta_mu  = .1}
+$ Density Error					{beta_rho = .01}
+$ Backwards Diffusivity			{bdif = 5e-3}
+
+$ initial height                          {h0 = 2000e-7}
+$ final height				  {hf = 50e-7}
+$ final time				  {tf = 100}
+$ ratio of initial dh/dt to final dh/dt	  {h_alpha = 2}
+$ poly-time c0				  {c0 = h0}
+$ poly-time c2				  {c2 = (hf - c0)/((2*h_alpha)/(1-h_alpha) + 1)/tf/tf}
+$ poly-time c1				  {c1 = c2*2*h_alpha*tf/(1-h_alpha)}
+
+$ Thin Film Multiphase Mass Lumping 			 {tfmp_ml = "yes"}
+$ Thin Film Multiphase Clipping 			 {tfmp_clip = "yes"}
+$ Thin Film Multiphase Clip strength 			 {tfmp_clip_strength = "1e5"}
+$ Thin Film Multiphase Diffusivity Transition Center			 {tfmp_diff_center = 0.90}
+$ Thin Film Multiphase Diffusivity Transition Half-Length			 {tfmp_beta_d = 0.20}
+$ Thin Film Multiphase Gas Permeability Transition Center			 {Scg = 0.5}
+$ Thin Film Multiphase Gas Permeability Transition Half-Length			 {alphag = 0.5}
+$ Thin Film Multiphase Liquid Permeability Transition Center			 {Scl= 0.5}
+$ Thin Film Multiphase Liquid Permeability Transition Half-Length			 {alphal = 0.5}
+$ Normalized Residual Tolerance			 {nrt = 1e-7}

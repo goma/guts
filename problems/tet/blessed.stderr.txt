@@ -1,0 +1,2 @@
+WARNING: Cant do stream function in 3D (/opt/workdir/goma/src/mm_post_proc.c:9640)
+		converged SS!

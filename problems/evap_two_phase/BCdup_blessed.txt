@@ -1,0 +1,98 @@
+
+At global node 1 (proc node 1) (0, 0) 
+ R_MOMENTUM1     (MatID=0) gets   U               (7) from NS 1
+
+ R_MOMENTUM2     (MatID=0) gets   V               (6) from NS 1
+
+ R_ENERGY        gets   T               (13) from NS 2
+
+ R_Y0            (MatID=0) gets   Y               (9) from NS 1
+
+ R_MESH1         gets   PLANE           (0) from SS 2
+
+ R_MESH2         gets   PLANE           (4) from SS 1
+
+
+At global node 100 (proc node 100) (0, 0.0254) 
+ R_MOMENTUM1     (MatID=0) gets   U               (7) from NS 1
+
+ R_MOMENTUM1     (MatID=1) gets   U               (33) from NS 400
+
+ R_MOMENTUM2     (MatID=0) gets   V               (6) from NS 1
+
+ R_MOMENTUM2     (MatID=1) gets   V               (20) from NS 5
+
+ R_ENERGY        gets   T               (8) from NS 1
+
+ R_Y0            (MatID=0) gets   Y               (9) from NS 1
+
+ R_Y0            (MatID=1) gets   Y               (21) from NS 5
+
+ R_MESH1         gets   DX              (31) from NS 400
+
+ R_MESH2         gets   DY              (32) from NS 400
+
+
+At global node 400 (proc node 400) (0, 0.3175) 
+ R_MOMENTUM1     (MatID=1) gets   U               (17) from NS 6
+
+ R_MOMENTUM2     (MatID=1) gets   V               (16) from NS 6
+
+ R_ENERGY        gets   T               (22) from NS 5
+
+ R_Y0            (MatID=1) gets   Y               (18) from NS 6
+
+ R_MESH1         gets   PLANE           (3) from SS 6
+
+ R_MESH2         gets   PLANE           (5) from SS 5
+
+
+At global node 841 (proc node 841) (10, 0) 
+ R_MOMENTUM1     (MatID=0) gets   U               (10) from NS 2
+
+ R_MOMENTUM2     (MatID=0) gets   V               (11) from NS 2
+
+ R_ENERGY        gets   T               (13) from NS 2
+
+ R_Y0            (MatID=0) gets   Y               (12) from NS 2
+
+ R_MESH1         gets   PLANE           (0) from SS 2
+
+ R_MESH2         gets   PLANE           (1) from SS 3
+
+
+At global node 851 (proc node 851) (10, 0.0254) 
+ R_MOMENTUM1     (MatID=0) gets   SURFTANG        (27) from NS 300
+			CAPILLARY       (26) from SS 4
+
+ R_MOMENTUM1     (MatID=1) gets   U               (34) from NS 300
+
+ R_MOMENTUM2     (MatID=0) gets   V               (14) from NS 3
+
+ R_MOMENTUM2     (MatID=1) gets   V               (15) from NS 7
+
+ R_ENERGY        gets   LATENT_HEAT_INTERNAL (30) from SS 4
+
+ R_Y0            (MatID=0) gets   KINEMATIC_SPECIES (29) from SS 4
+
+ R_Y0            (MatID=1) gets   VL_EQUIL        (28) from SS 4
+
+ R_MESH1         gets   PLANE           (1) from SS 3
+
+ R_MESH2         gets   KINEMATIC_DISC  (23) from SS 4
+
+
+At global node 861 (proc node 861) (10, 0.3175) 
+ R_MOMENTUM1     (MatID=1) gets   U               (17) from NS 6
+
+ R_MOMENTUM2     (MatID=1) gets   V               (15) from NS 7
+
+ R_ENERGY        gets   T               (19) from NS 6
+
+ R_Y0            (MatID=1) gets   Y               (18) from NS 6
+
+ R_MESH1         gets   PLANE           (2) from SS 7
+
+ R_MESH2         gets   PLANE           (3) from SS 6
+
+

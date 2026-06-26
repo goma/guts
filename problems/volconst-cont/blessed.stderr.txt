@@ -1,0 +1,4 @@
+MAT 0 Thixotropic Factor = 0
+WARNING: Defaulting Thixotropic Factor to Zero (/opt/workdir/goma/src/mm_input_mp.c:2160)
+Warning: alloc_dbl_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_input_util.c: line 1766
+WARNING: Warning no time steps found in volume2.exoII (/opt/workdir/goma/src/rf_util.c:2582)

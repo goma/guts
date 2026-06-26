@@ -1,0 +1,17 @@
+{ifndef(Main)}
+{_C_}	Main = { Main = 1}
+{_C_}	
+{Units("si")}
+{_C_}	Extra units I like to use...
+{_C_}		s = { s      = sec } second
+{_C_}		ampere = { ampere = 1 } 
+{_C_}		volt = { volt	 = 1 }
+{_C_}		poise = { poise  = 0.1 * newton * second / meter^2 }
+{_C_}		cp = { cp	 = centipoise = 0.01 * poise } centipose
+{_C_}	
+{include("Properties")}
+{include("Analysis")}
+{include("Geometry")}
+{include("Scaling")}
+{include("Mesh")}
+{endif}

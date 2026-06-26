@@ -1,0 +1,108 @@
+# Initial dimension in micron
+#Depth of liquid {D_liq = 0.1}
+#Depth of the step {D_step = 0.1}
+#Length of the feature {L_feat = 0.35}
+#Length of the mask {L_mask = 2.0 * 0.35}
+#Initial depth{D_in = 1.0e-3} 
+
+create brick x {L_feat + L_mask} y {D_liq}  z 1
+move volume 1 y {0.5 * D_liq + D_step}
+create brick x {L_feat} y {D_in} z 1
+move volume 2 y {-0.5 * D_in}
+create brick x {L_feat} y {D_step} z 1
+move volume 3 y {0.5 * D_step}
+
+webcut volume 1 with plane xplane offset {-0.5 * L_feat} imprint merge
+webcut volume 1 with plane xplane offset {0.5 * L_feat} imprint merge
+
+webcut volume 2 with general plane location {-0.5 * L_feat} 0 0.5 location {-0.5 * L_feat} 0 -0.5 location {-0.5 * L_feat + D_in/sqrt(2)} {-D_in} 0.5 imprint merge
+webcut volume 6 with general plane location {0.5 * L_feat} 0 0.5 location {0.5 * L_feat} 0 -0.5 location {0.5 * L_feat - D_in/sqrt(2)} {-D_in} 0.5 imprint merge
+
+delete vol 2 7
+
+imprint all
+merge all
+
+curve 84 14 26 67 interval 40
+curve 1 3 53 39 interval 10
+curve 1 scheme bias factor {1.05}
+curve 3 39 53 scheme bias factor {1.0/1.05}
+curve 25 27 interval 25
+curve 25 scheme bias factor {1.03}
+curve 27 scheme bias factor {1.0/1.03}
+curve 82 70 interval 5
+
+curve 50 52 59 60 interval 20
+curve 50 60 scheme bias factor {1.03}
+curve 52 59 scheme bias factor {1.0/1.03}
+
+surface 32 36 27 13 50 scheme map
+mesh surface  32 36 27 13 50
+
+nodeset 1 curve 1
+sideset 1 curve 1
+
+nodeset 2 curve 50 67 59
+sideset 2 curve 50 67 59
+
+nodeset 3 curve 3
+sideset 3 curve 3
+
+nodeset 4 curve 52 26 60
+sideset 4 curve 52 26 60
+
+nodeset 41 curve 52
+sideset 41 curve 52
+
+nodeset 42 curve 60
+sideset 42 curve 60
+
+nodeset 43 curve 26
+sideset 43 curve 26
+
+nodeset 51 curve 70
+nodeset 51 node in curve 84 remove
+sideset 51 curve 70
+
+nodeset 52 curve 82
+nodeset 52 node in curve 84 remove
+sideset 52 curve 82
+
+nodeset 53 curve 84
+sideset 53 curve 84
+
+nodeset 61 curve 27
+sideset 61 curve 27
+
+nodeset 62 curve 25
+sideset 62 curve 25
+
+nodeset 63 curve 14
+sideset 63 curve 14
+
+
+block 1 surface 32 36 27 13 50 
+block 1 element type QUAD9
+
+#Rescale all dimensions to cm
+volume all scale x 1e-4 y 1e-4 z 1e-4
+
+export genesis "single_feature_step.exoII" overwrite
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

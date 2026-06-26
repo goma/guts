@@ -1,0 +1,177 @@
+#{include(properties.aprepro)}
+------------------------------------------------------------
+                 FEM Problem Specifications
+------------------------------------------------------------
+FEM file                         = mesh.g
+Output EXODUS II file            = out.exoII
+GUESS file                       = contin.dat
+SOLN file                        = no
+Write intermediate results       = no
+------------------------------------------------------------
+                 General Specifications
+------------------------------------------------------------
+Output Level                     = 0
+Debug                            = 0
+#
+#
+#Initial Guess                    = zero
+Initial Guess                    = read_exoII_file mesh.exoII
+#Initialize = PRESSURE 0 0.
+Initialize = VELOCITY2 0 {-w1}
+Initialize = FILM_HEIGHT 0 {h1}
+#
+------------------------------------------------------------
+                 Time Integration Specifications
+------------------------------------------------------------
+Time Integration Specifications
+---- ----------- --------------
+Time integration                        = steady
+delta_t                                 = 1e-3
+Maximum number of time steps            = 10000
+Maximum time                            = 10000
+Minimum time step                       = 1e-07
+Maximum time step                       = 50
+Time step parameter                     = 0.0
+Time step error                     = -5e-3  1 1 1 1 0 1 1 1 1
+Initial Time                        = 0
+Printing Frequency                  = 2
+#March to Steady State = yes
+#Steady State Tolerance = 5e-5
+------------------------------------------------------------
+                 Continuation Specifications
+------------------------------------------------------------
+Continuation                     = zero
+Continuation Type                = BC
+Boundary condition ID            = 1
+Boundary condition data float tag= 0
+Material id                      = 1
+Material property tag            = 5000
+Material property tag subindex   = 0
+#Initial parameter value          = {0.8 * air_gap / w2}
+#Final parameter value            = {lambda}
+#delta_s                          = {lambda / 100}
+#Maximum number of path steps     = 2000
+#Minimum path step                = {lambda/1000}
+#Maximum path step                = {lambda/10}
+Initial parameter value          = {-w1}
+Final parameter value            = {-w2}
+delta_s                          = {w2/100}
+Maximum number of path steps     = 2000
+Minimum path step                = {w2/1000}
+Maximum path step                = {w2/20}
+Continuation Printing Frequency  = 1
+------------------------------------------------------------
+                 Solver Specifications
+------------------------------------------------------------
+Solution Algorithm               = amesos
+#Solution Algorithm               = stratimikos
+#Matrix storage format            = tpetra
+Amesos Solver Package            = superlu
+MUMPS ICNTL 14 = 50
+Number of Newton Iterations      = 12
+#Newton line search type = BACKTRACK
+Newton correction factor         = 1
+#Newton correction factor = 0.5 1.0e-6 0.2 1.0e-4 0.1 1.0e-3
+Normalized Residual Tolerance    = 1.0e-8
+#Normalized Correction Tolerance    = 1.0e-6
+Detailed Solver Output           = yes
+Use AutoDiff Assembly = yes
+
+------------------------------------------------------------
+	Boundary Condition Specifications                 
+------------------------------------------------------------
+
+Number of BC = -1
+
+# outflow
+BC = U NS 3 0.
+#BC = V NS 3 {-2*w1}
+BC = V NS 3 {-w2}
+# {time_max = 500}
+#BC = GD_LINEAR SS 2 R_MOMENTUM2 0 VELOCITY2 0 {-w2/time_max} 0.
+#BC = GD_TIME SS 2 R_MOMENTUM2 0 LINEAR 0 0 1. {time_max}
+#BC = GD_LINEAR SS 2 R_MOMENTUM2 0 VELOCITY2 0 0. -1.
+#BC = PLANE SS 3 0. 1. 0. 0.
+BC = DY NS 3 0.
+
+
+# inflow
+BC = U NS 4 0.
+BC = V NS 4 {-w1}
+BC = FILM_HEIGHT NS 4 {h1}
+BC = FIX NS 4 MESH_DISPLACEMENT1 0 0.
+BC = DY NS 4 0.
+
+# axi x norm
+BC = U NS 1 0.
+BC = DX NS 1 0.
+
+BC = KINEMATIC_XI SS 2 0.
+#BC = DY NS 2 0.
+BC = ELLIPTIC_ETA_REGULARIZATION SS 2 100
+#BC = FILM_HEIGHT NS 2 0
+
+END OF BC
+
+#Rotation Specifications =
+#ROT = MESH   SURFACE   6   T1   0   T2   0   KINEMATIC 6 SEED 1. 0. 0.
+#ROT = MESH   SURFACE   5   KINEMATIC 5 T1 0   T2   0 SEED 0. 1. 0.
+#ROT = MESH   SURFACE   3   PLANE 3 T1 0   T2   0 SEED 0. 1. 0.
+#ROT = MESH   SURFACE   2   T1 0 PLANE 2  T2   0 SEED 1. 0. 0.
+#ROT = MESH   SURFACE   4   T1 0   T2   0 PLANE 4 SEED 1. 0. 0.
+#ROT = MESH EDGE 5 6 KINEMATIC 5 T 0 KINEMATIC 6 NONE
+#ROT = MESH EDGE 4 5 KINEMATIC 5 T 0 PLANE 4 NONE
+#ROT = MESH EDGE 2 5 KINEMATIC 5 PLANE 2 T 0 NONE
+#ROT = MESH EDGE 3 6 PLANE 3 T 0 KINEMATIC 6 NONE
+#ROT = MESH EDGE 2 6 T 0 PLANE 2 KINEMATIC 6 NONE
+#ROT = MESH EDGE 2 5 KINEMATIC 5 PLANE 2 T 0 NONE
+#ROT = MESH EDGE 2 3 PLANE 3 PLANE 2 T 0 NONE
+#ROT = MESH EDGE 2 4 T 0 PLANE 2 PLANE 4 NONE
+#ROT = MESH EDGE 3 4 PLANE 3 T 0 PLANE 4 NONE
+#ROT = MESH   VERTEX   2 5 6  KINEMATIC 5 PLANE 2 KINEMATIC 6 NONE
+#ROT = MESH   VERTEX   2 6 3  PLANE 3 PLANE 2 KINEMATIC 6 NONE
+#ROT = MESH   VERTEX   2 4 3  PLANE 3 PLANE 2 PLANE 4 NONE
+#ROT = MESH   VERTEX   2 4 5  KINEMATIC 5 PLANE 2 PLANE 4 NONE
+#END OF ROT
+
+
+-------------------
+Problem Description
+-------------------
+
+Number of Materials = 1
+MAT = ve  1
+
+  Coordinate System = CARTESIAN
+
+  Element Mapping = isoparametric
+
+  Mesh Motion = ARBITRARY
+
+  Number of bulk species = 0
+
+  Number of viscoelastic modes = 1
+
+Number of EQ = 14
+    EQ = momentum1  Q2	U1 Q2	     0.    0.   1.   1.   1.   0.
+    EQ = momentum2  Q2	U2 Q2	     0.    0.   1.   1.   1.   0.
+    EQ = film_height Q1	FILM_HEIGHT  Q1	  1. 1. 1. 1. 1.
+    EQ = mesh1      Q2 D1 Q2        0. 0. 1. 1. 1.
+    EQ = mesh2      Q2  D2 Q2        0. 0. 1. 1. 10.
+    EQ = stress11   Q1	S11	Q1	     1.    1.   1.   1.   1.
+    EQ = stress12   Q1	S12	Q1	     1.    1.   1.   1.   1.
+    EQ = stress22   Q1	S22	Q1	     1.    1.   1.   1.   1. 
+    EQ = stress33   Q1	S33	Q1	     1.    1.   1.   1.   1. 
+    EQ = gradient11   Q1	G11	Q1	     1.    1.
+    EQ = gradient12   Q1	G12	Q1	     1.    1.
+    EQ = gradient21   Q1	G21	Q1	     1.    1.
+    EQ = gradient22   Q1	G22	Q1	     1.    1.
+    EQ = gradient33   Q1	G33	Q1	     1.    1.
+                                     ms   adv  bnd  dif  src  porous
+
+                                     ms   adv  bnd  dif  src  porous
+
+
+Post Processing Specifications
+#Pressure contours = yes
+#Stress contours = yes

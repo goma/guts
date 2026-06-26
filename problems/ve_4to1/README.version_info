@@ -1,0 +1,34 @@
+Giesekus Fluid in 4-to-1 Contraction: GOMA Version Information
+==============================================================
+
+Directory:   .../VandV/problems/v2.2/ve_4to1
+
+Sept 8, 99 baseline #1
+**********************
+     goma_Aug3099 executable
+     exoII input file: newt.exoII, generated with goma_Aug3099 executable
+     output files:
+        base1.sout
+        base1.serr
+        base1_out.exoII
+
+     initial residuals - 1.0e+00 6.2e+01 4.1e+00 
+     1st iteration updates - 3.0e+01 1.6e+03 7.6e+01 
+
+NB: some work has been done in mm_post_proc in the last 6 months or
+so, including the stream function calculation. An exodiff failure
+on the stream function has been seen for some time. A new baseline
+will be set to establish a new reference.
+
+
+Mar 22, 01 baseline #2
+**********************
+     goma_Jan1801 executable
+     exoII input file: newt.exoII, generated with goma_Aug3099 executable
+     output files:
+        base2.sout
+        base2.serr
+        base2_out.exoII
+
+     initial residuals - 1.0e+00 6.2e+01 4.1e+00 
+     1st iteration updates - 3.0e+01 1.6e+03 7.6e+01 

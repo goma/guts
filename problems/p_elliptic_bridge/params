@@ -1,0 +1,7 @@
+$ ne_z {ne_z = 200}
+$ ne_r {ne_r = 7}
+$ length {l = 1.5}
+$ radius {r = 1}
+$ density {density = 1.0}
+$ surface tension {gamma = 1.0}
+$ viscosity {viscosity = 0.07}

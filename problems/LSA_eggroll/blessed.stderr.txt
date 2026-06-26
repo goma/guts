@@ -1,0 +1,8 @@
+		converged SS!
+
+WARNING: Linear Stability Analysis is not (and cannot be) compatible
+  with all user-supplied boundary conditions (i.e., BC cards with
+  the term USER in them).  If you are using some, and you want LSA,
+  then you must modify your boundary conditions accordingly.
+
+		completed LSA!

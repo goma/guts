@@ -1,0 +1,66 @@
+v7.9.0-35-gc4ca574f
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2022 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+
+Internal METIS decomposition using Recursive Bisection.
+
+
+
+----------------- Communications Stats ------------
+
+		Number of Neighbors
+		Max:     3 (Proc = 0)		 Avg:  3.000		Min: 3 (Proc = 0)
+
+		Size of Messages
+		Max:  2512 (Proc = 1)		 Avg: 2971.833		Min: 700 (Proc = 0)
+--------------------------------------------------
+
+
+
+##################################### PRINT_SYNC_START #########################
+P_0: rotating equations at 0 nodes.
+
+##################################### PRINT_SYNC_END__ #########################
+
+#PETSc Option Table entries:
+-ksp_type preonly # (source: file)
+-pc_factor_mat_solver_type mumps # (source: file)
+-pc_type lu # (source: file)
+#End of PETSc Option Table entries
+
+Number of unknowns            = 241160
+
+Number of matrix nonzeroes    = 1645895
+
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+23:15:50 [0] 1.7e-01 4.1e+02 5.0e+00 6.8e+01 2.6e+06 7.5e+03 1 2.2e+00/2.7e+01 
+23:16:26 [1] 2.2e-13 1.6e-10 9.7e-13                         skp 2.2e+00/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   6.848e+01  4.759e+01  3.229e+01 
+
+Fixing exodus file out.exoII
+
+-done
+
+
+Proc 0 runtime:       0.76 Minutes.
+

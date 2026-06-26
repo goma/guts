@@ -1,0 +1,39 @@
+Riedel Vapor-Pressure Model Test: GOMA Version Information
+==========================================================
+
+Directory:   .../VandV/problems/v2.2/psat_rdl
+
+Sept 8, 99 baseline #1
+**********************
+     goma_Aug3099 executable
+     output files:
+        base1.sout
+        base1.serr
+        base1_vle_rdl_out.exoII
+
+     initial residuals - 1.2e-01 1.7e+00 3.8e-01 
+     1st iteration updates - 5.0e-01 7.4e+00 1.7e+00
+
+Sept 8, 99 baseline #2
+**********************
+     goma_000620 executable
+     output files:
+        base2.sout
+        base2.serr
+        base2_vle_rdl_out.exoII
+
+     initial residuals - 1.3e-03 1.7e-02 4.1e-03 
+     1st iteration updates - 1.3e-03 1.8e-01 1.4e-02 
+
+Re-baseline this problem with a "modern"-day Goma.
+
+Dec 5, 03 baseline #3
+**********************
+     goma_120503 executable
+     output files:
+        blessed.sout
+        blessed.serr
+        blessed_vle_rdl_out.exoII
+
+     initial residuals - 1.3e-03 1.7e-02 4.1e-03 
+     1st iteration updates - 1.3e-03 1.8e-01 1.4e-02 

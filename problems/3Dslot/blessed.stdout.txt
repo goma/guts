@@ -1,0 +1,55 @@
+v7.11.0-1-g709cfe59
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2026 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+
+
+P_0: rotating equations at 225 nodes.
+######################### __PRINT_SYNC_END__ #########################
+
+Number of unknowns            = 26670
+
+Number of matrix nonzeroes    = 4030936
+
+Initial guess read from "restart_center_slot3D.exoII" ...(last soln in file)
+Nodal variable VX found in exoII database - reading.
+Nodal variable VY found in exoII database - reading.
+Nodal variable VZ found in exoII database - reading.
+Nodal variable DMX found in exoII database - reading.
+Nodal variable DMY found in exoII database - reading.
+Nodal variable DMZ found in exoII database - reading.
+Nodal variable P found in exoII database - reading.
+		 Values read time plane at time = 6
+
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:08 [0] 1.5e-02 4.3e-01 3.9e-02 4.2e-01 3.9e+02 7.8e+00  39 6.9e+00/1.0e+00 
+17:08:16 [1] 1.6e-04 2.2e-02 6.9e-04 5.9e-03 4.2e+00 7.9e-02  48 3.8e+00/1.1e+00 
+17:08:21 [2] 5.9e-07 7.7e-05 1.8e-06 8.0e-05 9.9e-02 1.9e-03  52 4.2e+00/1.1e+00 
+17:08:27 [3] 8.6e-11 1.5e-07 1.6e-09 1.8e-07 2.4e-04 4.7e-06  55 4.0e+00/1.2e+00 
+17:08:32 [4] 8.4e-14 1.1e-10 1.2e-12                         skp 4.0e+00/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   4.633e+01  8.205e-01  3.807e+00 
+
+-done
+
+
+Proc 0 runtime:       0.47 Minutes.
+

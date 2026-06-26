@@ -1,0 +1,52 @@
+$$have Parse module for /usr/local/bin/matldb/material_db.xlsx 
+$Material Property Values
+{ECHO(OFF)}
+${onedir = "si_mm"}
+${twodir = "conversion"}
+${include(onedir)}
+{ECHO(OFF)}
+${include(twodir)}
+$Unit_System   Length Velocity Density  Pressure  Energy
+$ si_mm       {lout}  {vout}   {dout}   {pout}    {eout}
+$material {matl= "Bikash_0_08pct_Carbopol"}
+$Viscosity_model {Viscosity_model= "CARREAU"}
+$Viscosity_eta0  {v_eta0=100.0~Pa*sec}
+$Viscosity_power_law  {v_power_law=0.25}
+$Viscosity_lambda  {v_lambda=1.0~sec}
+$Viscosity_exponent  {v_exponent=3}
+$Viscosity_etainf  {v_etainf=0.1~Pa*sec}
+$units for Viscosity are  kPa*sec
+$end of Viscosity parameters
+$Normal_Stress_model {Normal_Stress_model= "NONE"}
+$Normal_Stress_csi10  {n_csi10=0~Pa*sec^2}
+$units for Normal_Stress are  kPa*sec^2
+$end of Normal_Stress parameters
+$Density_model {Density_model= "CONSTANT"}
+$Density_value  {d_value=0.000001}
+$units for Density are  kg/mm^3
+$end of Density parameters
+$Heat_Capacity_model {Heat_Capacity_model= "CONSTANT"}
+$Heat_Capacity_value  {hc_value=10~J/kg/degC}
+$units for Heat_Capacity are  uJ/kg/degC
+$end of Heat_Capacity parameters
+$Thermal_Conductivity_model {Thermal_Conductivity_model= "CONSTANT"}
+$Thermal_Conductivity_value  {tc_value=0.001~J/m/sec/degC}
+$units for Thermal_Conductivity are  uJ/mm/sec/degC
+$end of Thermal_Conductivity parameters
+$Modulus_model {Modulus_model= "CONSTANT"}
+$Modulus_value  {m_value=1~Pa}
+$units for Modulus are  kPa
+$end of Modulus parameters
+$Surface_Tension_model {Surface_Tension_model= "CONSTANT"}
+$Surface_Tension_value  {st_value=30.0}
+$units for Surface_Tension are  kPa*mm
+$end of Surface_Tension parameters
+$Refractive_Index_model {Refractive_Index_model= "NONE"}
+$Refractive_Index_value  {ri_value=1}
+$units for Refractive_Index are dimless 
+$end of Refractive_Index parameters
+$Viscoelastic_model {Viscoelastic_model= "NONE"}
+$Viscoelastic_eqmod  {ve_eqmod=0~Pa}
+$units for Viscoelastic are  kPa
+$end of Viscoelastic parameters
+$$done

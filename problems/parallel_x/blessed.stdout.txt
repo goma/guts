@@ -1,0 +1,44 @@
+v7.11.0-1-g709cfe59
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2026 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+
+
+P_0: rotating equations at 0 nodes.
+######################### __PRINT_SYNC_END__ #########################
+
+Number of unknowns            = 2312
+
+Number of matrix nonzeroes    = 383788
+
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:08:43 [0] 1.4e+00 5.8e+01 7.7e+00 4.8e+01 8.1e+03 4.0e+02  1  6.4e-01/5.9e+01 
+L_oo cause: R->(899 VX n=275 (x=-1 y=-0.25 z=0.25))DelX->(771 P n=233 (x=-1 y=0 z=0))
+17:09:43 [1] 1.2e-14 9.7e-13 5.0e-14                         skp 3.6e-01/0.0e+00 
+L_oo cause: R->(2282 VX n=720 (x=0.25 y=0 z=-0.25))DelX->(771 P n=233 (x=-1 y=0 z=0))
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   4.800e+01  3.505e+00  8.260e+00 
+
+-done
+
+
+Proc 0 runtime:       1.00 Minutes.
+

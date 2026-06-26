@@ -1,0 +1,12 @@
+{ifndef(Scaling)}
+{_C_}__________Scaling = { Scaling = 1 }
+{_C_}
+{_C_}
+{_C_}	Characteristic quantities:
+{_C_}	-------------- -----------
+{_C_}
+{_C_}	Length,  L_char 		= { L_char = 1 ~cm }
+{_C_}
+{_C_}	Time, t_char 			= { t_char = L_char^2/kappa}
+{_C_}
+{endif}

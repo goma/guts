@@ -1,0 +1,1 @@
+This problem solves a slider bearing with mesh deformation using the lubrication shell equation.  The bottom wall is slanted and moving, and the top boundary is held still, but allowed to deform. 

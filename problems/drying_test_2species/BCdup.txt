@@ -1,0 +1,39 @@
+BC Duplication list for Processor 0:
+-------- --------- ----------- ----
+
+At global node 1 (proc node 1) (0.0133561, -0.35)
+ R_ENERGY        gets   QRAD            (5) from SS 100
+ R_MESH1         gets   PLANE           (0) from SS 100
+ R_MESH2         gets   PLANE           (1) from SS 2000
+
+At global node 4 (proc node 4) (0, -0.35)
+ R_ENERGY        gets   QRAD            (5) from SS 100
+ R_MESH1         gets   PLANE           (0) from SS 100
+ R_MESH2         gets   PLANE           (2) from SS 1000
+
+At global node 101 (proc node 101) (0.0133561, 0)
+ R_MESH1         gets   PLANE           (1) from SS 2000
+ R_MESH2         gets   PLANE           (3) from SS 700
+
+At global node 102 (proc node 102) (0, 0)
+ R_MESH1         gets   PLANE           (2) from SS 1000
+ R_MESH2         gets   PLANE           (3) from SS 700
+
+At global node 201 (proc node 201) (0, 0.133561)
+ R_ENERGY        gets   QRAD            (4) from SS 400
+			QRAD            (6) from SS 400
+			LATENT_HEAT     (7) from SS 400
+ R_Y0            gets   YFLUX_EQUIL     (8) from SS 400
+ R_Y1            gets   YFLUX_EQUIL     (9) from SS 400
+ R_MESH1         gets   PLANE           (2) from SS 1000
+ R_MESH2         gets   KIN_LEAK        (10) from SS 400
+
+At global node 202 (proc node 202) (0.0133561, 0.133561)
+ R_ENERGY        gets   QRAD            (4) from SS 400
+			QRAD            (6) from SS 400
+			LATENT_HEAT     (7) from SS 400
+ R_Y0            gets   YFLUX_EQUIL     (8) from SS 400
+ R_Y1            gets   YFLUX_EQUIL     (9) from SS 400
+ R_MESH1         gets   PLANE           (1) from SS 2000
+ R_MESH2         gets   KIN_LEAK        (10) from SS 400
+

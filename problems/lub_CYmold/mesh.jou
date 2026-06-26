@@ -1,0 +1,175 @@
+## /usr/local/sandia/Cubit-15.7/bin/clarox
+## Cubit Version 15.7
+## Cubit Build 666cacc
+## Revised Mon Nov 16 15:31:47 2020 -0700
+## Running 05/05/2022 09:28:32 PM
+## Command Options:
+##{include("params")}
+
+brick x {width} y {height} z {gap}
+move volume 1 y {0.5*height} include_merged
+create cylinder height {leng} radius {radius}
+rotate volume 2 angle 90 about x include_merged
+move volume 2 y {-0.5*leng} include_merged
+
+webcut volume all with plane zplane offset 0
+group "vols_to_delete" add volume with z_coord > 0
+delete volume in vols_to_delete
+
+webcut volume all with plane xplane offset 0
+group "vols_to_delete2" add volume with x_coord < 0
+delete volume in vols_to_delete2
+
+{Ifdef(do_obstacle)}
+create cylinder height {gap} radius {obs_rad}
+move volume 7 z {-0.25*gap} include_merged
+move volume 7 x {(6.35+2*obs_rad)*0.707} y {(6.35+2*obs_rad)*0.707}  include_merged
+subtract volume 7 from volume 3
+
+{Ifdef(do_wall_mat)}
+create cylinder height {gap} radius {obs_rad+0.5*gap}
+move volume 8 z {-0.25*gap} include_merged
+move volume 8 x {(6.35+2*obs_rad)*0.707} y {(6.35+2*obs_rad)*0.707}  include_merged
+intersect volume 8 with volume 3 keep
+delete volume 8
+subtract volume 9 from volume 3 keep
+delete volume 3
+{EndIf}
+{EndIf}
+
+imprint volume all
+merge volume all
+
+group "domain" add surface with z_coord > {-0.1*gap}
+group "mold" add surface in domain with y_coord > 0
+group "inlet_surf" add surface in domain with y_coord < 0
+{Ifdef(do_wall_mat)}
+group "wall_region" add surface in mold with x_coord < {6.35+4*obs_rad}
+group "mold" subtract surface in wall_region from surface in mold
+group "wall_curves" add curve in surface in wall_region
+{EndIf}
+group "mold_curves" add curve in surface in mold
+group "inlet_curves" add curve in surface in inlet_surf
+group "common" intersect curve in mold_curves with curve in inlet_curves
+
+{Ifdef(do_wall_mat)}
+group "wall_interface" intersect curve in mold_curves with curve in wall_curves
+{EndIf}
+
+group "inlet" add curve in inlet_curves with y_coord < {-0.9*leng}
+group "sym_axis" add curve in inlet_curves with x_coord < {0.1*radius}
+group "sym_axis" add curve in mold_curves with x_coord < {0.1*radius}
+group "mold_top" add curve in mold_curves with y_coord > {0.9*height}
+group "mold_side" add curve in mold_curves with x_coord > {0.9*0.5*width}
+group "mold_bottom" add curve in mold_curves with y_coord < {0.1*height}
+group "mold_bottom" subtract curve in common from curve in mold_bottom
+group "common_vertices" add vertex in curve in common
+group "left_vertex" add vertex in common_vertices with x_coord < {0.1*radius}
+group "right_vertex" subtract vertex in left_vertex from vertex in common_vertices
+group "mold_axis" intersect curve in sym_axis with curve in mold_curves
+
+
+{Ifdef(do_obstacle)}
+{Ifdef(do_wall_mat)}
+group "mold_obs" add curve in wall_curves 
+group "mold_obs" subtract curve in wall_interface from mold_obs
+{Else}
+group "mold_obs" add curve in mold_curves with x_coord > 6.35
+group "mold_obs" subtract curve in mold_top from mold_obs
+group "mold_obs" subtract curve in mold_side from mold_obs
+group "mold_obs" subtract curve in mold_bottom from mold_obs
+{Endif}
+{EndIf}
+
+curve in mold_bottom scheme bias fine size {small_size} coarse size {size} start vertex in right_vertex
+curve in mold_axis  scheme bias fine size {small_size} coarse size {size} start vertex in left_vertex
+curve in mold_obs size {small_size}
+
+surface in inlet_surf size {small_size}
+surface in mold size {size}
+
+surface in inlet_surf scheme map
+surface in mold scheme pave
+
+{Ifdef(do_wall_mat)}
+curve in wall_interface size {0.5*small_size}
+#surface in wall_region size {size}
+surface in wall_region scheme hole rad_intervals 3
+mesh wall_region
+{Endif}
+
+{Ifdef(0)}
+create boundary_layer 1
+modify boundary_layer 1 uniform height 0.3  growth 1.2 layers 3 
+modify boundary_layer 1 add curve in mold_obs surface in mold
+modify boundary_layer 1 continuity on
+{EndIf}
+
+mesh inlet_surf mold
+
+
+nodeset 1 add inlet
+nodeset 1 name "inletNS"
+sideset 1 add inlet
+sideset 1 name "inletSS"
+sideset 2 add sym_axis
+sideset 2 name "symmetrySS"
+nodeset 2 add sym_axis
+nodeset 2 name "symmetryNS"
+nodeset 3 add mold_top
+nodeset 3 name "outletNS"
+sideset 3 add mold_top
+sideset 3 name "outletSS"
+sideset 4 add mold_side
+sideset 4 name "sidewallSS"
+nodeset 4 add mold_side
+nodeset 4 name "sidewallNS"
+nodeset 5 add mold_bottom
+nodeset 5 name "bottomNS"
+sideset 5 add mold_bottom
+sideset 5 name "bottomSS"
+
+nodeset 10 add common
+nodeset 10 name "commonNS"
+sideset 10 add common
+sideset 10 name "commonSS"
+sideset 11 add curve in common wrt surface in mold
+sideset 12 add curve  in common wrt surface in inlet_surf
+nodeset 20 add mold_obs
+nodeset 20 name "obsNS"
+sideset 20 add mold_obs
+sideset 20 name "obsSS"
+
+{Ifdef(do_wall_mat)}
+nodeset 25 add wall_interface
+sideset 25 add wall_interface
+{Endif}
+
+group "inlet_wall" subtract curve in inlet from curve in inlet_curves
+group "inlet_wall" subtract curve in sym_axis from curve in inlet_wall
+group "inlet_wall" subtract curve in common from curve in inlet_wall
+
+nodeset 6 add inlet_wall
+nodeset 6 name "wall_NS"
+sideset 6 add inlet_wall
+sideset 6 name "wall_SS"
+
+block 1 add mold
+block 1 name "liquid"
+block 2 add inlet_surf
+block 2 name "tube"
+
+{Ifdef(do_wall_mat)}
+block 3 add wall_region
+block 3 name "wall_region"
+{Endif}
+{Ifdef(do_biquad)}
+block all element type SHELL9
+{Else}
+block all element type SHELL4
+{Endif}
+
+export mesh "mesh.exoII" overwrite
+
+
+

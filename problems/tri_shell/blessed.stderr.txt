@@ -1,0 +1,5 @@
+WARNING: Defaulting on Lubrication Curvature Normal (/opt/workdir/goma/src/mm_input_mp.c:11149)
+WARNING: Defaulting on Lubrication LS Interpolation (/opt/workdir/goma/src/mm_input_mp.c:11165)
+Warning: alloc_int_1 P_0: called with n = 0  from /opt/workdir/goma/src/rd_mesh.c: line 282
+Warning: alloc_int_1 P_0: called with n = 0  from /opt/workdir/goma/src/rd_mesh.c: line 200
+		converged SS!

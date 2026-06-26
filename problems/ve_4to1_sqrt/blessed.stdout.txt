@@ -1,0 +1,48 @@
+v7.11.0-1-g709cfe59
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2026 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+
+
+######################### __PRINT_SYNC_END__ #########################
+
+Number of unknowns            = 3834
+
+Number of matrix nonzeroes    = 330740
+	Setting POLYMER_STRESS11 (variable [10]) to 1
+	Setting POLYMER_STRESS12 (variable [11]) to 0
+	Setting POLYMER_STRESS22 (variable [12]) to 1
+
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:41 [0] 6.0e+00 7.8e+01 1.6e+01 2.2e+02 4.9e+04 3.0e+03  1  2.0e-01/2.4e-01 
+17:10:42 [1] 5.6e-02 2.7e+00 2.1e-01 4.1e+00 1.5e+02 1.1e+01  1  1.8e-01/2.5e-01 
+17:10:42 [2] 6.6e-03 1.1e-01 1.4e-02 1.6e-01 2.8e+01 1.7e+00  1  2.0e-01/2.7e-01 
+17:10:43 [3] 4.7e-05 3.0e-04 6.1e-05 1.2e-03 1.2e-01 7.0e-03  1  1.9e-01/2.4e-01 
+17:10:43 [4] 2.1e-09 7.1e-09 2.5e-09 9.0e-08 1.7e-06 1.5e-07  1  1.9e-01/2.5e-01 
+17:10:43 [5] 2.8e-15 3.0e-13 1.0e-14                         skp 2.0e-01/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.188e+02  1.287e+01  4.781e+01 
+
+-done
+
+
+Proc 0 runtime:       0.04 Minutes.
+

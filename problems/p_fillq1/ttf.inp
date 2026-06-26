@@ -1,0 +1,151 @@
+$ Aprepro ($Revision: 1.2 $) Tue Dec 14 10:53:54 1999
+# t.goma - GOMA input file tests basic 2D flow with PSPG
+ 
+$ 
+FEM File Specifications
+--- ---- --------------
+FEM file                         = ttf.exoII
+Output EXODUS II file            = ttf_out.exoII
+GUESS file                       = /dev/null
+SOLN file                        = tbone.d
+Write intermediate results       = no
+
+General Specifications
+------- --------------
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0 
+Number of Jacobian File Dumps    = 2
+Initial Guess                    = read_exoII
+
+Time Integration Specifications
+---- ----------- --------------
+Time integration                 = transient
+delta_t                          = 1e-5
+Maximum number of time steps     = 3
+Maximum time                     = 1
+Minimum time step                = 1e-11
+Time step parameter		 = 0
+Time step error                  = 1e-3 0 1 1 0 0 0 0
+Printing Frequency		 = 1
+#Second frequency time		 = 1 1
+Initial Time                     = 0
+Fill Subcycle                    = 10  1.
+
+Solver Specifications
+------ --------------
+Solution Algorithm               = gmres
+Matrix storage format            = msr
+UMF IDIM                         = -1
+UMF XDIM                         = -1
+FRONT MXBUFF                     = 1e6
+FRONT MXFRONT_WIDTH              = 700
+Preconditioner                   = dom_decomp
+Matrix subdomain solver          = ilut
+Matrix Scaling                   = none
+Matrix residual norm type        = r0
+Matrix output type		 = none
+Matrix factorization reuse	 = recalc
+Matrix graph fillin              = 0
+Matrix factorization overlap	 = none
+Matrix overlap type              = standard
+Matrix polynomial order          = 3
+Matrix reorder                   = none
+Matrix factorization save        = 0
+Matrix ILUT fill factor          = 1
+Matrix RILU relax factor         = 1
+Size of Krylov subspace          = 150
+Orthogonalization                = classic
+Maximum Linear Solve Iterations  = 500
+Matrix auxiliary vector          = resid
+Matrix drop tolerance            = 1e-13
+Number of Newton Iterations      = 10
+Newton correction factor         = 1
+Normalized Residual Tolerance    = 1e-9
+Residual Ratio Tolerance         = 1e-5
+Pressure Stabilization           = yes
+Pressure Stabilization Scaling   = 1e-3
+#PRESSURE DATUM			 = 0 0 do a flow-through problem...
+
+Eigensolver Specifications
+----------- --------------
+Eigen Number of modes            = 10
+Eigen Size of Krylov subspace    = 30
+Eigen Maximum Iterations         = 100
+Eigen Number of Filter Steps     = 2
+Eigen Record modes               = 0
+
+Boundary Condition Specifications
+-------- --------- --------------
+Number of BC			 = -1
+#
+# Inlet at specified pressure and no tangential velocity components.
+#
+	BC = FLOW_PRESSURE SS 4003 1
+	BC = V NS 5003 0
+
+	BC = F NS 5003 1		# using this for continuous interps.
+#
+# Outlet at lower pressure, again with no tangential velocity.
+#
+	BC = FLOW_PRESSURE SS 4001 0
+	BC = V NS 5001 0
+#
+# Sidewalls are all no-slip for both velocity components.
+#
+	BC = U NS 5000 0
+	BC = V NS 5000 0
+
+	BC = U NS 5002 0
+	BC = V NS 5002 0
+
+END OF BC
+
+Problem Description
+------- -----------
+Number of Materials		     = -1
+MAT = z 6000
+	Coordinate System	     = CARTESIAN
+	Element Mapping		     = isoparametric
+	Mesh Motion		     = ARBITRARY
+	Number of bulk species	     = 0
+        Number of viscoelastic modes = 0
+	Number of EQ		     = -1
+        EQ = momentum1  Q1 U1 Q1        1 1 1 1 1 0 
+        EQ = momentum2  Q1 U2 Q1        1 1 1 1 1 0 
+        EQ = continuity Q1 P  Q1          1     0 
+	EQ = fill       Q1 F  Q1        1 1     1
+                                        - - - - - -
+                                        m a b d s p
+END OF EQ
+END OF MAT
+
+Post Processing Specifications
+---- ---------- -------------- 
+Bulk density of species in porous media		= no
+Capillary pressure in porous media		= no
+Cross-stream shear rate				= no
+Energy Conduction Vectors			= no
+Energy Fluxlines				= no
+First Invarient of Strain			= no
+Gas concentration of species in porous media	= no
+Gas phase convection vectors in porous media	= no
+Lagrangian Convection				= no
+Liquid concentration of species in porous media	= no
+Liquid phase convection vectors in porous media	= no
+Mass Diffusion Vectors				= no
+Mass Fluxlines					= no
+Mean shear rate					= no
+Mesh Dilatation					= no
+Mesh Strain Tensor				= no
+Mesh Stress Tensor				= no
+Moving Mesh Residuals				= no
+Navier Stokes Residuals				= yes
+Porosity in deformable porous media		= no
+Porous Saturation				= no
+Pressure contours				= yes
+Second Invarient of Strain			= no
+Stream Function					= no
+Streamwise normal stress			= no
+Third Invarient of Strain			= no
+Time Derivatives				= no

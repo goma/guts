@@ -1,0 +1,218 @@
+ TITLE 
+  Forward Roll coating with rolling back and film split
+
+$ GEOMETRY AND OPERATING CONDITIONS (CGS) 
+$ gap (leading edge to substrate)        {Gap = 0.02}  {Gap_new = 0.02}
+$ roll cover thickness (1" = 2.54)     {d = 1.25/4.}
+
+
+$ initial film thickness for v2/v1=1     {h_t = 0.012/2.}
+$ Inlet film thickness                   {h_I = 0.012} {h_I_new = 0.011}
+
+$ Roll Radius                            {R_I = 5.7}       {R_I_new = 5.7}
+$ Outer Roll Radius                      {R_O = R_I + d}    {R_O_new = R_I_new + d}
+$ Outer Roll Radius + film thickness     {R_O_h = R_O + h_t}  {R_O_h_new = R_O_new + h_t}
+$ Outer Roll Radius + 2.5*film thickness   {R_O_2h = R_O + 1.9*h_t}
+
+$ bottom roll speed			 {rollsp_b = 150.} {rollsp_b_new = 150.}
+$ bottom roll speed			 {rollsp_t = 150.} {rollsp_t_new = 150.}
+
+$ Roll extent   {theta1 = 82.5}   {theta2 = 91}
+$ Extent of inlet region film, in degrees: {theta_inlet = 4}
+$ 
+a
+$
+$  MESH PARAMETERS
+$
+${no_elem_along_roll1 = 10}
+${no_elem_along_roll2 = 11}
+${no_elem_across_roll_cover = 3}
+${no_elem_outflow = 5}
+${no_elm_along_roll_for_film_split = 10}
+${no_elm_between_films = 10}
+${no_elm_across_film = 4}
+${no_elm_across_inlet = 4}
+${no_elem_along_inflow = 11}
+
+  point  1   {x1= 0}           {y1=0}
+$$point  2   {x2= R_I*cosd(theta1)}   {y2=R_I*sind(theta1)}
+$$point  3   {x3= R_I*cosd(theta2)}   {y3=R_I*sind(theta2)}
+  point  4   {x4= R_O*cosd(theta1)}   {y4=R_O*sind(theta1)}
+  point  5   {x5= R_O*cosd(theta2)}   {y5=R_O*sind(theta2)}
+  point 20   {x20= R_O_h*cosd(theta1)}   {y20=R_O_h*sind(theta1)}
+
+$$$$$$$$The offset angles here determine the location of the film split$$$$$
+$$$$$$$$Keep the phase angles the same for points 22, 30, 32.  Same for$$$$$
+$$$$$$$$Same for points 35 and 36. The difference is the length of the $$$$$
+$$$$$$$$mesh region that resolves the film split.                      $$$$$
+  point 22   {x22= R_O_h*cosd(theta1+2.1)}  {y22 = R_O_2h*sind(theta1+2.1)}
+
+  point 30   {x30= R_O*cosd(theta1+2.1)}  {y30 = R_O*sind(theta1+2.1)}
+$$point 32   {x32= R_I*cosd(theta1+2.1)}  {y32 = R_I*sind(theta1+2.1)}
+
+  point 35   {x35= R_O*cosd(theta1+2.4)}  {y35 = R_O*sind(theta1+2.4)}
+$$point 36   {x36= R_I*cosd(theta1+2.4)}  {y36 = R_I*sind(theta1+2.4)}
+
+ {y11 = Gap + y1 + 2.*R_I + 2.*d}
+ {ym  = y1 + R_O + Gap/2}
+
+  point 11   {x11 = 0}    {y11}
+$$point 12   {x12 = x2}   {y12 = 2.*ym - y2}
+$$point 13   {x13 = x3}   {y13 = 2.*ym - y3}
+  point 14   {x14 = x4}   {y14 = 2.*ym - y4}
+  point 15   {x15 = x5}   {y15 = 2.*ym - y5}
+  point 21   {x21 = x20}  {y21 = 2.*ym - y20}
+  point 23   {x23 = x22}  {y23 = 2.*ym - y22}
+  point 31   {x31 = x30}  {y31 = 2.*ym - y30}
+$$point 33   {x33 = x32}  {y33 = 2.*ym - y32}
+  point 37  {x37 = x35}  {y37 = 2.*ym - y35}
+$$point 38  {x38 = x36}  {y38 = 2.*ym - y36}
+
+$$These points are to add the rolling bank and inlet region
+  point 114  {x114 = (R_O)*cosd(theta2+1.0)} {y114=(R_O)*sind(theta2+1.0)}
+$$point 1141  {x1141 = (R_I)*cosd(theta2+1.0)} {y1141=(R_I)*sind(theta2+1.0)}
+  point 115  {x115 =R_O*cosd(theta2 + theta_inlet)} {y115=R_O*sind(theta2+theta_inlet)}
+$$point 1151  {x1151 =R_I*cosd(theta2 + theta_inlet)} {y1151=R_I*sind(theta2+theta_inlet)}
+  point 116  {x116 = (R_O+h_I)*cosd(theta2 + theta_inlet)} {y116=(R_O+h_I)*sind(theta2+theta_inlet)}
+  point 117  {x117 = (R_O+h_I)*cosd(theta2+1.0)} {y117=(R_O+h_I)*sind(theta2+1.0)}
+  point 1171 {x1171 = (R_I+4.*d/5)*cosd(theta2+1.0)} {y1171 = 2.*ym - (R_I+4.*d/5)*sind(theta2+1.0)}
+  point 118  {x118 = (R_O+h_I)*cosd(theta2+0.7)} {y118 = 2.*ym - (R_O)*sind(theta2+0.7)}
+
+$$ Define center for arc of circle on film split
+  point 24   {x24 = (16*x22+x20)/17}  {y24 = (y23+y22)/2}
+
+$$ DEFINE NEW POINT POSITIONS FOR GAP AND RADIUS CHANGES
+  {x20_new= R_O_h_new*cosd(theta1)}   {y20_new=R_O_h_new*sind(theta1)}
+  {x115_new =R_O_new*cosd(theta2 + theta_inlet)} {y115_new=R_O_new*sind(theta2+theta_inlet)}
+  {x116_new = (R_O_new+h_I_new)*cosd(theta2 + theta_inlet)} {y116_new=(R_O_new+h_I_new)*sind(theta2+theta_inlet)}
+  {y1_new = y1 + Gap - Gap_new}
+  {y11_new = Gap_new + y1 + 2.*R_I_new + 2.*d}
+
+$$LINE     1  CIRC     36     3    1    {no_elem_along_roll1}  1.0
+$$LINE     11  CIRC     32     36    1    {no_elem_along_roll2}  1.1
+$$LINE     1111 CIRC     2     36    1    {no_elem_along_roll2}  {1.0}
+  LINE     2  CIRC     35     5    1    {no_elem_along_roll1}  1.0
+  LINE     2222 CIRC     4     35    1    {no_elem_along_roll2}  {1.0}
+$$LINE     222 CIRC     4     30    1    {no_elm_along_roll_for_film_split}  0.8
+$$LINE     3  CIRC     13    38   11    {no_elem_along_roll1}  1.0
+$$LINE     3331 CIRC    38    33   11    {no_elem_along_roll2}  1.0
+$$LINE     333 CIRC     33    12   11    {no_elm_along_roll_for_film_split}  0.99
+
+ LINE       4  CIRC     15    37   11    {no_elem_along_roll1}  1.0
+$$LINE    44  CIRC     37    31   11    {no_elem_along_roll2}  {1./1.16}
+  LINE    444  CIRC     37    14   11    {no_elem_along_roll2}  {1/0.9}
+  LINE      5  STR     15     5    0    {no_elem_outflow}  1.0
+  LINE      6  STR     14    21    0    {no_elm_across_film}  1.0
+  LINE     66  STR     20    4    0    {no_elm_across_film}  1.0
+$$LINE      7  STR     2     4    0    {no_elem_across_roll_cover}  0.5
+$$LINE      8  STR     3     5    0    {no_elem_across_roll_cover}  0.5
+$$LINE      9  STR     12     14    0    {no_elem_across_roll_cover}  1.0
+$$LINE     10  STR    13     15    0    {no_elem_across_roll_cover}  1.0
+$$LINE    101  STR    1141   114      0    {no_elem_across_roll_cover}  0.5
+$$LINE    102  STR    1151   115      0    {no_elem_across_roll_cover}  0.5
+
+$ Lines for film split
+  LINE    20 CIRC     23    21    11     {no_elem_along_roll2} {1/0.9}
+  LINE    21 CIRC    23    22   24     {no_elem_outflow}   1.0
+  LINE    22 CIRC     20    22   1      {no_elem_along_roll2} 0.9 
+  LINE    31 STR     37    23   0      {no_elm_across_film} 1.0   
+  LINE    32 STR     35    22   0      {no_elm_across_film} 1.0   
+  LINE    35 CIRC     37    35   24      {no_elem_outflow} 1.0 
+$$LINE    36 STR     37    38   0      {no_elem_across_roll_cover} 1.0 
+$$LINE    37 STR     35    36   0      {no_elem_across_roll_cover} {1.0/0.5} 
+
+$ Lines for inlet and rolling bank
+
+ LINE     110 CIRC    114   115  1     {no_elem_along_inflow}   1.15
+$$LINE     1101 CIRC    1141   1151  1     {no_elem_along_inflow}   1.15
+ LINE     116 CIRC    5   114  1    {no_elem_along_inflow}   1.0
+$$LINE     1161 CIRC    3   1141  1    {no_elem_along_inflow}   1.0
+ LINE     111 STR    115   116  0    {no_elm_across_inlet}   1.0
+ LINE     112 CIRC   117   116  1    {no_elem_along_inflow}   1.15
+ LINE     113 STR    114   117  0    {no_elm_across_inlet}   1.0
+ LINE     115 CIRC    118    15    11    {9}  1.0
+ LINE     117 CIRC    117  118    1171    {9}  1.0
+$$ LINE     1175 STR    117  5        0     {4}
+
+
+$liquid
+  REGION     1     1  -35 -31 -21 -32 
+  REGION     2     1  -31 -20 -6 -444
+  REGION     3     1  -32 -2222 -66 -22
+  REGION     4     1  -5 -2 -35 -4
+  REGION     5     1  -111 -110 -113 -112
+  REGION     6     1   -5 -115 -117 -113 -116
+
+$lower roll
+$$REGION     7     2  -1 -37 -2 -8
+$$REGION     8     2  -37 -1111 -7 -2222
+$$REGION     9     2  -8 -116 -101 -1161
+$$REGION     10    2  -101 -1101 -102 -110
+$$REGION     11    2  -11 -34 -2222 -37
+
+$upper roll
+$$REGION     3    2  -3 -33 -4 -10
+$$REGION     4     2  -33 -444 -9 -333
+
+
+  SCHEME 1 M
+$$SCHEME 1 x
+
+  SCHEME 2 M
+
+  SCHEME 6 x
+$$SCHEME 6 T6S
+$$SCHEME 6 M
+
+
+ BODY       1 2 3 4 5 6
+
+$$NODEBC 1 1 1111 11 1161 1101
+  NODEBC 2 2 2222 110 116
+$$NODEBC 3 3 333 3331
+  NODEBC 4 115 4 444
+  NODEBC 5 5
+  NODEBC 6 6
+  NODEBC 66 66
+$$NODEBC 7 7
+$$NODEBC 8 8
+$$NODEBC 9 9
+$$NODEBC 10 10
+  NODEBC 111 111
+$$NODEBC 102 102
+ 
+
+$$ELEMBC 1 1 1111 11 1161 1101
+ ELEMBC 2 2 110 116 2 2222
+$$ELEMBC 3 3 333 3331
+$$ELEMBC 4 4 444 115
+  ELEMBC 4 4 444 
+  ELEMBC 44 115
+  ELEMBC 444 4 444 115
+  ELEMBC 5 5
+  ELEMBC 6 6 
+  ELEMBC 66 66
+  ELEMBC 100 20 21 22
+$$ELEMBC 7 7
+$$ELEMBC 8 8
+$$ELEMBC 9 9
+$$ELEMBC 10 10
+  ELEMBC 111 111
+  ELEMBC 112 117 112
+
+  POINBC 150 15
+  POINBC 50   5
+$$POINBC 20   2
+  POINBC 40   4
+$$POINBC 30   3
+$$POINBC 130  13
+  POINBC 140  14
+$$POINBC 120  12
+  POINBC 200  20
+  POINBC 210  21
+  POINBC 215  115
+  POINBC 220  116
+  POINBC 230  118
+  RENUM
+  NINE
+  EXIT  

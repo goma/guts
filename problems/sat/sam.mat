@@ -1,0 +1,90 @@
+Material Data File for a simple saturated flow test
+
+/**********Form of each property card *********/
+PROPERTY   = MODEL   FLOAT#1 FLOAT#2 .....FLOAT#5
+
+/**********Form of each Constitutive card *********/
+MECHANICS_TYPE   = MODEL 
+
+Of the many available options, MODEL can be USER
+/************************************************/
+
+
+---Physical Properties
+Density			= CONSTANT 	1.0
+
+---Mechanical Properties and Constitutive Equations
+#Solid Constitutive Equation 	= NONLINEAR	
+Solid Constitutive Equation 	= HOOKEAN_PSTRAIN	
+#Convective Lagrangian Velocity  = CONSTANT      3e-06  0.  0.
+Convective Lagrangian Velocity  = NONE
+Lame MU 			= CONSTANT 	1
+Lame LAMBDA 			= CONSTANT 	0.5
+#Lame MU 			= CONSTANT 	10
+#Lame LAMBDA 			= CONSTANT 	40
+Stress Free Solvent Vol Frac	= CONSTANT	0.5
+Liquid Constitutive Equation 	= NEWTONIAN
+Viscosity			= CONSTANT	1e-05
+Low Rate Viscosity		= CONSTANT	0.
+Power Law Exponent		= CONSTANT	0.
+High Rate Viscosity		= CONSTANT	0.
+Time Constant			= CONSTANT	0.
+Aexp 				= CONSTANT	0.
+
+---Thermal Properties
+Conductivity		= CONSTANT	1.
+Heat Capacity		= CONSTANT	1.
+Volume Expansion	= CONSTANT	1.
+Reference Temperature	= CONSTANT	0.
+Liquidus Temperature	= CONSTANT	1.
+Solidus Temperature	= CONSTANT	1.
+
+---Electrical Properties
+Electrical Conductivity = CONSTANT       .0943
+
+---Microstructure Properties
+Media Type          	= POROUS_SATURATED
+Porosity    		= CONSTANT	0.5
+Permeability            = CONSTANT      8.333333333e-07
+Saturation              = CONSTANT      1.0
+
+---Porous Properties
+Porous Weight Function                 = GALERKIN 0.0
+Porous Mass Lumping                    = FALSE
+Porous Time Integration                = STANDARD 0.0
+Porous Diffusion Constitutive Equation = DARCY_FICKIAN
+Porous Gas Diffusivity                 = CONSTANT  0  0.0001
+Porous Latent Heat Vaporization	       = CONSTANT  0  0.
+Porous Latent Heat Fusion	       = CONSTANT  0  0.
+Porous Vapor Pressure     	       = NON_VOLATILE  0  0
+Porous Liquid Volume Expansion         = CONSTANT  0  1.
+Reference Pressure                     = CONSTANT  0  0.
+
+---Species Properties
+Diffusion Constitutive Equation = FICKIAN
+Diffusivity  			= CONSTANT  0  0.0001
+Latent Heat Vaporization	= CONSTANT  0  0.
+Latent Heat Fusion		= CONSTANT  0  0.
+Vapor Pressure  		= NON_VOLATILE  0  0
+Species Volume Expansion        = CONSTANT  0  0.
+Reference Concentration         = CONSTANT  0  0.
+
+Diffusion Constitutive Equation = DARCY
+Diffusivity  			= CONSTANT  1  0.0001
+Latent Heat Vaporization	= CONSTANT  1  0.
+Latent Heat Fusion		= CONSTANT  1  0.
+Vapor Pressure  		= NON_VOLATILE  1  0
+Species Volume Expansion        = CONSTANT  1  1.
+Reference Concentration         = CONSTANT  1  0.
+
+				            ^
+********Species Number**********************|
+  
+----Source Terms
+Navier-Stokes Source		= CONSTANT	0  -0  0. 
+Solid Body Source		= CONSTANT	0.  0.  0.
+Mass Source			= CONSTANT	0.
+Heat Source			= CONSTANT	0.
+Species Source			= CONSTANT  0   0.
+Species Source			= CONSTANT  1   0.
+Current Source                  = CONSTANT      0.

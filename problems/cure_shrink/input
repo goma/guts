@@ -1,0 +1,250 @@
+{include(params)}
+------------------------------------------------
+ FEM File Specifications
+------------------------------------------------
+FEM file                         = test.g
+Output EXODUS II file            = out.exoII
+GUESS file                       = no
+SOLN file                        = no
+Write intermediate results       = no
+Write Initial Solution           = no
+
+------------------------------------------------
+General Specifications
+------------------------------------------------
+Number of processors             = 4
+Output Level                     = 0
+Debug                            = 0
+Initial Guess                    = zero
+Initialize = TEMPERATURE 0 {t_resin}
+Initialize = MASS_FRACTION 0 0.0001
+------------------------------------------------
+Time Integration Specifications
+------------------------------------------------
+Time integration                 = transient
+delta_t                          = 1e-05
+Maximum number of time steps     = 1000
+Maximum time                     = 40
+Minimum time step                = 1e-08
+Maximum time step                = 1
+Minimum Resolved Time Step       = 1e-06
+Time step parameter              = 0.0
+Time step error                  = -0.1 1 1 1 1 1 1 1
+Printing Frequency               = 1
+Courant Number Limit		     = 1
+Initial Time     		         = 0
+Jacobian quality weight          = 0.333
+Angle quality weight             = 0.333
+Triangle quality weight          = 0.333
+$Element quality tolerance        = 0.05
+
+
+
+
+------------------------------------------------
+Solver Specifications
+------------------------------------------------
+#Solution Algorithm               = gmres
+#Preconditioner                   = ilu
+#Matrix Scaling                   = row_sum
+#Polynomial                       = LS,1
+#Size of Krylov subspace          = 200
+#Orthogonalization                = classical
+#Matrix drop tolerance            = 1.0-e9
+#Maximum Linear Solve Iterations  = 200
+#Number of Newton Iterations      = 12 1
+#Modified Newton Tolerance        = 1.9 1.
+#Newton correction factor         = 1
+#Normalized Residual Tolerance    = 1e-10
+#Residual Ratio Tolerance         = 1e-2
+
+#Solution Algorithm               = umf
+#Number of Newton Iterations      = 12 1
+#Modified Newton Tolerance        = 1.9 1.
+#Newton correction factor         = 0.6  0.001  0.3  0.1  0.1  10.0
+#Normalized Residual Tolerance    = 1e-10
+#Residual Ratio Tolerance         = 1e-2 
+ 
+#Solution Algorithm               = amesos
+#Amesos Solver Package            = superlu
+#Size of Krylov subspace          = 64
+#Orthogonalization                = classical
+#Maximum Linear Solve Iterations  = 1000
+#Number of Newton Iterations      = 100   1
+#Newton correction factor         = 0.6  0.001  0.3  0.1  0.1  10.0
+#Normalized Residual Tolerance    = 1e-08
+#Normalized Correction Tolerance    = 1e-06
+#Solver Output Format Bitmap      = 3839
+#Disable Viscosity Sensitivities  = no
+
+Solution Algorithm                = amesos
+Amesos Solver Package             = mumps
+Number of Newton Iterations       = 20
+Newton line search type = BACKTRACK
+Newton correction factor          = 1
+Normalized Residual Tolerance     = 1.0e-8
+Residual Ratio Tolerance          = 1.0e-4
+
+------------------------------------------------
+Continuation Specifications
+------------------------------------------------
+{ifdef(loca_flag)}
+Continuation                     = hfirst
+{ifdef(loca_hunt)}
+Number of continuation conditions     = -2
+{else}
+Number of continuation conditions     = -1
+{endif}
+{else}
+Continuation                     = hfirst
+Number of continuation conditions     = -1
+{endif}
+{ifdef(Cont_Type)}
+    {ifdef(MT_cont)}
+    Continuation Type                = MT
+    {else}
+    Continuation Type                = BC
+    {endif}
+{else}
+Continuation Type                = AC
+{endif}
+Boundary condition ID            = {Cont_BCID}
+Boundary condition data float tag= {Cont_BCFID}
+Material id                      = {Cont_Mat_ID}
+Material property tag            = {Cont_Mat_Prop_tag}
+Material property tag subindex   = 0
+Initial parameter value          = {Cont_start_val}
+Final parameter value            = {Cont_end_val}
+delta_s                          = {Cont_start_step}
+Maximum number of path steps     = {Max_num_steps}
+Minimum path step                = {Cont_min_step}
+Maximum path step                = {Cont_max_step}
+Continuation Printing Frequency  = 1
+$$LOCA method			 = alc
+LOCA method			 = first
+Step control aggressiveness	 = 1.5
+CC = BC 18 0 3 0.0 0.04 -1.0
+END OF CC
+
+
+
+------------------------------------------------------------------
+Boundary Condition Specifications
+-------------------------------------------------------------------
+Number of BC			 =    -1
+
+; $TOP SURFACE-film-heat transfer to ambient
+; BC = QCONV SS 11 {htc_air} {air_temp}
+; $TOP SURFACE-fluid no mass transfer
+; BC = YFLUX SS 1 0.0 0.0
+
+$ TOP SURFACE of the resin
+BC = QCONV SS 5 {htc_air} {air_temp}
+
+BC = PLANE SS 1 0. 1. 0. 0.01
+BC = V NS 1 0.
+
+#BC = KINEMATIC  SS  2  0.0
+#BC = CAPILLARY  SS  2  1.0 0.0 0.0 1
+BC = PLANE SS 2 1. 0. 0. -0.005
+BC = U NS 1 0.
+
+#BC = KINEMATIC  SS  3  0.0
+#BC = CAPILLARY  SS  3  1.0 0.0 0.0 1
+BC = PLANE SS 3 0. 1. 0. 0.00
+BC = U NS 3 0.
+BC = V NS 3 0.
+
+#BC = KINEMATIC  SS  4  0.0
+#BC = CAPILLARY  SS  4  1.0 0.0 0.0 1
+BC = PLANE SS 4 1. 0. 0. -0.015
+BC = U NS 4 0.
+
+BC = KINEMATIC  SS  5  0.0
+BC = CAPILLARY  SS  5  1.0 0.0 0.0 1
+
+$LHS SYM PLANE-no lateral displacement; no lateral heat flux, no top film so no DX on SS 14
+; BC = DX NS 6 0.0
+BC = U NS 6 0.0
+BC = QSIDE SS 6 0.0
+BC = PLANE SS 6 1. 0. 0. 0.005
+
+
+#BC = DX NS 100 0.
+#BC = DY NS 100 0.
+
+#########
+END OF BC
+#########
+
+ 
+----
+Problem Description
+---
+ 
+Number of Materials = 1
+
+ MAT =   fluid   1
+
+ 
+Coordinate System	= CARTESIAN
+Element Mapping		= isoparametric
+Mesh Motion		= ARBITRARY
+Number of bulk species	= 1
+
+    Number of EQ = 7
+
+    EQ = energy     	Q2  T   Q2  1.0  1.0  1.0  1.0  1.0  0.0
+    $EQ = energy     	Q1  T   Q1  1.0  0.0  1.0  1.0  1.0  0.0
+    EQ = species_bulk  Q2  Y   Q2  1.0  1.0   1.0   1.0   1.0   0.0 
+    $EQ = species_bulk  Q2  Y   Q2  1.0  0.0   0.0   0.0   1.0   0.0  
+    $EQ = continuity	Q1  P 	Q1	 1.0                 1.0
+    EQ = momentum1  Q2	U1	Q2	     1.    1.   1.   1.   1.   0.
+    EQ = momentum2  Q2	U2	Q2	     1.    1.   1.   1.   1.   0.
+    EQ = continuity	Q1	P 	Q1	           1.             1.
+    EQ = mesh1	Q2	D1	Q2
+    EQ = mesh2	Q2	D2	Q2
+
+
+                            div  mas  adv  bnd  dif  src   porous
+
+
+;  MAT =   film   2
+
+ 
+; Coordinate System	= CARTESIAN
+; Element Mapping		= isoparametric
+; Mesh Motion		= LAGRANGIAN
+; Number of bulk species	= 0
+
+;     Number of EQ = 3
+
+;     EQ = energy     	Q1  T   Q1  1.0  1.0  1.0  1.0  0.0  0.0
+;     $EQ = continuity	Q1  P 	Q1	 1.0                 0.0
+;     EQ = mesh1	Q2	D1	Q2  0.0  0.0  0.0  1.0  0.0  0.0
+;     EQ = mesh2	Q2	D2	Q2  0.0  0.0  0.0  1.0  0.0  0.0
+
+
+;                             div  mas  adv  bnd  dif  src   porous
+
+Post Processing Specifications
+First Invariant of Strain = yes
+Second Invariant of Strain = yes
+Third Invariant of Strain = yes
+Mesh Stress Tensor = yes
+Mesh Strain Tensor = yes
+Lame MU = yes
+Lame LAMBDA = yes
+Density = yes
+Viscosity = yes
+Concentration contours =  no
+
+Post Processing Fluxes = 
+#FLUX = FORCE_NORMAL 3 1 1 z_normal_force_ns_3.out profile
+#FLUX = FORCE_NORMAL 4 1 1 z_normal_force_ns_4.out profile
+#FLUX = FORCE_NORMAL 5 1 1 z_normal_force_ns_5.out profile
+END OF FLUX
+
+Post Processing Data = 
+#DATA = MASS_FRACTION 23 1 0 z_conversion.out
+END OF DATA

@@ -1,0 +1,8 @@
+Time/iteration = 0.000000e+00 
+ VOLUME_FLUX  Side_Set  4 Block  0 
+ flux=  -3.131121e+00 0.000000e+00  area= 3.141593e+00  
+
+Time/iteration = 0.000000e+00 
+ VOLUME_FLUX  Side_Set  2 Block  0 
+ flux=  3.131121e+00 0.000000e+00  area= 3.141593e+00  
+

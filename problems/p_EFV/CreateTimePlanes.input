@@ -1,0 +1,118 @@
+ FEM File Specifications
+ ---
+FEM file                         = test_mesh.g
+Output EXODUS II file            = temp_flow_out.exoII
+GUESS file                       = contin_arm.dat
+SOLN file                        = soln_arm.dat
+Write intermediate results       = no
+ ---
+General Specifications
+ ---
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+Initial Guess                    = zero
+Initialize			 = TEMPERATURE 0 25
+Anneal Mesh on Output            = no
+ ---
+Time Integration Specifications
+ ---
+Time integration                 = transient
+Operator splitting               = inconsistent
+delta_t                          = 1.e-10
+Maximum number of time steps     = 2500
+Maximum time                     = 10
+Minimum time step                = 1.0e-15
+Time step parameter              = 0.2
+Time step error                  = .1  0  1  1  1  0  1  0
+Printing Frequency               = 5
+Initial Time 			 = 0.
+
+
+ ---
+Solver Specifications
+ ---
+Solution Algorithm               = umf
+#Solution Algorithm               = gmres
+Preconditioner                   = dom_decomp
+Matrix subdomain solver          = ilut
+Matrix reorder                   = rcm
+Size of Krylov subspace          = 150 
+Matrix drop tolerance 		 = 0.0
+Matrix ILUT fill factor          = 1.0
+Maximum Linear Solve Iterations  = 50  
+Orthogonalization                = classical
+Number of Newton Iterations      = 9
+Newton correction factor         = 1.0
+Normalized Residual Tolerance    = 1e-4
+Residual Ratio Tolerance         = 1e-2
+Pressure Stabilization 	 	 = yes
+Pressure Stabilization Scaling   = 1.0
+
+ ---
+Boundary Condition Specifications
+ ---
+Number of BC			 =   -1
+
+
+#### Bottom of Domain
+BC = VVARY SS 3 0.05
+
+#### Left Side of Domain
+BC = UVARY SS 4 0.1
+
+#### Top of Domain
+# Thermal BC
+#BC = QSIDE SS 1 1e10
+BC = T NS 1 100
+
+
+
+END OF BC
+
+----
+Problem Description
+---
+ 
+Number of Materials = 1
+
+
+MAT =   solid    1
+ 
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = LAGRANGIAN
+  Number of bulk species = 0
+ 
+
+	Number of EQ			 = -1
+
+         EQ = energy       Q2  T  Q2     1.   1.   1.   1.   1.  1. 
+	 EQ = momentum1    Q2  U1 Q2     1.   1.   1.   1.   1.  0.
+         EQ = momentum2    Q2  U2 Q2     1.   1.   1.   1.   1.  0.
+	END OF EQ
+
+
+
+ ---
+Post Processing Specifications
+ ---
+
+Stream Function = no
+Streamwise normal stress = no
+Pressure contours = no
+Second Invarient of Strain = no
+Mesh Dilatation = no
+Navier Stokes Residuals = no
+Moving Mesh Residuals = no
+Mass Diffusion Vectors = no
+Mass Fluxlines = no
+Energy Conduction Vectors = yes
+Energy Fluxlines = yes
+Time Derivatives = yes
+Mesh Stress Tensor = no
+
+
+
+
+

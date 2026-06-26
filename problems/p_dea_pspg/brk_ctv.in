@@ -1,0 +1,32 @@
+# brk -- dea input file
+#
+# Simple conduction and species transport in a box--one block-single eqation
+
+ 1        # element block ID
+ 5        # number of basic eqnvar
+ 0 2 1 1  # momentum equation
+ 3 1 1 1  # energy equation
+ 4 1 2 1  # species_bulk
+ 9 1 1 1  # pressure
+30 1 1 1  # shear rate
+ 
+#
+# eqnvar interaction specification
+#
+#    U     T       c     P    Sh
+     1     0       1     1     0  #   momentum equation
+     0     1       1     0     0  #     energy equation
+     0     1       1     0     1  #    species equation
+     1     0       0     1     0  # continuity equation
+     1     0       0     0     1  # shear rate equation
+ 
+ 9   # number of nodes per element
+ 0 3 4 9 30
+ 0 3 4 9 30
+ 0 3 4 9 30
+ 0 3 4 9 30
+ 0 3 4 
+ 0 3 4
+ 0 3 4
+ 0 3 4
+ 0 3 4

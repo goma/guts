@@ -1,0 +1,305 @@
+#!/bin/sh
+############################################################################
+#
+#  This script is responsible for the following actions
+#
+# 1) Remove or zero out the exodus output file
+#    (so an exodiff comparison on a run which core dumps
+#     will yield a failed comparison)
+# 2) run a goma problem producing results. The 
+#    envirnomental variable GOMA_VERSION is used to 
+#    locate the GOMA executable.The environmental variable
+#    GOMA_SERIAL_RL is used as a prefix to launching
+#    the program.
+# 3) Parse the output and error output, looking for
+#    key strings. Then produce a 1 line 16 character description
+#    of the execution behavior and write to the file
+#    execCode.txt
+# 4) On succesful execution of the script (not necessarily goma)
+#    return the status, 0, to the calling environment.
+#    On unsuccessful execution of the script return neg 1
+############################################################################
+#
+############################################################################
+#
+exist_and_executable() {
+#
+# exist_and_executable filename
+#
+#    This function returns a zero if "filename" exists and is executable.
+#    It returns -1 otherwise
+#
+errorStatus=0
+if [ ! -x $1 ]
+then
+  errorStatus=-1
+fi
+if [ ! -f $1 ]
+then
+  errorStatus=-1
+fi
+return $errorStatus
+}
+
+#############################################################################
+#
+required_file_missing_exit () {
+#
+# required_file_missing_exit filename
+#
+#   If the shell variable, errorStatus, is not equal to "0", then
+#   an error exit is generated. $1, the missing file, is named in the
+#   error message
+#
+#               echo 'required_file_missing_exit called with parameter, ' $1
+#                                       echo 'errorstatus = ' $errorStatus
+if [ $errorStatus != "0" ]
+then
+  fullName=`pwd`/$1
+  echo "RUNMASTER ERROR EXIT:"
+  echo "        A required file, " $fullName ", does not exist"
+  exit -1
+fi
+}
+#
+#############################################################################
+#
+check_needed_executable() {
+#
+# check_needed_executable filename
+#
+#      This program will check to see if the needed file, filename, exists
+#      and is executable to the current user. If it isn't it causes an
+#      error exit from the shell script
+#
+#                      echo check_needed_executable called with parameter $1
+exist_and_executable $1
+#
+# required_file_missing_exit uses the errorStatus variable from the 
+# previous function to decide whether to error exit
+#
+required_file_missing_exit $1
+}
+#
+#############################################################################
+#
+#  Satisfy a possibly unset variable
+#     GOMA_SERIAL_RL
+#          -> this is used as the prefix to running the
+#             the goma command
+#                ( e.g. mpirun -np 1 )
+#
+GOMA_SERIAL_RL=${GOMA_SERIAL_RL:='mpirun -np 1 '} 
+#
+#
+# Define Goma Errors to be used as search strings in error file
+#
+SEGF='Segmentation'
+DEFG='Deformation'
+BUS='Bus'
+NAN='NaN'
+YUK='YUK'
+FAIL='failed'
+NOC='non-convergence'
+strliste="$SEGF  $DEFG  $BUS  $NAN  $FAIL  $NOC"
+#
+#################################################################
+#
+# Define Goma Messages to be used as search strings in output file
+#
+DUN='done'
+strlisto=$DUN
+#
+#################################################################
+#
+#   We need to create a local symbolic link to the
+#   executable in order to satisfy some versions of MPI's
+#   need for specification of the working directory
+#
+if [ -f goma.exe -o -h goma.exe ]
+then
+  /bin/rm -f goma.exe
+fi
+/bin/ln -s $GOMA_VERSION goma.exe
+#
+#################################################################
+#
+# Echo description of problem to standard out
+#
+#
+echo "Current Directory:" `pwd`  " Running problem $IFILE."
+echo "Description of the problem:"
+cat  vp_title
+#
+#################################################################
+#
+# Flags and files are:
+#
+#
+AF='  '
+IF='-i'
+IFILE='input_long'
+EFILE='serr.unsat_long'
+OF='-so'
+OFILE='sout.unsat_long'
+#
+BLESSED_EFILE='base2.serr'
+EXO_OUTPUT=out_bilin_60.exoII
+#
+#######################################################################
+#
+# Get rid of output file to avoid false positives
+#
+if [ -f $EXO_OUTPUT ]
+then
+  /bin/rm $EXO_OUTPUT
+fi
+#
+#########################################################################
+#
+#  Run the Problem 
+#
+echo " "
+echo "    goma.exe is symbolically linked to " $GOMA_VERSION
+echo " $GOMA_SERIAL_RL goma.exe $AF $IF $IFILE " " >$OFILE 2>$EFILE "
+echo " "
+#
+#  Run Goma and get the error status
+#
+$GOMA_SERIAL_RL goma.exe $AF $IF $IFILE  >$OFILE 2>$EFILE
+goma_status=$?
+if [ $goma_status != "0" ]
+then
+  echo 'runscript ERROR: goma returned an error status ' $goma_status
+  errorStatus=$goma_status
+fi
+#
+########################################################################
+#
+#     Check the standard error output for the
+#     occurance of error statements
+#
+error_string_status="no" 
+for current_job in $strliste
+do
+  string_check=$current_job
+  if [ $current_job = $SEGF ] 
+  then
+    string_check="$SEGF Fault"
+  fi
+  if [ $current_job = $DEFG ] 
+  then
+    string_check="$DEFG Grad"
+  fi
+  if [ $current_job = $BUS ] 
+  then
+    string_check="$BUS Error"
+  fi
+  grep "$string_check" $EFILE
+  temp_status=$?
+  if [ $temp_status = "0" ]  
+  then
+    error_string_status="yes" 
+    error_string=$current_job
+    echo " String "$current_job" found; check results."
+  fi
+#  echo "end of first if"
+#  echo "error_string_status = " $error_string_status
+  if [ $error_string_status = "yes" ]
+  then
+    echo 'ERROR STATUS flag found standard error output: ' $current_job
+    echo 'runscript exiting execution error found!'
+    echo $current_job > execCode.txt
+    exit 0
+  fi
+done
+#
+############################################################################
+#
+#  Check the standard output for the non-occurance of
+#  required character strings! A successful run will 
+#  pass all of the checks below.
+#
+for current_job in $strlisto
+do
+#  echo " ** Search for" $current_job "in" $OFILE
+  grep $current_job $OFILE
+  temp_status=$?
+  if [ $temp_status != "0" ]
+  then
+    echo " String "$current_job" not found; job did not finish normally."
+    echo " UNFINISHED_JOB " >execCode.txt
+    exit 0
+  fi
+done
+#
+#    Final check on the code, make sure Goma returned a good error exit value
+#
+if [ $goma_status != "0" ]
+then
+   echo "Problem in the directory, " `pwd` ", had an ERROR exit" 
+   echo " ERROR EXIT     " >execCode.txt
+   exit 0
+else
+   echo "Problem in the directory, " `pwd` "executed to a satisfactory completion"
+   echo " SATIFACTORY    " >execCode.txt
+fi
+#
+###########################################################################
+#
+#Check Goma Initial Residuals & Compare to Baseline Case
+#
+# First, create temporary files with a unique name in
+# the current working directory
+#
+TEMP_FILE1=temp1.$$
+TEMP_FILE2=temp2.$$
+TEMP_FILE3=temp3.$$
+#
+#
+# grep ':[0-9][0-9]:' $BLESSED_ERR | grep "\[0\]" | line > TEMP_FILE1
+#
+#  gather the norms of the residuals
+#
+grep ':[0-9][0-9]:' $BLESSED_EFILE > $TEMP_FILE1
+cut -d ' ' -f3-8 $TEMP_FILE1 > $TEMP_FILE2
+/bin/rm $TEMP_FILE1
+#
+#
+grep ':[0-9][0-9]:' $EFILE  > $TEMP_FILE1
+cut -d ' ' -f3-8 $TEMP_FILE1 > $TEMP_FILE3
+#
+diff -w $TEMP_FILE2 $TEMP_FILE3 > $TEMP_FILE1
+diff_stat=$?
+if [ $diff_stat = 0 ]
+then
+  echo "Norms of the Residuals Identical"
+else
+  echo "Norms of the Residuals are different!"
+  echo "  "
+  echo "Base Initial Residuals:     " 
+  echo '--------------------------------------------------------'
+  cat $TEMP_FILE2
+  echo '--------------------------------------------------------'
+  echo "Current Version Residuals:  " 
+  echo '--------------------------------------------------------'
+  cat $TEMP_FILE3
+  echo '--------------------------------------------------------'
+#
+#      change the exit code
+#
+  /bin/rm -f execCode.txt
+  echo ' RESIDUAL MISMATCH' > execCode.txt
+fi
+#
+# remove temporary files
+#
+/usr/bin/rm -f $TEMP_FILE1 $TEMP_FILE2 $TEMP_FILE3 
+#
+###########################################################################
+#
+#
+exit 0
+#
+############################################################################
+#

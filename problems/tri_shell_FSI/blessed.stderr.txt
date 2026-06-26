@@ -1,0 +1,7 @@
+Aprepro: WARNING: Pre-defined Variable 'E' redefined (journal.aprepro, line 12)
+Aprepro: WARNING: Pre-defined Variable 'E' redefined (journal.aprepro, line 12)
+WARNING:  Must have mesh continuum equations on somewhere for FSI_MESH_CONTINUUM (/opt/workdir/goma/src/mm_input_mp.c:10965)
+WARNING: Defaulting on Lubrication Curvature Normal (/opt/workdir/goma/src/mm_input_mp.c:11149)
+WARNING: Defaulting on Lubrication LS Interpolation (/opt/workdir/goma/src/mm_input_mp.c:11165)
+Aprepro: WARNING: Pre-defined Variable 'E' redefined (journal.aprepro, line 12)
+		converged SS!

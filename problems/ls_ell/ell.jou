@@ -1,0 +1,42 @@
+## /net/sass2248/usr/local/eng_sci/cubit/bin/cubit, Cubit Version 3.1.0-15, Run on 07/07/2000 at 04:31:19 
+## Command Options:
+## -warning = On
+## -information = On
+brick x 5 y 1 z 1 
+brick x 5 y 1 z 1 
+body 2 rotate 90 about z 
+label surface on 
+display 
+align body 2 surface 10 with surface 3 
+align body 2 surface 11 with surface 6 
+align body 2 surface 10 with surface 3 
+body 2 move 3 0 0 
+unite body 2 with body 1 
+body all move 0 0.5 -0.5 
+webcut body all with plane xplane offset 0 
+imprint all 
+merge all 
+surface 20 18 size 0.25
+surface 20 18 scheme auto 
+mesh surface 20 18 
+block 1 surface 18 
+block 2 surface 20 
+block all element type quad9 
+nodeset 1 curve 67 49 
+nodeset 2 curve 41 33 16
+nodeset 3 curve 13 
+nodeset 4 curve 26
+nodeset 5 curve 40 35
+nodeset 6 curve 3 
+nodeset 10  curve 31 
+nodeset 100 vertex 18 12
+sideset 1 curve 67 49 
+sideset 2 curve 41 33 16
+sideset 3 curve 13 
+sideset 4 curve 26
+sideset 5 curve 40 35
+sideset 6 curve 3 
+sideset 10  curve 31 
+display 
+export genesis "ell.exoII"
+

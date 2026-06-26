@@ -1,0 +1,77 @@
+/**************************************************/
+/ Form of property cards:                          /
+/ PROPERTY   = MODEL   FLOAT#1 FLOAT#2 .....FLOAT#5/
+/                                                  /
+/ Form of Constitutive cards                       /
+/ MECHANICS_TYPE   = MODEL      (USER, et. al.)    /
+/**************************************************/
+
+Material Data File for riedel_liq
+
+---Physical Properties
+Density			= CONSTANT 	1000.
+
+---Mechanical Properties and Constitutive Equations
+Solid Constitutive Equation 	= NONLINEAR	
+Convective Lagrangian Velocity	= NONE
+Lame MU 			= CONSTANT 	1.
+Lame LAMBDA 			= CONSTANT 	1.
+Stress Free Solvent Vol Frac	= CONSTANT	0.
+Liquid Constitutive Equation 	= NEWTONIAN
+Viscosity			= CONSTANT	.01
+Low Rate Viscosity		= CONSTANT	0.
+Power Law Exponent		= CONSTANT	0.
+High Rate Viscosity		= CONSTANT	0.
+Time Constant			= CONSTANT	0.
+Aexp 				= CONSTANT	0.
+Polymer Constitutive Equation	= NOPOLYMER
+
+---Thermal Properties
+Conductivity		= CONSTANT	1.
+Heat Capacity		= CONSTANT	10.
+Volume Expansion	= CONSTANT	1.
+Reference Temperature	= CONSTANT	0.
+Liquidus Temperature	= CONSTANT	1.
+Solidus Temperature	= CONSTANT	1.
+
+----Electrical Properties
+Electrical Conductivity = CONSTANT      0.
+
+---Microstructure Properties
+Media Type		= CONTINUOUS
+Permeability		= CONSTANT	1.
+
+---Species Properties-- 0 = methanol, 1=water
+
+Diffusion Constitutive Equation = FICKIAN
+Diffusivity  			= CONSTANT  0   1.e-5
+Latent Heat Vaporization	= CONSTANT  0	0.
+Latent Heat Fusion		= CONSTANT  0	0.
+Vapor Pressure  		= RIEDEL    0   1.e6 -8.54796 -0.76982 0. 0.  1 288. 470.
+#Vapor Pressure  		= CONSTANT  0   92.e2
+Species Volume Expansion	= CONSTANT  0   1.
+Reference Concentration         = CONSTANT  0   0.
+
+Diffusivity  			= CONSTANT  1   1.e-5
+Latent Heat Vaporization	= CONSTANT  1	0.
+Latent Heat Fusion		= CONSTANT  1	0.
+Vapor Pressure  		= RIEDEL    1	1.e6 -7.7645 -1.4584 0. 0.  1  275. 647.
+#Vapor Pressure  		= CONSTANT  1	92.e2
+Species Volume Expansion	= CONSTANT  1   1.
+Reference Concentration         = CONSTANT  1   0.
+				            ^
+********Species Number**********************|
+
+----Source Terms
+
+$$$ this for a 1 degree incline
+Navier-Stokes Source		= CONSTANT	19.6 0 0.
+Solid Body Source		= CONSTANT	0.  0.  0.
+Mass Source			= CONSTANT	0.
+Heat Source			= CONSTANT	0.
+Species Source			= CONSTANT  0   0.
+Species Source			= CONSTANT  1   0.
+Current Source                  = CONSTANT      0.
+Initialize                      = MASS_FRACTION 0 0.5
+Initialize                      = MASS_FRACTION 1 0.3
+

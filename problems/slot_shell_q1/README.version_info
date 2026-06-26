@@ -1,0 +1,16 @@
+Upstream side of tensioned web slot coater: GOMA Version Information
+==============================================================================
+
+Directory:   .../VandV/problems/slot_shell
+
+Aug 23, 04 baseline #1  - Initial checkin by edwilke.
+**********************
+     goma_040823 executable
+     output files:
+        blessed.sout
+        blessed.serr
+        free_out_blessed.exoII
+
+     initial residuals - 2.6e-01 2.3e+00 6.9e-01  
+     1st iteration updates - 2.4e+03 2.6e+04 6.5e+03 
+

@@ -1,0 +1,22 @@
+ TITLE 
+  
+ POINT     2      0.5100000E-00      1.0000000E-02
+ POINT     22     0.5100000E-00      1.3000000E-02
+ POINT     3      0.5250000E-00      1.0000000E-02
+ POINT     33     0.5250000E-00      1.3000000E-02
+ LINE      2   STR     2     3     0     6  1.0000
+ LINE      22  STR     3    33     0     2  1.
+ LINE       23  STR     33   22     0     6  1.
+ LINE      24  STR     22   2      0     2  1.
+ REGION     1     2     -2     -22     -23   -24
+ SCHEME    0 M
+ BODY       1 
+ POINBC   400     4
+ NODEBC     2     2
+ NODEBC     23    23
+ NODEBC     24    24
+ ELEMBC     2     2
+ ELEMBC     22    22
+ ELEMBC     23    23
+ ELEMBC     24    24
+ EXIT  

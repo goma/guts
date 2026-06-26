@@ -1,0 +1,8 @@
+*~
+__pycache__/
+*.py[cod]
+*$py.class
+.svn/
+/data/
+/results/
+/scripts/local_config

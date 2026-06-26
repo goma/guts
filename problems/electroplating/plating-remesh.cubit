@@ -1,0 +1,70 @@
+title 'Model problem for LIGA electroplating'
+  
+nodeset associativity on
+merge tolerance 1e-6
+import free mesh "plating.out.exoII" last
+
+sideset 1 curve 13 
+sideset 2 curve 1 2 3 
+sideset 3 curve 5 6 7   
+sideset 4 curve 11   
+sideset 5 curve 12  
+sideset 6 curve 2  
+sideset 7 curve 8   
+sideset 8 curve 4   
+
+nodeset 1 curve 13 
+nodeset 2 curve 1 2 3 
+nodeset 3 curve 5 6 7   
+nodeset 4 curve 11   
+nodeset 5 curve 12  
+nodeset 6 curve 2  
+nodeset 7 curve 8   
+nodeset 8 curve 4   
+
+nodeset 100 vertex 9
+nodeset 200 vertex 10
+nodeset 300 vertex 2
+nodeset 400 vertex 3
+
+block 1 surface 1 2 3 
+block 1 element type quad9
+block 2 surface 4
+block 2 element type quad9
+
+surface 1 scheme map
+surface 1 size 0.1
+curve 1 scheme bias factor 0.65 start vertex 1
+curve 7 scheme bias factor 0.65 start vertex 8
+curve 8 int fact 0.6 
+curve 8 scheme bias factor 1.25 start vertex 1
+curve 9 int fact 0.6 
+curve 9 scheme bias factor 1.25 start vertex 2
+
+surface 2 scheme map
+surface 2 size 0.03
+curve 2 scheme dualbias factor 1.5 
+curve 6 scheme dualbias factor 1.5 
+
+surface 3 scheme map
+surface 3 size 0.1
+curve 3 scheme bias factor 0.65 start vertex 4
+curve 5 scheme bias factor 0.65 start vertex 5
+curve 10 int fact 0.6 
+curve 10 scheme bias factor 1.25 start vertex 3
+curve 4 int fact 0.6 
+curve 4 scheme bias factor 1.25 start vertex 4
+
+surface 4 scheme map
+surface 4 size 0.025
+curve 11 int fact 1.2 
+curve 11 scheme bias factor 1.25 start vertex 9
+curve 12 int fact 1.2 
+curve 12 scheme bias factor 1.25 start vertex 10
+curve 2  scheme dualbias factor 1.5 
+curve 13 scheme dualbias factor 1.5 
+
+mesh surface all 
+
+export genesis "plating-new.exoII"
+

@@ -1,0 +1,57 @@
+$  BASE UNITS are CGS
+$ Conversion for Length change new scale = cm * conv
+$ So to convert from cm to mm -> conv = 10.0
+$ Length conversion		{L =10.0}
+$ Mass conversion		{K =1.0}
+$ Time conversion		{S =1000.0}1000.0
+$ moles conversion		{M =K}
+
+$ Geometry file cap_tube.jou
+$
+$ 2D axis Geometry Scaling Factor	{LT = 1.0*L}
+$ Porous Material Thickness		{porous_mat_thickness = 0.25*L}
+$ Porous Material Length		{porous_mat_length = 3.75*L}
+$ Capillary Tube Radius			{cap_tube_radius = 0.5*L}
+$ Capillary Tube Height			{cap_tube_height = 2.0*L}
+
+$ Mesh Specification
+$ Porous Mesh Size Element		{porous_size_element = 0.025*L}
+$ Tube Mesh Size Element		{tube_size_element = 0.025*L}
+
+$ Lame Coefficient mu                   {L_mu = 4.6e4*K/L/S/S}
+$ Lame Coefficient lamda                {L_lambda = 4.6e4*K/L/S/S }
+
+
+$ Ambient Pressure 			{ambpres = 1.0133e6*K/L/S^2}
+$ Permeability in-plane 		{permeab_i = 185.*9.8e-9*L^2} (185 darcies)
+$ Permeability cross-plane		{permeab_c = 292.*9.8e-9*L^2} (292 darcies)
+$ Measured Pore Size 			{poresize = 0.0230*L}
+$ Surface Tension of Slurry Fluid 	{surftens = 20.5*K/S^2} 22
+$ Liquid Viscosity (hexadecane, 20c)	{lqvisc = 0.034*K/L/S} 0.5
+$ Lite Liquid Viscosity			{lqvisc_lt = lqvisc/70.0} 0.5
+$ Density of Substrate			{subsdens = 2.0*K/L^3} 2.0
+$ Density of Liquid 			{sldens = 1.0*K/L^3} 0.985
+$ Density of lite Liquid 		{sldens_lt = sldens/20.0} 0.985
+$ Air Viscosity 			{airvisc = 1.82e-4*K/L/S}
+$ Air Density				{airdens = 1.269e-3*K/L^3}
+$ Porosity of Substrate 		{poros = 0.93} .45
+$ Gas Phase Diffusion Coeff		{gpdiff = 0.26*L^2/S}
+$ Capillary Pressure 			{cappres = 4.0*surftens/poresize}
+$ Capillary pressure at Satmax(a200)	{pcmin = 1000.0*K/L/S^2} 54241.3
+$ Capillary pressure at Satmin(a200)	{pcmax = 20000.0*K/L/S^2} 50000.0 1.24e6 1.3e6
+$ Tanh model constant C (Draining)      {const_c_d = 3.984} 2.4 3.98
+$ tanh model constant D (Draining)      {const_d_d = 34114.0*K/L/S^2} 5000.0 34114.78
+$ Tanh model constant C (Wetting)       {const_c_w = 3.988} 2.4 3.98
+$ tanh model constant D (Wetting)       {const_d_w = 14640.0*K/L/S^2} 5000.0 34114.78
+$ Equilibrium Vapor Pressure		{vappres = 13.0*K/L/S^2}
+$ Molecular Weight of Slurry Liquid	{mwsl = 18.0*K/M}
+$ Gas Constant				{rgas = 83140000*K*L^2/S^2/M}
+$ Temperature				{temp = 300.0}
+$ Molecular Weight Air			{mwair = 29.0*K/M}
+$ Gravity				{grav = 981.0*L/S/S}
+$ Time Threshold Darcy Continous BC	{time_threshold = 0.00} 2.75
+$ {por_thick=4.0}
+
+
+
+{include(defs_common)}

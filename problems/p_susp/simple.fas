@@ -1,0 +1,33 @@
+ TITLE Parallel Plate Viscometry
+
+ POINT     1      0.       0.
+ POINT     2      0.185    0.
+ POINT     3      0.185    1.75
+ POINT     4      0.       1.75
+ POINT     5      0.185    0.875
+ POINT     6      0.       0.875
+ LINE      1   STR     1     2     0   5   1.
+ LINE      2   STR     1     6     0   5   1.
+ LINE      3   STR     3     4     0   5   1. 
+ LINE      4   STR     2     5     0   5   1.
+ LINE      5   STR     3     5     0   5   1.
+ LINE      6   STR     4     6     0   5   1.
+ LINE      7   STR     5     6     0   5   1 
+ REGION     1     1    -1  -2 -7 -4 
+ REGION     2     1    -7  -5 -3 -6 
+ SCHEME    0 m
+ BODY       1 2
+ NODEBC     1     1 
+ NODEBC     2     2 6
+ NODEBC     3     3
+ NODEBC     4     4 5
+ ELEMBC    10     1 
+ ELEMBC    20     2 6
+ ELEMBC    30     3 
+ ELEMBC    40     4 5
+ poinbc     100    1
+ poinbc     200    2
+ poinbc     300    3
+ poinbc     400    4
+ NINE  
+ EXIT  

@@ -1,0 +1,162 @@
+{Include(geometry)}
+ ---
+ FEM Problem Specifications
+ ---
+FEM file                         = slot.exoII
+Output EXODUS II file            = out.exoII
+GUESS file                       = contin.dat
+SOLN file                        = soln.dat
+Write intermediate results	 = no
+
+ ---
+General Specifications
+ ---
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0 
+Initial Guess                    = read
+Anneal Mesh on Output            = no
+ --- 
+Time Integration Specifications
+ ---
+Time integration                 = steady
+---
+Continuation Specifications
+---
+Continuation                      = zero
+Continuation Type                 = BC
+Boundary condition ID             = 14
+Boundary condition data float tag = 0
+Material id                       = 1
+Material property tag             = 0
+Material property tag subindex    = 0
+Initial parameter value           = {webspeed}
+$Final parameter value             = {webspeed/5}
+Final parameter value             = {webspeed/1.125}
+delta_s                           = {webspeed/45.}
+Maximum number of path steps      = 20
+Minimum path step                 = {webspeed/50.}
+Maximum path step                 = {webspeed/10.}
+Continuation Printing Frequency   = 1
+
+-----------------------------------
+Augmenting Conditions Specifications
+-----------------------------------
+Number of augmenting conditions = -1
+AC = VC   {mat_id = 1} {volid = 1} {bcid = 23} {dfid=1} {compid = 0} {const = 0.0119801713545904}
+END OF AC
+
+ ---
+Solver Specifications
+ ---
+Solution Algorithm               = amesos
+Amesos Solver Package            = umf
+Number of Newton Iterations      = 10     
+$Newton correction factor         = 1.0 1.e-6 0.7 1.e-5 0.3 2.0e-4    
+Newton correction factor         = 1.0 
+Normalized Residual Tolerance    = 1.0e-11
+Residual Ratio Tolerance         = 1.0e-2
+UMF XDIM = 7500000
+UMF IDIM = 7500000
+ ---
+Boundary Condition Specifications
+ ---
+Number of BC			 =  -1       
+ 
+$$Geometry first      
+BC				 = PLANE SS  1   {a1}   {b1}   {c1}  {d1}
+BC				 = PLANE SS  2   {a2}   {b2}   {c2}  {d2}
+BC				 = PLANE SS  3   {a3}   {b3}   {c3}  {d3}
+BC				 = PLANE SS  4   {a4}   {b4}   {c4}  {d4}
+BC				 = PLANE SS  5   {a5}   {b5}   {c5}  {d5}
+BC				 = PLANE SS  8   {a8}   {b8}   {c8}  {d8}
+BC				 = PLANE SS  9   {a9}   {b9}   {c9}  {d9}
+BC                               = DX NS 400 {x4_new-x4}  1.
+BC                               = DY NS 400 {y4_new-y4}  1.
+$$$This next bc is to keep the upstream motion of the mesh from distorting
+$$$the downstream motion.
+$$BC                               = DX NS 17 0.
+
+$$No slip surfaces
+BC =    U        NS      1       0.0 
+BC =    V        NS      1       0.0 
+
+$$inflow 
+$$BC =    VELO_NORMAL   SS     3    {-inflow_speed}
+$$BC =    VELO_TANGENT  SS     3    0 0. 0. 0.
+$$BC =    V   NS     3    {-inflow_speed}
+$$BC =    U  NS     3    0 0. 0. 0.
+BC = GD_LINEAR SS 3 R_MOMENTUM1 0 VELOCITY2 0 0. 1.
+BC = GD_PARAB SS 3 R_MOMENTUM1 0 MESH_POSITION1 0 {-6.*inflow_speed*x6_new*x5_new/S2/S2} {6.*inflow_speed*(x6_new+x5_new)/S2/S2} {-6.*inflow_speed/S2/S2}
+BC =    VELO_TANGENT  SS 3   0 0. 0. 0.
+
+$$Web
+BC =    U        NS      9       {webspeed}
+BC =    V        NS      9       0.0  
+
+$$Contact lines
+
+$$ Upstream static contact line
+BC =    U        NS    100       0.0 
+BC =    V        NS    100       0.0  
+
+$$ DCL
+BC =    U        NS    700      0.0 
+BC =    V        NS    700       0.0  
+
+$$ Downstream static separation line
+BC =    U        NS    400       0.0 
+BC =    V        NS    400       0.0  
+
+$$ Now for menisci and DCL disting conditions
+
+$$ First upstream
+  $$ slip condition
+$$BC = VELO_NORMAL SS 21 0.
+
+$$BC = VELO_NORMAL SS 23 0.
+BC = KINEMATIC   SS      23       0.
+BC = CAPILLARY   SS      23       {surface_tension}  {vacuum}  0.
+BC = CA          NS    700      1.2707    0.0   -1.0    0.0
+BC = CA          NS    100      1.9707    0.0    1.0    0.0
+
+$$ Down the downstream Meniscus
+
+$$BC = VELO_NORMAL SS 6 0.
+BC = KINEMATIC   SS      6       0.
+BC = CAPILLARY   SS      6       {surface_tension}   0.0  0.
+BC = CAP_ENDFORCE  NS    1400  1 0 0  {surface_tension}
+BC =    VELO_TANGENT  SS     8    0 0. 0. 0.
+
+END OF BC
+
+----
+Problem Description
+---
+
+Number of Materials = 1
+
+MAT = fluid    1
+
+	Coordinate System = CARTESIAN
+	Element Mapping       = isoparametric
+	Mesh Motion = ARBITRARY
+	Number of bulk species = 0
+
+	Number of EQ       = 5
+	EQ = momentum1  Q2   U1   Q2       0.   1.   1.   1.   1.   0.
+	EQ = momentum2  Q2   U2   Q2       0.   1.   1.   1.   1.   0.
+	EQ = continuity	P1   P    P1   1.                      0.
+	EQ = mesh1      Q2   D1   Q2       0.   0.   1.   1.   0.
+	EQ = mesh2      Q2   D2   Q2       0.   0.   1.   1.   0.
+                                      div  ms  adv  bnd  dif  src  por
+
+Post Processing Specifications
+ 
+Stream Function =  yes
+Streamwise normal stress = yes
+Pressure contours = yes
+Second Invarient of Strain = yes
+Mesh Dilatation = yes
+Navier Stokes Residuals = yes
+Moving Mesh Residuals = yes

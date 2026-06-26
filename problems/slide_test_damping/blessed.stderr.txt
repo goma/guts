@@ -1,0 +1,3 @@
+WARNING: You have selected the BACKTRACK_MESH backtracking line search, but have not specified any mesh correction dampings. (/opt/workdir/goma/src/mm_input.c:6779)
+WARNING: Defaulting to 3 mesh correction dampings of 0.5 0.2 0.1 and tolerances of 1e-05 0.0001 0.001 (/opt/workdir/goma/src/mm_input.c:6792)
+		converged SS!

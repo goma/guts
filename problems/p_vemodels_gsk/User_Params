@@ -1,0 +1,20 @@
+% Chaco 2.0 input file 
+%
+% This "User_Params" file was created by brk for decomposing a GOMA
+% finite element problem. If "User_Params" already exists, then brk
+% will not overwrite it.
+%
+% Chaco has MANY options. For a description of those options and
+% how they can be tailored to your problem, cf SAND95-2344, pp. 24--38
+%
+%
+check_input     = false
+echo            = 0
+output_metrics  = 0
+output_time     = 0
+output_assign   = true
+out_assign_inv  = true
+in_assign_inv   = false
+prompt          = false
+print_headers   = false
+architecture    = 1

@@ -1,0 +1,4 @@
+WARNING: 
+Beware that SUPG for trishells/tetrahedrons is held constant so...
+You need a uniform, non-stretching grid
+ (/opt/workdir/goma/src/mm_fill_aux.c:1023)

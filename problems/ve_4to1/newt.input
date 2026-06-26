@@ -1,0 +1,121 @@
+------------------------------------------------------------
+                 FEM Problem Specifications
+------------------------------------------------------------
+FEM file                         = four_one.exoII
+Output EXODUS II file            = out.exoII
+GUESS file                       = contin.dat
+SOLN file                        = soln.dat
+Write intermediate results       = no
+------------------------------------------------------------
+                 General Specifications
+------------------------------------------------------------
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+Initial Guess                    = zero
+------------------------------------------------------------
+                 Time Integration Specifications
+------------------------------------------------------------
+Time integration                 = steady
+delta_t                          = 5.0e-6
+Maximum number of time steps     = 250
+Maximum time                     = 10.0e+0
+Minimum time step                = 1.0e-12
+Time step parameter		 = 0.
+#Time step error  		 = err=.005  mesh=1  v=1  T=0   C=0  p=0
+Time step error  		 = .008  1   1   0   0   0
+Printing Frequency		 = 1
+------------------------------------------------------------
+                 Solver Specifications
+------------------------------------------------------------
+Solution Algorithm               = lu
+UMF XDIM                         = 8330088
+UMF IDIM                         = 8330088
+Preconditioner                   = ls
+Polynomial                       = 1
+Size of Krylov subspace          = 64
+Orthogonalization                = classical
+Maximum Linear Solve Iterations  = 1000
+Number of Newton Iterations      = 12
+Newton correction factor         = 1.
+Normalized Residual Tolerance    = 1.0e-10
+Residual Ratio Tolerance         = 1.0e-2
+------------------------------------------------------------
+	Boundary Condition Specifications                 
+------------------------------------------------------------
+Number of BC = -1
+BC = V     NS     1       0.
+BC = V     NS     2       0.
+BC = U     NS     3       0.
+BC = V     NS     3       0.
+BC = V     NS     4       0.
+#BC = UVARY     SS     40       1.5 4.
+#BC = UVARY     SS     20       6.0 1.
+BC = GD_LINEAR SS 40 R_MOMENTUM1  0 VELOCITY1      0  0.   1.
+BC = GD_PARAB  SS 40 R_MOMENTUM1  0 MESH_POSITION2 0 -1.5  0. 0.09375 
+BC = GD_LINEAR SS 20 R_MOMENTUM1  0 VELOCITY1      0  0.   1.
+BC = GD_PARAB  SS 20 R_MOMENTUM1  0 MESH_POSITION2 0 -6    0. 6. 
+BC = S22     NS     4     0.
+BC = S12     NS     4     0.
+BC = P     NS     100     0.
+END OF BC
+
+
+BC = GD_LINEAR SS 40 R_STRESS11  0 POLYMER_STRESS11 0  0. 1.
+BC = GD_PARAB SS 40 R_STRESS11  0 MESH_POSITION2 0 0.  0. 18.
+
+----
+Problem Description
+---
+
+Number of Materials = 1
+
+MAT = newt   1
+
+	Coordinate System = CARTESIAN
+
+	Element Mapping = isoparametric
+
+	Mesh Motion = ARBITRARY
+
+	Number of bulk species = 0
+
+	Number of viscoelastic modes = 1
+
+Number of EQ			 = 10
+EQ = momentum1  Q2	U1	Q2	     1.    1.   1.   1.   0.   0.
+EQ = momentum2  Q2	U2	Q2	     1.    1.   1.   1.   0.   0.
+EQ = continuity	Q1	P 	Q1	           1.             0.
+EQ = stress11   Q2	S11	Q2	     1.    1.   1.   1.   1.
+EQ = stress12   Q2	S12	Q2	     1.    1.   1.   1.   1.
+EQ = stress22   Q2	S22	Q2	     1.    1.   1.   1.   1. 
+EQ = gradient11 Q2	G11	Q2	           1.             1.
+EQ = gradient12 Q2	G12	Q2	           1.             1.
+EQ = gradient21 Q2	G21	Q2	           1.             1.
+EQ = gradient22 Q2	G22	Q2	           1.             1.
+
+                                             ms   adv  bnd  dif  src  porous
+
+Post Processing Specifications
+
+Stream Function = yes
+Streamwise normal stress = no
+Pressure contours = yes
+Second Invarient of Strain = no
+Mesh Dilatation = no
+Navier Stokes Residuals = no
+Moving Mesh Residuals = no
+Mass Diffusion Vectors = no
+Mass Fluxlines = no
+Energy Conduction Vectors = no
+Energy Fluxlines = no
+Time Derivatives = no
+Mesh Stress Tensor = no
+Mesh Strain Tensor = no
+
+
+
+
+
+
+

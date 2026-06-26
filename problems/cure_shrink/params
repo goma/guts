@@ -1,0 +1,72 @@
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$	FLAGS
+$ Do steady state? {SS=1}
+$ bias towards interfaces? {bias_interfaces = 1}
+$ fixed free surface {f_fs=0}
+$ read initial guess {read_ig=1}
+$ read slice number {read_slice=-1} # this should probably default to -1 
+$ write intermediate {write_iter=0}
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+###########################################
+# CONTINUATION SPECS
+###########################################
+$ {Cont_Mat_ID=1}
+$ {Cont_Mat_Prop_tag=5000}
+$ {Cont_BCID=1}
+$ {Cont_BCFID=0}
+$ {Cont_start_val=0.0}  
+$ {Cont_end_val=1.0} 
+$ {Cont_start_step=0.01} 
+$ {Cont_min_step = 3.0E-5} 
+$ {Cont_max_step=0.1}
+$ {Max_num_steps=100}
+###########################################
+
+###########################################
+# EIGENSPECS SPECS
+###########################################
+$ Eigen transforms scheme    {do_SI=1} #if you're not doing SI you're doing CAYLEY
+$ Number of modes            {num_find_modes=26}
+$ Record modes               {num_write_modes=3}
+$ Size of Krylov subspace    {size_krylov=100}
+$ SI/Cayley Sigma            {eigen_sigma=-0}
+$ Cayley Mu                  {eigen_mu=0.0}
+###########################################
+
+
+#eventually we will use the kPa,mm system so let's start now
+$ land thickness {land_th = 0.0035}
+$ total width {width = 0.028125*2}
+$ feature width {feat_width = 0.028125}
+$ feature depth {feat_depth = 0.255}
+
+$ density {density = 1.0}
+$ surface tension {gamma = 1.0}
+$ viscosity {viscosity = 0.1}
+# $ initial resin temp {t_resin = 0.0001}
+$ initial resin temp {t_resin = 380.0}
+
+$ cure gel point {cure_gel_pt = 0.50}
+$ cure A exponent {cure_A_exp = 1.0}
+$ cure B exponent {cure_B_exp = 0.01}
+
+
+
+#there is a rigid (typically PET) film on top of the louver
+$ film thickness {film_th=0.0254*3}
+
+
+###########################################
+# HEAT TRANSFER SPECS
+###########################################
+
+# $ heat transfer coeff tool {htc_tool=0.1}
+# $ tool infinity temp	    {tool_temp=0.0001}
+# $ heat transfer coeff air {htc_air=0.001}
+# $ air infinity temp	    {air_temp=0.0001} 
+$ heat transfer coeff tool {htc_tool= 0.1}
+$ tool infinity temp	    {tool_temp= 320.0}
+$ heat transfer coeff air {htc_air=0.01}
+$ air infinity temp	    {air_temp= 297.0} 
+###########################################

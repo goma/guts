@@ -1,0 +1,30 @@
+# brk -- fill_ell input file
+#
+# momentum, energy, fill and level set
+
+ 1        # element block ID
+ 3        # number of basic eqnvar
+ 0 2 1 1  # velocity
+ 9 1 1 1  # continuity
+29 1 1 1  # level set equation
+ 
+#
+# eqnvar interaction specification
+#
+#       u       P    L   
+
+        1       1    1              # momentum equation
+        1       0    0              # continuity equation
+        1       0    1              # level set equation
+ 
+ 9   # number of nodes per element
+ 0 9  29
+ 0 9  29
+ 0 9  29
+ 0 9  29
+ 0    29
+ 0    29
+ 0    29
+ 0    29
+ 0    29
+

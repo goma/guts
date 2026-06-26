@@ -1,0 +1,11 @@
+WARNING: Defaulting on Time step error norm indicators
+ (/opt/workdir/goma/src/mm_input.c:1612)
+WARNING: Boundary condition 0, LS_CAPILLARY, applied on NS 0, is never used
+ (/opt/workdir/goma/src/mm_bc_conflict.c:2001)
+WARNING: Boundary condition 6, BAAIJENS_FLUID_SOLID, applied on NS 1, is never used
+ (/opt/workdir/goma/src/mm_bc_conflict.c:2001)
+WARNING: Boundary condition 7, LS_NO_SLIP, applied on NS 1, is never used
+ (/opt/workdir/goma/src/mm_bc_conflict.c:2001)
+WARNING: Bad elem post process variable count  (/opt/workdir/goma/src/mm_post_proc.c:12495)
+WARNING: calc_stream_fcn: POSSIBLE ERROR - Connectivity not sufficiently continuous
+ (/opt/workdir/goma/src/mm_post_proc.c:7781)

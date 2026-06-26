@@ -1,0 +1,9 @@
+WARNING: Defaulting on Time step error norm indicators
+ (/opt/workdir/goma/src/mm_input.c:1612)
+Warning: alloc_ptr_1 P_0: called with n = 0  from /opt/workdir/goma/src/mm_bc_conflict.c: line 111
+P_0: Warning: node 300 with zero unknowns has an applied bc
+WARNING: Cant do flux function in transient (/opt/workdir/goma/src/mm_post_proc.c:10390)
+WARNING: Y BC applied to material without species equation (/opt/workdir/goma/src/mm_bc.c:562)
+rd_trans_vectors_from_exoII: Into existing field 0 for T at 0x9bc74b0
+rd_trans_vectors_from_exoII: Into existing field 1 for VX at 0x9bc81c0
+rd_trans_vectors_from_exoII: Into existing field 2 for VY at 0x9bc8db0

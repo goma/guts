@@ -1,0 +1,126 @@
+v7.11.0-1-g709cfe59
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2026 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+
+Internal METIS decomposition using Recursive Bisection.
+
+
+
+----------------- Communications Stats ------------
+
+		Number of Neighbors
+		Max:     1 (Proc = 0)		 Avg:  1.000		Min: 1 (Proc = 0)
+
+		Size of Messages
+		Max:    24 (Proc = 1)		 Avg: 31.500		Min: 24 (Proc = 0)
+--------------------------------------------------
+
+
+######################### __PRINT_SYNC_START__ #########################
+######################### __PRINT_SYNC_END__ #########################
+
+Number of unknowns            = 180
+
+Number of matrix nonzeroes    = 9313
+	Setting MASS_FRACTION number 0 (variable [4]) to 0.5
+	Setting VELOCITY3 (variable [2]) to 0.21143
+	Setting MAT 0 MASS_FRACTION number 0 (variable [4]) to 0.5
+
+=> Try for soln at t=0.001 with dt=0.001 [0 for 0] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 2.1e-01 2.3e+00 4.9e-01 3.0e+00 1.5e+01 4.4e+00   4 0.0e+00/0.0e+00 
+17:10:04 [1] 9.4e-02 4.2e-01 1.6e-01 2.8e+00 1.4e+01 4.7e+00   3 1.0e-02/0.0e+00 
+17:10:04 [2] 3.9e-09 4.9e-08 9.1e-09 2.5e-02 2.9e-01 7.9e-02  10 1.0e-02/0.0e+00 
+17:10:04 [3] 1.5e-13 5.2e-13 2.2e-13                         skp 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.004e+00  2.630e-01  5.153e-01 
+
+CONSTANT DELTA_T          [, 3.8e-02, 1.6e-08, 2.3e-03]
+Predictor-corrector norm: [,   1 v  ,   1 y  ,   0 P  ]
+
+=> Try for soln at t=0.002 with dt=0.001 [1 for 1] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 2.1e-01 1.6e+00 4.0e-01 5.4e+00 2.9e+01 8.7e+00   4 1.0e-02/0.0e+00 
+17:10:04 [1] 4.8e-02 2.3e-01 8.6e-02 3.4e+00 1.2e+01 5.2e+00   3 1.0e-02/0.0e+00 
+17:10:04 [2] 5.6e-09 3.8e-08 8.7e-09 8.0e-03 9.3e-02 2.6e-02   9 0.0e+00/0.0e+00 
+17:10:04 [3] 5.4e-14 4.3e-13 8.3e-14                         skp 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.000e+00  2.628e-01  5.152e-01 
+
+CONSTANT DELTA_T          [, 3.8e-02, 5.2e-09, 2.3e-03]
+Predictor-corrector norm: [,   1 v  ,   1 y  ,   0 P  ]
+
+=> Try for soln at t=0.003 with dt=0.001 [2 for 2] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 5.4e-05 5.7e-04 1.3e-04 9.7e-03 7.2e-02 2.1e-02   5 1.0e-02/0.0e+00 
+17:10:04 [1] 6.1e-07 1.0e-06 6.5e-07 3.7e-05 1.5e-04 4.8e-05   3 0.0e+00/0.0e+00 
+17:10:04 [2] 2.0e-12 1.8e-11 4.4e-12                         skp 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.000e+00  2.627e-01  5.152e-01 
+
+CONSTANT DELTA_T          [, 5.9e-05, 7.3e-12, 4.8e-06]
+Predictor-corrector norm: [,   1 v  ,   1 y  ,   0 P  ]
+
+=> Try for soln at t=0.004 with dt=0.001 [3 for 3] (CN)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 5.3e-05 5.7e-04 1.3e-04 9.7e-03 7.2e-02 2.1e-02   5 0.0e+00/1.0e-02 
+17:10:04 [1] 6.1e-07 1.0e-06 6.5e-07 3.7e-05 1.2e-04 4.3e-05   3 0.0e+00/0.0e+00 
+17:10:04 [2] 1.5e-12 1.3e-11 3.2e-12                         skp 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.000e+00  2.627e-01  5.152e-01 
+
+OK  5.9e-05 < 1.5 1.0e-02 [, 5.9e-05, 7.3e-12, 4.3e-06]
+Predictor-corrector norm: [,   1 v  ,   1 y  ,   0 P  ]
+
+=> Try for soln at t=0.0055 with dt=0.0015 [4 for 4] (CN)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 1.7e-07 2.1e-06 4.7e-07 8.2e-05 1.2e-03 2.8e-04   8 1.0e-02/0.0e+00 
+17:10:04 [1] 1.6e-12 3.6e-12 1.8e-12                         skp 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.000e+00  2.628e-01  5.152e-01 
+
+OK  2.3e-07 < 1.5 1.0e-02 [, 2.3e-07, 1.7e-13, 1.3e-05]
+Predictor-corrector norm: [,   1 v  ,   1 y  ,   0 P  ]
+
+Fixing exodus file pp_out.exoII
+
+-done
+
+
+Proc 0 runtime:       0.00 Minutes.
+

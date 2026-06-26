@@ -1,0 +1,238 @@
+$ Algebraic Preprocessor (Aprepro) version 6.05 (2022/01/10)
+$$$  Parameters for block-by-block 3D printing $  units
+$       length - mm
+
+$material_file  Carbo_CY.par
+$thixotropic_factor     0
+$Level_Set_Property_Ratio	0.5
+$Surface_tension_multiplier     0
+$Density_multiplier     	1
+$Mold_dimensions
+#Dimensions   152.4   76.2    0.254
+$Notchbar_radius	200
+$Notchbar_outlet	10
+$Notchbar_inlet		-40
+$Webspeed		1
+$Inlet_Cylinder_dimensions
+
+$mesh_mapped_intervals	40
+$Wall_bias_factor	1
+$Element_size           5
+$Normal_size            10
+$Big_size               20
+$Element_Interpolation	1
+$Wall_Function_Included	0
+$Wall_function_beta_factor	2.88
+$FnonWallFCN_Included	1
+$Shift_of_FnonWallFCN	-0.5
+$Stretch_of_FnonWallFCN	1
+$Gas_egress_parameter	0
+$Include_Kurvature_Eqn	0
+$Include_DivN_Kurvature_Eqn	0
+$Obstacle_radius	5
+$Wall_fudge_factor	0.3
+$Dynamic_Contact_angle	90
+$In-plane_curvature_DCA_offset  0
+$Penalized_DCA_bc	0
+$Kurv_DCA_penalty_parameter	1
+$Penalty_slip_dca_parameter	0.1
+$Diffusive_Keqn_coefficient	10000
+$Curvature_psuedo_relaxation	1
+$Curvature_Weight_fcn	0
+$Curvature_MassLump	0
+$Curvature_Normal_Function	1
+$Curvature_Eqn_Combination      1
+$Turn_advection_on	0
+$Turn_LS_ratio_model_on	0
+$Air_LS_viscosity	1e-05
+$Turn_LS_ramp_model_on	1
+$time_delta_for_ramp	0.001
+$LS_Logarithmic_Interpolation	1
+
+$Level_set_subgrid	1
+$Subgrid_integ_depth	3
+$Level_Set_Length_Scale 0.254
+$Taylor-Galerkin_Fill_weight	0
+$Turn_on_XFEM_representation	0
+
+$yield_stress_factor         1
+$yield_F_factor         1  Also used for Carreau function
+$Yield_epsilon_regularization	0
+
+$Inlet_pressure_at_inlet	1
+$Inlet_Flowrate(mm^3/sec)	10000
+$Inlet_powerlaw_index		0.25  
+$Table_temperature	25
+$Amesos_solver_package		mumps
+$Convergence_criterion_residual	1e-06
+$Convergence_criterion_solution	0.0001
+$Working Filenames
+$Mesh_File	mesh.exoII
+$Results_File	out.exoII
+$Continuation_File	cont.exoII
+$Steady_or_transient	1
+$Direct_or_iterative	1
+$--------------------------------------------------------------------------
+$scales 0  0.067  1e-06
+$Physical_steplimit	NaN
+$Numerical_limit	NaN
+
+$initial_run_time       0.001
+$total_run_time         0.4
+$Initial_timestep_factor	0.0001
+$time_step_max          1
+$time_step_min          1e-06
+$time_step_error        -0.0005
+$time_step_init         0.0001
+$time_step_resolved     5e-06
+$Transient_step_method	0
+$Max_timesteps		5000
+
+$Renormalization_frequency	1
+$Renormalization_tolerance	0.25
+$Renormalization_freeze		1
+$$Flag_for_continue_transient	1
+$$No_of_Lub_Gauss_pts		4
+$$Viscosity_Integration_type	ANALYTICAL
+
+$$End of Params file
+
+
+$$$have Parse module for /usr/local/bin/matldb/material_db.xlsx 
+$Material Property Values
+$Unit_System   Length Velocity Density  Pressure  Energy
+$ si_mm       mm  mm/sec   kg/mm^3   kPa    microjoule
+$material Bikash_0_08pct_Carbopol
+$Viscosity_model CARREAU
+$Viscosity_eta0  0.1
+$Viscosity_power_law  0.25
+$Viscosity_lambda  1
+$Viscosity_exponent  3
+$Viscosity_etainf  0.0001
+$units for Viscosity are  kPa*sec
+$end of Viscosity parameters
+$Normal_Stress_model NONE
+$Normal_Stress_csi10  0
+$units for Normal_Stress are  kPa*sec^2
+$end of Normal_Stress parameters
+$Density_model CONSTANT
+$Density_value  1e-06
+$units for Density are  kg/mm^3
+$end of Density parameters
+$Heat_Capacity_model CONSTANT
+$Heat_Capacity_value  10000000
+$units for Heat_Capacity are  uJ/kg/degC
+$end of Heat_Capacity parameters
+$Thermal_Conductivity_model CONSTANT
+$Thermal_Conductivity_value  1
+$units for Thermal_Conductivity are  uJ/mm/sec/degC
+$end of Thermal_Conductivity parameters
+$Modulus_model CONSTANT
+$Modulus_value  0.001
+$units for Modulus are  kPa
+$end of Modulus parameters
+$Surface_Tension_model CONSTANT
+$Surface_Tension_value  30
+$units for Surface_Tension are  kPa*mm
+$end of Surface_Tension parameters
+$Refractive_Index_model NONE
+$Refractive_Index_value  1
+$units for Refractive_Index are dimless 
+$end of Refractive_Index parameters
+$Viscoelastic_model NONE
+$Viscoelastic_eqmod  0
+$units for Viscoelastic are  kPa
+$end of Viscoelastic parameters
+$$done
+
+
+Material Data File for SAMPLE
+/**********Form of each property card *********/
+PROPERTY   = MODEL   FLOAT#1 FLOAT#2 .....FLOAT#5
+
+/**********Form of each Constitutive card *********/
+MECHANICS_TYPE   = MODEL 
+
+Of the many available options, MODEL can be USER
+/************************************************/
+
+
+---Physical Properties
+Density			= CONSTANT 	1e-06
+
+---Mechanical Properties and Constitutive Equations
+Solid Constitutive Equation 	= NONLINEAR	
+Convective Lagrangian Velocity  = NONE
+Lame MU 			= CONSTANT   	1
+Lame LAMBDA 			= CONSTANT 	1
+
+Stress Free Solvent Vol Frac	= CONSTANT	0.
+Liquid Constitutive Equation 	= CARREAU
+Low Rate Viscosity		= CONSTANT	0.1
+Power Law Exponent		= CONSTANT	0.25
+High Rate Viscosity		= CONSTANT	0.0001
+Time Constant			= CONSTANT	1
+Aexp				= CONSTANT	3
+
+Polymer Constitutive Equation   = NOPOLYMER
+
+Surface Tension			= CONSTANT	0
+
+---Thermal Properties
+Conductivity            = CONSTANT      1
+
+Heat Capacity           = CONSTANT      10000000
+
+Volume Expansion	= CONSTANT	1.
+Reference Temperature   = CONSTANT      25
+
+Liquidus Temperature	= CONSTANT	1.
+Solidus Temperature	= CONSTANT	1.
+Energy Weight Function  = SUPG          0.
+
+---Electrical Properties
+Electrical Conductivity	= CONSTANT	1
+
+---Microstructure Properties
+Media Type              = POROUS_BRINKMAN
+Porosity                = CONSTANT     1.0
+Permeability            = CONSTANT     1.0
+FlowingLiquid Viscosity = CONSTANT     0.0
+Inertia Coefficient     = CONSTANT     0.0
+
+---Brinkman-equation parameters
+Brinkman Porosity        =  CONSTANT     1.0
+Brinkman Permeability    =  CONSTANT     1.0
+FlowingLiquid Viscosity  =  CONSTANT     0.0
+Inertia Coefficient      =  CONSTANT     0.0
+
+---Species Properties
+Diffusion Constitutive Equation = FICKIAN
+Diffusivity  			= CONSTANT  0   1.
+Species Time Integration 	= TAYLOR_GALERKIN_EXP 0
+Latent Heat Vaporization	= CONSTANT  0	0.
+Latent Heat Fusion		= CONSTANT  0	0.
+Vapor Pressure  		= CONSTANT  0	0.
+Species Volume Expansion	= CONSTANT  0	0.
+Reference Concentration         = CONSTANT  0   0.
+				            ^
+********Species Number**********************|
+
+----Source Terms
+Navier-Stokes Source		= CONSTANT	0. 0.  -0.00980665
+Solid Body Source		= CONSTANT	0.  0.  0.
+Mass Source			= CONSTANT	0.
+Heat Source			= CONSTANT	0.
+Species Source			= CONSTANT  0   0.
+Species Source			= CONSTANT  1   0.
+Current Source                  = CONSTANT      0.
+
+# Special inputs
+Upper Height Function Constants = ROLL  200 0. 0. 200.254 0. 1. 0. 0.  
+Lower Height Function Constants = CONSTANT_SPEED 0.0  0.0
+Upper Velocity Function Constants = CONSTANT 0.  0.  0.
+Lower Velocity Function Constants = CONSTANT 1  0.  0.
+Upper Contact Angle = CONSTANT  90
+Lower Contact Angle = CONSTANT  90
+FSI Deformation Model = FSI_SHELL_ONLY
+Lubrication Integration Model = ANALYTICAL 4

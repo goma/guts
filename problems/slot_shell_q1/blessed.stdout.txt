@@ -1,0 +1,53 @@
+v7.11.0-1-g709cfe59
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2026 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+
+Found 2 different element shapes.
+
+
+######################### __PRINT_SYNC_END__ #########################
+
+Number of unknowns            = 667
+
+Number of matrix nonzeroes    = 25515
+
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:10 [0] 7.1e-02 7.7e-01 1.8e-01 9.8e+02 9.7e+03 2.1e+03  1  5.0e-02/1.0e-02 
+L_oo cause: R->(20 TENS n=3 (x=7.2 y=0))DelX->(221 TENS n=40 (x=1 y=0))
+17:10:10 [1] 4.7e-02 1.8e+00 1.6e-01 1.6e+02 2.2e+03 4.1e+02  1  5.0e-02/1.0e-02 
+L_oo cause: R->(51 P n=8 (x=7.84 y=0.394))DelX->(666 TENS n=131 (x=8.55 y=0))
+17:10:10 [2] 8.2e-03 1.5e-01 1.5e-02 1.2e+01 3.2e+02 4.2e+01  1  5.0e-02/1.0e-02 
+L_oo cause: R->(48 VY n=8 (x=7.84 y=0.394))DelX->(4 P n=1 (x=7.75 y=0))
+17:10:10 [3] 1.3e-03 1.2e-02 2.0e-03 2.0e-01 5.8e+00 5.7e-01  1  6.0e-02/1.0e-02 
+L_oo cause: R->(56 P n=9 (x=7.91 y=0.792))DelX->(4 P n=1 (x=7.75 y=0))
+17:10:10 [4] 1.7e-07 6.5e-06 5.8e-07 1.2e-04 4.8e-03 4.6e-04  1  7.0e-02/1.0e-02 
+L_oo cause: R->(316 P n=59 (x=7.32 y=1.19))DelX->(634 TENS n=123 (x=14.9 y=0))
+17:10:10 [5] 1.2e-13 3.3e-12 3.0e-13                         skp 1.0e-01/0.0e+00 
+L_oo cause: R->(61 P n=10 (x=7.96 y=1.19))DelX->(634 TENS n=123 (x=14.9 y=0))
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   1.000e+04  3.390e+02  1.689e+03 
+
+-done
+
+
+Proc 0 runtime:       0.01 Minutes.
+

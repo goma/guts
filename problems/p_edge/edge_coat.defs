@@ -1,0 +1,22 @@
+{scale = 1.0}
+{eps = 0.04}
+{inlet_plane= (5.0 - eps)/scale}
+{die_base = (1.0 - eps)/scale}
+{exit_plane = (-7.0/scale)}
+{web_plane = 0.0}
+
+{L=.1} cm
+{grav = 980} cm/s
+{visc = 10.0} P
+{density = 1.0 } gm/cm^3
+
+$ U = {U=1.0} cm/s
+$RE = {density*L*U/visc}
+$F = {density*grav*L*L/(U*visc)}
+$Ca = {Ca = 2.1}
+${Re=0.01}
+${F=1.0}
+
+$leading_edge_angle = {theta_le = 11.4783}
+$static angle = {theta_s = theta_le }
+$cT = {cT= ( cosd(theta_le) - cosd(theta_s) ) / 2.0 }

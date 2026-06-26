@@ -1,0 +1,192 @@
+{include(roll.fas)}
+ ---
+ FEM File Specifications
+ ---
+FEM file                         = roll.exoII
+Output EXODUS II file            = out.exoII
+GUESS file                       = contin.dat
+SOLN file                        = soln.dat
+Write intermediate results	 = no
+ ---
+General Specifications
+ ---
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0 
+Initial Guess                  	 = read
+$$Initialize = PRESSURE 0 0.
+
+ --- 
+Time integration                 = steady
+ ---
+Solver Specifications
+ ---
+Solution Algorithm               = umf
+UMF XDIM                         = 15000000
+UMF IDIM                         = 15000000
+Number of Newton Iterations      = 10
+Newton correction factor         = 1.0  
+# Newton correction factor         = 1.0  1.e-6 .9 1.e-4 .1 1.e-3  
+Normalized Residual Tolerance    = 1.0e-10
+Residual Ratio Tolerance         = 1.0e-6
+
+
+ ---
+Boundary Condition Specifications
+ ---
+Number of BC			 = -1              
+
+$outflow planes
+BC = PLANE SS  6   {-tand(-theta1)}   1.   0.  {-y11_new}  
+BC = PLANE SS  66   {-tand(theta1)}   1.   0.  {-y1_new}  
+BC = VELO_TANGENT SS 6 0 0. 0. 0. 0.
+BC = VELO_TANGENT SS 66 0 0. 0. 0. 0.
+
+
+
+$inflow planes
+$Note the adjustment on the inflow speed level for the fact that
+$rollsp_b is in rad/s and we need cm/s. 
+BC = PLANE SS 111 {-tand(theta2+theta_inlet)}  1.   0.   {-y1_new}
+$$BC = U NS 111 {rollsp_b*R_O*sind(theta2+theta_inlet)}
+$$BC = V NS 111 {-rollsp_b*R_O*cosd(theta2+theta_inlet)}
+BC = FIX NS 111 VELOCITY1 0 
+BC = FIX NS 111 VELOCITY2 0
+
+
+$$ roll surfaces
+
+BC = GD_PARAB SS 2 R_MESH_NORMAL 0 MESH_POSITION2 0 {x1*x1 + y1_new*y1_new - R_O_new*R_O_new} {-2.*y1_new} 1
+BC = GD_PARAB SS 2 R_MESH_NORMAL 0 MESH_POSITION1 0 {0.} {-2.*x1} 1
+
+BC = GD_PARAB SS 444 R_MESH_NORMAL 0 MESH_POSITION2 0 {x11*x11 + y11_new*y11_new - R_O_new*R_O_new} {-2.*y11_new} 1
+BC = GD_PARAB SS 444 R_MESH_NORMAL 0 MESH_POSITION1 0 {0.} {-2.*x11} 1
+
+
+$$BC =   DX_RS        NS     1       0.0 
+$$BC =   DY_RS        NS     1       {Gap-Gap_new} 1.0
+$$BC =   DX           NS     102       0.0 
+$$BC =   DY           NS     102       {Gap-Gap_new} 1.0
+$$BC =   DX_RS        NS     102      0.0 
+$$BC =   DY_RS        NS     102       {Gap-Gap_new} 1.0
+
+$$BC =   DX        NS     7       0.0 
+$$BC =   DY        NS     7       {Gap-Gap_new} 1.0
+$$BC =   DX_RS        NS     7       0.0 
+$$BC =   DY_RS        NS     7       {Gap-Gap_new} 1.0
+
+$$ Linear Velocity at roll surfaces
+BC = VELO_TANGENT SS 4 0 {-rollsp_t} 0. 0.
+BC = VELO_NORMAL  SS 4 0
+BC = VELO_TANGENT SS 2 0 { rollsp_b} 0. 0.
+BC = VELO_NORMAL  SS 2 0 
+BC = VELO_NORMAL  SS 44 0.
+BC = VELO_SLIP_ROT SS 44 0.1 {-rollsp_t/PI/R_O_new} {x11} {y11_new}
+
+
+
+$ Right now do nothing regarding flow
+$ at inflow and outflow bndrys
+ 
+$ Right now do nothing regarding flow
+$ at inflow and outflow bndrys
+ 
+$
+$ NOTE: KIN_DISPLACEMENT MUST 
+$       PRECEDE KINEMATIC in the
+$       BC order here in order for
+$       proper behavior on this
+$       particular case.  It is the 
+$       order rule that is enforced
+$       here because of all of the others
+$       failing. In the fixed rigid roll
+$       case, the PLANE command would overtake
+$       kinematic regardless of the order
+$       BECAUSE IT IS A STRONG_COLLOC
+$
+
+$$BC = KIN_DISPLACEMENT SS 2 2
+$$BC = NO_SLIP_RS     SS 2 2 1
+$$BC = SOLID_FLUID_RS SS 2 2 1
+
+$$Downstream Meniscus
+$$  BC = VELO_NORMAL SS 100 0.
+  BC = KINEMATIC SS 100 0.
+  BC = CAPILLARY SS 100 60. 0. 0.  1
+  BC = SURFTANG NS 200 {sind(theta1)} {-cosd(theta1)} 0. -60.
+  BC = SURFTANG NS 210 {sind(theta1)} {cosd(theta1)}  0.  60.
+
+
+$$Upstream Meniscus
+$$  BC = VELO_NORMAL SS 112 0.
+  BC = DX NS 220 {x116_new - x116} 1.0
+  BC = DY NS 220 {(y116_new - y116) + (Gap - Gap_new)} 1.0
+  BC = U NS 230  0.
+  BC = V NS 230  0.
+  BC = KINEMATIC SS 112 0.
+  BC = CAPILLARY SS 112 60. -23990 0  1
+  BC = CA        NS 230 .855 0 1 0
+
+######
+END OF BC
+######
+
+----
+Problem Description
+---
+ 
+Number of Materials  =  1
+ 
+MAT = liquid   1
+
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = ARBITRARY
+  Number of bulk species = 0
+
+Number of EQ			 = 5
+EQ = mesh1	Q2   D1	  Q2	     0.   0.   1.   1.   0.
+EQ = mesh2	Q2   D2	  Q2	     0.   0.   1.   1.   0.
+EQ = momentum1  Q2   U1	  Q2	     0.   1.   1.   1.   0.   0.
+EQ = momentum2  Q2   U2   Q2	     0.   1.   1.   1.   0.   0.
+EQ = continuity	Q1   P    Q1     1.                      0.
+
+                                div  ms  adv  bnd  dif  src  por
+
+ MAT =   lower_roll_cgs    2
+ 
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = TOTAL_ALE
+  Number of bulk species = 0
+ 
+   Number of EQ			 = 4
+	EQ = mesh1	Q2  D1	   Q2        0.   0.  1.   1.   0.
+	EQ = mesh2	Q2  D2	   Q2        0.	  0.  1.   1.   0. 
+	EQ = mom_solid1	Q2  D1_RS  Q2        0.   0.  1.   1.   0.   0. 
+	EQ = mom_solid2	Q2  D2_RS  Q2        0.	  0.  1.   1.   0.   0. 
+        EQ = continuity Q1  P      Q1   1.                      1.
+
+                                        div  ms  adv bnd  dif  src  por
+
+
+
+
+Post Processing Specifications
+ 
+Stream Function = yes 
+Streamwise normal stress = yes
+Pressure contours = yes
+Second Invarient of Strain = yes
+Mesh Dilatation = yes
+Navier Stokes Residuals = yes
+Moving Mesh Residuals = yes  
+Mass Diffusion Vectors = no
+Mass Fluxlines = no
+Energy Conduction Vectors = no
+Energy Fluxlines = no
+Time Derivatives = yes
+Mesh Stress Tensor = yes
+ 
+
+

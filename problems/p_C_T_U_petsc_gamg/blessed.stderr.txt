@@ -1,0 +1,13 @@
+WARNING: Boundary condition 0, V, applied on NS 4, is never used
+ (/opt/workdir/goma/src/mm_bc_conflict.c:2001)
+WARNING: Boundary condition 1, U, applied on NS 4, is never used
+ (/opt/workdir/goma/src/mm_bc_conflict.c:2001)
+WARNING: Boundary condition 2, U, applied on NS 7, is never used
+ (/opt/workdir/goma/src/mm_bc_conflict.c:2001)
+WARNING: Boundary condition 3, V, applied on NS 7, is never used
+ (/opt/workdir/goma/src/mm_bc_conflict.c:2001)
+WARNING: Boundary condition 4, V, applied on NS 3, is never used
+ (/opt/workdir/goma/src/mm_bc_conflict.c:2001)
+WARNING: Boundary condition 5, V, applied on NS 5, is never used
+ (/opt/workdir/goma/src/mm_bc_conflict.c:2001)
+		converged SS!

@@ -1,0 +1,42 @@
+{ifndef(Mesh)}
+{_C_}	Mesh = { Mesh = 1 }
+{_C_}
+{_C_}	Initialize counters:
+{_C_}	---------- ---------
+{_C_}			Points:		{ pc	=    1 }
+{_C_}			Lines:		{ lc	=   10 }
+{_C_}			Sides:		{ sc	=  100 }
+{_C_}			Side sets:	{ ssid	= 1000 }
+{_C_}			Nodes sets:	{ nsid	= 2000 }
+{_C_}			Regions:	{ rc	=  500 }
+{_C_}			Materials:	{ mat   =    1 }
+{_C_}
+{_C_}	Boundary identifiers:
+{_C_}	-------- ------------
+{_C_}
+{_C_}	POINTS:
+{_C_}		sw corner	   = { sw_ns	= nsid++}
+{_C_}		se corner	   = { se_ns	= nsid++}
+{_C_}		ne corner	   = { ne_ns	= nsid++}
+{_C_}		nw corner	   = { nw_ns	= nsid++}
+{_C_}
+{_C_}	SIDES:
+{_C_}		s side		   = { s_ss	= ssid++}
+{_C_}		e side		   = { e_ss	= ssid++}
+{_C_}		n side		   = { n_ss	= ssid++}
+{_C_}		w side		   = { w_ss	= ssid++}
+{_C_}
+{_C_}	NODES: (multi)
+{_C_}
+{_C_}		s side		   = { s_ns	= nsid++}
+{_C_}		e side		   = { e_ns	= nsid++}
+{_C_}		n side		   = { n_ns	= nsid++}
+{_C_}		w side		   = { w_ns	= nsid++}
+{_C_}
+{_C_}	Mesh Resolution:
+{_C_}	---- -----------
+{_C_}		Number of elements, east-west 	= { ne_ew = 3 }
+{_C_}		Number of elements, north-south	= { ne_sn = 3 }
+{_C_}		Grading factor, east-west	= { gr_ew = 1 }
+{_C_}		Grading factor, north-south	= { gr_sn = 1 }
+{endif}

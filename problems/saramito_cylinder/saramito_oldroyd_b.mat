@@ -1,0 +1,58 @@
+Material Data File for SAMPLE
+
+/**********Form of each property card *********/
+PROPERTY   = MODEL   FLOAT#1 FLOAT#2 .....FLOAT#5
+
+/**********Form of each Constitutive card *********/
+MECHANICS_TYPE   = MODEL 
+
+Of the many available options, MODEL can be USER
+/************************************************/
+
+
+---Physical Properties
+Density			= CONSTANT 	0.0 # [g][cm^-3]
+
+---Mechanical Properties and Constitutive Equations
+Solid Constitutive Equation 	= NONLINEAR	
+Convective Lagrangian Velocity	= NONE
+Lame MU 			= CONSTANT 	1.
+Lame LAMBDA 			= CONSTANT 	1.
+Stress Free Solvent Vol Frac	= CONSTANT	0.
+Liquid Constitutive Equation 	= NEWTONIAN
+Viscosity			= CONSTANT	2.6 # foam, eta_1 [kg][m^-1][s^-1]
+Polymer Constitutive Equation   = SARAMITO_OLDROYDB
+Polymer Stress Formulation      = EVSS_F
+Polymer Weight Function		= SUPG
+Polymer Weighting		= CONSTANT      0.1
+Polymer Viscosity		= CONSTANT	26.0 # foam, eta_2 [kg][m^-1][s^-1]
+Polymer Time Constant		= CONSTANT	0.2
+Polymer Yield Stress            = CONSTANT    26.0
+Yield Exponent                 = CONSTANT 0. 
+
+
+
+---Thermal Properties
+Conductivity		= CONSTANT	1.
+Heat Capacity		= CONSTANT	1.
+Volume Expansion	= CONSTANT	1.
+Reference Temperature	= CONSTANT	0.
+Liquidus Temperature	= CONSTANT	1.
+Solidus Temperature	= CONSTANT	1.
+
+----Electrical Properties
+Electrical Conductivity = CONSTANT      0.
+
+---Microstructure Properties
+Media Type		= CONTINUOUS
+Permeability		= CONSTANT	1.
+
+
+
+----Source Terms
+Navier-Stokes Source		= CONSTANT	0.  -0 0.
+Solid Body Source		= CONSTANT	0.  0.  0.
+Mass Source			= CONSTANT	0.
+Heat Source			= CONSTANT	0.
+Species Source			= CONSTANT  0   2.
+Current Source                  = CONSTANT      0.

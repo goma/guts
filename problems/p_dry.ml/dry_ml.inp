@@ -1,0 +1,184 @@
+$ Aprepro ($Revision: 1.1 $) Wed Feb  3 13:54:43 1999
+/*
+ * This file defines (parameterizes) a two-layer 
+ *  drying film problem. 
+ *
+ *  Created 5/15/97  PRS
+ *
+ */
+
+$Initial substrate thickness    0.001
+$Initial thickness film 1       0.001
+$Initial thickness film 2       0.001
+
+$Number elements across substrate 1
+$Number elements across film 1    16
+$Number elements across film 2    23
+
+$ Information for Layer 1
+$  Initial mass fraction component 1 0.9
+$  Initial mass fraction component 2 0.3
+
+$ Information for Layer 2
+$  Initial mass fraction component 1 0.6
+$  Initial mass fraction component 2 0.1
+
+$ Initial Temperature
+$  293
+
+$ Heat Transfer Coefficient
+$  -100
+$ Sink temperature of oven
+$  370
+
+$ Surface Mass Transfer Coefficient
+$  300  Component 1
+$  50   Component 2
+
+$ Sink Concentration in overlying gass
+$  0  Component 1
+$  0   Component 2
+ FEM File Specifications
+ ---
+FEM file                         = ml.exoII
+Output EXODUS II file            = out.exoII
+GUESS file                       = contin.dat
+SOLN file                        = soln.dat
+Write intermediate results       = no
+ ---
+General Specifications
+ ---
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+Initial Guess                    = zero
+$$Initialize = MASS_FRACTION 0 0.9
+$$Initialize = MASS_FRACTION 1 0.3
+Initialize = TEMPERATURE   0 293
+Anneal Mesh on Output            = no
+ ---
+Time Integration Specifications
+ ---
+Time integration                 = transient
+Operator splitting               = inconsistent
+delta_t                          = 1.0e-8
+Maximum number of time steps     = 2000
+#Maximum number of time steps     = 5
+#Maximum time                     = 100.0e+0
+Maximum time                     = 1.0e+0
+Minimum time step                = 1.e-10
+Time step parameter              = 0.0
+Time step error                  = 0.1  0  0  1  1  0  0
+Printing Frequency               = 5
+ ---
+Solver Specifications
+ ---
+#Solution Algorithm               = lu
+#Number of Newton Iterations      = 9
+#added by Sam
+Solution Algorithm               = gmres
+Preconditioner                   = ilu
+Matrix Scaling                   = none
+Polynomial                       = 1
+Size of Krylov subspace          = 64
+Orthogonalization                = classical
+Maximum Linear Solve Iterations  = 450
+Number of Newton Iterations      = 19
+#end of added by Sam
+Newton correction factor         = 1.0
+Normalized Residual Tolerance    = 1e-13
+Residual Ratio Tolerance         = 1e-7
+ ---
+Boundary Condition Specifications
+ ---
+Number of BC			 =   -1
+
+BC = QCONV     SS 1   100  370
+BC = QCONV     SS 3   100  370
+
+BC = YFLUX     SS 3   0     300    0
+$$BC = YFLUX     SS 3   1     50    0
+
+BC = KIN_LEAK  SS 3   0.  0.0
+
+$$
+BC = PLANE  SS 1 0.00 1. 0.  -0.0
+BC = PLANE  SS 2 1.00 0.0 0. -0.001
+BC = PLANE  SS 5 0.00 1.0 0. -0.001
+BC = PLANE  SS 4 1.0 0. 0.   -0.0
+
+END OF BC
+----
+Problem Description
+---
+ 
+Number of Materials = 3
+ 
+ MAT =   substrate    1
+ 
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = ARBITRARY
+  Number of bulk species = 0
+ 
+
+	Number of EQ			 = 1
+
+         EQ = energy     Q1 T  Q1        1.     1.      1.     1.     1.  0. 
+   	 EQ = mesh1      Q1 D1 Q1        0.     0.      1.     1.     0.  0.   
+   	 EQ = mesh2      Q1 D2 Q1        0.     0.      1.     1.     0.  0.   
+
+                                	ms	adv	bnd	dif	src	porous
+
+ MAT =   layer1    2
+ 
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = ARBITRARY
+  Number of bulk species = 1
+ 
+
+	Number of EQ			 = 4
+
+	  EQ = energy     Q1 T  Q1        1.     1.      1.     1.     1.  0. 
+  	  EQ = species_bulk Q1 Y Q1       1.      1.      1.     1.       0  
+   	  EQ = mesh1      Q1 D1 Q1        0.     0.      1.     1.     0.  0.   
+   	  EQ = mesh2      Q1 D2 Q1        0.     0.      1.     1.     0.  0.   
+
+                                	ms	adv	bnd	dif	src	porous
+
+ MAT =   layer2    3
+ 
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = ARBITRARY
+  Number of bulk species = 1
+ 
+
+	Number of EQ			 = 4
+
+	  EQ = energy     Q1 T  Q1        1.     1.      1.     1.     1.  0. 
+  	  EQ = species_bulk Q1 Y Q1       1.      1.      1.     1.       0  
+   	  EQ = mesh1      Q1 D1 Q1        0.     0.      1.     1.     0.  0.   
+   	  EQ = mesh2      Q1 D2 Q1       0.     0.      1.     1.     0.  0.   
+
+                                	ms	adv	bnd	dif	src	porous
+
+
+Post Processing Specifications
+
+Stream Function = no
+Streamwise normal stress = no
+Pressure contours = no
+Second Invarient of Strain = no
+Mesh Dilatation = no
+Navier Stokes Residuals = no
+Moving Mesh Residuals = yes
+Mass Diffusion Vectors = no
+Mass Fluxlines = no 
+Energy Conduction Vectors = no
+Energy Fluxlines = no
+Time Derivatives = no
+Mesh Stress Tensor = no 
+
+

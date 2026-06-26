@@ -1,0 +1,118 @@
+#{include(params)}
+
+------------------------------------------------------------
+                 FEM Problem Specifications
+------------------------------------------------------------
+FEM file                         = constriction.g
+Output EXODUS II file            = out.exoII
+GUESS file                       = none
+SOLN file                        = none
+Write intermediate results       = no
+------------------------------------------------------------
+                 General Specifications
+------------------------------------------------------------
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+
+Initial Guess                    = zero
+#Initial Guess                    = read_exoII_file guess.exoII
+#Initial Guess                    = read_exoII_file tmp.exoII
+Initialize                       = MASS_FRACTION 0 0.5
+
+
+------------------------------------------------------------
+                 Time Integration Specifications
+------------------------------------------------------------
+Time integration                 = transient
+delta_t                          = 1
+Maximum number of time steps     = 20
+Maximum time                     = 150000
+Minimum time step                = 7e-08
+Maximum time step                = {dt_max}
+#Minimum Resolved Time Step       = 1e-07
+Time step parameter              = 0.0
+Time step error                  = -0.5 1 1 1 1 1 1  1
+Printing Frequency               = 1
+March to Steady State = yes
+Steady State Tolerance = 1e-2
+
+
+------------------------------------------------------------
+                 Solver Specifications
+------------------------------------------------------------
+Solution Algorithm               = amesos
+Amesos Solver Package            = mumps
+Preconditioner                   = dom_decomp 
+Number of Newton Iterations      = 50
+Newton line search type          = BACKTRACK
+Newton correction factor         = 1
+Normalized Residual Tolerance    = 1.0e-8
+Filter Concentration             = 0 0 1
+
+------------------------------------------------------------
+	Augmenting Condition Specifications                 
+------------------------------------------------------------
+Number of augmenting conditions = 0
+AC = FC 1 0 0 VOLUME_FLUX 3 -{Q}
+END OF AC
+
+------------------------------------------------------------
+	Boundary Condition Specifications                 
+------------------------------------------------------------
+Number of BC			 = -1
+
+
+# inflow
+#BC = FLOW_GRADV_T SS 3 200
+BC = TABLE SS 3 Y VELOCITY1 QUADRATIC FILE = Q_{Q}_u.txt
+#BC = TABLE SS 3 Y SPECIES 0 QUADRATIC FILE = Q_{Q}_phis.txt
+#BC = Y NS 3 0 1
+BC = V NS 3 0.0
+BC = FLUIDITY_EQUILIBRIUM SS 3 0 
+#BC = Y NS 4 0 0.2
+
+# outflow
+BC = FLOW_STRESSNOBC SS 4 0
+BC = V NS 4 0.0
+
+# top
+BC = U NS 2 0.0
+BC = V NS 2 0.0
+#BC = VELO_SLIP SS 2 1e-6 0 0 0
+
+# bottom
+#BC = U NS 1 0.0
+BC = V NS 1 0.0
+
+END OF BC
+
+----
+Problem Description
+---
+
+Number of Materials = 1
+
+MAT = fluid 1
+	Coordinate System	= CYLINDRICAL
+	Element Mapping        = isoparametric
+	Mesh Motion		= ARBITRARY
+	Number of bulk species	= 1
+        Number of viscoelastic modes = 0
+
+
+  Number of EQ			 = 4
+  EQ = momentum1  Q2	U1	Q2	     1.    1.   1.   1.   1.   0.
+  EQ = momentum2  Q2	U2	Q2	     1.    1.   1.   1.   1.   0.
+  EQ = continuity Q1	P 	Q1	           1.             0.
+  EQ = species_bulk   Q2     Y Q2	     1.    1.   1.   1.   1.
+                                             ms   adv  bnd  dif  src  porous
+
+Post Processing Specifications
+Viscosity = yes
+
+
+
+
+Post Processing Fluxes =
+END OF FLUX

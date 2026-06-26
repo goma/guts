@@ -1,0 +1,53 @@
+title
+Growth of a film in a simple 1D geometry
+$
+$ {ECHO(OFF)}
+$ {include("Defs")}
+$
+point {P_1} {x_1} {y_1}
+point {P_2} {x_2} {y_2}
+point {P_3} {x_3} {y_3}
+point {P_4} {x_4} {y_4}
+point {P_5} {x_5} {y_5}
+point {P_6} {x_6} {y_6}
+$
+line {L_1} str {P_1} {P_2} 0 {nex}  {gf}
+line {L_2} str {P_2} {P_4} 0 {ney1} {gf}
+line {L_3} str {P_4} {P_3} 0 {nex}  {gf}
+line {L_4} str {P_3} {P_1} 0 {ney1} {1/gf}
+line {L_5} str {P_4} {P_6} 0 {ney2} {1/gf}
+line {L_6} str {P_6} {P_5} 0 {nex}  {gf}
+line {L_7} str {P_5} {P_3} 0 {ney2} {gf}
+$
+region {R_1} {mat1} {-L_1} {-L_2} {-L_3} {-L_4}
+region {R_2} {mat2} {-L_3} {-L_5} {-L_6} {-L_7}
+$
+{ifdef(biquadratic)}
+nine
+{endif}
+opti
+scheme 0 m
+$
+body {R_1} {R_2}
+$
+nodebc {bottom_ns}	{L_1}
+nodebc {right1_ns}	{L_2}
+nodebc {right2_ns}	{L_5}
+nodebc {top_ns}		{L_6}
+nodebc {left1_ns}	{L_4}
+nodebc {left2_ns}	{L_7}
+nodebc {interface_ns}   {L_3}
+$
+poinbc {topRightP_ns}    {P_6}
+poinbc {leftInterfaceP_ns}  {P_3}
+poinbc {rightInterfaceP_ns} {P_4}
+$
+elembc  {bottom_ss}	{L_1}
+elembc  {right1_ss}	{L_2}
+elembc  {right2_ss}	{L_5}
+elembc  {top_ss}	{L_6}
+elembc  {left1_ss}	{L_4}
+elembc  {left2_ss}	{L_7}
+elembc  {interface_ss}  {L_3}
+$
+exit

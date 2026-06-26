@@ -1,0 +1,10 @@
+Aprepro-6.41: ERROR: syntax error, unexpected UNDVAR (Defs, line 2)
+Aprepro: WARNING: Pre-defined Variable 'FALSE' redefined (Defs, line 25)
+WARNING: Defaulting on Time step error norm indicators
+ (/opt/workdir/goma/src/mm_input.c:1612)
+EOF found in input file while searching for:
+BC or END OF BC
+### EOF found while counting list of BC ###
+You should use termination string "END OF BC" to indicate end of list
+Will use 12 as number of BC
+WARNING: Bad nodal post process variable count  (/opt/workdir/goma/src/mm_post_proc.c:12295)

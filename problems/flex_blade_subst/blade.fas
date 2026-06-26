@@ -1,0 +1,188 @@
+ TITLE 
+  Blade-coating flow simulation 
+
+$ GEOMETRY AND OPERATING CONDITIONS (MKS) 
+$ gap (leading edge to substrate)        {Gap = 0.0006}
+$ blade thickness (1/8" = 0.00317        {d = 0.001}
+$ final thickness guess for geometry     {Gap}
+$ bevel angle of blade tip (not used yet) {alpha = -.44} {alpha_new = -0.44}
+$ angle of blade face with gravity (not used yet) {beta = 0.56} {beta_new = 0.56}
+$ length of outflow plane                {S = 0.003}
+$ length of blade                        {H = 0.03}
+$ distance from tip to inflow bndry	 {I = 0.025}
+$ Thickness of film at inflow bndry      {H_i = 3*Gap}
+$ substrate thickness (for penetration)  {h = 0.0007}
+$ webspeed				 {websp = 0.2}
+
+$
+$  MESH PARAMETERS
+$
+${no_elem_along_inflow = 5}
+${no_elem_across_inflow = 3}
+${no_elem_along_outflow = 5}
+${no_elem_across_outflow = 4}
+${no_elem_under_blade = 3}
+${no_elem_across_bead = 8}
+
+${no_elem_across_substrate = 3}
+
+ point  2   {x2= -0.000000}   {y2=-H/5}
+ point  3   {x3=-0.000000}    {y3=-H}
+ point  4   {x4=-3*d}	      {y4=y3}
+ point  5   {x5=x4}           {y5=y2}
+ point  7   {x7=-I/3.5}         {y7=-H_i+Gap}
+ point  6   {x6=x7}	      {y6=y5}
+ point  8   {x8=-I}           {y8=y7}
+ point  9   {x9=x8}           {y9=Gap}
+ point 10   {x10=x7}          {y10 = Gap}
+ point 11   {x11=0.0}         {y11=Gap}
+ point 12   {x12=0.0}         {y12=0.0}
+ point 15   {x15=d}           {y15=Gap}
+ point 17   {x17=2*d}         {y17=Gap} 
+ point 18   {x18=x17}         {y18= 0.000 }
+ point 20   {x20= S}          {y20=Gap}
+ point 21   {x21=x20}         {y21=-0.0}
+ point 22   {x22=d-(x18-x12)/10}           {y22=0.}
+ point 23   {x23 = (x10+x11)/2.} {y23=Gap}
+ point 16   {x16 = d} {y16 = 0.}
+
+$$ Additional points for blade and substrate grid
+ point 26   {x26 = x16}         {y26 = y3}
+ point 27   {x27 = -I}        {y27 = y9 + h}
+ point 28   {x28 = S}         {y28 = y20 + h}
+ point 29   {x29 = x16}         {y29 = y2}
+ point 30   {x30 = x10}       {y30 = y10+h}
+ point 31   {x31 = x11}       {y31 = y11 +h}
+
+ LINE   1123   STR    11    23     0    {no_elem_across_bead}  1.1111
+ LINE   2310   STR    23    10     0     3  1.0
+ LINE    109   STR    10     9     0    {no_elem_along_inflow}  1.3333
+ LINE     98   STR     9     8     0    {no_elem_across_inflow}  1.0
+ LINE     87   STR     8     7     0    {no_elem_along_inflow}  0.75
+ LINE    107   STR    10     7     0    {no_elem_across_inflow}  1.0
+ LINE     75  CIRC     7     5    -6    {no_elem_across_bead}  1.0
+ LINE     54   STR     5     4     0    {no_elem_along_outflow}  1.35
+ LINE     43   STR     4     3     0    {no_elem_across_outflow}  1.0
+ LINE     32   STR     3     2     0    {no_elem_along_outflow}  0.75
+ LINE     52   STR     5     2     0    {no_elem_across_outflow}  1.0
+ LINE    212   STR     2    12     0    {no_elem_across_bead-2}  0.85  
+ LINE   1112   STR    11    12     0    {no_elem_across_outflow+1}  1.0
+ LINE   1511   STR    15    11     0    {no_elem_under_blade+2}  1.1      
+ LINE   1622   STR    16    22     0    2  1.1      
+ LINE   2212   STR    22    12     0    {no_elem_under_blade}  1.2      
+ LINE   1715   STR    17    15     0     {no_elem_under_blade+1}  1.0
+ LINE   1718   STR    17    18     0     {no_elem_across_outflow}  0.8
+ LINE   1816   STR    18    16     0     {no_elem_under_blade+2}  0.9 
+ LINE   2017   STR    20    17     0     {no_elem_along_outflow}  0.8
+ LINE   2021   STR    20    21     0     {no_elem_across_outflow}  0.8 
+ LINE   2118   STR    21    18     0     {no_elem_along_outflow}  0.8 
+ LINE   1516   STR    15    16     0     {no_elem_across_outflow+1}  0.8 
+ LINE    232   STR    23     2     0    {no_elem_across_bead}  1.025 
+
+$$ Additional lines for blade and substrate
+ LINE  927     STR    9    27      0    {no_elem_across_substrate}  1.0
+ LINE 1629     STR   16    29      0    {no_elem_across_bead -2}  1.15
+ LINE 2926     STR   29    26      0    {no_elem_along_outflow} 1.25  
+ LINE 326      STR    3    26      0    {no_elem_under_blade+2}  1.0
+ LINE 229      STR    2    29      0    {no_elem_under_blade+2}  1.0
+ LINE 2820     STR   28    20      0    {no_elem_across_substrate} 1.0
+ LINE 3027      STR   30    27      0    {no_elem_along_inflow}  1.3333
+ LINE 3031     STR   30    31      0    {no_elem_across_bead + 3} 1.0
+ LINE 3128     STR   31    28      0    {no_elem_under_blade+2+no_elem_under_blade+1+no_elem_along_outflow}  1.0
+ LINE 3111     STR   31    11      0    {no_elem_across_substrate}  1.0
+ LINE 3010     STR   30    10      0    {no_elem_across_substrate}  1.0
+
+
+ REGION     1     1 -2017  -2021  -2118  -1718  
+ REGION     2     1 -1715  -1718  -1816 -1516 
+ REGION     3     1 -1516  -1622  -2212 -1112  -1511 
+ REGION     4     1 -1123  -1112   -212   -232  
+ REGION     5     1 -2310   -232    -52    -75   -107
+ REGION     6     1  -109   -107    -87    -98
+ REGION     7     1   -52    -32    -43    -54  
+ REGION     8     2  -927 -3027 -3010 -109
+ REGION     9     2  -3010 -3031 -3111 -1123 -2310
+ REGION    10     2  -3111 -3128 -2820 -2017 -1715 -1511
+ REGION    11     3  -32 -229 -2926 -326
+ REGION    12     3  -229 -212 -2212 -1622 -1629
+ SCHEME  1 M
+ SCHEME  2 X 
+ SCHEME  3 M 
+ SCHEME  4 T 
+ SCHEME  5 X
+ SCHEME  6 M
+ SCHEME  7 M
+ SCHEME  8 M
+ SCHEME  9 M
+ SCHEME 10 M
+ SCHEME 11 M
+ SCHEME 12 M
+
+ BODY       1  2  3  4  5  6  7 8 9 10 11 12
+
+$substrate surface
+ NODEBC    10   109  2310  1123  1511  1715  2017 
+$liquid outflow 
+ NODEBC    20  2021 
+$Downstream free surface
+ NODEBC    30  2118  1816 
+$Blade tip       
+ NODEBC    40  1622  2212 
+$blade front  
+ NODEBC    50   212    32 
+$liquid inlet 
+ NODEBC    80    98    
+$some internal line    
+ NODEBC    90  1112
+$upstream meniscus  
+ NODEBC    70    54    87    75  
+$sustrate inlet
+ NODEBC    110    927
+$substrate bottom
+ NODEBC    120    3027 3031 3128
+$substrate outflow
+ NODEBC    130  2820
+$blade backside
+ NODEBC    160 1629 2926
+$blade clamp
+ NODEBC     170 326
+
+$substrate surface       
+ ELEMBC     1   109  2310  1123  1511  1715  2017  
+$liquid outflow 
+ ELEMBC     2  2021 
+$Downstream free surface
+ ELEMBC     3  2118  1816
+$blade tip
+ ELEMBC     4  1622  2212 
+$blade front  
+ ELEMBC     5   212    32 
+$outflow backside of blade 
+ ELEMBC     6    43
+$upstream meniscus
+ ELEMBC     7    54    87    75   
+$liquid inlet        
+ ELEMBC     8    98     
+$substrate inlet
+ ELEMBC    11    927
+$substrate bottom
+ ELEMBC    12    3027 3031 3128
+$blade backside
+ ELEMBC     16 1629 2926
+$substrate outflow
+ ELEMBC     13  2820
+$blade clamp
+ ELEMBC     17 326
+$outflow plane  backside free surface point   
+ POINBC   100     4
+$outflow downstream free surface point
+ POINBC   200    21
+$static separation line downstream
+ POINBC   300    16
+$inflow free surface point
+ POINBC   400     8 
+ POINBC   500    20
+ POINBC   600    9
+ RENUM
+ NINE
+ EXIT  

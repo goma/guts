@@ -1,0 +1,256 @@
+${include("params")}
+${include(matfile)}
+{ECHO(OFF)}
+$$   Model Selection
+
+{is_dCONST=(Density_model == "CONSTANT" ? 1 :0)}
+
+{is_mCONST=(Modulus_model == "CONSTANT" ? 1 :0)}
+{is_mNONL=(Modulus_model == "NONLINEAR" ? 1 :0)}
+{is_mNEOH=(Modulus_model == "NEO-HOOKEAN" ? 1 :0)}
+
+{is_vNEWT=(Viscosity_model == "NEWTONIAN" ? 1 :0)}
+{is_vPL=(Viscosity_model == "POWER_LAW" ? 1 :0)}
+{is_vCARR=(Viscosity_model == "CARREAU" ? 1 :0)}
+
+{ifndef(is_vBING)}
+{is_vBING=(Viscosity_model == "BINGHAM" ? 1 :0)}
+{endif}
+
+{is_vCWLF=(Viscosity_model == "CARREAU_WLF" ? 1 :0)}
+
+{ifndef(is_vBINGWLF)}
+{is_vBINGWLF=(Viscosity_model == "BINGHAM_WLF" ? 1 :0)}
+{endif}
+
+{is_stCONST=(Surface_Tension_model == "CONSTANT" ? 1 :0)}
+{is_stGIBBS=(Surface_Tension_model == "GIBBS_ISOTHERM" ? 1 :0)}
+{is_stUSER=(Surface_Tension_model == "USER" ? 1 :0)}
+
+{is_hcCONST=(Heat_Capacity_model == "CONSTANT" ? 1 :0)}
+{is_hcTHERMAL=(Heat_Capacity_model == "THERMAL" ? 1 :0)}
+
+{is_tcCONST=(Thermal_Conductivity_model == "CONSTANT" ? 1 :0)}
+{is_tcTHERMAL=(Thermal_Conductivity_model == "THERMAL" ? 1 :0)}
+
+{ifndef(v_ref_temp)}
+Default Reference Temperature  {reference_temp=25}
+        {endif}
+
+{ECHO(ON)}
+
+Material Data File for SAMPLE
+/**********Form of each property card *********/
+PROPERTY   = MODEL   FLOAT#1 FLOAT#2 .....FLOAT#5
+
+/**********Form of each Constitutive card *********/
+MECHANICS_TYPE   = MODEL 
+
+Of the many available options, MODEL can be USER
+/************************************************/
+
+
+---Physical Properties
+{ifdef(is_dCONST)}
+Density			= CONSTANT 	{densX*d_value}
+Second Level Set Density	= CONSTANT {prop_ratio*densX*d_value} POSITIVE
+{endif}
+
+---Mechanical Properties and Constitutive Equations
+Solid Constitutive Equation 	= NONLINEAR	
+Convective Lagrangian Velocity  = NONE
+{ifdef(is_mCONST)}
+Lame MU 			= CONSTANT   	{1.0}
+Lame LAMBDA 			= CONSTANT 	{1.0}
+	{endif}
+{ifdef(is_mNONL)}
+Lame MU 			= CONSTANT      {m_value}
+Lame LAMBDA 			= CONSTANT 	{m_value}
+	{endif}
+{ifdef(is_mNEOH)}
+Lame MU 			= CONSTANT      {m_value}
+Lame LAMBDA 			= CONSTANT 	{m_value}
+	{endif}
+
+Stress Free Solvent Vol Frac	= CONSTANT	0.
+Liquid Constitutive Equation 	= {Viscosity_model}
+{ifdef(is_vNEWT)}
+Viscosity		= CONSTANT	{v_eta0}
+	{endif}
+{ifdef(is_vPL)}
+Low Rate Viscosity		= CONSTANT	{v_eta0/v_lambda^(1.-v_power_law)}
+Power Law Exponent              = CONSTANT      {1.0 + F*(v_power_law-1.0)}
+	{endif}
+{ifdef(is_vCARR)}
+Low Rate Viscosity		= CONSTANT	{v_eta0}
+Power Law Exponent		= CONSTANT	{1.0 + F*(v_power_law-1.0)}
+High Rate Viscosity		= CONSTANT	{v_etainf}
+Time Constant			= CONSTANT	{v_lambda}
+Aexp				= CONSTANT	{v_exponent}
+	{endif}
+{ifdef(is_vBING)}
+Low Rate Viscosity		= CONSTANT	{v_eta0}
+Power Law Exponent		= CONSTANT	{v_power_law}
+High Rate Viscosity		= CONSTANT	{v_etainf}
+Time Constant			= CONSTANT	{v_lambda}
+Aexp				= CONSTANT	{v_exponent}
+Thermal Exponent		= CONSTANT      {v_temp_C1}
+Yield Stress			= CONSTANT	{Y*v_yield_stress}
+Yield Exponent			= CONSTANT	{F*v_F_factor}
+Epsilon Regularization		= CONSTANT	{epsilon}
+	{endif}
+{ifdef(is_vCWLF)}
+Low Rate Viscosity		= CONSTANT	{v_eta0}
+Power Law Exponent		= CONSTANT	{v_power_law}
+High Rate Viscosity		= CONSTANT	{v_etainf}
+Time Constant			= CONSTANT	{v_lambda}
+Aexp				= CONSTANT	{v_exponent}
+Thermal Exponent		= CONSTANT      {v_temp_C1}
+Thermal WLF Constant2           = CONSTANT      {v_temp_C2}
+	{endif}
+{ifdef(is_vBINGWLF)}
+Low Rate Viscosity              = CONSTANT      {v_eta0}
+Power Law Exponent              = CONSTANT      {v_power_law}
+High Rate Viscosity             = CONSTANT      {v_etainf}
+Time Constant                   = CONSTANT      {v_lambda}
+Aexp                            = CONSTANT      {v_exponent}
+Thermal Exponent                = CONSTANT      {v_temp_C1}
+Thermal WLF Constant2           = CONSTANT      {v_temp_C2}
+Yield Stress                    = CONSTANT      {v_yield_stress}
+Yield Exponent                  = CONSTANT      {v_F_factor}
+Epsilon Regularization		= CONSTANT	{epsilon}
+        {endif}
+{Ifdef(do_ratio)}
+Second Level Set Viscosity 	= RATIO      {prop_ratio} POSITIVE
+{Else}
+{Ifdef(do_ramp)}
+Second Level Set Viscosity 	= TIME_RAMP      {gas_visc} POSITIVE
+{Else}
+Second Level Set Viscosity 	= CONSTANT      {gas_visc} POSITIVE
+{Endif}
+{Endif}
+
+Polymer Constitutive Equation   = NOPOLYMER
+
+{ifdef(is_stCONST)}
+$$Surface Tension			= CONSTANT	{surfX*st_value}
+Surface Tension			= TIME_RAMP_SIGMA	{surfX*st_value}  {0.0001}
+	{endif}
+{ifdef(is_stUSER)}
+Surface Tension			= USER	{st_value}  {st_Bvalue}  {st_Cvalue}  {st_ref_temp}
+	{endif}
+{ifdef(is_stGIBBS)}
+Surface Tension			= GIBBS_ISOTHERM  {st_value}  {st_Bvalue}  {st_Cvalue}  {st_ref_temp}
+	{endif}
+
+---Thermal Properties
+{ifdef(is_tcCONST)}
+Conductivity            = CONSTANT      {tc_value}
+	{endif}
+{ifdef(is_tcTHERMAL)}
+Conductivity            = THERMAL      {tc_value}  {tc_Bvalue}  {tc_Cvalue}  {tc_Dvalue}  {tc_ref_temp}
+	{endif}
+
+{ifdef(is_hcCONST)}
+Heat Capacity           = CONSTANT      {hc_value}
+	{endif}
+{ifdef(is_hcTHERMAL)}
+Heat Capacity           = THERMAL      {hc_value}  {hc_Bvalue}  {hc_Cvalue}  {hc_Dvalue}  {hc_T_offset}
+	{endif}
+
+Volume Expansion	= CONSTANT	1.
+{ifdef(is_vCWLF)}
+Reference Temperature   = CONSTANT      {v_ref_temp}
+{else}
+{ifdef(is_vBING)}
+Reference Temperature   = CONSTANT      {v_ref_temp}
+{else}
+{ifdef(is_vBINGWLF)}
+Reference Temperature   = CONSTANT      {v_ref_temp}
+{else}
+{ifdef(is_vNEWT)}
+Reference Temperature   = CONSTANT      {v_ref_temp}
+{else}
+{ifdef(is_vCARR)}
+Reference Temperature   = CONSTANT      {v_ref_temp}
+{else}
+Reference Temperature   = CONSTANT      {reference_temp}
+{endif}
+{endif}
+{endif}
+{endif}
+{endif}
+
+Liquidus Temperature	= CONSTANT	1.
+Solidus Temperature	= CONSTANT	1.
+Energy Weight Function  = SUPG          0.
+
+---Electrical Properties
+Electrical Conductivity	= CONSTANT	1
+
+---Microstructure Properties
+Media Type              = POROUS_BRINKMAN
+Porosity                = CONSTANT     1.0
+Permeability            = CONSTANT     1.0
+FlowingLiquid Viscosity = CONSTANT     0.0
+Inertia Coefficient     = CONSTANT     0.0
+
+---Brinkman-equation parameters
+Brinkman Porosity        =  CONSTANT     1.0
+Brinkman Permeability    =  CONSTANT     1.0
+FlowingLiquid Viscosity  =  CONSTANT     0.0
+Inertia Coefficient      =  CONSTANT     0.0
+
+---Species Properties
+Diffusion Constitutive Equation = FICKIAN
+Diffusivity  			= CONSTANT  0   1.
+Species Time Integration 	= TAYLOR_GALERKIN_EXP 0
+Latent Heat Vaporization	= CONSTANT  0	0.
+Latent Heat Fusion		= CONSTANT  0	0.
+Vapor Pressure  		= CONSTANT  0	0.
+Species Volume Expansion	= CONSTANT  0	0.
+Reference Concentration         = CONSTANT  0   0.
+				            ^
+********Species Number**********************|
+
+----Source Terms
+Navier-Stokes Source		= CONSTANT	0. {-ga}  0.
+Solid Body Source		= CONSTANT	0.  0.  0.
+Mass Source			= CONSTANT	0.
+Heat Source			= CONSTANT	0.
+Species Source			= CONSTANT  0   0.
+Species Source			= CONSTANT  1   0.
+Current Source                  = CONSTANT      0.
+
+# Special inputs
+Upper Height Function Constants = ROLL  {-radius} 0. 0. 0. 0. 1. 0. 0.0
+Lower Height Function Constants = ROLL  {radius} 0. 0. 0. 0. 1. 0. 0.0
+Upper Velocity Function Constants = CONSTANT 0.  0.  0.
+Lower Velocity Function Constants = CONSTANT 0.  0.  0.
+Upper Contact Angle = CONSTANT  {dca}
+Lower Contact Angle = CONSTANT  {dca}
+FSI Deformation Model = FSI_SHELL_ONLY
+Lubrication Integration Model = {I_type} {gpts}
+{Ifdef(do_deltan)}
+Lubrication Curvature Normal = DELTA 
+{Else}
+Lubrication Curvature Normal = GRADH
+{Endif}
+{Ifdef(do_logarithmic)}
+Lubrication Level-Set Interpolation = LOGARITHMIC
+{Else}
+Lubrication Level-Set Interpolation = LINEAR
+{Endif}
+Lubrication Curvature Diffusion = CONSTANT  {K_diff}
+Lubrication Curvature Relaxation = CONSTANT  {K_relax}
+{Ifdef(do_Kwt)}
+Lubrication Curvature Weight Function  = SUPG          1.
+{Else}
+Lubrication Curvature Weight Function  = GALERKIN      0.
+{Endif}
+{Ifdef(do_masslump)}
+Lubrication Curvature MassLump = yes
+{Else}
+Lubrication Curvature MassLump = no
+{Endif}
+Lubrication Curvature Modulation = yes

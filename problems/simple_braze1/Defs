@@ -1,0 +1,7 @@
+$$Length Scale = {L_scale = 100.}
+$$Velocity Scale = {V_scale = 100.}
+$$Viscosity = {mu = 0.4}
+$$Liquid Density = {rho_l = 8.0}
+$$Solid Lame Mu = {Lame_Mu = 2.5e10}
+$$Solid Lame Lambda = {Lame_Lambda = 1.042e9}
+$$Solid Density = {rho_s = 1.960}

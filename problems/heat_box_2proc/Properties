@@ -1,0 +1,8 @@
+{ifndef(Properties)}
+{_C_}	Properties = {Properties = 1}
+{_C_}	
+{_C_}	Gravity, earth, sea level	= { gravity = 9.80665 ~m/s^2 } {aout}
+{_C_}	
+{_C_}	Ambient pressure		= { P_atm   = 1 ~atm } {pout}
+{_C_}
+{endif}

@@ -1,0 +1,64 @@
+v7.11.0-1-g709cfe59
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2026 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+Annealing mesh on output
+
+Internal METIS decomposition using Recursive Bisection.
+
+
+
+----------------- Communications Stats ------------
+
+		Number of Neighbors
+		Max:     1 (Proc = 0)		 Avg:  1.000		Min: 1 (Proc = 0)
+
+		Size of Messages
+		Max:   210 (Proc = 0)		 Avg: 210.000		Min: 210 (Proc = 0)
+--------------------------------------------------
+
+
+######################### __PRINT_SYNC_START__ #########################
+P_0: rotating equations at 108 nodes.
+######################### __PRINT_SYNC_END__ #########################
+
+Number of unknowns            = 1680
+
+Number of matrix nonzeroes    = 228046
+
+=> Try for soln at t=0.001 with dt=0.001 [0 for 0] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 2.7e-03 2.8e-01 2.2e-02 6.3e+00 7.1e+02 3.9e+01  36 4.1e-01/4.0e-02 
+17:10:03 [1] 8.4e-05 1.5e-02 8.0e-04 6.8e-03 9.9e-01 5.7e-02  31 3.5e-01/3.0e-02 
+17:10:04 [2] 8.4e-11 1.4e-08 7.3e-10                         skp 4.2e-01/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   6.298e+00  7.461e-01  1.268e+00 
+
+CONSTANT DELTA_T          [1.7e-04, 1.7e-01, 5.7e-01]
+Predictor-corrector norm: [  1 d  ,   1 v  ,   0 P  ]
+
+Fixing exodus file out.exoII
+
+-done
+
+
+Proc 0 runtime:       0.03 Minutes.
+

@@ -1,0 +1,11 @@
+DEFAULT TOLERANCE relative 1.E-3 floor 1.E-13
+GLOBAL VARIABLES (all) relative 1.E-3 floor 1.E-12
+	CONVRATE relative 0.5 floor 0.1
+NODAL VARIABLES (all) relative 1.0E-3 floor 1.0E-8
+	P_LIQDOT relative 1.0E-1 floor 1.0E-3
+	P_PORDOT relative 1.0E-1 floor 1.0E-3
+	DMXDOT relative 1.0E-2 floor 1.0E-6
+	DMYDOT relative 1.0E-2 floor 1.0E-6
+	Liq_Inv_Dot relative 1.0E-2 floor 1.0E-6
+ELEMENT VARIABLES (all) relative 1.0E-3 floor 1.0E-8
+

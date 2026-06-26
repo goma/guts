@@ -1,0 +1,28 @@
+FILL Equation Example Using Q2Q1 elements
+==========================================
+
+Jan 10, 2001 baseline #1
+*************************
+     goma_Jul1000 executable (??)
+     output files:
+        base1.sout
+        base1.serr
+        ttfq_out_blessed.exoII
+
+     initial residuals - 3.1e-04 1.5e-03 6.1e-04
+     1st iteration updates - 2.0e+00 6.0e+00 2.8e+00
+
+
+Re-baseline to eliminate small differences in exodusII FILL
+variable; see note in Dec 10, 01 checkin by hkmoffa.
+
+November 12, 02 baseline #2
+****************************
+     goma_Nov1202 executable
+     output files:
+        base2.sout
+        base2.serr
+        out_blessed.exoII
+
+     initial residuals - 3.1e-04 1.5e-03 6.1e-04
+     1st iteration updates - 2.0e+00 6.0e+00 2.8e+00

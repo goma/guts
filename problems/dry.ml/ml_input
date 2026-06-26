@@ -1,0 +1,133 @@
+{include(Defs)}
+ FEM File Specifications
+ ---
+FEM file                         = ml.exoII
+Output EXODUS II file            = out.exoII
+GUESS file                       = contin.dat
+SOLN file                        = soln.dat
+Write intermediate results       = no
+ ---
+General Specifications
+ ---
+Output Level                     = 0
+Debug                            = 0
+Initial Guess                    = zero
+$$Initialize = MASS_FRACTION 0 {X1_l1}
+$$Initialize = MASS_FRACTION 1 {X2_l1}
+Initialize = TEMPERATURE   0 {T_init}
+Anneal Mesh on Output            = no
+ ---
+Time Integration Specifications
+ ---
+Time integration                 = transient
+delta_t                          = 1.0e-8
+Maximum number of time steps     = 12
+Maximum time                     = 1.0
+Minimum time step                = 1.e-10
+Time step parameter              = 0.0
+Time step error                  = 0.1  0  0  1  1  0  0  0
+Printing Frequency               = 3
+ ---
+Solver Specifications
+ ---
+Solution Algorithm               = lu
+Number of Newton Iterations      = 9
+Newton correction factor         = 1.0
+Normalized Residual Tolerance    = 1e-8
+Residual Ratio Tolerance         = 1e-2
+ ---
+Boundary Condition Specifications
+ ---
+Number of BC			 =   -1
+
+BC = QCONV     SS 1   {-Kh}  {T_inf}
+BC = QCONV     SS 3   {-Kh}  {T_inf}
+
+BC = YFLUX     SS 3   0     {K_s_1}    {X1_inf}
+$$BC = YFLUX     SS 3   1     {K_s_2}    {X2_inf}
+
+BC = KIN_LEAK  SS 3   0.  0.0
+BC = KIN_LEAK  SS 6   0.  0.0
+
+$$
+BC = PLANE  SS 1 0.00 1. 0.  -0.0
+BC = PLANE  SS 2 1.00 0.0 0. {-h_s}
+BC = PLANE  SS 5 0.00 1.0 0. {-h_s}
+BC = PLANE  SS 4 1.0 0. 0.   -0.0
+
+END OF BC
+----
+Problem Description
+---
+ 
+Number of Materials = 3
+ 
+ MAT =   substrate    1
+ 
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = ARBITRARY
+  Number of bulk species = 0
+ 
+
+	Number of EQ			 = 1
+
+          EQ = energy     Q1 T  Q1        1.     1.    1.    1.    1.
+          EQ = mesh1      Q1 D1 Q1        0.     0.    1.    1.    0.
+          EQ = mesh2      Q1 D2 Q1        0.     0.    1.    1.    0.
+                                         ms     adv   bnd   dif   src   por
+
+ MAT =   layer1    2
+ 
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = ARBITRARY
+  Number of bulk species = 1
+ 
+
+	Number of EQ			 = 4
+
+	  EQ = energy     Q1 T  Q1        1.     1.    1.    1.    1.
+  	  EQ = species_bulk Q1 Y Q1       1.     1.    1.    1.    0.
+   	  EQ = mesh1      Q1 D1 Q1        0.     0.    1.    1.    0.
+   	  EQ = mesh2      Q1 D2 Q1        0.     0.    1.    1.    0.
+                                         ms     adv   bnd   dif   src   por
+
+ MAT =   layer2    3
+ 
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = ARBITRARY
+  Number of bulk species = 1
+ 
+
+	Number of EQ			 = 4
+
+	  EQ = energy     Q1 T  Q1        1.     1.    1.    1.    1.
+  	  EQ = species_bulk Q1 Y Q1       1.     1.    1.    1.    0.
+   	  EQ = mesh1      Q1 D1 Q1        0.     0.    1.    1.    0.
+   	  EQ = mesh2      Q1 D2 Q1        0.     0.    1.    1.    0.
+                                         ms     adv   bnd   dif   src   por
+
+
+Post Processing Specifications
+
+Stream Function = no
+Streamwise normal stress = no
+Pressure contours = no
+Second Invarient of Strain = no
+Mesh Dilatation = no
+Navier Stokes Residuals = no
+Moving Mesh Residuals = no
+Mass Diffusion Vectors = yes
+Mass Fluxlines = yes
+Energy Conduction Vectors = no
+Energy Fluxlines = no
+Time Derivatives = no
+Mesh Stress Tensor = no
+
+Post Processing Fluxes =
+
+FLUX = HEAT_FLUX 3 3 0 heatflux.out
+
+END OF FLUX

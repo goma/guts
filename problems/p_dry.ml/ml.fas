@@ -1,0 +1,38 @@
+ {include(Defs)}
+ TITLE 
+ Multilayer drying problem
+
+ POINT     1      0.0000000E+00      0.0000000E+00
+ POINT     2      {h_s}              0.0000000E+00
+ POINT     3      {h_s}      {h_s}        
+ POINT     4      {h_s}      {h_s+h_1}    
+ POINT     5      {h_s}      {h_s+h_1+h_2}
+ POINT     6      0.0000000E+00      {h_s + h_1 + h_2}        
+ POINT     7      0.0000000E+00      {h_s+h_1}    
+ POINT     8      0.0000000E+00      {h_s}
+ LINE      1   STR     1     2     0     1  1.0000
+ LINE      2   STR     2     3     0     {ne_s}  1.0000
+ LINE      3   STR     3     4     0     {ne_1}  1.0000
+ LINE      4   STR     4     5     0     {ne_2}  0.8500
+ LINE      5   STR     5     6     0     1  1.0000
+ LINE      6   STR     6     7     0     {ne_2}  1.1760
+ LINE      7   STR     7     8     0     {ne_1}  1.0000
+ LINE      8   STR     8     1     0     {ne_s}  1.0000
+ LINE      9   STR     8     3     0     1  1.0000
+ LINE     10   STR     7     4     0     1  1.0000
+ REGION     1     1    -1    -2    -9    -8
+ REGION     2     2    -9    -3   -10    -7
+ REGION     3     3   -10    -4    -5    -6
+ SCHEME    0 M
+ BODY       1     2     3
+ NODEBC     1     1
+ NODEBC     2     2     3     4
+ NODEBC     3     5
+ NODEBC     4     6     7     8
+ ELEMBC     1     1
+ ELEMBC     2     2     3     4
+ ELEMBC     3     5
+ ELEMBC     4     6     7     8
+ ELEMBC     5     9
+ ELEMBC     6     10
+ EXIT  

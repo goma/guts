@@ -1,0 +1,6 @@
+WARNING: Defaulting on Time step error norm indicators
+ (/opt/workdir/goma/src/mm_input.c:1612)
+WARNING: Boundary condition 7, FILL_INLET, applied on NS 4, is never used
+ (/opt/workdir/goma/src/mm_bc_conflict.c:2001)
+WARNING: Boundary condition 8, FILL_INLET, applied on NS 2, is never used
+ (/opt/workdir/goma/src/mm_bc_conflict.c:2001)

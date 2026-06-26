@@ -1,0 +1,89 @@
+
+#{MeshSize = 0.1}
+#{Xlen = 1.0}
+#{Ylen = 1.0}
+#{Zlen = 1.0}
+
+### Cleanup
+undo on
+reset
+
+### Create geometry
+brick x {Xlen} y {Ylen} z {Zlen}
+#rotate volume 1 angle 20 about x
+#rotate volume 1 angle 30 about y
+#rotate volume 1 angle 40 about z
+
+### Mesh volumes
+delete mesh
+volume 1 scheme map
+volume 1 size {MeshSize}
+mesh volume 1
+
+### Create blocks
+block 1 volume 1
+block 1 element type HEX8
+#block 2 surface 2
+#block 2 element type SHELL4
+
+### Create node/side sets
+nodeset 11 surface 4
+sideset 11 surface 4
+nodeset 12 surface 6
+sideset 12 surface 6
+nodeset 21 surface 3
+sideset 21 surface 3
+nodeset 22 surface 5
+sideset 22 surface 5
+nodeset 31 surface 2
+sideset 31 surface 2
+nodeset 32 surface 1
+sideset 32 surface 1
+
+### Export Genesis files
+#export genesis "hexmeshsquare.exoII" overwrite
+
+
+########################
+### TETS
+########################
+
+### Cleanup
+undo on
+reset
+
+### Create geometry
+brick x {Xlen} y {Ylen} z {Zlen}
+#rotate volume 1 angle 20 about x
+#rotate volume 1 angle 30 about y
+#rotate volume 1 angle 40 about z
+
+### Mesh volumes
+delete mesh
+volume 1 scheme tetmesh
+volume 1 size {MeshSize}
+mesh volume 1
+
+### Create blocks
+block 1 volume 1
+block 1 element type TETRA4
+#block 2 surface 2
+#block 2 element type TRISHELL3
+
+### Create node/side sets
+nodeset 11 surface 4
+sideset 11 surface 4
+nodeset 12 surface 6
+sideset 12 surface 6
+nodeset 21 surface 3
+sideset 21 surface 3
+nodeset 22 surface 5
+sideset 22 surface 5
+nodeset 31 surface 2
+sideset 31 surface 2
+nodeset 32 surface 1
+sideset 32 surface 1
+
+### Export Genesis files
+export genesis "solid.g" overwrite
+

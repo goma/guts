@@ -1,0 +1,27 @@
+# brk -- input file problem description for decomposition
+#	 for MCD problem with two species
+#
+
+1	# element block ID
+1	# number of basic eqnvars
+4 1 2 1 # species_bulk
+
+#
+# interactions...
+#
+
+#	c
+#
+        1        # species equation
+
+
+9	# number of nodes per element in this eb
+4
+4
+4
+4
+4
+4
+4
+4
+4

@@ -1,0 +1,18 @@
+# tmp.geom
+#
+# slot_width: {slot_width=0.2}
+# y7: {y7=2.03}
+# curve_radius: {curve_radius=8.0}
+# y1: {y1=0.0}
+# x8: {x8=-5.1}
+# gd_c0: {gd_c0=270.0}
+# gd_c1: {gd_c1=0.0}
+# gd_c2: {gd_c2=-27000.0}
+# beta: {beta=0.001}
+# webspeed: {webspeed=-100.0}
+# ca_100: {ca_100=1.5775}
+# ca_200: {ca_200=1.9707}
+# density: {density=0.93e-04}
+# viscosity: {viscosity=1.0}
+# surface_tension: {surface_tension=200.0}
+# vacuum: {vacuum=-330}

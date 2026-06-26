@@ -1,0 +1,6 @@
+DEFAULT TOLERANCE relative 1.E-8 floor 1.E-14
+GLOBAL VARIABLES all relative 1.E-4 floor 1.E-12
+	CONVRATE relative 0.05 floor 0.01
+NODAL VARIABLES all relative 1.0E-6 floor 1.0E-11
+	LUB_VELO_Z relative 1e-6 floor 1e-9
+

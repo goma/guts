@@ -1,0 +1,24 @@
+
+$  BASE UNITS are CGS
+$ Conversion for Length change new scale = cm * conv
+$ So to convert from cm to mm -> conv = 10.0
+$ Length conversion		{L =10.0}
+$ Mass conversion		{K =1.0}
+$ Time conversion		{S =1000.0}1000.0
+$ moles conversion		{M =K}
+
+$ Liquid Viscosity (hexadecane, 20c)	{lqvisc = 0.034*K/L/S} 0.5
+$ Density of Liquid 			{sldens = 1.0*K/L^3} 0.985
+
+{pcmax=30000.0*K/L/S^2}
+
+{press = 50.0*980*K/L/S^2 }
+
+
+{elem_size_min = 0.05*L }
+{permeab_max = 300.0*9.8e-9*L^2}
+{dt_max = lqvisc*elem_size_min*elem_size_min/permeab_max/pcmax }
+{dt_min = 0.1*dt_max}
+
+$ Radius of loading sideset { R = 1.0*L }
+$ Mass flux for 0.5mL/s     { MF = sldens*0.5*L*L*L/S/(PI*R*R)}

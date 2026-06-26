@@ -1,0 +1,7 @@
+WARNING: Defaulting on Time step error norm indicators
+ (/opt/workdir/goma/src/mm_input.c:1612)
+WARNING: Boundary condition 10, LS_CAP_DIV_N, applied on NS 0, is never used
+ (/opt/workdir/goma/src/mm_bc_conflict.c:2001)
+WARNING: Boundary condition 11, LS_CAP_DENNER_DIFF, applied on NS 0, is never used
+ (/opt/workdir/goma/src/mm_bc_conflict.c:2001)
+WARNING: Beware that SUPG for trishells is held constant so you need a uniform, non-stretchnig grid (/opt/workdir/goma/src/mm_fill_aux.c:927)

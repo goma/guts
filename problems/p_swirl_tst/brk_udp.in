@@ -1,0 +1,44 @@
+#
+# brk -- input file problem description for decomposition
+#	 for swirl test problem with velocity, mesh, and pressure
+#
+
+1	# element block ID
+3	# number of basic eqnvars
+0 3 1 1 # momentum (3D)
+5 2 1 1 # mesh
+#9 1 1 3 # continuity
+9 1 1 1 # continuity
+
+#
+# interactions...
+#
+
+#	v      Mesh	P
+#
+	1	1	1	# "fluid" momentum equation
+	1	1	0	#  mesh equation
+	1	0	1	#  continuity equation
+
+
+9	# number of nodes per element in this eb   for q1 pressure
+0 5 9
+0 5 9
+0 5 9
+0 5 9
+0 5  
+0 5  
+0 5  
+0 5  
+0 5  
+
+9	# number of nodes per element in this eb   for p1 pressure
+0 5  
+0 5  
+0 5  
+0 5  
+0 5  
+0 5  
+0 5  
+0 5  
+0 5 9

@@ -1,0 +1,60 @@
+Swirling Geometry Test: GOMA Version Information
+================================================
+
+Directory:   .../VandV/problems/v2.2/swirl_tst
+
+Sept 8, 99 baseline #1
+**********************
+     goma_Aug3099 executable
+     output files:
+        base1.sout
+        base1.serr
+        base1_out.exoII
+
+     initial residuals - 3.0e-03 8.2e-02 1.4e-02 
+     1st iteration updates - 1.5e+01 6.1e+02 7.4e+01
+
+July 18, 00 baseline #2
+**********************
+     goma_000205 executable
+     output files:
+        base2.sout
+        base2.serr
+        base2_out.exoII
+
+     initial residuals - 3.0e-03 8.2e-02 1.4e-02 
+     1st iteration updates - 1.5e+01 6.1e+02 7.4e+01 
+
+
+HKM Note TODO FIX THE JACOBIAN 
+-----------------------------------
+
+  If you take it to steady state and then do the jacobian checker, you will 
+find copious jacobian errors in the dmesh / dmesh entries. Also, one can
+notice the lackluster convergence within this problem as well. 
+
+The error appears to be absolutely dense. All dmesh / dmesh  entries are affected.
+The real and numerical jacobians are off by factors of 2 to 6, but all have the 
+same sign. The analytical jacobian usually has the larger absolute factor than
+the numerical jacobian. But, not always.
+
+Note, the jacobian problems don't show up at the start of the time transient
+problem.
+
+
+HKM Note Frontal Solver 5/8/08
+---------------------------------
+  Note the frontal solver is used here. The frontal solver gives bad results
+compared to UMF. And, the number of iterations varies between the optimized
+and the debug version of the frontal solver, while this is not true for 
+the UMF solver. The UMF solver solves the first iteration in 3 iterations,
+while the frontal solver solves it in 6 or 7 iterations depending on 
+optimization. 
+
+
+ 
+
+
+
+
+

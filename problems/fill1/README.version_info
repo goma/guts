@@ -1,0 +1,44 @@
+2D Test of Fill Equation with Newtonian Fluid: GOMA Version Information
+=======================================================================
+
+Directory:   .../VandV/problems/v2.2/fill1
+
+# Information on the version of Goma used to create the base files.
+#
+# Rekha Rao developed this test problem and sent two executables
+# as part of the problem directory: goma & gomad.  The Goma header
+# reads:
+
+        GOMA 3 Rev 1999/12/07
+        3.6.1
+
+# 'goma' was used to create the base1 files which form the standard
+# used in testing Goma results.
+
+July ?, 2000 baseline #1
+************************
+     goma_991207 executable
+     output files:
+        base1.sout
+        base1.serr
+        base1_out.exoII
+
+     initial residuals - 2.6e-02 4.1e-01 8.7e-02 
+     1st iteration updates - 4.4e+03 1.5e+05 2.3e+04 
+
+# An exodiff on the solution against baseline #1 started to show numerous
+# differences because several of the solution times had changed relative
+# to the baseline; Rekha did not know why they should have changed.
+# The re-baseline was intended to remedy this situation.
+
+
+October 4, 2000 baseline #2
+***************************
+     goma_001004 executable
+     output files:
+        base2.sout
+        base2.serr
+        base2_out.exoII
+
+     initial residuals - 2.6e-02 4.1e-01 8.7e-02 
+     1st iteration updates - 4.4e+03 1.5e+05 2.3e+04

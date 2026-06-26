@@ -1,0 +1,82 @@
+###
+### Parameters for railgun problem
+### 
+### Units are CGS unless otherwise specified
+###
+
+{bar_l = 3}
+{bar_r = 1/2}
+
+### Conversion factors ###
+# TMAD time to GOMA time             = {time_scale = 1000} 
+# Body force factor                  = {JxB_factor = 0.1}
+
+#############################################################
+### Simulation specific parameters (check for new geometries)
+#############################################################
+
+### Geometrical parameters ###
+# Length of sliding contact region   = {l_arm = 3.24892}
+# Coordinate of contact leading edge = {leading_coordx = l_arm}
+# Bin length for shell thermal model = {delta_L = 0.1}
+# Initial lubrication gap thickness  = {h_gap = 0.003}
+# Step gap thickness (delta)         = {h_step = 0.038}
+# Step length                        = {l_step = 0.611}
+# Step x coodinate location          = {xcoord_step = 3.43}
+
+### Model parameters ###
+# Friction heat source load          = {Q_friction_load = 2.0e10}
+# Friction heat source coefficient   = {Q_friction_coeff = 0.9}
+# Friction heat source transition H  = {Q_friction_Htrans = 0.0005}
+# Friction heat source transition W  = {Q_friction_Wtrans = 2.5}
+# SUPG weighting function            = {SUPG_wt = 30.1}
+
+### Initial conditions ####
+# Reference temperature              = {T_ref = 20}
+# Rail temperature                   = {T_rail = T_ref}
+# Lubrication initial temperature    = {T_init_al = 570.0}
+
+
+################################
+### Standard material parameters
+################################
+
+### Solid aluminum properties
+# Density                            = {density_al = 2.77} 
+# Lame mu modulus                    = {lame_mu_al = 7.0e11}
+# Melting temperature                = {T_melt_al = 550.0}
+# Latent heat of fusion              = {H_fusion_al = 3.97e9}
+# Heat capacity                      = {Cp_al = 8.8e6}
+# Thermal conductivity               = {T_cond_al = 2.5e7} 
+# Electrical conductivity            = {E_cond_al = 0.0378}
+
+### Solid copper properties
+# Density                            = {density_cu = 8.24} 
+# Heat capacity                      = {Cp_cu = 4.07e6} (at 500C)
+# Thermal conductivity               = {T_cond_cu = 3.83e7} (at 500C)
+# Electrical conductivity            = {E_cond_cu = 0.05961}
+
+### Solid steel properties
+# Density                            = {density_steel = 8.1}
+# Heat transfer coefficient          = {h_steel_air = 2e5} (Taha et al.)
+# Heat capacity                      = {Cp_steel = 5e6} (at 500C)
+# Thermal conductivity               = {T_cond_steel = 3.0e6} 
+# Electrical conductivity            = {E_cond_steel = 0.3*E_cond_cu}
+
+### Solid tin properties
+# Density                            = {density_sn = 7.31}
+# Heat capacity                      = {Cp_steel = 2.17e6}
+# Thermal conductivity               = {T_cond_steel = 6.68e6} 
+# Electrical conductivity            = {E_cond_steel = 9.1e-3}
+
+### Liquid aluminum properties
+# Density                            = {density_al_liq = density_al}
+# Viscosity                          = {visc_al_liq = 0.01}
+# Contact angle                      = {CA_al = 90.0}
+# Surface tension                    = {sigma_al_liq = 70.0}
+
+### Liquid tin properties
+# Density                            = {density_sn_liq = density_sn}
+# Viscosity                          = {visc_sn_liq = 0.01}
+# Contact angle                      = {CA_sn = 90.0}
+# Surface tension                    = {sigma_sn_liq = 70.0}

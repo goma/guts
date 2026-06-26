@@ -1,0 +1,47 @@
+#!python
+cubit.cmd("reset")
+import math
+
+cubit.cmd('##{include("params")}')
+# Store the imported aprepro variables into a new dict for better access
+aprepro_names = cubit.get_aprepro_vars()
+apr = {}
+for i in aprepro_names:
+    apr[i] = cubit.get_aprepro_numeric_value(i)
+
+cubit.cmd("create brick x {} y {} z {}".format(apr['l'],apr['r'],1 ) ) #create a brick
+front_surf= cubit.parse_cubit_list("surface","in volume {} with z_coord > 0".format(1) )[0] #parse surfaces in curr_vol with z>0 (front face)
+cubit.cmd("volume 1 move y {}".format(apr['r']/2))
+cubit.cmd("volume 1 move x {}".format(apr['l']/2))
+
+
+
+cubit.cmd('surface 1 scheme map')
+cubit.cmd("curve 4 interval {}".format(apr['ne_z']))
+cubit.cmd("curve 3 interval {}".format(apr['ne_r']))
+cubit.cmd("mesh surface 1")
+
+cubit.cmd("nodeset 2 curve 4 ")
+cubit.cmd("nodeset 4 curve 2 ")
+cubit.cmd("nodeset 1 curve 3 ")
+cubit.cmd("nodeset 3 curve 1 ")
+
+cubit.cmd("nodeset 23 vertex 1 ")
+cubit.cmd("nodeset 34 vertex 2 ")
+cubit.cmd("nodeset 14 vertex 3 ")
+cubit.cmd("nodeset 12 vertex 4 ")
+
+cubit.cmd("sideset 2 curve 4 ")
+cubit.cmd("sideset 4 curve 2 ")
+cubit.cmd("sideset 1 curve 3 ")
+cubit.cmd("sideset 3 curve 1 ")
+
+cubit.cmd("block 1 surface 1") #assign block 1 to surface 1
+cubit.cmd("block 1 element type QUAD9") #make the elements 9 nodes (biquad)
+#cubit.cmd("rotate Volume 1  angle 180  about normal of surface 5  include_merged")
+cubit.cmd('export genesis "mesh.exoII" dimension 2 block 1 overwrite') #export the mesh into Exodus II file
+
+
+
+
+

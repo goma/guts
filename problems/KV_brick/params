@@ -1,0 +1,138 @@
+$$  Parameters for block-by-block 3D printing $  units
+$       length - mm
+
+$Output file          	{output_file="3Dbrick_out.exoII"}
+$Mesh file          	{mesh_file="3D_brick.exoII"}
+
+$material_file  {matfile="pla_4060.par"}
+$thixotropic_factor     {thixo_factor=0}
+
+
+$Block dimensions
+#Dimensions   {xdim =  100}   {ydim =  50}    {zdim =  50}
+$Cylinder dimensions
+#Cylinder_length   	{leng =  100}  
+#Cylinder_radius	 {radius = 25} 
+#Cylinder_cutoff_fraction	{cutoff=1.0}
+$$Rectangular_dimensions
+#Rectangle_length   	{rect_leng =  85}  
+#Rectangle_end_radius	{rect_rad=0.79375}
+#Rectangle_width	{rect_width=3.275}
+#Layer_overlap		{overlap=0.1}
+
+#Number_of_blocks       {n_blocks=30}
+#Have_interface_flag	{have_int =(n_blocks> 1 ?  1  :  0)}
+#Cut_for_bottom_table_flag	{do_table_cut=1}
+
+$mesh_mapped_intervals	{intervals=2}
+$Wall_bias_factor	{bias=1.0}
+$Element_size           {size=1.4*rect_rad/intervals}
+$Element_interpolation  {do_quad=0}Par
+$Initialize_dm_global_mean	{dm_glob=0}
+
+$Printing_speed(mm/sec)	{print_speed=8.33}
+$Table_temperature	{TableTemp=75}
+$Initial_temperature	{T_init=100}
+$Ambient_temperature	{T_amb=25}
+$Dissipation_constant   {diss_pre=1.0}
+$Barrel_ht_coefficient	{ht_coeff=10.0}
+$Ambient_ht_coefficient	{ht_amb=1.0}
+$use_heat_transfer_bc	{ht_bc=(ht_coeff>0 ? 1 : 0)}
+$Radiation_emissivity	{rad_e=0.7}
+$Stefan-Boltzman_Constant	{rad_sigma=5.67e-08}
+$use_modulus_tabular_data	{do_modulus_table=0}
+$use_modulus_user_fcn	        {do_modulus_user=0}
+$User_Modulus_Parameters  {mu_B1=0.05468}  {mu_Tref=106.94}
+$Polymer_thermal_expansion	{solid_therm_exp=0.0001}
+$User_thermal_expansion 	{do_user_therm=0}
+$Expansion_levels  {th_C1=-0.00001308}  {th_C2=0.000146815}
+$Expansion_slopes  {th_m1=0.0}  {th_m2=0.0}
+$Expansion_Temp_behavior     {th_beta=0.1599}   {th_T0=127.73}
+$Orthotropic_thermal_expansion 	{do_ortho_therm=0}
+$Ortho_Expansion_levels  {ortho_C1=0.0001110}  {ortho_C2=0.0027636}
+$Ortho_Expansion_slopes  {ortho_m1=-0.000002267}  {ortho_m2=-0.00001796}
+$Ortho_Expansion_Temp_behavior     {ortho_beta=0.7412}   {ortho_T0=121.578}
+
+$Repulsive-Attraction Coefficients	{P_rep=0.01}
+$Table_coordinate			{z_table=-cutoff*rect_rad}
+$Repulsion_exponent			{expon=4.0}
+
+$Direct_or_iterative	{direct=1}
+$Amesos_solver_package		{solver="mumps"}
+$Convergence_criterion_residual	{resid_eps=1E-6}
+$Convergence_criterion_solution	{soln_eps=1E-2}
+$Iterative_solver_package	{it_solver="petsc"}
+$Iterative_Preconditioner	{it_precond="dom_decomp"}
+$Iterative_Subdomain_solver	{it_subsolver="ilut"}
+$Iterative_Krylov_dimension	{it_krylov=4000}
+$Iterative_Matrix_Format	{it_format="epetra"}
+
+$Working Filenames
+$Continuation_File	{contfile="cont.exoII"}
+$Flag_for_continue_transient   {continue=1}
+
+$Mapvar_parameters
+$Mapvar_Scheme	{mapvar_sch=1}
+$Mapvar_Deform	{mapvar_def=0}
+$Mapvar_Search	{mapvar_search=0.01}
+
+$Cubit_parameters - 5-place bits: 1 2 4 8 16 => 31
+$Autoheal_bitmap	{cubit_heal=31}
+$Imprint-merge_bitmap	{cubit_merge=31}
+$Steady_or_transient	{do_transient=1}
+$
+$Solid_viscosity		{solid_visc=10000.0}
+$User_solid_viscosity 	        {do_user_visc=0}
+$First_exponential  {visc_C1=0.03628}  {visc_Tref=131.833}
+$
+$Ending_arclength_per_layer	{sarc_end=0}
+$Ending_arclength_whole_layer	{sarc_layer_end=251.588}
+$Have_multiple_layers		{have_multi=9}
+$Leading_printer_position
+$Printer_xcoord	{prt_x=0}
+$Printer_ycoord	{prt_y=1.02054e-14}
+$Printer_zcoord	{prt_z=13.3875}
+
+$--------------------------------------------------------------------------
+$initial_run_time       {initial_time=0.0}
+$total_run_time         {total_time=100.0}
+$Initial_timestep_factor	{init_factor=0.0001}
+$time_step_max          {time_step_max=0.05*total_time}
+$time_step_min          {time_step_min=0.4*init_factor}
+$time_step_error        {time_step_error=0.005}
+$time_step_init         {time_step_init=init_factor}
+$time_step_resolved     {time_step_resolved=2*time_step_min}
+
+$Temperature_Bound_minimum	{temp_min=22.8422}
+$Temperature_Bound_mean  	{temp_mean=26.4324}
+$Temperature_Bound_maximum	{temp_max=51.5053}
+$Displacement1_Bound_minimum	{dmx_min=-1.89294}
+$Displacement1_Bound_mean	{dmx_mean=0.000162273}
+$Displacement1_Bound_maximum	{dmx_max=1.9397}
+$Displacement2_Bound_minimum	{dmy_min=-0.0807937}
+$Displacement2_Bound_mean	{dmy_mean=-0.000505437}
+$Displacement2_Bound_maximum	{dmy_max=0.0706145}
+$Displacement3_Bound_minimum	{dmz_min=-0.0118475}
+$Displacement3_Bound_mean	{dmz_mean=0.0550187}
+$Displacement3_Bound_maximum	{dmz_max=0.941856}
+
+$Linear_Regression_Results:
+$Temperature_LinReg_constant	{temp_A=28.4611}
+$Temperature_LinReg_slopeX  	{temp_B=-0.00624068}
+$Temperature_LinReg_slopeY	{temp_C=-0.0141016}
+$Temperature_LinReg_slopeZ	{temp_D=-0.184077}
+$Displacement1_LinReg_constant	{dmx_A=0.432928}
+$Displacement1_LinReg_slopeX  	{dmx_B=-0.0034663}
+$Displacement1_LinReg_slopeY	{dmx_C=-4.24685e-05}
+$Displacement1_LinReg_slopeZ	{dmx_D=0.00831629}
+$Displacement2_LinReg_constant	{dmy_A=-0.000246359}
+$Displacement2_LinReg_slopeX  	{dmy_B=2.41535e-06}
+$Displacement2_LinReg_slopeY	{dmy_C=0.00732187}
+$Displacement2_LinReg_slopeZ	{dmy_D=0.0}
+$Displacement3_LinReg_constant	{dmz_A=-0.000627374}
+$Displacement3_LinReg_slopeX  	{dmz_B=-5.9694e-06}
+$Displacement3_LinReg_slopeY	{dmz_C=6.47124e-05}
+$Displacement3_LinReg_slopeZ	{dmz_D=0.0}
+$End_of_Linear_Regression_Results
+
+$$End of Params file

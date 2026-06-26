@@ -1,0 +1,113 @@
+###############################################################################
+### Material parameters for generic liquid                                  ###
+### Author:  Scott A Roberts (sarober@sandia.gov)                           ###
+###############################################################################
+
+###########################
+### Physical Properties ###
+###########################
+Density                            = CONSTANT 1.0
+
+########################################################
+### Mechanical Properties and Constitutive Equations ###
+########################################################
+
+# Mesh parameters
+Solid Constitutive Equation        = NONLINEAR
+Lame MU                            = CONSTANT 1.0
+Lame LAMBDA                        = CONSTANT 1.0
+Stress Free Solvent Vol Frac       = CONSTANT 0.0
+
+# Fluid parameters
+Liquid Constitutive Equation       = NEWTONIAN
+Viscosity                          = CONSTANT {lqvisc=0.01}
+Surface Tension                    = CONSTANT 20.0
+
+# Thermal Properties
+Conductivity                       = CONSTANT 1.0
+Heat Capacity                      = CONSTANT 1.0
+
+# Porous term terms for linking lubrication to level set field
+Media Type	 	           = POROUS_SHELL_UNSATURATED
+Porosity                = CONSTANT    {0.4}
+Permeability            = ORTHOTROPIC {2*0.000000819505} {2*0.000000819505} {2*0.000000819505} 1. 0. 0. 0. 1. 0. 0. 0. 1.
+Capillary Network Stress = PARTIALLY_WETTING
+Rel Gas Permeability     = CONSTANT  {1./0.01}
+#Rel Liq Permeability     = VAN_GENUCHTEN  0. 0. 0.7 {lqvisc}
+Rel Liq Permeability     = CONSTANT {1.0/lqvisc}
+{R=0.01}
+#Saturation             = TANH 0.2 0. 2.0 100000.0
+Saturation             = SHELL_TANH {sigma=25.} {theta=30.0} {Rmin = 0.1*R} {Rmax = 10.*R}
+
+--Misc Porous numerical props (Porous Section 2)
+Porous Weight Function          = SUPG 1.0
+Porous Mass Lumping             = true
+#Porous Time Integration         = TAYLOR_GALERKIN 0
+Porous Advective Scaling         = CONSTANT 0 1.
+
+---Porous Species Properties (Porous Section 3)
+/* Darcy fickian only for saturated media */
+Porous Diffusion Constitutive Equation = DARCY_FICKIAN
+Porous Gas Diffusivity              = CONSTANT  0  0.
+
+Porous Latent Heat Vaporization = CONSTANT  0   0.
+Porous Latent Heat Fusion       = CONSTANT  0   0.
+Porous Vapor Pressure           = NON_VOLATILE  0   0.
+Porous Liquid Volume Expansion  = CONSTANT  0   1.
+                                            ^
+***Species Number (all zero for primary liquid solvent)****|
+
+--Porous Gas-inert properties
+/*Note. if you change p_ambient here you need to make sure the initialize
+card and the boundary conditions are compatible with the saturation curve. */
+
+Porous Gas Constants           = IDEAL_GAS   {mwair=0} {rgas=0} {temp=0} {p_ambient=0}
+
+
+####################
+### Source Terms ###
+####################
+Navier-Stokes Source               = CONSTANT 0.0 {-98.0} 0.0
+Solid Body Source                  = CONSTANT 0.0 0.0 0.0
+Mass Source                        = CONSTANT 0.0
+Heat Source                        = CONSTANT 0.0
+Current Source                     = CONSTANT 0.0
+
+#########################
+### Lubrication Terms ###
+#########################
+Upper Height Function Constants = CONSTANT_SPEED 0.0 0.3
+Lower Height Function Constants = CONSTANT_SPEED 0.0 0.0
+Upper Velocity Function Constants = CONSTANT 0.0 0.0 0.0
+Lower Velocity Function Constants = CONSTANT 0.0 0.0 0.0
+Upper Contact Angle = CONSTANT 45.0
+Lower Contact Angle = CONSTANT 45.0
+FSI Deformation Model = FSI_SHELL_ONLY
+
+##########################
+### Porous Shell Terms ###
+##########################
+Porous Shell Closed Porosity     = CONSTANT 0.1
+Porous Shell Height              = CONSTANT 1.0
+Porous Shell Radius              = CONSTANT 0.01
+Porous Shell Closed Gas Pressure = CONSTANT 1e6
+Porous Shell Atmospheric Pressure = CONSTANT 0.
+Porous Shell Reference Pressure   = CONSTANT 1e6
+Porous Shell Cross Permeability = CONSTANT {20*0.000000819505}
+Porous Shell Initial Pore Pressure = CONSTANT 0.
+
+########################################
+### Porous Shell Gas Diffusion Terms ###
+########################################
+Porous Shell Gas Diffusivity          = CONSTANT 1.0e-6
+Porous Shell Gas Temperature Constant = CONSTANT 2.494353e10
+Porous Shell Henrys Law Constant      = CONSTANT 1.67e12
+
+########################################
+### Porous Shell (open pore) Terms #####
+########################################
+Porous Shell Open Height         = CONSTANT 0.25
+Porous SHELL Open Radius         = CONSTANT 0.01
+
+
+

@@ -1,0 +1,9 @@
+WARNING: Boundary condition 0, PLANE, applied on NS 1, is never used
+ (/opt/workdir/goma/src/mm_bc_conflict.c:2001)
+WARNING: Boundary condition 1, PLANE, applied on NS 2, is never used
+ (/opt/workdir/goma/src/mm_bc_conflict.c:2001)
+WARNING: Boundary condition 2, PLANE, applied on NS 3, is never used
+ (/opt/workdir/goma/src/mm_bc_conflict.c:2001)
+WARNING: Boundary condition 3, PLANE, applied on NS 4, is never used
+ (/opt/workdir/goma/src/mm_bc_conflict.c:2001)
+		converged SS!

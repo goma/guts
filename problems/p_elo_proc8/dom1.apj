@@ -1,0 +1,67 @@
+############################################################################
+#   Elo domain file
+#   Meshing file -> aprepro  -> fastq
+#   Harry K. Moffat
+#   Division 1126
+############################################################################
+#
+#
+# {include(Defs)}
+#
+#
+#
+ TITLE 
+ Coltrin's ELO Hexagonal domain - region 1
+#
+# Definition of Points
+#  
+ POINT     1     0.0                         0.0
+ POINT     2    {L_hex / sqrt(3.0)}          0.0
+ POINT     3    {B_hex * sqrt(3.0) / 4.0}   {L_hex - 3.0 * B_hex / 4.0}
+# POINT     4     0.0                        {L_hex} 
+ POINT     5     0.0                        {L_hex - B_hex} 
+#
+#
+# Definition of lines
+#
+ LINE      1   STR     1     2     0   {nx}          1.0000
+ LINE      2   STR     2     3     0   {ny2}          1.0000
+ LINE      5   STR     5     1     0  {ny2}           1.0000
+ LINE      6   STR     5     3     0  {nx}           1.0000
+#
+#
+# Definition of Gas Regions
+#
+ REGION     1     1    -1 -2 -6 -5
+#
+# Two triangular regions in the round corners of the susceptor
+#
+
+ SCHEME     0 M
+ BODY       1
+#
+# Point Boundary Conditions
+#  first one is symmetry point half way between each hexagon
+#  second one is the center of the hexagon
+#
+POINBC     101   1
+# POINBC     104   4
+#
+# Side Set 1 =  all regular
+#
+ELEMBC     1     1
+#
+# Side Set 2 = second side part hex, part regular
+#
+ELEMBC     2     2
+#
+# Side Set 3 = third side lying between hexagon centers
+#              part hex part regular
+#
+ELEMBC     3     5
+#
+#  Common side between the two regions
+#
+ELEMBC     9     6
+#
+EXIT

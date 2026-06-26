@@ -1,0 +1,36 @@
+#{include(properties.aprepro)}
+
+reset
+create brick x {die_width} y {air_gap} z {die_thickness/2}
+move volume 1 x {die_width/2} y {-air_gap/2} z {die_thickness/4}
+imprint all 
+merge all
+
+sideset 1 curve 2
+nodeset 1 curve 2
+sideset 2 curve 4
+nodeset 2 curve 4
+
+sideset 3 curve 1
+nodeset 3 curve 1
+sideset 4 curve 3
+nodeset 4 curve 3
+
+curve 2 4  interval {width_elem_count}
+#curve 7  scheme bias factor {mesh_bias} start vertex 7 
+#curve 5 scheme bias factor {mesh_bias} start vertex 6
+#curve 1 scheme bias factor {mesh_bias} start vertex 2
+#curve 3 scheme bias factor {mesh_bias} start vertex 3
+curve 1 3 interval {gap_elem_count}
+curve 9 10 11 12 interval {thickness_elem_count}
+block 1 surface 1
+block 1 element type quad9
+mesh surface 1
+
+nodeset 900 surface 1
+export mesh "film.g" overwrite dimension 2
+
+
+
+
+

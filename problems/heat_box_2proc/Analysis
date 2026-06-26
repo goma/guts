@@ -1,0 +1,11 @@
+{ifndef(Analysis)}
+{_C_}	Analysis = {Analysis = 1}
+{_C_}	
+{_C_}	Thermal conductivity	= { k	= 1 ~W/m/degK } [{Pout}/{lout}-{Tout}]
+{_C_}	
+{_C_}	Density 		= { rho	= 1 ~g/cm^3 } [{dout}]
+{_C_}	
+{_C_}	Heat capacity		= { Cp	= 1 ~J/kg/degK } [{eout}/{mout}-{Tout}]
+{_C_}	
+{_C_}	Thermal diffusivity	= { kappa = k/(rho*Cp)} [{lout}/{tout}2]
+{endif}

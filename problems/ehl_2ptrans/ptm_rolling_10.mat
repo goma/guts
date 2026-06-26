@@ -1,0 +1,81 @@
+# Goma material file for lubp_liq testing
+# Author Andrew Cochrane (acochrane@gmail.com) June 24th 2014
+{include(variables.inc)}
+
+#{webspeed = 10}
+
+Density               = CONSTANT 1
+
+Solid Constitutive Equation        = LINEAR
+Lame MU                            = CONSTANT 1.0
+Lame LAMBDA                        = CONSTANT 1.0
+Shell bending stiffness            = CONSTANT {shell_bend_stiff}
+Shell extensional stiffness        = CONSTANT {shell_ext_stiff}
+Shell Poisson ratio                = CONSTANT {shell_poisson}
+
+Liquid Constitutive Equation = NEWTONIAN
+Viscosity                    = CONSTANT 1.0
+Surface Tension              = CONSTANT {surface_tension}
+
+
+# Thermal Properties#
+Conductivity                       = CONSTANT 1.
+Heat Capacity                      = CONSTANT 1.
+
+# Porous term terms for linking lubrication to level set field
+Media Type	 	           = POROUS_BRINKMAN
+Porosity                = CONSTANT    1
+Permeability            = CONSTANT   1
+
+
+Navier-Stokes Source               = CONSTANT 0.0 0.0 0.0
+Mass Source                        = CONSTANT 0.0
+Heat Source                        = CONSTANT 0.0
+Current Source                     = CONSTANT 0.0
+
+#Upper Height Function Constants = CONSTANT_SPEED {-1.360e-7} {1.32e-4}
+#Upper Height Function Constants = CONSTANT_SPEED {dh_dt} {1.0e-4}
+#Upper Height Function Constants = CONSTANT_SPEED {0} {1.0e-4}
+#Upper Height Function Constants = ROLL_ON {0.0} {1.0e-4} {-100e-7} {0.0} {1.0}
+#Upper Height Function Constants = ROLL {radius} {0.0} {0.0} {radius} {0.0} {1.0} {0.0} {0.0}
+
+Upper Height Function Constants = ROLLER {hmin} {radius} {0.0}
+
+Lower Height Function Constants = CONSTANT_SPEED 0 0
+#Lower Height Function Constants = ROLL {radius+hf} {0.0} {0.0} {radius} {0.0} {-1.0} {0.0} {0.0}
+
+
+
+
+#Upper Velocity Function Constants = CONSTANT {0} 0.0 0.0
+Upper Velocity Function Constants = CONSTANT {webspeed} 0.0 0.0
+#Upper Velocity Function Constants = ROLL {omega}
+#Lower Velocity Function Constants = CONSTANT {0} 0.0 0.0
+Lower Velocity Function Constants = CONSTANT {webspeed} 0.0 0.0
+#Lower Velocity Function Constants = ROLL {omega}
+
+Upper Contact Angle = CONSTANT 180.0
+Lower Contact Angle = CONSTANT 180.0
+
+FlowingLiquid Viscosity = CONSTANT  0.0
+
+#FSI Deformation Model = FSI_SHELL_ONLY
+FSI Deformation Model = FSI_SHELL_ONLY_MESH
+
+Thin Film Multiphase Density = CONSTANT {rho_g} 
+#Thin Film Multiphase Density = IDEAL_GAS {Mg} {83146217.5} {298.15} {Patm}
+#Thin Film Multiphase Diffusivity Model = PIECEWISE {bdif} {tfmp_diff_center} {tfmp_beta_d}
+Thin Film Multiphase Diffusivity Model = CONSTANT {bdif}
+Thin Film Multiphase Mass Lumping = {tfmp_ml}
+Thin Film Multiphase Clipping = {tfmp_clip} {tfmp_clip_strength}
+Thin Film Multiphase Relative Permeability Model = PIECEWISE {Scg} {alphag} {Scl} {alphal}
+
+Thin Film Multiphase Viscosity = CONSTANT {mu_g} {mu_l}
+Thin Film Multiphase Dissolved Gas Diffusivity = CONSTANT {Dgl}
+Thin Film Multiphase Henrys Law Constant = CONSTANT {Hgls}
+Thin Film Multiphase Drop Lattice = SQUARE {lattice_spacing} {drop_volume}
+Thin Film Multiphase Dissolution Model = SQUARE {Dgl} {Hgls} {Mg}
+
+Elastohydrodynamic Lubrication Gap Model = RADIAL
+#Elastohydrodynamic Lubrication Normal Calculation Method = SIK_S_WEB
+Elastohydrodynamic Lubrication Shell Integration Kind = S

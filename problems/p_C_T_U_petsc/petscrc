@@ -1,0 +1,2 @@
+-ksp_type preonly
+-pc_type lu

@@ -1,0 +1,20 @@
+LSA_cayley: GOMA Version Information
+=============================================================================
+
+Directory:   .../VandV/problems/LSA_cayley
+
+Feb. 11, 2009 Baseline #2
+**********************
+     goma_021109 executable
+     output files:
+        blessed2.sout
+        blessed2.serr
+        out_blessed_2.exoII
+
+     initial residuals - 6.6e-03 1.8e-01 1.8e-02 
+     1st iteration updates - 3.5e+04 1.2e+06 1.4e+05 
+
+
+  Rebaselined because of some noise in some variables. Added 
+an exodiff.inp file to get rid of this problem in the future.
+

@@ -1,0 +1,2 @@
+To run, build GOMA for MPI and do a
+mpirun -np 2 gomap -a -i box-2proc.goma

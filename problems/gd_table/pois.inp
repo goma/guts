@@ -1,0 +1,116 @@
+
+
+
+FEM File Specifications
+--- ---- --------------
+FEM file                         = pois.exoII
+Output EXODUS II file            = out.exoII
+GUESS file                       = contin.dat
+SOLN file                        = soln.dat
+Write intermediate results       = no
+
+General Specifications
+------- --------------
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+Initial Guess                    =  read_exoII
+
+Time Integration Specifications
+---- ----------- --------------
+Time integration                 = steady
+delta_t                          = 5.0e-6
+Maximum number of time steps     = 200
+Maximum time                     = 1
+Minimum time step                = 1e-9
+Maximum time step                = .008
+Time step parameter		 = 0.5
+Time step error                  = 1e-1 0 1 1 0 0 0 0
+Printing Frequency		 = 16
+Initial Time 			 = .0
+
+Solver Specifications
+------ --------------
+Solution Algorithm               = lu
+Preconditioner                   = ilu
+Polynomial                       = 1
+Size of Krylov subspace          = 64
+Orthogonalization                = classical
+Maximum Linear Solve Iterations  = 500
+Number of Newton Iterations      = 15 3
+Newton correction factor         = 1  
+Normalized Residual Tolerance    = 1e-9
+Residual Ratio Tolerance         = 1e-9
+Pressure Stabilization           = no
+Pressure Stabilization Scaling   = 0.01
+
+
+Boundary Condition Specifications
+-------- --------- --------------
+Number of BC			 = -1
+#
+# No slip on wall...
+#
+BC = U NS 3			0
+BC = V NS 3			0
+
+BC = GD_LINEAR SS 4 R_MOMENTUM1 0 VELOCITY1 0 0. -1. 
+BC = GD_TABLE  SS 4 R_MOMENTUM1 0 MESH_POSITION2 0 1.0 LINEAR 
+FILE = newt_inlet.table
+ 
+BC = V NS 4			0
+
+BC = V NS 1			0
+BC = V NS 2			0
+
+
+END OF BC
+
+
+Problem Description
+------- -----------
+Number of Materials		= 1
+
+MAT = newt 1
+	Coordinate System	= CYLINDRICAL
+	Element Mapping		= isoparametric
+	Mesh Motion		= ARBITRARY
+	Number of bulk species	= 0
+	Number of EQ		= 4
+
+        EQ = momentum1   Q2 U1 Q2  1. 1. 1. 1. 1. 0. 
+
+	EQ = momentum2   Q2 U2 Q2   1. 1. 1. 1. 1. 0. 
+
+	EQ = continuity  Q1 P Q1    1         0   
+ 
+	EQ = shear_rate	 Q1 SH Q1    1    0.  1
+
+				  - - - - - - -
+                                  d m a b d s p
+				  i a d n i r o
+				  v s v d f c r
+				    s     f   o
+			                      u
+					      s
+Post Processing Specifications
+---- ---------- -------------- 
+Stream Function			= yes
+Streamwise normal stress	= no
+Pressure contours		= yes
+Second Invarient of Strain	= no
+Mesh Dilatation			= no
+Navier Stokes Residuals		= no
+Moving Mesh Residuals		= no
+Mass Diffusion Vectors		= no
+Mass Fluxlines			= no
+Energy Conduction Vectors	= no
+Energy Fluxlines		= no
+Time Derivatives		= no
+Mesh Stress Tensor		= no
+Viscosity                       = yes
+
+Post Processing Fluxes =
+        FLUX = VOLUME_FLUX 4 1 0 area.dat
+        FLUX = VOLUME_FLUX 2 1 0 area.dat
+END OF FLUX

@@ -1,0 +1,52 @@
+$ Aprepro ($Revision: 1.1 $) Fri Mar 30 11:10:59 2001
+title
+Simple 2D geometry containing 2 materials with an internal interface
+$
+$ $
+point 1 0 0
+point 2 2 0
+point 3 0 2
+point 4 2 2
+point 5 0 4
+point 6 2 4
+$
+line 1 str 1 2 0 4  0.91
+line 2 str 2 4 0 10 0.91
+line 3 str 4 3 0 4  0.91
+line 4 str 3 1 0 10 1.098901099
+line 5 str 4 6 0 10 1.098901099
+line 6 str 6 5 0 4  0.91
+line 7 str 5 3 0 10 0.91
+$
+region 1 1 -1 -2 -3 -4
+region 2 2 -3 -5 -6 -7
+$
+opti
+scheme 0 m
+$
+body 1 2
+$
+nodebc 10	1
+nodebc 11	2
+nodebc 15	5
+nodebc 16		6
+nodebc 13	4
+nodebc 14	7
+nodebc 12   3
+$
+poinbc 101  1
+poinbc 102  2
+poinbc 103  3
+poinbc 104  4
+poinbc 105  5
+poinbc 106  6
+$
+elembc  100	1
+elembc  101	2
+elembc  105	5
+elembc  106	6
+elembc  103	4
+elembc  104	7
+elembc  102  3
+$
+exit

@@ -1,0 +1,831 @@
+GOMA 3 Rev 2001/01/12
+Copyright (c) 1996-2000  Sandia Corporation. All rights reserved.
+
+Under the terms of Contract DE-AC04-94AL85000, there is a non-exclusive
+license for use of this work by or on behalf of the U.S. Government.
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, ...
+
+WARNING:  mm_input.c:5641: Defaulting: Number of viscoelastic modes = 0
+WARNING:  mm_input.c:6004: CAUTION WITH SUBPARAMETRIC: DON'T USE WITH LAGRANGIAN OR TOTAL_ALE MESH MOTIONS
+WARNING:  mm_input_mp.c:1578: Defaulting Surface Tension to CONSTANT (1)
+WARNING:  mm_input_mp.c:1675: Defaulting: Energy Weight Function = GALERKIN
+WARNING:  mm_input_mp.c:1952: Defaulting on Brinkman Parameters
+WARNING:  mm_input_mp.c:2229: Defaulting on Porous Weight Function
+WARNING:  mm_input_mp.c:2560: Defaulting on Species Weight Function
+WARNING:  mm_input_mp.c:3222: Defaulting to standard species time integration scheme
+
+Unused side sets: 37
+
+Unused node sets: 4
+assembly_alloc...
+sizeof(Basis_Functions)=599792
+Unique_Shapes[0] = 2
+Unique_Interpolations[0] = 4096
+Unique_Interpolations[1] = 8
+Unique_Interpolations[2] = 2048
+Unique_Interpolations[3] = 32
+/home/hkmoffa/goma_VandV/problems/evap_two_phase/goma.exe:  setting up EXODUS II output files...
+setup_local_nodal_vars NOTE P_0, Node 99: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 99: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 99: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 102: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 102: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 102: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 100: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 100: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 100: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 102: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 102: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 102: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 106: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 106: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 106: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 103: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 103: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 103: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 106: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 106: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 106: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 110: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 110: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 110: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 107: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 107: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 107: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 110: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 110: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 110: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 114: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 114: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 114: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 111: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 111: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 111: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 114: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 114: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 114: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 138: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 138: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 138: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 115: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 115: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 115: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 138: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 138: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 138: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 186: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 186: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 186: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 140: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 140: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 140: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 186: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 186: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 186: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 242: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 242: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 242: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 188: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 188: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 188: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 242: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 242: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 242: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 306: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 306: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 306: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 244: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 244: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 244: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 306: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 306: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 306: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 378: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 378: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 378: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 308: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 308: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 308: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 378: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 378: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 378: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 439: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 439: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 439: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 380: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 380: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 380: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 439: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 439: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 439: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 481: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 481: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 481: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 441: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 441: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 441: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 481: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 481: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 481: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 523: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 523: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 523: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 483: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 483: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 483: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 523: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 523: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 523: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 565: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 565: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 565: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 525: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 525: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 525: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 565: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 565: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 565: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 607: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 607: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 607: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 567: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 567: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 567: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 607: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 607: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 607: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 649: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 649: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 649: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 609: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 609: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 609: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 649: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 649: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 649: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 691: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 691: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 691: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 651: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 651: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 651: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 691: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 691: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 691: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 733: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 733: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 733: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 693: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 693: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 693: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 733: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 733: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 733: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 775: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 775: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 775: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 735: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 735: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 735: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 775: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 775: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 775: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 817: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 817: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 817: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 777: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 777: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 777: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 817: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 817: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 817: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 850: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 850: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 850: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 819: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 819: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 819: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 850: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 850: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 850: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 817: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 817: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 817: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 819: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 819: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 819: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 817: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 817: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 817: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 775: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 775: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 775: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 777: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 777: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 777: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 775: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 775: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 775: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 733: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 733: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 733: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 735: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 735: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 735: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 733: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 733: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 733: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 691: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 691: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 691: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 693: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 693: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 693: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 691: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 691: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 691: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 649: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 649: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 649: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 651: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 651: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 651: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 649: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 649: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 649: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 607: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 607: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 607: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 609: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 609: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 609: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 607: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 607: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 607: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 565: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 565: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 565: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 567: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 567: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 567: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 565: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 565: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 565: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 523: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 523: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 523: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 525: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 525: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 525: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 523: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 523: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 523: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 481: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 481: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 481: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 483: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 483: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 483: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 481: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 481: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 481: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 439: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 439: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 439: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 441: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 441: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 441: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 439: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 439: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 439: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 378: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 378: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 378: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 380: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 380: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 380: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 378: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 378: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 378: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 306: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 306: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 306: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 308: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 308: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 308: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 306: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 306: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 306: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 242: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 242: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 242: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 244: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 244: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 244: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 242: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 242: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 242: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 186: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 186: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 186: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 188: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 188: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 188: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 186: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 186: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 186: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 138: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 138: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 138: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 140: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 140: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 140: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 138: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 138: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 138: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 114: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 114: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 114: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 115: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 115: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 115: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 114: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 114: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 114: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 110: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 110: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 110: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 111: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 111: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 111: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 110: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 110: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 110: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 106: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 106: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 106: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 107: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 107: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 107: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 106: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 106: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 106: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 102: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 102: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 102: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 103: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 103: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 103: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 102: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 102: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 102: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 99: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 99: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 99: old vs new node_info: 2 1 var = 4
+setup_local_nodal_vars NOTE P_0, Node 100: old vs new node_info: 2 1 var = 0
+setup_local_nodal_vars NOTE P_0, Node 100: old vs new node_info: 2 1 var = 1
+setup_local_nodal_vars NOTE P_0, Node 100: old vs new node_info: 2 1 var = 4
+New node in duplication list 1 1
+  DUPLICATE BC at node 1 equation 0, material 0: U_BC, U_BC, 
+    IDENTICAL BC U_BC at node 1 equation 0
+    DISCARDING U_BC at node 1 from dup_list because of U_BC
+  DUPLICATE BC at node 1 equation 1, material 0: V_BC, V_BC, 
+    IDENTICAL BC V_BC at node 1 equation 1
+    DISCARDING V_BC at node 1 from dup_list because of V_BC
+  DUPLICATE BC at node 1 equation 3, material -1: T_BC, T_BC, 
+    TWO BC's T_BC at node 0 have conflicting values,  defaulting to 1st occurence = 373
+    DISCARDING T_BC at node 1 from dup_list because of T_BC
+  DUPLICATE BC at node 1 equation 4, material 0: Y_BC, Y_BC, 
+    IDENTICAL BC Y_BC at node 1 equation 4
+    DISCARDING Y_BC at node 1 from dup_list because of Y_BC
+  DUPLICATE BC at node 1 equation 5, material -1: PLANE_BC, PLANE_BC, 
+    MOVING BC PLANE_BC at node 1 because of PLANE_BC
+    DISCARDING PLANE_BC at node 1 from dup_list because of PLANE_BC
+New node in duplication list 100 2
+  DUPLICATE BC at node 100 equation 0, material 0: U_BC, CAPILLARY_BC, 
+    DISCARDING CAPILLARY_BC at node 100 from dup_list because of U_BC
+  DUPLICATE BC at node 100 equation 0, material 1: U_BC, DISCONTINUOUS_VELO_BC, 
+    DISCARDING DISCONTINUOUS_VELO_BC at node 100 from dup_list because of U_BC
+  DUPLICATE BC at node 100 equation 1, material 0: V_BC, CAPILLARY_BC, 
+    DISCARDING CAPILLARY_BC at node 100 from dup_list because of V_BC
+  DUPLICATE BC at node 100 equation 1, material 1: V_BC, CONT_TANG_VEL_BC, 
+    DISCARDING CONT_TANG_VEL_BC at node 100 from dup_list because of V_BC
+  DUPLICATE BC at node 100 equation 3, material -1: T_BC, T_BC, LATENT_HEAT_INTERNAL_BC, 
+    IDENTICAL BC T_BC at node 100 equation 3
+    DISCARDING T_BC at node 100 from dup_list because of T_BC
+    DISCARDING LATENT_HEAT_INTERNAL_BC at node 100 from dup_list because of T_BC
+  DUPLICATE BC at node 100 equation 4, material 0: Y_BC, KINEMATIC_SPECIES_BC, 
+    DISCARDING KINEMATIC_SPECIES_BC at node 100 from dup_list because of Y_BC
+  DUPLICATE BC at node 100 equation 4, material 1: Y_BC, VL_EQUIL_BC, 
+    DISCARDING VL_EQUIL_BC at node 100 from dup_list because of Y_BC
+  DUPLICATE BC at node 100 equation 5, material -1: DX_BC, PLANE_BC, PLANE_BC, KINEMATIC_DISC_BC, 
+    MOVING BC PLANE_BC at node 100 because of DX_BC
+    DISCARDING PLANE_BC at node 100 from dup_list because of DX_BC
+    MOVING BC PLANE_BC at node 100 because of DX_BC
+    DISCARDING PLANE_BC at node 100 from dup_list because of DX_BC
+    MOVING BC KINEMATIC_DISC_BC at node 100 because of DX_BC
+    DISCARDING KINEMATIC_DISC_BC at node 100 from dup_list because of DX_BC
+  DUPLICATE BC at node 100 equation 6, material -1: DY_BC, PLANE_BC, PLANE_BC, KINEMATIC_DISC_BC, 
+    REMOVING BC PLANE_BC at node 100 because of DY_BC
+    DISCARDING PLANE_BC at node 100 from dup_list because of DY_BC
+    REMOVING BC PLANE_BC at node 100 because of DY_BC
+    DISCARDING PLANE_BC at node 100 from dup_list because of DY_BC
+    REMOVING BC KINEMATIC_DISC_BC at node 100 because of DY_BC
+    DISCARDING KINEMATIC_DISC_BC at node 100 from dup_list because of DY_BC
+New node in duplication list 400 3
+  DUPLICATE BC at node 400 equation 1, material 1: V_BC, V_BC, 
+    IDENTICAL BC V_BC at node 400 equation 1
+    DISCARDING V_BC at node 400 from dup_list because of V_BC
+  DUPLICATE BC at node 400 equation 3, material -1: T_BC, T_BC, 
+    TWO BC's T_BC at node 399 have conflicting values,  defaulting to 1st occurence = 333
+    DISCARDING T_BC at node 400 from dup_list because of T_BC
+  DUPLICATE BC at node 400 equation 4, material 1: Y_BC, Y_BC, 
+    IDENTICAL BC Y_BC at node 400 equation 4
+    DISCARDING Y_BC at node 400 from dup_list because of Y_BC
+  DUPLICATE BC at node 400 equation 5, material -1: PLANE_BC, PLANE_BC, 
+    MOVING BC PLANE_BC at node 400 because of PLANE_BC
+    DISCARDING PLANE_BC at node 400 from dup_list because of PLANE_BC
+New node in duplication list 841 4
+  DUPLICATE BC at node 841 equation 1, material 0: V_BC, V_BC, 
+    IDENTICAL BC V_BC at node 841 equation 1
+    DISCARDING V_BC at node 841 from dup_list because of V_BC
+  DUPLICATE BC at node 841 equation 5, material -1: PLANE_BC, PLANE_BC, 
+    MOVING BC PLANE_BC at node 841 because of PLANE_BC
+    DISCARDING PLANE_BC at node 841 from dup_list because of PLANE_BC
+New node in duplication list 851 5
+  DUPLICATE BC at node 851 equation 0, material 0: SURFTANG_BC, CAPILLARY_BC, 
+  DUPLICATE BC at node 851 equation 0, material 1: U_BC, DISCONTINUOUS_VELO_BC, 
+    DISCARDING DISCONTINUOUS_VELO_BC at node 851 from dup_list because of U_BC
+  DUPLICATE BC at node 851 equation 1, material 0: V_BC, SURFTANG_BC, CAPILLARY_BC, 
+    DISCARDING SURFTANG_BC at node 851 from dup_list because of V_BC
+    DISCARDING CAPILLARY_BC at node 851 from dup_list because of V_BC
+  DUPLICATE BC at node 851 equation 1, material 1: V_BC, CONT_TANG_VEL_BC, 
+    DISCARDING CONT_TANG_VEL_BC at node 851 from dup_list because of V_BC
+  DUPLICATE BC at node 851 equation 5, material -1: PLANE_BC, PLANE_BC, KINEMATIC_DISC_BC, 
+    COLINEAR SIDES PLANE_BC at node 851 
+    DISCARDING PLANE_BC at node 851 from dup_list because of PLANE_BC
+    MOVING BC KINEMATIC_DISC_BC at node 851 because of PLANE_BC
+    DISCARDING KINEMATIC_DISC_BC at node 851 from dup_list because of PLANE_BC
+New node in duplication list 861 6
+  DUPLICATE BC at node 861 equation 1, material 1: V_BC, V_BC, 
+    IDENTICAL BC V_BC at node 861 equation 1
+    DISCARDING V_BC at node 861 from dup_list because of V_BC
+  DUPLICATE BC at node 861 equation 5, material -1: PLANE_BC, PLANE_BC, 
+    MOVING BC PLANE_BC at node 861 because of PLANE_BC
+    DISCARDING PLANE_BC at node 861 from dup_list because of PLANE_BC
+
+Boundary Condition Duplication List
+-------- --------- ----------- ----
+> 5 nodesets - divert BC dup list to file "BCdup.txt"...
+Don't rotate MESH at node 1 because too many rotations
+Rotate MESH for BC's at node 2
+Rotate MESH for BC's at node 3
+Rotate MESH for BC's at node 4
+Rotate MESH for BC's at node 6
+Rotate MESH for BC's at node 8
+Rotate MESH for BC's at node 10
+Rotate MESH for BC's at node 16
+Rotate MESH for BC's at node 18
+Rotate MESH for BC's at node 24
+Rotate MESH for BC's at node 26
+Rotate MESH for BC's at node 36
+Rotate MESH for BC's at node 38
+Rotate MESH for BC's at node 48
+Rotate MESH for BC's at node 50
+Rotate MESH for BC's at node 64
+Rotate MESH for BC's at node 66
+Rotate MESH for BC's at node 80
+Rotate MESH for BC's at node 82
+Rotate MESH for BC's at node 101
+Rotate MESH for BC's at node 102
+Rotate MESH for BC's at node 103
+Rotate MESH for BC's at node 104
+Rotate MESH for BC's at node 107
+Rotate MESH for BC's at node 108
+Rotate MESH for BC's at node 111
+Rotate MESH for BC's at node 112
+Rotate MESH for BC's at node 115
+Rotate MESH for BC's at node 116
+Rotate MESH for BC's at node 120
+Rotate MESH for BC's at node 122
+Rotate MESH for BC's at node 139
+Rotate MESH for BC's at node 141
+Rotate MESH for BC's at node 144
+Rotate MESH for BC's at node 146
+Rotate MESH for BC's at node 168
+Rotate MESH for BC's at node 170
+Rotate MESH for BC's at node 187
+Rotate MESH for BC's at node 189
+Rotate MESH for BC's at node 196
+Rotate MESH for BC's at node 198
+Rotate MESH for BC's at node 224
+Rotate MESH for BC's at node 226
+Rotate MESH for BC's at node 243
+Rotate MESH for BC's at node 245
+Rotate MESH for BC's at node 256
+Rotate MESH for BC's at node 258
+Rotate MESH for BC's at node 288
+Rotate MESH for BC's at node 290
+Rotate MESH for BC's at node 307
+Rotate MESH for BC's at node 309
+Rotate MESH for BC's at node 324
+Rotate MESH for BC's at node 326
+Rotate MESH for BC's at node 360
+Rotate MESH for BC's at node 362
+Rotate MESH for BC's at node 379
+Rotate MESH for BC's at node 381
+Don't rotate MESH at node 400 because too many rotations
+Rotate MESH for BC's at node 401
+Rotate MESH for BC's at node 402
+Rotate MESH for BC's at node 403
+Rotate MESH for BC's at node 404
+Rotate MESH for BC's at node 405
+Rotate MESH for BC's at node 406
+Rotate MESH for BC's at node 407
+Rotate MESH for BC's at node 408
+Rotate MESH for BC's at node 409
+Rotate MESH for BC's at node 410
+Rotate MESH for BC's at node 411
+Rotate MESH for BC's at node 412
+Rotate MESH for BC's at node 413
+Rotate MESH for BC's at node 414
+Rotate MESH for BC's at node 415
+Rotate MESH for BC's at node 416
+Rotate MESH for BC's at node 417
+Rotate MESH for BC's at node 418
+Rotate MESH for BC's at node 419
+Rotate MESH for BC's at node 421
+Rotate MESH for BC's at node 423
+Rotate MESH for BC's at node 440
+Rotate MESH for BC's at node 442
+Rotate MESH for BC's at node 460
+Rotate MESH for BC's at node 461
+Rotate MESH for BC's at node 463
+Rotate MESH for BC's at node 465
+Rotate MESH for BC's at node 482
+Rotate MESH for BC's at node 484
+Rotate MESH for BC's at node 502
+Rotate MESH for BC's at node 503
+Rotate MESH for BC's at node 505
+Rotate MESH for BC's at node 507
+Rotate MESH for BC's at node 524
+Rotate MESH for BC's at node 526
+Rotate MESH for BC's at node 544
+Rotate MESH for BC's at node 545
+Rotate MESH for BC's at node 547
+Rotate MESH for BC's at node 549
+Rotate MESH for BC's at node 566
+Rotate MESH for BC's at node 568
+Rotate MESH for BC's at node 586
+Rotate MESH for BC's at node 587
+Rotate MESH for BC's at node 589
+Rotate MESH for BC's at node 591
+Rotate MESH for BC's at node 608
+Rotate MESH for BC's at node 610
+Rotate MESH for BC's at node 628
+Rotate MESH for BC's at node 629
+Rotate MESH for BC's at node 631
+Rotate MESH for BC's at node 633
+Rotate MESH for BC's at node 650
+Rotate MESH for BC's at node 652
+Rotate MESH for BC's at node 670
+Rotate MESH for BC's at node 671
+Rotate MESH for BC's at node 673
+Rotate MESH for BC's at node 675
+Rotate MESH for BC's at node 692
+Rotate MESH for BC's at node 694
+Rotate MESH for BC's at node 712
+Rotate MESH for BC's at node 713
+Rotate MESH for BC's at node 715
+Rotate MESH for BC's at node 717
+Rotate MESH for BC's at node 734
+Rotate MESH for BC's at node 736
+Rotate MESH for BC's at node 754
+Rotate MESH for BC's at node 755
+Rotate MESH for BC's at node 757
+Rotate MESH for BC's at node 759
+Rotate MESH for BC's at node 776
+Rotate MESH for BC's at node 778
+Rotate MESH for BC's at node 796
+Rotate MESH for BC's at node 797
+Rotate MESH for BC's at node 799
+Rotate MESH for BC's at node 801
+Rotate MESH for BC's at node 818
+Rotate MESH for BC's at node 820
+Rotate MESH for BC's at node 838
+Rotate MESH for BC's at node 839
+Don't rotate MESH at node 841 because too many rotations
+Rotate MESH for BC's at node 842
+Rotate MESH for BC's at node 843
+Rotate MESH for BC's at node 844
+Rotate MESH for BC's at node 845
+Rotate MESH for BC's at node 846
+Rotate MESH for BC's at node 847
+Rotate MESH for BC's at node 848
+Rotate MESH for BC's at node 849
+Rotate MESH for BC's at node 850
+Don't rotate MESH at node 851 because too many rotations
+Rotate MESH for BC's at node 852
+Rotate MESH for BC's at node 853
+Rotate MESH for BC's at node 854
+Rotate MESH for BC's at node 855
+Rotate MESH for BC's at node 856
+Rotate MESH for BC's at node 857
+Rotate MESH for BC's at node 858
+Rotate MESH for BC's at node 859
+Rotate MESH for BC's at node 860
+Don't rotate MESH at node 861 because too many rotations
+Rotate MESH for BC's at 153 NODES 
+	MESH node 2 rotate on SS 1
+	MESH node 3 rotate on SS 2
+	MESH node 4 rotate on SS 1
+	MESH node 6 rotate on SS 1
+	MESH node 8 rotate on SS 2
+	MESH node 10 rotate on SS 2
+	MESH node 16 rotate on SS 1
+	MESH node 18 rotate on SS 1
+	MESH node 24 rotate on SS 2
+	MESH node 26 rotate on SS 2
+	MESH node 36 rotate on SS 1
+	MESH node 38 rotate on SS 1
+	MESH node 48 rotate on SS 2
+	MESH node 50 rotate on SS 2
+	MESH node 64 rotate on SS 1
+	MESH node 66 rotate on SS 1
+	MESH node 80 rotate on SS 2
+	MESH node 82 rotate on SS 2
+	MESH node 101 rotate on SS 4
+	MESH node 102 rotate on SS 5
+	MESH node 103 rotate on SS 4
+	MESH node 104 rotate on SS 4
+	MESH node 107 rotate on SS 4
+	MESH node 108 rotate on SS 4
+	MESH node 111 rotate on SS 4
+	MESH node 112 rotate on SS 4
+	MESH node 115 rotate on SS 4
+	MESH node 116 rotate on SS 4
+	MESH node 120 rotate on SS 2
+	MESH node 122 rotate on SS 2
+	MESH node 139 rotate on SS 4
+	MESH node 141 rotate on SS 4
+	MESH node 144 rotate on SS 5
+	MESH node 146 rotate on SS 5
+	MESH node 168 rotate on SS 2
+	MESH node 170 rotate on SS 2
+	MESH node 187 rotate on SS 4
+	MESH node 189 rotate on SS 4
+	MESH node 196 rotate on SS 5
+	MESH node 198 rotate on SS 5
+	MESH node 224 rotate on SS 2
+	MESH node 226 rotate on SS 2
+	MESH node 243 rotate on SS 4
+	MESH node 245 rotate on SS 4
+	MESH node 256 rotate on SS 5
+	MESH node 258 rotate on SS 5
+	MESH node 288 rotate on SS 2
+	MESH node 290 rotate on SS 2
+	MESH node 307 rotate on SS 4
+	MESH node 309 rotate on SS 4
+	MESH node 324 rotate on SS 5
+	MESH node 326 rotate on SS 5
+	MESH node 360 rotate on SS 2
+	MESH node 362 rotate on SS 2
+	MESH node 379 rotate on SS 4
+	MESH node 381 rotate on SS 4
+	MESH node 401 rotate on SS 6
+	MESH node 402 rotate on SS 6
+	MESH node 403 rotate on SS 6
+	MESH node 404 rotate on SS 6
+	MESH node 405 rotate on SS 6
+	MESH node 406 rotate on SS 6
+	MESH node 407 rotate on SS 6
+	MESH node 408 rotate on SS 6
+	MESH node 409 rotate on SS 6
+	MESH node 410 rotate on SS 6
+	MESH node 411 rotate on SS 6
+	MESH node 412 rotate on SS 6
+	MESH node 413 rotate on SS 6
+	MESH node 414 rotate on SS 6
+	MESH node 415 rotate on SS 6
+	MESH node 416 rotate on SS 6
+	MESH node 417 rotate on SS 6
+	MESH node 418 rotate on SS 6
+	MESH node 419 rotate on SS 6
+	MESH node 421 rotate on SS 2
+	MESH node 423 rotate on SS 2
+	MESH node 440 rotate on SS 4
+	MESH node 442 rotate on SS 4
+	MESH node 460 rotate on SS 6
+	MESH node 461 rotate on SS 6
+	MESH node 463 rotate on SS 2
+	MESH node 465 rotate on SS 2
+	MESH node 482 rotate on SS 4
+	MESH node 484 rotate on SS 4
+	MESH node 502 rotate on SS 6
+	MESH node 503 rotate on SS 6
+	MESH node 505 rotate on SS 2
+	MESH node 507 rotate on SS 2
+	MESH node 524 rotate on SS 4
+	MESH node 526 rotate on SS 4
+	MESH node 544 rotate on SS 6
+	MESH node 545 rotate on SS 6
+	MESH node 547 rotate on SS 2
+	MESH node 549 rotate on SS 2
+	MESH node 566 rotate on SS 4
+	MESH node 568 rotate on SS 4
+	MESH node 586 rotate on SS 6
+	MESH node 587 rotate on SS 6
+	MESH node 589 rotate on SS 2
+	MESH node 591 rotate on SS 2
+	MESH node 608 rotate on SS 4
+	MESH node 610 rotate on SS 4
+	MESH node 628 rotate on SS 6
+	MESH node 629 rotate on SS 6
+	MESH node 631 rotate on SS 2
+	MESH node 633 rotate on SS 2
+	MESH node 650 rotate on SS 4
+	MESH node 652 rotate on SS 4
+	MESH node 670 rotate on SS 6
+	MESH node 671 rotate on SS 6
+	MESH node 673 rotate on SS 2
+	MESH node 675 rotate on SS 2
+	MESH node 692 rotate on SS 4
+	MESH node 694 rotate on SS 4
+	MESH node 712 rotate on SS 6
+	MESH node 713 rotate on SS 6
+	MESH node 715 rotate on SS 2
+	MESH node 717 rotate on SS 2
+	MESH node 734 rotate on SS 4
+	MESH node 736 rotate on SS 4
+	MESH node 754 rotate on SS 6
+	MESH node 755 rotate on SS 6
+	MESH node 757 rotate on SS 2
+	MESH node 759 rotate on SS 2
+	MESH node 776 rotate on SS 4
+	MESH node 778 rotate on SS 4
+	MESH node 796 rotate on SS 6
+	MESH node 797 rotate on SS 6
+	MESH node 799 rotate on SS 2
+	MESH node 801 rotate on SS 2
+	MESH node 818 rotate on SS 4
+	MESH node 820 rotate on SS 4
+	MESH node 838 rotate on SS 6
+	MESH node 839 rotate on SS 6
+	MESH node 842 rotate on SS 3
+	MESH node 843 rotate on SS 3
+	MESH node 844 rotate on SS 3
+	MESH node 845 rotate on SS 3
+	MESH node 846 rotate on SS 3
+	MESH node 847 rotate on SS 3
+	MESH node 848 rotate on SS 3
+	MESH node 849 rotate on SS 3
+	MESH node 850 rotate on SS 3
+	MESH node 852 rotate on SS 7
+	MESH node 853 rotate on SS 7
+	MESH node 854 rotate on SS 7
+	MESH node 855 rotate on SS 7
+	MESH node 856 rotate on SS 7
+	MESH node 857 rotate on SS 7
+	MESH node 858 rotate on SS 7
+	MESH node 859 rotate on SS 7
+	MESH node 860 rotate on SS 7
+WARNING:  mm_post_proc.c:7425: Bad nodal post process variable count 
+
+Number of unknowns            = 4789
+
+Number of matrix nonzeroes    = 434829
+read_initial_guess:  reading initial guess from "contin.dat" ...
+read_initial_guess:  Successfully read the initial guess from "contin.dat" ...
+AZ_print_error: invalid options[AZ_solver] value
+solve_nonlinear_problem: max Newton itns = 10
+solve_nonlinear_problem: convergence tol = 2.0e-13 1.0e+10 
+solve_nonlinear_problem: NumUnknowns  = 4789
+solve_nonlinear_problem: NZeros       = 434829
+solve_nonlinear_problem: GNZeros      = 434829
+solve_nonlinear_problem: GNumUnknowns = 861
+
+
+               R e s i d u a l         C o r r e c t i o n
+
+  ToD    itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)
+-------- --- ------- ------- ------- ------- ------- ------- --- ---------------
+17:24:38 [0] 2.3e-01 3.5e+00 6.7e-01 9.2e+00 3.0e+03 1.0e+02  1  5.1e+01/1.9e+01
+17:25:54 [1] 6.8e-02 2.1e+00 2.6e-01 1.4e+01 1.7e+03 7.2e+01  1  5.1e+01/2.0e+01
+17:27:05 [2] 1.0e-02 4.1e-01 3.4e-02 4.2e+00 3.5e+02 2.0e+01  1  5.1e+01/2.0e+01
+17:28:17 [3] 3.8e-04 1.3e-02 1.2e-03 1.2e-01 9.9e+00 5.6e-01  1  5.0e+01/2.0e+01
+17:29:27 [4] 7.7e-07 1.8e-05 1.7e-06 2.6e-03 1.9e-01 8.4e-03  1  5.1e+01/2.0e+01
+17:30:38 [5] 2.1e-09 2.1e-08 3.9e-09 8.7e-06 5.2e-04 2.4e-05  1  5.1e+01/2.0e+01
+17:31:50 [6] 3.0e-12 9.2e-12 3.5e-12 1.7e-08 8.6e-07 5.6e-08  1  5.1e+01/2.0e+01
+17:33:01 [7] 3.6e-14 1.0e-12 8.7e-14 8.7e-11 6.6e-09 3.0e-10  1  5.1e+01/2.0e+01
+
+solve_nonlinear_problem:  Newton iteration CONVERGED.
+
+
+#############
+# WARNING!! #  No user_defined post processing model implemented
+#############
+
+Proc 0 runtime:       9.71 Minutes.
+

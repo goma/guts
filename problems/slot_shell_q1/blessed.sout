@@ -1,0 +1,139 @@
+4.5.0
+EXODUS:  twoblock.exoII ->  free_out.exoII
+ASCII:       contin.dat ->        soln.dat
+          : Solver                                   = umf
+Defaulting: Matrix storage format                    = msr
+Defaulting: UMF IDIM                                 = 5 * nnz
+Defaulting: UMFPACK XDIM = 5*NNZ
+Defaulting: Preconditioner                           = none
+Defaulting: Matrix subdomain solver                  = ilut
+Defaulting: Matrix Scaling                           = none
+Defaulting: Matrix residual norm type                = r0
+Defaulting: Matrix output type                       = none
+Defaulting: Matrix factorization reuse               = recalc
+Defaulting: Matrix graph fillin                      = 0
+Defaulting: Matrix factorization overlap             = none
+Defaulting: Matrix overlap type                      = standard
+Defaulting: Matrix auxiliary vector                  = resid
+Defaulting: Matrix drop tolerance                    = 0
+Defaulting: Matrix polynomial order                  = 3
+Defaulting: Matrix reorder                           = none
+Defaulting: Matrix factorization save                = 0
+Defaulting: Matrix ILUT fill factor                  = 1
+Defaulting: Matrix RILU relax factor                 = 1
+Defaulting: Matrix BILU Threshold                    = 0
+Defaulting: Matrix Relative Threshold                = 0
+Defaulting: Matrix Absolute Threshold                = 0
+Defaulting: Size of Krylov subspace                  = 30
+Defaulting: Orthogonalization                        = classic
+Defaulting: Maximum Linear Solve Iterations          = 500
+Defaulting to constant Newton relaxation. Use 6 flts for dynamic relaxation.
+
+Number of boundary conditions = 23
+   1. PLANE @ SS 10
+   2. PLANE @ SS 50
+   3. U @ NS 10
+   4. V @ NS 10
+   5. VELO_TANGENT @ SS 60
+   6. VELO_NORMAL @ SS 60
+   7. U @ NS 100
+   8. V @ NS 100
+   9. U @ NS 200
+  10. V @ NS 200
+  11. KINEMATIC_PETROV @ SS 70
+  12. CAPILLARY @ SS 70
+  13. CA @ NS 200
+  14. CA @ NS 100
+  15. GD_LINEAR @ SS 60
+  16. VELO_TANGENT @ SS 50
+  17. DX @ NS 600
+  18. DY @ NS 600
+  19. DX @ NS 500
+  20. DY @ NS 500
+  21. SH_K @ NS 500
+  22. SH_TENS @ NS 600
+  23. SH_FLUID_STRESS @ SS 60
+
+Number of rotation conditions = 0
+
+Number of materials           = 3
+
+Number of equation lines         = 5 (fluid)
+
+
+================================================================================
+
+	Material Property Printout for Material 0: fluid
+	Default Database = Goma Material Property Default
+
+Media Type = 0
+FlowingViscosity Model = 0
+
+
+
+
+================================================================================
+
+
+Number of equation lines         = 4 (shell)
+
+
+================================================================================
+
+	Material Property Printout for Material 1: shell
+	Default Database = Goma Material Property Default
+
+Media Type = 0
+FlowingViscosity Model = 0
+
+
+
+
+================================================================================
+
+
+Number of equation lines         = 4 (shell)
+
+
+================================================================================
+
+	Material Property Printout for Material 2: shell
+	Default Database = Goma Material Property Default
+
+Media Type = 0
+FlowingViscosity Model = 0
+
+
+
+
+================================================================================
+
+MDE                           = 12
+MAX_PROB_VAR                  = 10
+MAX_CONC                      = 4
+MAX_VARIABLE_TYPES            = 146
+HAVE_CONFIG_H                 = no
+PARALLEL             Num_Proc = 1
+HAVE_MPI_H                    = yes
+USE_CHEMKIN                   = no
+HAVE_FRONT                    = yes
+HAVE_UMFPACK                  = yes
+HAVE_SPARSE                   = yes
+HAVE_BLAS                     = yes
+HAVE_LAPACK                   = yes
+HAVE_Y12M                     = yes
+HAVE_ARPACK                   = yes
+HAVE_PARPACK                  = no
+HAVE_AZTEC                    = yes
+TRILINOS                      = yes
+COUPLED_FILL                  = no
+USE_CGM                       = no
+DEBUG                         = no
+Pressure Stabilization        = yes
+Stabilization Scaling         = 1.000000
+Linear Stability              = no
+
+
+
+-done
+

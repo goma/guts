@@ -1,0 +1,12 @@
+Deformed geometry with shell equations in cylindrical
+#   coordinates. -> Checking out various terms needed for
+#                   the surface rheology program.
+
+
+=============================================================================
+
+8/9/09
+Currently, there are no jacobian errors using this 
+input file
+
+

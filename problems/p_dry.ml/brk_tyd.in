@@ -1,0 +1,67 @@
+# brk -- input file problem description for decomposition
+#	 for dry multilayer problem
+#
+#                                   block 1
+
+1	# element block ID
+1	# number of basic eqnvars
+3 1 1 1 # energy equation
+
+#
+# interactions...
+#
+#	T
+#
+	1	# energy equation
+
+4	# number of nodes per element in this eb
+3 
+3
+3
+3
+
+#                                   block 2
+
+2	# element block ID
+3	# number of basic eqnvars
+3 1 1 1 # energy equation
+4 1 1 1 # species_bulk
+5 2 1 1 # mesh
+
+#
+# interactions...
+#
+#	T	Y	M
+#
+	1	1	1	# energy equation
+	1	1	1	# species equation
+	1	1	1	# continuity equation
+
+4	# number of nodes per element in this eb
+3 4 5
+3 4 5
+3 4 5
+3 4 5
+
+#                                   block 3
+
+3	# element block ID
+3	# number of basic eqnvars
+3 1 1 1 # energy equation
+4 1 1 1 # species_bulk
+5 2 1 1 # mesh
+
+#
+# interactions...
+#
+#	T	Y	M
+#
+	1	1	1	# energy equation
+	1	1	1	# species equation
+	1	1	1	# continuity equation
+
+4	# number of nodes per element in this eb
+3 4 5
+3 4 5
+3 4 5
+3 4 5

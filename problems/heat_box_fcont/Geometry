@@ -1,0 +1,11 @@
+{ifndef(Geometry)}
+{_C_}	Geometry = { Geometry = 1}
+{_C_}
+{_C_}	Box coordinates:
+{_C_}
+{_C_}	SW corner is (x,y) = ({x_sw=-.3},{y_sw=-.3})
+{_C_}	SE corner is (x,y) = ({x_se=.4},{y_se=.2})
+{_C_}	NE corner is (x,y) = ({x_ne=-1.},{y_ne=2})
+{_C_}	NW corner is (x,y) = ({x_nw=-3},{y_nw=1.5})
+{_C_}
+{endif}

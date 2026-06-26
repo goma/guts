@@ -1,0 +1,2 @@
+WARNING: Unrecognized PTT Form:  , expected LINEAR or EXPONENTIAL defaulting EXPONENTIAL (/opt/workdir/goma/src/mm_input_mp.c:2540)
+		converged SS!

@@ -1,0 +1,183 @@
+# angular frequency                 = { ang_freq = 50 } Hz
+# linear frequency                  = { freq = ang_freq }
+# amplitude                         = { amp = 0.09 } cm
+# num bubbles across narrow channel = { N = 3.0 }
+# bubble radius                     = { bub_rad = 60 * 1.0e-4 / N / 2.0 } cm = { bub_rad * 1.0e+4 } microns
+
+FEM File Specifications
+-- ---- --------------
+FEM file                         = piston_bubble_100.gen
+#FEM file                         = contin.exoII
+Output EXODUS II file            = out.exoII
+GUESS file			 = contin.dat
+SOLN file                        = no
+Write intermediate results       = no
+
+General Specifications
+------- --------------
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+Initial Guess                    = zero
+#Initial Guess                    = read_exoII_file hydrostatic_soln.exoII
+
+Time Integration Specifications
+---- ----------- --------------
+#Time integration                 = steady
+Time integration                 = transient
+delta_t                          = 0.002
+Maximum number of time steps     = 25
+Maximum time                     = {50 * 1.0/freq}
+Minimum time step                = 1e-6
+Maximum time step                = {1.0/freq/10.0}
+Time step parameter		 = 0.
+Time step error                  = -0.7e-0 1 1 1 0 0 0 0
+Printing Frequency		 = 1
+Initial Time 			 = 0.0
+Fill Subcycle			 = 5
+Fill Weight Function	         = Explicit
+
+Solver Specifications
+------ --------------
+Solution Algorithm               = umf
+Preconditioner                  = dom_decomp
+Matrix Scaling                   = row_sum
+Matrix subdomain solver          = ilut
+Matrix reorder                   = rcm
+Matrix ILUT fill factor 	  = 2.0
+Matrix drop tolerance            = 1.e-8
+#Matrix Scaling                   = sym_diag
+Matrix residual norm type        = r0
+#Matrix output type               = 10
+Matrix factorization overlap     = none
+#Matrix factorization reuse       = calc
+Matrix drop tolerance            = 0
+Matrix polynomial order          = 3
+Size of Krylov subspace          = 160
+Orthogonalization                = modified
+Maximum Linear Solve Iterations  = 160
+Number of Newton Iterations      = 20
+Newton correction factor         = 1  
+Normalized Residual Tolerance    = 1e-8
+Residual Ratio Tolerance         = 1e-8
+Pressure Stabilization           = no
+Pressure Stabilization Scaling   = 0.0001
+
+------------------------------------------------------------
+              Particle Specifications
+------------------------------------------------------------
+Particle model			= INERTIAL_TRACER_IMPLICIT 0.0 -980.0
+Number of particles		= 200
+Particle density		= 0.001293
+#Particle density		= 0.942
+Particle radius			= { bub_rad }
+# Cylidner moves at 50 Hz, so this is N per cycle for 1.0 / 50.0 / N
+Output time step		= { 1.0 / freq / 20.0 }
+#Output stride			= 1
+Output format			= FLAT_TEXT
+Particle creation domain        = BRICK -2.0 2.0 0.0 2.2 0.0 0.0
+Full output stride              = 1 full.dat
+Number of sample types          = 0
+
+START OF PBC
+PBC = target SS 1 target.dat
+PBC = target SS 2 target.dat
+PBC = target SS 3 target.dat
+PBC = target SS 4 target.dat
+END OF PBC
+
+
+
+# SS 1 is piston/liquid interface
+# SS 2 is bottom (r = 0)
+# SS 3 is top (r = 2.2)
+# SS 4 is left/right (Z = -2,2)
+
+Boundary Condition Specifications
+-------- --------- --------------
+Number of BC			 = -1
+
+# Inner r = 0 bdry
+
+# Outer r = 2.2 bdry
+# If the displacement is dx = v0*cos(\omega * t) = 0.09 * cos(2pi * 50 * t), then
+# vx = d(dx)/dx = -\omega * v0 * sin(\omega * t) = -2pi * 50 * 0.09 * sin(2pi * 50 * t).  Since the
+# phase and sign don't matter, I use vx = 2pi* 50 * 0.09 * cos(2pi * 50 * t)
+# freq = {freq = 50} Hz
+# disp = {disp = 0.09} cm
+BC = GD_LINEAR SS 3 R_MOMENTUM1 0 VELOCITY1 0 {-freq * disp * 2 * PI} 0.0   # v_0
+BC = GD_TIME   SS 3 R_MOMENTUM1 0 SINUSOIDAL 0 0.0 {freq * 2 * PI}  # * cos(2pi * 50*t)
+BC = GD_LINEAR SS 3 R_MOMENTUM1 0 VELOCITY1 0 0.0 -1.0   # - vx
+#BC = U NS 3 0.0
+#BC = V NS 3 0.0
+
+# Left/Right z = -2,2 bdries
+
+# Piston interface
+BC = U NS 1 0.0
+BC = V NS 1 0.0
+
+#BC = U NS 2 0.0
+#BC = V NS 2 0.0
+#
+#BC = U NS 4 0.0
+#BC = V NS 4 0.0
+
+BC = P NS 100 0.0
+
+END OF BC
+
+
+Rotation Specifications =
+
+
+END OF ROT
+
+
+
+
+Problem Description
+------- -----------
+Number of Materials		= 1
+MAT = ucon 1
+	Coordinate System	= CYLINDRICAL
+#	Coordinate System	= CARTESIAN
+
+	Element Mapping		= isoparametric
+	Mesh Motion		= ARBITRARY
+	Number of bulk species	= 0
+	Number of EQ		= 3
+ 	EQ = momentum1   Q2 U1 Q2   1 1 1 1 1 0 
+	EQ = momentum2   Q2 U2 Q2   1 1 1 1 1 0 
+	EQ = continuity  Q1 P  Q1   1         0 
+				  - - - - - - -
+                                  d m a b d s p
+				  i a d n i r o
+				  v s v d f c r
+				    s     f   o
+			                      u
+					      s
+Post Processing Specifications
+---- ---------- -------------- 
+Stream Function			= yes
+Streamwise normal stress	= no
+Pressure contours		= yes
+Second Invarient of Strain	= no
+Mesh Dilatation			= no
+Navier Stokes Residuals		= no
+Moving Mesh Residuals		= no
+Mass Diffusion Vectors		= no
+Mass Fluxlines			= no
+Energy Conduction Vectors	= no
+Energy Fluxlines		= no
+Time Derivatives		= no
+Mesh Stress Tensor		= no
+Fill contours		  	= no
+
+
+Post Processing Volumetric Integration =
+
+$	VOLUME_INT = POSITIVE_FILL 1 0 volume.dat 0.01
+$	VOLUME_INT = NEGATIVE_VX 1 0 vx.dat 0.01
+
+END OF VOLUME_INT

@@ -1,0 +1,16 @@
+Must have MAX_PROB_VAR build >=9
+
+Tests following features:
+Phase Field 1 operability
+Level set operability
+coupled phase field and level set operability
+1-way coupling for overset grid capability
+Couple overset grid and level-set free surface coupling
+
+Benchmark output file in benchmark.txt
+generated with -se and -so.    Make sure you are comparing apples to apples
+
+Runs 10 time steps. 
+
+Takes about 0.36 min to run
+

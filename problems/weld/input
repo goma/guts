@@ -1,0 +1,177 @@
+------------------------------------------------------------
+                 FEM Problem Specifications
+{ECHO(OFF)}
+{include(keyhole_model)}
+------------------------------------------------------------
+FEM file                         = keyhole_micro_uni_Q1.exoII
+Output EXODUS II file            = out.exoII
+GUESS file                       = contin.dat
+SOLN file                        = soln.dat
+Write intermediate results       = no
+------------------------------------------------------------
+                 General Specifications
+------------------------------------------------------------
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+{ifdef(run_init)}
+Initial Guess                    = zero
+{else}
+Initial Guess                    = read_exoII_file base_restart.exoII
+{Endif}
+Anneal Mesh on Output = no
+{ifdef(run_init)}
+Initialize = TEMPERATURE 0 {T_ref}
+{Endif}
+------------------------------------------------------------
+                 Time Integration Specifications
+------------------------------------------------------------
+Time integration                 = transient
+delta_t                          = {time_delta}
+Initial Time                     = {time_init}
+Maximum number of time steps     = 20
+#Maximum time                     = {time_final}
+Maximum time                     = 0.002
+Minimum time step                = {time_delta/50.0}
+Maximum time step                = {0.01}
+Time step parameter		 = 0.
+Time step error  		 = -1e6  0   1   1   0   0   0
+Restart Time Integration After Renormalization = no
+Printing Frequency		 = 1
+Fill Weight Function		 = Explicit
+Courant Number Limit             = 0.10
+
+Level Set Interface Tracking     = ON
+Level Set Subelement Integration = ON
+Level Set Length Scale           = 0.0
+Ignore Level Set Dependencies  = yes
+Ignore Dependency              = R_MASS on PRESSURE
+Ignore Dependency              = R_MASS on PRESSURE 1
+{ifdef(run_init)}
+#Level Set Initialization Method  = Nodeset NS 50 EB 2
+Level Set Initialization Method  = Surfaces 1
+	SURF = PLANE 1 0 0 {laser_x}
+#Initial Level Set Displacement = 0.005
+{else}
+Level Set Initialization Method  = Exodus
+{Endif}
+Force Initial Level Set Initialization = yes
+Level Set Renormalization Method = Huygens
+#Level Set Renormalization Method = Huygens_Constrained -{3.14159*0.5*0.5*(laser_x+0.4)}
+Level Set Renormalization Tolerance = 0.06
+Level Set Renormalization Frequency = 50000
+Level Set Reconstruction Method  = FACETS
+
+------------------------------------------------------------
+                 Solver Specifications
+------------------------------------------------------------
+Solution Algorithm               = umf
+UMF XDIM = 60000000
+UMF IDIM = 60000000
+Preconditioner                   = dom_decomp
+Matrix subdomain solver          = ilu
+Matrix Scaling                   = row_sum
+Polynomial                       = 3
+Size of Krylov subspace          = 200
+$$Matrix output type               = 20
+Matrix reorder                   = rcm
+Orthogonalization                = classical
+Maximum Linear Solve Iterations  = 200
+Matrix ILUT fill factor          = 3
+Number of Newton Iterations      = 10
+Newton correction factor         = 1.00
+Normalized Residual Tolerance    = 5.0e-07
+Residual Ratio Tolerance         = 1.0e-4
+Residual Relative Tolerance      = 1e-6
+{ifdef(run_flow)}
+Pressure Stabilization           = no
+{else}
+Pressure Stabilization           = no
+{Endif}
+Pressure Stabilization Scaling   = 5.0
+------------------------------------------------------------
+	Boundary Condition Specifications                 
+------------------------------------------------------------
+Number of BC = -1
+
+# THERMAL BC'S
+  BC = T NS 40 {T_ref}
+  BC = T NS 20 {T_ref}
+  BC = LS_QLASER_BC LS -1 {Q_laser} {L_power_base*Q_laser} {absorp_min} {sw_vn} {t_pulse} {t_pulse+t_ramp_down} {L_power_up*Q_laser} {L_radius} {t_ramp_up} {t_ramp_st} {laser_tophat} {laser_x} {laser_y} {laser_z} {laser_axisx} {laser_axisy} {laser_axisz} {freq_spot} {num_spots} {sw_trv_spt} {spot_space} {trav_rad} 0 {t_travrad0=0.0} {beam_travel_u} {beam_travel_v} {beam_travel_w}
+  BC = LS_QVAPOR_BC LS -1 {T} {K/S/S/S}
+  BC = LS_QRAD_BC LS -1 {q_loss} {T_ref} {emissivity=1.0} {stefan=5.67e-8*K/S/S/S/T/T/T/T}
+
+{ifdef(run_flow)}
+  BC = U NS 30 0.
+  BC = V NS 30 0.
+  BC = U NS 40 0.
+  BC = V NS 40 0.
+#  BC = U NS 20 0.
+#  BC = V NS 20 0.
+  BC = LS_CAPILLARY LS -1
+  BC = LS_RECOIL_PRESSURE LS -1 1.0 0.0 {T_boil} {T_liquidus} {T_ref}  {K/L/S/S} {T}
+{Endif}
+
+END OF BC
+----
+Problem Description
+---
+
+Number of Materials = 1
+
+
+ MAT = alloy625_const  1
+
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = ARBITRARY
+  Number of bulk species = 0
+  Number of EQ	= {2+run_flow*3}
+	EQ = energy     Q1_GN      T       Q1_GN   1.   1.   1.    1.    1.  
+        EQ = level_set  Q1        F       Q1        1 1     1   
+{ifdef(run_flow)}
+	EQ = momentum1  Q1      U1   Q1   1.   1.   1.    1.    1.   0.
+	EQ = momentum2  Q1      U2   Q1   1.   1.   1.    1.    1.   0.
+	EQ = continuity	P0_XV	P 	P0_XV   1.                         0.
+{Endif}
+                                      div  ms  adv   bnd  dif    src   porous
+ MAT = alloy625_const  2
+
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = ARBITRARY
+  Number of bulk species = 0
+  Number of EQ	= {2+run_flow*3}
+	EQ = energy     Q1_GN      T       Q1_GN   1.   1.   1.    1.    1.  
+        EQ = level_set  Q1        F       Q1        1 1     1   
+{ifdef(run_flow)}
+	EQ = momentum1  Q1      U1   Q1   1.   1.   1.    1.    1.   0.
+	EQ = momentum2  Q1      U2   Q1   1.   1.   1.    1.    1.   0.
+	EQ = continuity	P0_XV	P 	P0_XV   1.                         0.
+{Endif}
+                                      div  ms  adv   bnd  dif    src   porous
+
+
+
+Post Processing Specifications
+
+Velocity Divergence = yes
+Stream Function = no
+Streamwise normal stress = no
+Pressure contours = yes
+Second Invarient of Strain = no
+Mesh Dilatation = no
+Navier Stokes Residuals = no
+Moving Mesh Residuals = no
+Mass Diffusion Vectors = no
+Mass Fluxlines = no
+Energy Conduction Vectors = yes
+Energy Fluxlines = no
+Time Derivatives = yes
+Mesh Stress Tensor = no
+Mesh Strain Tensor = no
+Viscosity = yes
+
+
+
+

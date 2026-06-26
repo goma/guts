@@ -1,0 +1,43 @@
+v7.11.0-1-g709cfe59
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2026 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+
+
+######################### __PRINT_SYNC_END__ #########################
+
+Number of unknowns            = 110
+
+Number of matrix nonzeroes    = 884
+
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:09:13 [0] 3.0e-02 2.1e-01 7.2e-02 5.7e-02 3.8e+00 3.9e-01  1  1.0e-02/0.0e+00 
+17:09:13 [1] 7.0e-04 7.0e-03 2.2e-03 1.7e-03 1.1e-01 1.2e-02  1  2.0e-02/0.0e+00 
+17:09:13 [2] 1.1e-06 1.1e-05 3.4e-06 2.5e-06 1.6e-04 1.8e-05  1  1.0e-02/0.0e+00 
+17:09:13 [3] 2.4e-12 2.4e-11 7.7e-12                         skp 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   5.914e-02  3.500e-02  3.780e-02 
+
+-done
+
+
+Proc 0 runtime:       0.00 Minutes.
+

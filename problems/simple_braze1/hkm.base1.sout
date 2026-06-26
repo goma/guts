@@ -1,0 +1,167 @@
+EXODUS:        3d.exoII ->       out.exoII
+ASCII:       contin.dat ->        soln.dat
+Defaulting: time step error for tran->use_var_norm[2] = 0
+Defaulting: time step error for tran->use_var_norm[3] = 0
+Defaulting: time step error for tran->use_var_norm[4] = 0
+Defaulting: time step error for tran->use_var_norm[5] = 0
+Defaulting: time step error for tran->use_var_norm[6] = 0
+Solver = AZTEC
+Defaulting: Matrix storage format             = msr
+Defaulting: UMFPACK IDIM = 5*NNZ
+Defaulting: UMFPACK XDIM = 5*NNZ
+Defaulting: FRONT MXBUFF = -1 (1e6)
+Preconditioner = dom_decomp
+Matrix subdomain solver = ilu
+Matrix scaling = row_sum
+Defaulting: Matrix residual norm type       = r0
+Defaulting: Matrix output type              = none
+Defaulting: Matrix factorization reuse      = recalc
+Defaulting: Matrix graph fillin            = 0
+Defaulting: Matrix factorization overlap    = none
+Defaulting: Matrix overlap type             = standard
+Defaulting: Matrix auxiliary vector         = resid
+Defaulting: Matrix drop tolerance           = 0
+Defaulting: Matrix polynomial order         = 3
+Defaulting: Matrix reorder                  = none
+Defaulting: Matrix factorization save          = 0
+Matrix ILUT fill factor = 3
+Defaulting: Matrix RILU relax factor           = 1
+Size of Krylov subspace= 100
+Orthoganlization= classical
+Maximum Linear Solver Iteration = 100
+Defaulting to constant Newton relaxation. Use 6 flts for dynamic relaxation.
+Defaulting: Eigen Number of modes = 10
+Defaulting: Eigen Record modes = 0
+Defaulting: Eigen Size of Krylov subspace = 30
+Defaulting: Eigen Maximum Iterations = 100
+Defaulting: Eigen Number of Filter Steps = 2
+
+Number of boundary conditions = 28
+   1. FORCE @ SS 23
+   2. DZ @ NS 23
+   3. SOLID_FLUID @ SS 2
+   4. NO_SLIP @ SS 2
+   5. PLANE @ SS 6
+   6. VELO_SLIP @ SS 20
+   7. V @ NS 21
+   8. V @ NS 22
+   9. U @ NS 22
+  10. W @ NS 22
+  11. PLANE @ SS 11
+  12. PLANE @ SS 12
+  13. VELO_NORMAL @ SS 11
+  14. VELO_NORMAL @ SS 12
+  15. CAPILLARY @ SS 1
+  16. KINEMATIC @ SS 1
+  17. CAPILLARY @ SS 3
+  18. KINEMATIC @ SS 3
+  19. DX @ NS 7
+  20. DZ @ NS 7
+  21. U @ NS 7
+  22. W @ NS 7
+  23. VELO_NORMAL_EDGE @ SS 1
+  24. VELO_TANGENT_EDGE @ SS 1
+  25. VELO_NORMAL_EDGE @ SS 3
+  26. VELO_TANGENT_EDGE @ SS 3
+  27. CA_EDGE @ SS 1
+  28. CA_EDGE @ SS 3
+
+Number of rotation conditions = 36
+
+   1. surf (6) R_dx=(t1.R_d) R_dy=(PLANE @ 6) R_dz=(t2.R_d) [0,0,-1]
+
+   2. surf (11) R_dx=(t1.R_d) R_dy=(t2.R_d) R_dz=(PLANE @ 11) [-1,0,0]
+
+   3. surf (12) R_dx=(t1.R_d) R_dy=(t2.R_d) R_dz=(PLANE @ 12) [-1,0,0]
+
+   4. surf (1) R_dx=(KINEMATIC @ 1) R_dy=(t1.R_d) R_dz=(t2.R_d) [-0,-0,-1]
+
+   5. surf (3) R_dx=(KINEMATIC @ 3) R_dy=(t1.R_d) R_dz=(t2.R_d) [-0,-0,-1]
+
+   6. surf (11) R_vx=(t1.R_v) R_vy=(t2.R_v) R_vz=(VELO_NORMAL @ 11) [-1,0,0]
+
+   7. surf (12) R_vx=(t1.R_v) R_vy=(t2.R_v) R_vz=(VELO_NORMAL @ 12) [-1,0,0]
+
+   8. surf (20) R_vx=(t1.R_v) R_vy=(V @ 21) R_vz=(t2.R_v) [0,0,-1]
+
+   9. edge (6 & 11) R_dx=(t.R_d) R_dy=(PLANE @ 6) R_dz=(PLANE @ 11) basis
+
+  10. edge (6 & 12) R_dx=(t.R_d) R_dy=(PLANE @ 6) R_dz=(PLANE @ 12) basis
+
+  11. edge (1 & 11) R_dx=(KINEMATIC @ 1) R_dy=(t.R_d) R_dz=(PLANE @ 11) basis
+
+  12. edge (1 & 12) R_dx=(KINEMATIC @ 1) R_dy=(t.R_d) R_dz=(PLANE @ 12) basis
+
+  13. edge (3 & 11) R_dx=(KINEMATIC @ 3) R_dy=(t.R_d) R_dz=(PLANE @ 11) basis
+
+  14. edge (3 & 12) R_dx=(KINEMATIC @ 3) R_dy=(t.R_d) R_dz=(PLANE @ 12) basis
+
+  15. edge (6 & 1) R_dx=(t.R_d) R_dy=(PLANE @ 6) R_dz=(CA_EDGE @ 1) basis
+
+  16. edge (6 & 3) R_dx=(t.R_d) R_dy=(PLANE @ 6) R_dz=(CA_EDGE @ 3) basis
+
+  17. edge (11 & 2) R_dx=(t.R_d) R_dy=(SOLID_FLUID @ 2) R_dz=(PLANE @ 11) basis
+
+  18. edge (12 & 2) R_dx=(t.R_d) R_dy=(SOLID_FLUID @ 2) R_dz=(PLANE @ 12) basis
+
+  19. edge (6 & 1) R_vx=(VELO_NORMAL_EDGE @ 1) R_vy=(V @ 21) R_vz=(VELO_TANGENT_EDGE @ 1) basis
+
+  20. edge (6 & 3) R_vx=(VELO_NORMAL_EDGE @ 3) R_vy=(V @ 21) R_vz=(VELO_TANGENT_EDGE @ 3) basis
+
+  21. edge (11 & 2) R_vx=(NO_SLIP @ 2) R_vy=(NO_SLIP @ 2) R_vz=(VELO_NORMAL @ 11) basis
+
+  22. edge (12 & 2) R_vx=(NO_SLIP @ 2) R_vy=(NO_SLIP @ 2) R_vz=(VELO_NORMAL @ 12) basis
+
+  23. edge (1 & 2) R_vx=(U @ 7) R_vy=(NO_SLIP @ 2) R_vz=(W @ 7) basis
+
+  24. edge (3 & 2) R_vx=(U @ 7) R_vy=(NO_SLIP @ 2) R_vz=(W @ 7) basis
+
+  25. edge (1 & 2) R_dx=(DX @ 7) R_dy=(SOLID_FLUID @ 2) R_dz=(DZ @ 7) basis
+
+  26. edge (3 & 2) R_dx=(DX @ 7) R_dy=(SOLID_FLUID @ 2) R_dz=(DZ @ 7) basis
+
+  27. edge (11 & 6) R_vx=(t.R_v) R_vy=(t.R_v) R_vz=(VELO_NORMAL @ 11) basis
+
+  28. edge (12 & 6) R_vx=(t.R_v) R_vy=(t.R_v) R_vz=(VELO_NORMAL @ 12) basis
+
+  29. vrtx (6 & 3 & 11) R_dx=(CA_EDGE @ 3) R_dy=(PLANE @ 6) R_dz=(PLANE @ 11) basis
+
+  30. vrtx (6 & 3 & 12) R_dx=(CA_EDGE @ 3) R_dy=(PLANE @ 6) R_dz=(PLANE @ 12) basis
+
+  31. vrtx (6 & 1 & 11) R_dx=(CA_EDGE @ 1) R_dy=(PLANE @ 6) R_dz=(PLANE @ 11) basis
+
+  32. vrtx (6 & 1 & 12) R_dx=(CA_EDGE @ 1) R_dy=(PLANE @ 6) R_dz=(PLANE @ 12) basis
+
+  33. vrtx (6 & 3 & 11) R_vx=(VELO_NORMAL_EDGE @ 3) R_vy=(V @ 21) R_vz=(VELO_TANGENT_EDGE @ 3) basis
+
+  34. vrtx (6 & 3 & 12) R_vx=(VELO_NORMAL_EDGE @ 3) R_vy=(V @ 21) R_vz=(VELO_TANGENT_EDGE @ 3) basis
+
+  35. vrtx (6 & 1 & 11) R_vx=(VELO_NORMAL_EDGE @ 1) R_vy=(V @ 21) R_vz=(VELO_TANGENT_EDGE @ 1) basis
+
+  36. vrtx (6 & 1 & 12) R_vx=(VELO_NORMAL_EDGE @ 1) R_vy=(V @ 21) R_vz=(VELO_TANGENT_EDGE @ 1) basis
+
+Number of materials           = 2
+
+Number of equations           = 7 (cu)
+
+Number of equations           = 3 (alumina_ceramic)
+
+MDE                           = 12
+
+MAX_PROB_VAR                  = 12
+
+MAX_VARIABLE_TYPES            = 76
+
+MAX_CONC                      = 4
+
+init_vec: reading initial guess from "restart.exoII" ...
+Nodal variable VX NOT in exoII database - setting to 0.
+Nodal variable VY NOT in exoII database - setting to 0.
+Nodal variable VZ NOT in exoII database - setting to 0.
+Nodal variable DMX found in exoII database - reading.
+Nodal variable DMY found in exoII database - reading.
+Nodal variable DMZ found in exoII database - reading.
+Nodal variable P NOT in exoII database - setting to 0.
+
+-done
+

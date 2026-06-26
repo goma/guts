@@ -1,0 +1,58 @@
+v7.11.0-1-g709cfe59
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2026 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+
+Internal METIS decomposition using Recursive Bisection.
+
+
+
+----------------- Communications Stats ------------
+
+		Number of Neighbors
+		Max:     1 (Proc = 0)		 Avg:  1.000		Min: 1 (Proc = 0)
+
+		Size of Messages
+		Max:     5 (Proc = 0)		 Avg:  5.000		Min: 5 (Proc = 0)
+--------------------------------------------------
+
+
+######################### __PRINT_SYNC_START__ #########################
+######################### __PRINT_SYNC_END__ #########################
+
+Number of unknowns            = 16
+
+Number of matrix nonzeroes    = 100
+
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:09:48 [0] 5.1e+00 1.3e+01 6.2e+00 4.4e+01 6.2e+02 1.6e+02  10 0.0e+00/0.0e+00 
+17:09:48 [1] 4.1e-06 2.3e-05 7.4e-06 1.6e-05 8.8e-05 2.9e-05  10 0.0e+00/0.0e+00 
+17:09:48 [2] 1.9e-11 1.2e-10 3.8e-11                         skp 0.0e+00/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   4.439e+01  6.460e+01  5.131e+01 
+
+Fixing exodus file box3x3out.exoII
+
+-done
+
+
+Proc 0 runtime:       0.00 Minutes.
+

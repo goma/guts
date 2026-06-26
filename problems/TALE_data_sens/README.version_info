@@ -1,0 +1,19 @@
+Deformable Roll Coater with TALE: Test of umf solver: GOMA Version Information
+=============================================================================
+
+Directory:   .../VandV/problems/TALE_data_sens
+
+Feb. 09, 2009 baseline #2
+**********************
+     goma_02092009 executable
+     output files:
+        blessed.serr
+        blessed.sout
+        out_blessed_3.exoII
+
+     initial residuals        6.6e-03 1.8e-01 1.8e-02   
+     1st iteration updates   3.5e+04 1.2e+06 1.4e+05  
+
+
+    Bumped the exodus version up due to a bug fix in T33 and T33_RS
+    carried out by Secor.

@@ -1,0 +1,58 @@
+v7.11.0-1-g709cfe59
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2026 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+WARNING: Shell Capability is experimental for non 2D Cartesian systems
+WARNING: Shell Capability is experimental for non 2D Cartesian systems
+
+Found 2 different element shapes.
+
+
+######################### __PRINT_SYNC_END__ #########################
+
+Number of unknowns            = 3918
+
+Number of matrix nonzeroes    = 343768
+
+Initial guess read from "rheometer_ann_uncpl_1_sav.exoII" ...(last soln in file)
+Nodal variable VX found in exoII database - reading.
+Nodal variable VY found in exoII database - reading.
+Nodal variable VZ found in exoII database - reading.
+Nodal variable DMX found in exoII database - reading.
+Nodal variable DMY found in exoII database - reading.
+Nodal variable P found in exoII database - reading.
+Nodal variable SH_NCURLV found in exoII database - reading.
+		 Values read time plane at time = 0
+
+
+               R e s i d u a l         C o r r e c t i o n
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:28 [0] 8.6e-02 1.3e+00 2.9e-01 1.3e+00 6.3e+01 5.3e+00  1  3.7e-01/3.1e-01 
+17:10:29 [1] 1.1e-03 1.5e-02 2.8e-03 6.2e-01 1.9e+00 6.7e-01  1  4.0e-01/2.8e-01 
+17:10:30 [2] 4.0e-07 4.3e-06 1.1e-06 4.0e-04 8.1e-04 4.3e-04  1  3.7e-01/2.9e-01 
+17:10:30 [3] 3.2e-12 2.4e-11 7.0e-12 5.3e-11 6.5e-10 1.6e-10  1  4.1e-01/2.9e-01 
+17:10:31 [4] 3.9e-16 1.4e-14 1.3e-15                         skp 3.7e-01/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   1.000e+00  1.331e-02  7.833e-02 
+
+-done
+
+
+Proc 0 runtime:       0.05 Minutes.
+

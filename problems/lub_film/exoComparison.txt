@@ -1,0 +1,54 @@
+
+   *****************************************************************
+     EXODIFF  EXODIFF  EXODIFF  EXODIFF  EXODIFF  EXODIFF  EXODIFF  
+                                                                    
+                        Version 2.48 (2011-09-14)
+              Authors:  Richard Drake, rrdrake@sandia.gov           
+                        Greg Sjaardema, gdsjaar@sandia.gov          
+                        2011/10/17   15:56:05 MDT
+                                                                    
+     EXODIFF  EXODIFF  EXODIFF  EXODIFF  EXODIFF  EXODIFF  EXODIFF  
+   *****************************************************************
+
+Reading first file ... 
+Reading second file ... 
+  FILE 1: /scratch/goma_VandV/problems/film_lub/out_blessed.exoII
+   Title: cubit(40x40_Centi.exoII): 10/17/2011: 10:46:37
+          Dim = 3, Blocks = 1, Nodes = 1681, Elements = 1600, Nodesets = 4, Sidesets = 4
+          Vars: Global = 5, Nodal = 6, Element = 0, Nodeset = 0, Sideset = 0, Times = 2
+
+  FILE 2: /scratch/goma_VandV/problems/film_lub/out.exoII
+   Title: cubit(40x40_Centi.exoII): 10/17/2011: 10:46:37
+          Dim = 3, Blocks = 1, Nodes = 1681, Elements = 1600, Nodesets = 4, Sidesets = 4
+          Vars: Global = 5, Nodal = 6, Element = 0, Nodeset = 0, Sideset = 0, Times = 2
+
+  COMMAND FILE: /scratch/goma_VandV/problems/film_lub/exodiff.inp
+
+Locations of nodes will not be compared.
+Time step time values will not be compared.
+Global variables to be compared:
+	CONVRATE                         tol:     0.05 (relative), floor:     0.01
+Nodal variables to be compared:
+	SH_FP                            tol:   0.0001 (relative), floor:    1e-11
+	SH_FH                                   0.0001 (relative),           1e-11
+	SH_PC                                   0.0001 (relative),           1e-11
+	MU                                      0.0001 (relative),           1e-11
+	DISJ_PRESS                              0.0001 (relative),           1e-11
+	THETA                                   0.0001 (relative),           1e-11
+No Element variables on either file.
+Element Attribute variables will not be compared.
+No Nodeset variables on either file.
+No Sideset variables on either file.
+
+  ==============================================================
+  NOTE: All node and element ids are reported as global ids.
+
+Element attributes:
+  --------- Time step 1, 0.0000000e+00 ~ 0.0000000e+00, ign diff:  0.00000e+00 ---------
+Global variables:
+Nodal variables:
+  --------- Time step 2, 1.0000000e-10 ~ 1.0000000e-10, ign diff:  0.00000e+00 ---------
+Global variables:
+Nodal variables:
+
+exodiff: Files are the same

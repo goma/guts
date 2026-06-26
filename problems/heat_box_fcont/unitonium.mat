@@ -1,0 +1,58 @@
+{NOECHO}{include(Defs)}
+
+PHYSICAL PROPERTIES
+	Density				= CONSTANT 1
+
+MECHANICAL PROPERTIES AND CONSTITUTIVE EQUATIONS
+	Solid Constitutive Equation 	= LINEAR	
+	Convective Lagrangian Velocity  = NONE
+	Lame MU 			= CONSTANT 1
+	Lame LAMBDA 			= CONSTANT 1
+	Stress Free Solvent Vol Frac	= CONSTANT 0
+	Liquid Constitutive Equation 	= NEWTONIAN
+	Viscosity			= CONSTANT 1
+	Low Rate Viscosity		= CONSTANT 0
+	Power Law Exponent		= CONSTANT 0
+	High Rate Viscosity		= CONSTANT 0
+	Time Constant			= CONSTANT 0
+	Aexp 				= CONSTANT 0
+	Polymer Constitutive Equation   = NOPOLYMER
+	Surface Tension			= CONSTANT 0
+
+THERMAL PROPERTIES
+	Conductivity			= CONSTANT 1
+	Heat Capacity			= CONSTANT 1
+	Volume Expansion		= CONSTANT 1
+	Reference Temperature		= CONSTANT 0
+	Liquidus Temperature		= CONSTANT 1
+	Solidus Temperature		= CONSTANT 1
+        Energy Weight Function          = GALERKIN
+
+MICROSTRUCTURE PROPERTIES
+	Media Type                      = CONTINUOUS
+	Permeability			= CONSTANT 1
+	Porosity                	= CONSTANT 0
+
+#BRINKMAN-EQUATION PARAMETERS
+#	FlowingLiquid Viscosity		= CONSTANT 0
+#	Inertia Coefficient		= CONSTANT 0
+
+SPECIES PROPERTIES
+	Diffusion Constitutive Equation = FICKIAN
+	Diffusivity  			= CONSTANT 0 1
+	Latent Heat Vaporization	= CONSTANT 0 0
+	Latent Heat Fusion		= CONSTANT 0 0
+	Vapor Pressure  		= CONSTANT 0 0
+	Species Volume Expansion	= CONSTANT 0 1
+	Reference Concentration         = CONSTANT 0 0
+
+ELECTRICAL PROPERTIES
+	Electrical Conductivity         = CONSTANT 0
+
+SOURCE TERMS
+	Navier-Stokes Source		= CONSTANT 0 0 0
+	Solid Body Source		= CONSTANT 0 0 0
+	Mass Source			= CONSTANT 0
+	Heat Source			= CONSTANT 0
+	Species Source			= CONSTANT 0 2
+	Current Source                  = CONSTANT 0

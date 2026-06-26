@@ -1,0 +1,7 @@
+Aprepro: WARNING: User-defined Variable 'h' redefined (geometry, line 16)
+WARNING: Defaulting on Time step error norm indicators
+ (/opt/workdir/goma/src/mm_input.c:1612)
+WARNING: Boundary condition 11, LS_CAPILLARY, applied on NS 0, is never used
+ (/opt/workdir/goma/src/mm_bc_conflict.c:2001)
+WARNING: Warning no time steps found in porous_taper.exoII (/opt/workdir/goma/src/rf_util.c:2582)
+WARNING: Attempt to anneal w/ no active displacement eqn anywhere! (/opt/workdir/goma/src/rf_solve.c:3007)

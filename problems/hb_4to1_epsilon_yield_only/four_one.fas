@@ -1,0 +1,36 @@
+ TITLE First VE test problem
+
+ POINT     1      0.      0.
+ POINT     2     16.      0.
+ POINT     3     16.      1.
+ POINT     4      0.      1.
+ POINT     5      0.      4.
+ POINT     6    -12.      4.
+ POINT     7    -12.      1.
+ POINT     8    -12.      0.
+ LINE      1   STR     1     2     0   12  1.538
+ LINE      2   STR     2     3     0    6  .8
+ LINE      3   STR     3     4     0   12  .65 
+ LINE      4   STR     4     1     0    6  1.25
+ LINE      5   STR     4     5     0    8  1.4
+ LINE      6   STR     5     6     0   10  1.538
+ LINE      7   STR     6     7     0    8  .71429
+ LINE      8   STR     7     8     0    6  1.25
+ LINE      9   STR     8     1     0   10  .65
+ LINE     10   STR     7     4     0   10  .65
+ REGION     1     1    -1  -2 -3 -4 
+ REGION     2     1    -4  -10 -8 -9 
+ REGION     3     1    -10 -5 -6 -7 
+ SCHEME    0 m
+ BODY       1 2 3
+ NODEBC     1     1  9
+ NODEBC     2     2
+ NODEBC     3     3  5  6
+ NODEBC     4     7  8
+ ELEMBC    10     1  9
+ ELEMBC    20     2 
+ ELEMBC    30     3  5  6
+ ELEMBC    40     7  8
+ POINBC   100     3
+ NINE  
+ EXIT  

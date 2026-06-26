@@ -1,0 +1,793 @@
+v7.11.0-1-g709cfe59
+/*************************************************************************
+* Goma - Multiphysics finite element software                            *
+* Sandia National Laboratories                                           *
+*                                                                        *
+* Copyright (c) 2026 Goma Developers, National Technology & Engineering  *
+*               Solutions of Sandia, LLC (NTESS)                         *
+*                                                                        *
+* Under the terms of Contract DE-NA0003525, the U.S. Government retains  *
+* certain rights in this software.                                       *
+*                                                                        *
+* This software is distributed under the GNU General Public License.     *
+* See LICENSE file.                                                      *
+\************************************************************************/
+
+PRS, PAS, RRR, KSC, RAC, TAB, DRN, PLH, DAL, IDG, ACK, ACS, RBS, RRL, MMH, SRS
+HKM, RAR, EDW, PKN, SAR, EMB, KT, DSB, DSH, WWO ...
+
+
+Internal METIS decomposition using Recursive Bisection.
+
+
+
+----------------- Communications Stats ------------
+
+		Number of Neighbors
+		Max:     1 (Proc = 0)		 Avg:  1.000		Min: 1 (Proc = 0)
+
+		Size of Messages
+		Max:     8 (Proc = 0)		 Avg:  8.000		Min: 8 (Proc = 0)
+--------------------------------------------------
+
+Leaky QCONV BC found on SS 1
+Leaky QCONV BC found on SS 3
+Leaky BC connection found to flux 1 2
+Leaky KIN_LEAK BC found on SS 3
+Leaky BC connection found to flux 3 2
+Leaky KIN_LEAK BC found on SS 6
+
+######################### __PRINT_SYNC_START__ #########################
+######################### __PRINT_SYNC_END__ #########################
+
+Number of unknowns            = 322
+
+Number of matrix nonzeroes    = 7588
+	Setting TEMPERATURE (variable [3]) to 293
+	Setting MAT 1 MASS_FRACTION number 0 (variable [4]) to 0.9
+	Setting MAT 2 MASS_FRACTION number 0 (variable [4]) to 0.6
+
+=> Try for soln at t=1e-08 with dt=1e-08 [0 for 0] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:02 [0] 1.5e-01 3.1e-01 2.2e-01 3.6e-01 1.4e+00 6.1e-01   1 1.0e-02/1.0e-02 
+17:10:02 [1] 3.8e-07 6.0e-06 1.3e-06 3.2e-02 1.6e-01 6.0e-02   2 1.0e-02/0.0e+00 
+17:10:02 [2] 1.4e-08 2.1e-07 4.5e-08 1.9e-04 9.8e-04 3.5e-04   3 2.0e-02/0.0e+00 
+17:10:02 [3] 1.7e-10 1.4e-09 4.0e-10                         skp 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.932e+02  1.487e+02  2.085e+02 
+
+CONSTANT DELTA_T          [1.0e-07, 1.4e-02, 2.6e-02]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=2e-08 with dt=1e-08 [1 for 1] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:02 [0] 4.9e-03 9.8e-03 6.9e-03 2.5e-01 7.6e-01 3.7e-01   1 2.0e-02/0.0e+00 
+17:10:02 [1] 1.2e-07 2.0e-06 4.5e-07 1.1e-02 5.5e-02 2.1e-02   3 1.0e-02/0.0e+00 
+17:10:02 [2] 3.6e-09 4.1e-08 1.0e-08 2.5e-05 1.4e-04 4.8e-05   1 2.0e-02/0.0e+00 
+17:10:02 [3] 8.7e-13 2.5e-12 1.1e-12                         skp 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.934e+02  1.487e+02  2.085e+02 
+
+CONSTANT DELTA_T          [6.6e-08, 4.6e-04, 1.6e-02]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=3e-08 with dt=1e-08 [2 for 2] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:02 [0] 4.8e-03 9.5e-03 6.7e-03 9.3e-02 2.9e-01 1.4e-01   1 2.0e-02/0.0e+00 
+17:10:02 [1] 1.3e-08 2.4e-07 5.1e-08 1.5e-03 7.3e-03 2.8e-03   3 2.0e-02/0.0e+00 
+17:10:02 [2] 9.6e-11 1.0e-09 2.6e-10                         skp 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.936e+02  1.487e+02  2.085e+02 
+
+CONSTANT DELTA_T          [2.3e-08, 4.4e-04, 6.2e-03]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=4e-08 with dt=1e-08 [3 for 3] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:02 [0] 4.6e-03 9.2e-03 6.5e-03 3.3e-02 1.1e-01 5.0e-02   1 2.0e-02/0.0e+00 
+17:10:02 [1] 1.6e-09 3.2e-08 6.3e-09                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.939e+02  1.487e+02  2.085e+02 
+
+OK  2.3e-03 < 1.5 1.0e-01 [7.2e-09, 4.3e-04, 2.2e-03]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=5.5e-08 with dt=1.5e-08 [4 for 4] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:02 [0] 1.0e-02 2.0e-02 1.4e-02 1.9e-02 8.5e-02 3.5e-02   1 1.0e-02/0.0e+00 
+17:10:02 [1] 2.5e-09 1.8e-08 4.3e-09                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.941e+02  1.487e+02  2.085e+02 
+
+OK  1.7e-03 < 1.5 1.0e-01 [5.1e-09, 9.8e-04, 1.4e-03]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=7.75e-08 with dt=2.25e-08 [5 for 5] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:02 [0] 2.1e-02 4.3e-02 3.0e-02 3.0e-02 8.5e-02 4.4e-02   1 2.0e-02/0.0e+00 
+17:10:02 [1] 3.8e-09 1.4e-08 5.9e-09                         skp 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.945e+02  1.487e+02  2.085e+02 
+
+OK  2.1e-03 < 1.5 1.0e-01 [3.6e-09, 2.0e-03, 6.0e-04]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=1.1125e-07 with dt=3.375e-08 [6 for 6] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:02 [0] 4.5e-02 9.0e-02 6.3e-02 6.1e-02 1.3e-01 8.6e-02   1 2.0e-02/0.0e+00 
+17:10:03 [1] 4.6e-09 1.4e-08 7.1e-09                         skp 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.951e+02  1.487e+02  2.085e+02 
+
+OK  4.1e-03 < 1.5 1.0e-01 [3.3e-09, 4.1e-03, 1.9e-04]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=1.61875e-07 with dt=5.0625e-08 [7 for 7] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 9.0e-02 1.8e-01 1.3e-01 1.2e-01 2.4e-01 1.7e-01   1 2.0e-02/0.0e+00 
+17:10:03 [1] 4.5e-09 1.3e-08 6.8e-09                         skp 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.958e+02  1.487e+02  2.085e+02 
+
+OK  8.0e-03 < 1.5 1.0e-01 [3.0e-09, 8.0e-03, 4.1e-05]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=2.30631e-07 with dt=6.87561e-08 [8 for 8] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 1.4e-01 2.8e-01 2.0e-01 1.8e-01 3.5e-01 2.5e-01   1 2.0e-02/0.0e+00 
+17:10:03 [1] 3.3e-09 9.5e-09 5.1e-09                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.966e+02  1.487e+02  2.085e+02 
+
+OK  1.2e-02 < 1.5 1.0e-01 [2.2e-09, 1.2e-02, 5.6e-06]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=3.12496e-07 with dt=8.18647e-08 [9 for 9] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 1.6e-01 3.3e-01 2.3e-01 2.0e-01 3.9e-01 2.8e-01   1 1.0e-02/0.0e+00 
+17:10:03 [1] 1.5e-09 4.2e-09 2.3e-09                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.973e+02  1.487e+02  2.085e+02 
+
+OK  1.3e-02 < 1.5 1.0e-01 [9.4e-10, 1.3e-02, 6.8e-07]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=4.07047e-07 with dt=9.45512e-08 [10 for 10] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 1.7e-01 3.3e-01 2.4e-01 2.0e-01 4.0e-01 2.8e-01   1 2.0e-02/0.0e+00 
+17:10:03 [1] 5.0e-10 1.4e-09 7.6e-10                         skp 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.979e+02  1.487e+02  2.085e+02 
+
+OK  1.3e-02 < 1.5 1.0e-01 [3.1e-10, 1.3e-02, 1.2e-07]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=5.15814e-07 with dt=1.08767e-07 [11 for 11] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 1.6e-01 3.2e-01 2.3e-01 1.9e-01 3.9e-01 2.8e-01   1 1.0e-02/0.0e+00 
+17:10:03 [1] 2.1e-09 6.1e-09 3.2e-09                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.985e+02  1.487e+02  2.086e+02 
+
+OK  1.3e-02 < 1.5 1.0e-01 [1.3e-09, 1.3e-02, 4.9e-07]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=6.42072e-07 with dt=1.26258e-07 [12 for 12] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 1.5e-01 3.1e-01 2.2e-01 1.9e-01 3.7e-01 2.6e-01   1 1.0e-02/0.0e+00 
+17:10:03 [1] 3.1e-09 8.8e-09 4.7e-09                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.989e+02  1.487e+02  2.086e+02 
+
+OK  1.2e-02 < 1.5 1.0e-01 [2.0e-09, 1.2e-02, 7.2e-07]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=7.91033e-07 with dt=1.48961e-07 [13 for 13] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 1.4e-01 2.9e-01 2.0e-01 1.7e-01 3.5e-01 2.4e-01   1 2.0e-02/0.0e+00 
+17:10:03 [1] 3.3e-09 9.3e-09 5.0e-09                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.993e+02  1.487e+02  2.086e+02 
+
+OK  1.1e-02 < 1.5 1.0e-01 [2.1e-09, 1.1e-02, 7.6e-07]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=9.70729e-07 with dt=1.79696e-07 [14 for 14] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 1.3e-01 2.6e-01 1.8e-01 1.6e-01 3.2e-01 2.2e-01   1 1.0e-02/0.0e+00 
+17:10:03 [1] 2.7e-09 7.7e-09 4.1e-09                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.996e+02  1.487e+02  2.086e+02 
+
+OK  1.0e-02 < 1.5 1.0e-01 [1.7e-09, 1.0e-02, 6.2e-07]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=1.19389e-06 with dt=2.23164e-07 [15 for 15] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 1.1e-01 2.3e-01 1.6e-01 1.4e-01 2.8e-01 2.0e-01   1 2.0e-02/0.0e+00 
+17:10:03 [1] 1.5e-09 4.3e-09 2.2e-09                         skp 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.997e+02  1.487e+02  2.086e+02 
+
+OK  9.3e-03 < 1.5 1.0e-01 [9.4e-10, 9.3e-03, 3.5e-07]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=1.48181e-06 with dt=2.87915e-07 [16 for 16] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 9.7e-02 1.9e-01 1.4e-01 1.2e-01 2.4e-01 1.7e-01   1 1.0e-02/0.0e+00 
+17:10:03 [1] 4.7e-11 1.3e-10 6.9e-11                         skp 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.999e+02  1.487e+02  2.086e+02 
+
+OK  8.0e-03 < 1.5 1.0e-01 [2.9e-11, 8.0e-03, 1.3e-08]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=1.87269e-06 with dt=3.90886e-07 [17 for 17] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 7.4e-02 1.5e-01 1.0e-01 9.6e-02 1.9e-01 1.4e-01   1 2.0e-02/0.0e+00 
+17:10:03 [1] 1.6e-09 4.8e-09 2.5e-09                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   2.999e+02  1.487e+02  2.086e+02 
+
+OK  6.5e-03 < 1.5 1.0e-01 [1.1e-09, 6.5e-03, 3.8e-07]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=2.44186e-06 with dt=5.6917e-07 [18 for 18] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 4.6e-02 9.2e-02 6.5e-02 7.1e-02 1.4e-01 1.0e-01   1 2.0e-02/0.0e+00 
+17:10:03 [1] 3.0e-09 8.9e-09 4.6e-09                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.000e+02  1.487e+02  2.086e+02 
+
+OK  4.8e-03 < 1.5 1.0e-01 [2.0e-09, 4.8e-03, 7.2e-07]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=3.29562e-06 with dt=8.53755e-07 [19 for 19] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 2.4e-02 4.7e-02 3.3e-02 4.2e-02 8.4e-02 5.9e-02   1 1.0e-02/0.0e+00 
+17:10:03 [1] 3.9e-09 1.2e-08 6.0e-09                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.000e+02  1.487e+02  2.086e+02 
+
+OK  2.8e-03 < 1.5 1.0e-01 [2.6e-09, 2.8e-03, 9.4e-07]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=4.57625e-06 with dt=1.28063e-06 [20 for 20] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 9.2e-03 1.8e-02 1.3e-02 1.8e-02 3.6e-02 2.6e-02   1 2.0e-02/0.0e+00 
+17:10:03 [1] 4.1e-09 1.2e-08 6.2e-09                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.000e+02  1.487e+02  2.086e+02 
+
+OK  1.2e-03 < 1.5 1.0e-01 [2.7e-09, 1.2e-03, 9.8e-07]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=6.4972e-06 with dt=1.92095e-06 [21 for 21] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 2.6e-03 5.3e-03 3.7e-03 5.5e-03 1.2e-02 7.8e-03   1 2.0e-02/0.0e+00 
+17:10:03 [1] 3.3e-09 1.0e-08 5.0e-09 2.6e-05 1.6e-04 5.5e-05   3 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.000e+02  1.487e+02  2.086e+02 
+
+OK  3.8e-04 < 1.5 1.0e-01 [9.4e-09, 3.8e-04, 3.4e-06]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=9.37862e-06 with dt=2.88142e-06 [22 for 22] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 5.4e-04 1.1e-03 7.6e-04 1.2e-03 3.1e-03 1.7e-03   1 2.0e-02/0.0e+00 
+17:10:03 [1] 4.7e-09 1.5e-08 7.2e-09 3.7e-05 2.2e-04 7.8e-05   3 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.000e+02  1.487e+02  2.086e+02 
+
+OK  8.2e-05 < 1.5 1.0e-01 [1.3e-08, 8.2e-05, 4.9e-06]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=1.37008e-05 with dt=4.32213e-06 [23 for 23] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 7.8e-05 1.7e-04 1.1e-04 2.0e-04 1.3e-03 3.8e-04   1 2.0e-02/0.0e+00 
+17:10:03 [1] 1.6e-13 1.1e-12 3.4e-13                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.000e+02  1.487e+02  2.086e+02 
+
+OK  1.8e-05 < 1.5 1.0e-01 [6.8e-13, 1.8e-05, 1.3e-08]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=2.0184e-05 with dt=6.4832e-06 [24 for 24] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 9.3e-06 3.1e-05 1.3e-05 1.5e-04 1.5e-03 3.7e-04   1 1.0e-02/0.0e+00 
+17:10:03 [1] 2.2e-13 1.1e-12 3.6e-13                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.000e+02  1.487e+02  2.086e+02 
+
+OK  1.8e-05 < 1.5 1.0e-01 [6.5e-13, 1.8e-05, 3.1e-10]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=2.99088e-05 with dt=9.7248e-06 [25 for 25] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 2.8e-06 2.1e-05 5.5e-06 1.9e-04 2.2e-03 5.0e-04   1 2.0e-02/0.0e+00 
+17:10:03 [1] 2.2e-13 5.7e-13 2.4e-13                         skp 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.000e+02  1.487e+02  2.086e+02 
+
+OK  2.4e-05 < 1.5 1.0e-01 [2.6e-13, 2.4e-05, 8.9e-11]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=4.4496e-05 with dt=1.45872e-05 [26 for 26] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 2.9e-06 2.7e-05 6.3e-06 2.4e-04 3.1e-03 7.1e-04   1 2.0e-02/0.0e+00 
+17:10:03 [1] 1.5e-13 5.1e-13 1.9e-13                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.000e+02  1.487e+02  2.086e+02 
+
+OK  3.4e-05 < 1.5 1.0e-01 [2.2e-13, 3.4e-05, 7.6e-11]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=6.63768e-05 with dt=2.18808e-05 [27 for 27] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 3.7e-06 4.2e-05 9.5e-06 2.9e-04 4.4e-03 9.8e-04   1 1.0e-02/0.0e+00 
+17:10:03 [1] 8.3e-14 3.8e-13 1.1e-13                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.000e+02  1.487e+02  2.086e+02 
+
+OK  4.7e-05 < 1.5 1.0e-01 [1.2e-13, 4.7e-05, 4.1e-11]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=9.9198e-05 with dt=3.28212e-05 [28 for 28] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 1.7e-05 7.9e-05 2.6e-05 4.1e-04 6.2e-03 1.3e-03   1 2.0e-02/0.0e+00 
+17:10:03 [1] 9.9e-14 5.1e-13 1.4e-13                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.000e+02  1.487e+02  2.086e+02 
+
+OK  6.3e-05 < 1.5 1.0e-01 [6.1e-14, 6.3e-05, 2.2e-11]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=0.00014843 with dt=4.92318e-05 [29 for 29] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 1.0e-05 6.8e-05 1.8e-05 5.3e-04 8.3e-03 1.7e-03   1 1.0e-02/0.0e+00 
+17:10:03 [1] 2.3e-13 1.2e-12 3.5e-13                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.000e+02  1.487e+02  2.086e+02 
+
+OK  8.2e-05 < 1.5 1.0e-01 [1.9e-13, 8.2e-05, 6.6e-11]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=0.000222277 with dt=7.38477e-05 [30 for 30] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 1.1e-05 8.7e-05 2.3e-05 6.3e-04 1.1e-02 2.2e-03   1 2.0e-02/0.0e+00 
+17:10:03 [1] 4.9e-13 2.2e-12 7.9e-13                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.000e+02  1.487e+02  2.086e+02 
+
+OK  1.0e-04 < 1.5 1.0e-01 [2.9e-13, 1.0e-04, 1.0e-10]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=0.000333049 with dt=0.000110772 [31 for 31] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 1.1e-05 7.7e-05 2.0e-05 7.3e-04 1.4e-02 2.7e-03   1 2.0e-02/0.0e+00 
+17:10:03 [1] 2.3e-11 4.9e-11 3.3e-11 9.9e-10 4.6e-09 1.6e-09   1 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.000e+02  1.487e+02  2.086e+02 
+
+OK  1.3e-04 < 1.5 1.0e-01 [5.4e-13, 1.3e-04, 1.9e-10]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=0.000499206 with dt=0.000166157 [32 for 32] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 8.2e-06 9.1e-05 2.0e-05 8.4e-04 1.9e-02 3.4e-03   1 2.0e-02/0.0e+00 
+17:10:03 [1] 2.7e-09 6.7e-09 3.9e-09 2.8e-09 1.2e-08 4.6e-09   1 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.000e+02  1.487e+02  2.086e+02 
+
+OK  1.7e-04 < 1.5 1.0e-01 [1.5e-13, 1.7e-04, 5.3e-11]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=0.000748442 with dt=0.000249236 [33 for 33] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:03 [0] 7.1e-06 1.0e-04 2.1e-05 1.0e-03 2.6e-02 4.4e-03   2 2.0e-02/0.0e+00 
+17:10:04 [1] 3.4e-09 1.3e-08 6.2e-09 3.9e-09 2.2e-08 7.8e-09   1 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.000e+02  1.487e+02  2.086e+02 
+
+OK  2.1e-04 < 1.5 1.0e-01 [2.8e-13, 2.1e-04, 9.7e-11]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=0.0011223 with dt=0.000373854 [34 for 34] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 6.0e-06 1.1e-04 2.1e-05 1.2e-03 3.5e-02 5.6e-03   3 2.0e-02/0.0e+00 
+17:10:04 [1] 1.9e-13 1.3e-12 3.7e-13                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.000e+02  1.487e+02  2.086e+02 
+
+OK  2.7e-04 < 1.5 1.0e-01 [4.2e-13, 2.7e-04, 1.4e-10]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=0.00168308 with dt=0.000560781 [35 for 35] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 6.8e-06 1.3e-04 2.2e-05 1.5e-03 4.7e-02 7.3e-03   3 1.0e-02/0.0e+00 
+17:10:04 [1] 1.6e-12 3.9e-12 2.1e-12                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.000e+02  1.488e+02  2.086e+02 
+
+OK  3.5e-04 < 1.5 1.0e-01 [2.3e-13, 3.5e-04, 8.1e-11]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=0.00252425 with dt=0.000841171 [36 for 36] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 8.2e-06 1.4e-04 2.5e-05 1.9e-03 6.3e-02 9.3e-03   3 2.0e-02/0.0e+00 
+17:10:04 [1] 5.1e-12 1.4e-11 7.5e-12                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.000e+02  1.488e+02  2.086e+02 
+
+OK  4.5e-04 < 1.5 1.0e-01 [5.4e-14, 4.5e-04, 1.9e-11]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=0.00378601 with dt=0.00126176 [37 for 37] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 9.8e-06 1.5e-04 2.8e-05 2.3e-03 8.5e-02 1.2e-02   3 1.0e-02/0.0e+00 
+17:10:04 [1] 8.7e-12 2.9e-11 1.4e-11                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.000e+02  1.488e+02  2.086e+02 
+
+OK  5.8e-04 < 1.5 1.0e-01 [1.5e-13, 5.8e-04, 5.3e-11]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=0.00567864 with dt=0.00189264 [38 for 38] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 1.3e-05 1.6e-04 3.3e-05 2.8e-03 1.2e-01 1.5e-02   3 1.0e-02/0.0e+00 
+17:10:04 [1] 1.0e-11 3.7e-11 1.8e-11                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.001e+02  1.488e+02  2.086e+02 
+
+OK  7.4e-04 < 1.5 1.0e-01 [1.2e-13, 7.4e-04, 4.3e-11]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=0.0085176 with dt=0.00283895 [39 for 39] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 2.0e-05 1.5e-04 3.8e-05 3.4e-03 1.6e-01 2.0e-02   3 1.0e-02/0.0e+00 
+17:10:04 [1] 1.2e-11 4.3e-11 2.1e-11                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.001e+02  1.488e+02  2.086e+02 
+
+OK  9.6e-04 < 1.5 1.0e-01 [4.1e-14, 9.6e-04, 1.5e-11]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=0.012776 with dt=0.00425843 [40 for 40] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 2.2e-05 1.3e-04 3.8e-05 4.2e-03 2.1e-01 2.6e-02   3 1.0e-02/0.0e+00 
+17:10:04 [1] 5.5e-11 1.4e-10 7.9e-11 3.6e-08 5.8e-07 1.0e-07   2 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.001e+02  1.488e+02  2.086e+02 
+
+OK  1.2e-03 < 1.5 1.0e-01 [5.2e-14, 1.2e-03, 1.8e-11]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=0.0191637 with dt=0.00638765 [41 for 41] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 1.9e-05 1.1e-04 3.3e-05 4.8e-03 2.6e-01 3.2e-02   3 1.0e-02/0.0e+00 
+17:10:04 [1] 1.6e-10 4.4e-10 2.4e-10 1.9e-07 3.6e-06 5.9e-07   2 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.001e+02  1.488e+02  2.086e+02 
+
+OK  1.5e-03 < 1.5 1.0e-01 [2.9e-14, 1.5e-03, 1.1e-11]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=0.0287451 with dt=0.00958147 [42 for 42] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 1.5e-05 8.7e-05 2.6e-05 5.2e-03 2.9e-01 3.5e-02   1 2.0e-02/0.0e+00 
+17:10:04 [1] 1.4e-07 4.7e-07 2.3e-07 1.8e-04 5.0e-03 7.0e-04   2 2.0e-02/0.0e+00 
+17:10:04 [2] 3.7e-10 1.1e-09 5.5e-10 6.1e-07 1.3e-05 2.0e-06   3 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.001e+02  1.488e+02  2.086e+02 
+
+OK  1.7e-03 < 1.5 1.0e-01 [2.1e-15, 1.7e-03, 7.2e-13]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=0.0431173 with dt=0.0143722 [43 for 43] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 1.0e-05 6.1e-05 1.8e-05 4.7e-03 2.6e-01 3.2e-02   1 2.0e-02/0.0e+00 
+17:10:04 [1] 5.5e-08 1.4e-07 7.7e-08 6.5e-05 2.3e-03 3.1e-04   4 2.0e-02/0.0e+00 
+17:10:04 [2] 3.0e-13 1.0e-12 4.1e-13                         skp 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.002e+02  1.488e+02  2.087e+02 
+
+OK  1.5e-03 < 1.5 1.0e-01 [2.3e-15, 1.5e-03, 8.4e-13]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=0.0646756 with dt=0.0215583 [44 for 44] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 6.0e-06 3.7e-05 1.1e-05 3.7e-03 2.0e-01 2.4e-02   3 1.0e-02/1.0e-02 
+17:10:04 [1] 1.0e-09 2.9e-09 1.5e-09 2.3e-06 5.8e-05 8.6e-06   2 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.002e+02  1.488e+02  2.087e+02 
+
+OK  1.1e-03 < 1.5 1.0e-01 [5.8e-18, 1.1e-03, 1.9e-15]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=0.0970131 with dt=0.0323375 [45 for 45] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 2.7e-06 1.8e-05 5.1e-06 2.5e-03 1.2e-01 1.5e-02   3 2.0e-02/0.0e+00 
+17:10:04 [1] 1.2e-09 3.4e-09 1.7e-09 2.9e-06 7.7e-05 1.1e-05   2 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.003e+02  1.489e+02  2.088e+02 
+
+OK  7.2e-04 < 1.5 1.0e-01 [1.5e-17, 7.2e-04, 5.6e-15]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=0.145519 with dt=0.0485062 [46 for 46] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 8.7e-07 6.2e-06 1.7e-06 1.6e-03 7.2e-02 9.7e-03   3 2.0e-02/0.0e+00 
+17:10:04 [1] 1.1e-09 3.2e-09 1.7e-09 2.9e-06 8.0e-05 1.2e-05   2 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.004e+02  1.489e+02  2.089e+02 
+
+OK  4.6e-04 < 1.5 1.0e-01 [7.5e-19, 4.6e-04, 3.5e-16]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=0.218279 with dt=0.0727593 [47 for 47] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 1.4e-07 1.5e-06 3.2e-07 1.3e-03 5.4e-02 7.7e-03   3 2.0e-02/0.0e+00 
+17:10:04 [1] 9.7e-10 2.7e-09 1.4e-09 2.6e-06 7.2e-05 1.0e-05   2 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.006e+02  1.490e+02  2.090e+02 
+
+OK  3.7e-04 < 1.5 1.0e-01 [2.7e-19, 3.7e-04, 3.8e-15]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=0.327417 with dt=0.109139 [48 for 48] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 8.9e-08 8.2e-07 2.1e-07 1.4e-03 8.6e-02 1.0e-02   3 2.0e-02/0.0e+00 
+17:10:04 [1] 6.8e-10 2.0e-09 1.0e-09 1.9e-06 5.4e-05 7.8e-06   2 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.008e+02  1.492e+02  2.092e+02 
+
+OK  4.8e-04 < 1.5 1.0e-01 [1.7e-19, 4.8e-04, 1.2e-13]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=0.491126 with dt=0.163708 [49 for 49] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 1.8e-07 1.6e-06 3.8e-07 2.3e-03 1.8e-01 2.0e-02   3 1.0e-02/0.0e+00 
+17:10:04 [1] 1.8e-10 9.4e-10 3.6e-10 1.2e-07 2.2e-06 3.2e-07   3 2.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.012e+02  1.494e+02  2.095e+02 
+
+OK  9.5e-04 < 1.5 1.0e-01 [1.0e-19, 9.5e-04, 3.0e-13]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+
+=> Try for soln at t=0.736688 with dt=0.245563 [50 for 50] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 2.8e-07 2.4e-06 5.8e-07 4.9e-03 3.9e-01 4.4e-02   3 1.0e-02/1.0e-02 
+17:10:04 [1] 2.9e-09 8.3e-09 4.3e-09 6.3e-06 1.8e-04 2.6e-05   3 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.017e+02  1.497e+02  2.099e+02 
+
+OK  2.1e-03 < 1.5 1.0e-01 [5.0e-19, 2.1e-03, 3.7e-13]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+		LAST TIME STEP!
+
+=> Try for soln at t=1 with dt=0.263312 [51 for 51] (BE)
+
+    N e w t o n  C o n v e r g e n c e  - I m p l i c i t   T i m e   S t e p
+
+   ToD   itn   L_oo    L_1     L_2     L_oo    L_1     L_2   lis  asm/slv (sec)  
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+17:10:04 [0] 3.0e-07 2.6e-06 6.2e-07 5.5e-03 4.5e-01 4.9e-02   3 2.0e-02/0.0e+00 
+17:10:04 [1] 4.1e-09 1.1e-08 6.0e-09 9.1e-06 2.6e-04 3.7e-05   2 1.0e-02/0.0e+00 
+-------- --- ------- ------- ------- ------- ------- ------- --- --------------- 
+scaled solution norms   3.023e+02  1.500e+02  2.103e+02 
+
+OK  2.3e-03 < 1.5 1.0e-01 [3.8e-18, 2.3e-03, 2.5e-14]
+Predictor-corrector norm: [  0 d  ,   1 T  ,   1 y  ]
+		out of time!
+
+Fixing exodus file out.exoII
+
+-done
+
+
+Proc 0 runtime:       0.04 Minutes.
+

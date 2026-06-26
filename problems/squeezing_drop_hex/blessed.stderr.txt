@@ -1,0 +1,5 @@
+EOF found in input file while searching for:
+VOLUME_INT or END OF VOLUME_INT
+### EOF found while counting list of VOLUME_INT ###
+You should use termination string "END OF VOLUME_INT" to indicate end of list
+Will use 0 as number of VOLUME_INT

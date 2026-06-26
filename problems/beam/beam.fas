@@ -1,0 +1,44 @@
+{include(Defs)}
+ TITLE 
+ BEAM BENDING EXPERIMENT
+  
+ POINT     1      0.0000000E+00      0.0000000E+00
+ POINT     2      {width}            0.0000000E+00
+ POINT     3      {width}            {h_gel}
+ POINT     4      0.0000000E+00      {h_gel}
+ POINT     5      0.0000000E+00      {-h_silicon}
+ POINT     6      {width}            {-h_silicon}
+ LINE      1   STR     1     2     0    {ne_width}  0.75
+ LINE      2   STR     2     3     0    {ne_gel}    0.9
+ LINE      3   STR     4     3     0    {ne_width}  0.75
+ LINE      4   STR     4     1     0    {ne_gel}  0.9
+ LINE      5   STR     1     5     0    {ne_silicon} 1.0
+ LINE      6   STR     5     6     0    {ne_width}  0.75
+ LINE      7   STR     6     2     0    {ne_silicon}  1.0000
+ REGION     1     1    -1    -2    -3    -4
+ REGION     2     2    -6    -7    -1    -5
+ SCHEME    0 M
+ BODY       1     2
+ POINBC   100     1
+ POINBC   200     2
+ POINBC   300     3
+ POINBC   400     4
+ POINBC   500     6
+ POINBC   600     5
+ NODEBC     1     1
+ NODEBC     2     2
+ NODEBC     3     3
+ NODEBC     4     4
+ NODEBC     5     7
+ NODEBC     6     6
+ NODEBC     7     5
+ ELEMBC     1     1
+ ELEMBC     2     2
+ ELEMBC     3     3
+ ELEMBC     4     4
+ ELEMBC     5     7
+ ELEMBC     6     6
+ ELEMBC     7     5
+ RENUM 
+ NINE  
+ EXIT  

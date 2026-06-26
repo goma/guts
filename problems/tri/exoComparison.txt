@@ -1,0 +1,49 @@
+
+   *****************************************************************
+     EXODIFF  EXODIFF  EXODIFF  EXODIFF  EXODIFF  EXODIFF  EXODIFF  
+                                                                    
+                        Version 2.48 (2011-09-14)
+              Authors:  Richard Drake, rrdrake@sandia.gov           
+                        Greg Sjaardema, gdsjaar@sandia.gov          
+                        2011/10/24   12:38:58 MDT
+                                                                    
+     EXODIFF  EXODIFF  EXODIFF  EXODIFF  EXODIFF  EXODIFF  EXODIFF  
+   *****************************************************************
+
+Reading first file ... 
+Reading second file ... 
+  FILE 1: /scratch/goma_VandV/problems/tri/out_blessed.exoII
+   Title: cubit(4to1_tri3.e): 02/26/2007: 08:21:52
+          Dim = 2, Blocks = 1, Nodes = 454, Elements = 786, Nodesets = 4, Sidesets = 4
+          Vars: Global = 5, Nodal = 5, Element = 0, Nodeset = 0, Sideset = 0, Times = 1
+
+  FILE 2: /scratch/goma_VandV/problems/tri/out.exoII
+   Title: cubit(4to1_tri3.e): 02/26/2007: 08:21:52
+          Dim = 2, Blocks = 1, Nodes = 454, Elements = 786, Nodesets = 4, Sidesets = 4
+          Vars: Global = 5, Nodal = 5, Element = 0, Nodeset = 0, Sideset = 0, Times = 1
+
+  COMMAND FILE: /scratch/goma_VandV/problems/tri/exodiff.inp
+
+Locations of nodes will not be compared.
+Time step time values will not be compared.
+Global variables to be compared:
+	CONVRATE                         tol:     0.05 (relative), floor:     0.01
+Nodal variables to be compared:
+	VX                               tol:   0.0001 (relative), floor:    1e-11
+	VY                                      0.0001 (relative),           1e-11
+	P                                       0.0001 (relative),           1e-11
+	STREAM                                  0.0001 (relative),           1e-11
+	PRESSURE                                0.0001 (relative),           1e-11
+No Element variables on either file.
+No Element Attribute variables on either file.
+No Nodeset variables on either file.
+No Sideset variables on either file.
+
+  ==============================================================
+  NOTE: All node and element ids are reported as global ids.
+
+  --------- Time step 1, 0.0000000e+00 ~ 0.0000000e+00, ign diff:  0.00000e+00 ---------
+Global variables:
+Nodal variables:
+
+exodiff: Files are the same

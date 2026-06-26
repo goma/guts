@@ -1,0 +1,33 @@
+Multicomponent Diffusion Test: GOMA Version Information
+======================================================================================
+
+Directory:   .../VandV/problems/v2.2/MCD
+
+Sept 8, 99 baseline #1
+**********************
+     goma_Aug3099 executable
+     output files:
+        base1.sout
+        base1.serr
+        base1_mcd.out.exoII
+
+     initial residuals - 1.6e-02 1.2e+00 1.1e-01 
+     1st iteration updates - 1.6e-01 4.8e+01 2.0e+00 
+
+NB: Changes and bug fixes during the Sept-Dec, 00 time
+frame by Ken Chen and Rich Larson for Stefan-Maxwell diffusion
+and transport of charged species (Butler-Volmer kinetic model)
+were completed in early December 00. Rebaseline after these
+changes/upgrades.
+
+
+Mar 27, 01 baseline #2
+**********************
+     goma_001222 executable
+     output files:
+        base2.sout
+        base2.serr
+        base2_mcd.out.exoII
+
+     initial residuals - 1.6e-02 1.2e+00 1.2e-01
+     1st iteration updates - 1.5e-01 4.8e+01 2.0e+00

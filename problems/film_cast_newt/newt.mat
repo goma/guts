@@ -1,0 +1,63 @@
+{include("properties.aprepro")}
+Material Data File for SAMPLE
+
+/**********Form of each property card *********/
+PROPERTY   = MODEL   FLOAT#1 FLOAT#2 .....FLOAT#5
+
+/**********Form of each Constitutive card *********/
+MECHANICS_TYPE   = MODEL 
+
+Of the many available options, MODEL can be USER
+/************************************************/
+
+
+---Physical Properties
+Density			 = CONSTANT	750
+
+---Mechanical Properties and Constitutive Equations
+Solid Constitutive Equation 	          = ELLIPTIC
+#Elliptic fxi = SIMPLE_ABS 0. 10.0 2.0 -1.0 0. 0.
+Elliptic geta = DUAL_ABS 0.5 2.0 1.0 1.0 1.0.
+Convective Lagrangian Velocity	          = NONE
+Lame MU 			          = CONSTANT 	1.
+Lame LAMBDA 			          = CONSTANT    1.
+#Lame LAMBDA 			          = POISSON_RATIO 0.33
+Stress Free Solvent Vol Frac	          = CONSTANT	0.
+Liquid Constitutive Equation = NEWTONIAN
+Viscosity = CONSTANT 10000
+Momentum Weight Function = SUPG 1.0
+Polymer Constitutive Equation             = NOPOLYMER
+Surface Tension                           = CONSTANT    60
+
+---Thermal Properties
+Conductivity		= CONSTANT	0.5
+Heat Capacity		= CONSTANT	2000.0
+Volume Expansion	= CONSTANT	1.
+Reference Temperature = CONSTANT 200.
+Liquidus Temperature	= CONSTANT	1.
+Solidus Temperature	= CONSTANT	1.
+
+----Electrical Properties
+Electrical Conductivity = CONSTANT      0.
+
+---Microstructure Properties
+Media Type		= CONTINUOUS
+Permeability		= CONSTANT	1.
+
+---Species Properties
+Diffusion Constitutive Equation = FICKIAN
+Diffusivity  			= CONSTANT  0   1.
+Latent Heat Vaporization	= CONSTANT  0	0.
+Latent Heat Fusion		= CONSTANT  0	0.
+Vapor Pressure  		= CONSTANT  0	0.
+Reference Concentration         = CONSTANT  0   0.
+				            ^
+********Species Number**********************|
+
+----Source Terms
+Navier-Stokes Source		= CONSTANT	0  0 0.
+Solid Body Source		= CONSTANT	0.  0.  0.
+Mass Source			= CONSTANT	0.
+Heat Source			= FILM_CAST	{4.1*30} 10
+Species Source			= CONSTANT  0   2.
+Current Source                  = CONSTANT      0.

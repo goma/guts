@@ -1,0 +1,138 @@
+ FEM File Specifications
+ ---
+FEM file                         = fibre.exoII
+#FEM file                         = contin.exoII
+Output EXODUS II file            = out.exoII
+GUESS file                       = contin.dat
+SOLN file                        = soln.dat
+Write intermediate results       = no
+Anneal Mesh on Output            = yes
+
+ ---
+General Specifications
+ ---
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+# Number of Jacobian File Dumps    = 4
+Initial Guess                    = read_exoII
+ --- 
+Time Integration Specifications
+ ---
+Time integration                 = transient
+#Time integration                 = steady
+delta_t                          = 0.001
+Maximum number of time steps     = 10
+Maximum time                     = 405.0e+0
+Minimum time step                = 1.e-9
+Maximum time step                = 0.01
+Time step parameter		 = 0.
+Time step error                  = 0.1 1 1 0 0 0 0
+Printing Frequency		 = 1
+Initial Time                     = 0.0
+
+
+Solver Specifications
+ ---
+Solution Algorithm               = gmres
+Preconditioner                   = dom_decomp
+Matrix subdomain solver          = ilu
+Matrix storage format            = vbr
+Size of Krylov subspace          = 75
+Matrix Scaling                   = row_sum
+#Matrix output type    		 = 10
+Orthogonalization                = modified
+Maximum Linear Solve Iterations  = 75
+Number of Newton Iterations      = 10
+Newton correction factor         = 1
+Normalized Residual Tolerance    = 1e-8
+Residual Ratio Tolerance         = 1e-8
+Pressure Stabilization           = yes
+Pressure Stabilization Scaling   = 0.05
+
+ ---
+Boundary Condition Specifications
+ ---
+Number of BC			 =    -1
+
+BC = PLANE SS 20 0. 0. 1. 0.
+BC = W NS 20 0.
+
+BC = PLANE SS 40 1. 0. 0. 0.
+BC = U NS 40 0.0
+
+BC = MOVING_PLANE SS 10 0. 0. 1. -1. -1. 0. 0.
+BC = VELO_NORMAL SS 10 0.
+
+BC = KINEMATIC SS 30 0.
+BC = CAPILLARY SS 30 0.1 0. 0.
+
+END OF BC
+
+Rotation Specifications =
+
+ROT = MOM SURFACE 10 T1 0 T2 0 VELO_NORMAL 10 SEED 1 0 0
+
+ROT = MOM EDGE 10 40 U 40 T 0 VELO_NORMAL 10 NONE
+
+ROT = MESH SURFACE 20 T1 0 T2 0 PLANE 20 SEED 1 0 0
+ROT = MESH SURFACE 40 PLANE 40 T1 0 T2 0 SEED 0 1 0
+ROT = MESH SURFACE 30 KINEMATIC 30 T2 0 T1 0 SEED 0 0 1
+ROT = MESH SURFACE 10 T1 0 T2 0 MOVING_PLANE 10 SEED 1 0 0
+
+ROT = MESH EDGE 40 20 PLANE 40 T 0 PLANE 20 NONE
+ROT = MESH EDGE 20 30 KINEMATIC 30 T 0 PLANE 20 NONE
+
+ROT = MESH EDGE 40 30 PLANE 40 KINEMATIC 30 T 0 NONE
+
+ROT = MESH EDGE 40 10 PLANE 40 T 0 MOVING_PLANE 10 NONE
+ROT = MESH EDGE 10 30 KINEMATIC 30 T 0 MOVING_PLANE 10 NONE
+
+ROT = MESH VERTEX 20 40 30 PLANE 40 KINEMATIC 30 PLANE 20 NONE
+ROT = MESH VERTEX 40 10 30 PLANE 40 KINEMATIC 30 MOVING_PLANE 10 NONE
+
+
+
+END OF ROT
+ 
+
+----
+Problem Description
+---
+ 
+Number of Materials = 1
+ 
+ MAT =  newt   1
+ 
+  Coordinate System = CARTESIAN
+  Element Mapping   = isoparametric
+  Mesh Motion = ARBITRARY
+  Number of bulk species = 0
+ 
+        Number of EQ  = 7
+        EQ = mesh1      Q1      D1      Q1    	     0.     0.    0.   1.   0.  0. 
+        EQ = mesh2      Q1      D2      Q1           0.     0.    0.   1.   0.  0. 
+        EQ = mesh3      Q1      D3      Q1    	     0.     0.    0.   1.   0.  0. 
+        EQ = momentum1  Q1      U1      Q1    	     1.     1.    1.   1.   1.  0. 
+        EQ = momentum2  Q1      U2      Q1           1.     1.    1.   1.   1.  0. 
+	EQ = momentum3  Q1      U3      Q1           1.     1.    1.   1.   1.  0. 
+        EQ = continuity Q1      P       Q1      1.                          0.
+                              			div  ms  adv   bnd  dif    src   porous
+
+Post Processing Specifications
+
+Stream Function			= no
+Streamwise normal stress	= no
+Pressure contours		= yes
+Second Invarient of Strain	= no
+Mesh Dilatation			= no
+Navier Stokes Residuals		= no
+Moving Mesh Residuals		= no
+Mass Diffusion Vectors		= no
+Mass Fluxlines			= no
+Energy Conduction Vectors	= no
+Energy Fluxlines		= no
+Time Derivatives		= no
+Mesh Stress Tensor		= no
+Viscosity                       = no
+

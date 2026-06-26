@@ -1,0 +1,189 @@
+## Process Parameters
+# Drop radius if it is hemisphere = {rad_hemi = 250.0e-4 } cm
+# Squeezing rate: y_dot = {y_dot = 1.0} cm/s
+# Initial height = {H_init = rad_hemi + 1.0e-4} cm
+# Final height  = {H_final = 5.0e-4} cm
+# Level set interface width = {LS_width = 1.5*1.5e-3} cm
+# Slip coefficient liquid = {beta_slip_liquid = 1.0e-5}
+# Slip coefficient gas = {beta_slip_gas = 1.0e6}
+------------------------------------------------------------
+                 FEM File Specifications
+------------------------------------------------------------
+FEM file                         = mesh_tet.exoII
+Output EXODUS II file            = out.exoII
+GUESS file                       = no
+SOLN file                        = no
+Write intermediate results       = no
+Write initial solution           = no
+------------------------------------------------------------
+                 General Specifications
+------------------------------------------------------------
+Number of processors             = 1
+Output Level                     = 0
+Debug                            = 0
+Initial Guess                    = zero
+------------------------------------------------------------
+                 Time Integration Specifications
+------------------------------------------------------------
+Time integration                 = transient
+delta_t                          = 1.0e-4
+Maximum number of time steps     = 2
+Maximum time                     = {t_max = (H_init - H_final)/y_dot}
+Minimum time step                = 1.0e-8
+#Maximum time step                = {t_max/10.0}
+Maximum time step                = 1e-2
+Minimum Resolved Time Step       = 1.0e-6
+Courant Number Limit             = 0.2
+Time step parameter              = 0.5
+Time step error                  = -5.0e-1  0  1  1  1  1  1  1  1  1  1
+#Printing Frequency               = 0 5.0e-4
+Printing Frequency               = 4
+#Fix Frequency                    = 1
+Initial Time                     = 0.0
+
+------------------------------------------------------------
+                 Level Set Specifications
+------------------------------------------------------------
+Fill Weight Function             = Taylor-Galerkin
+Level Set Interface Tracking     = yes
+#Level Set Initialization Method  = Exodus
+Level Set Initialization Method  = Surfaces 1
+                                   SURF = SPHERE 0. 0. 0. {rad_hemi}
+Level Set Length Scale           = {LS_width}
+Level Set Renormalization Tolerance = 0.2000
+Level Set Renormalization Frequency = 1
+#Level Set Renormalization Method = Smolianski_Like_Negative
+Level Set Renormalization Method = Facet_Based
+Huygens Freeze Nodes                = on
+Restart Time Integration After Renormalization = no
+
+------------------------------------------------------------
+                 Solver Specifications
+------------------------------------------------------------
+#Strong Boundary Condition Replace Equation = yes
+#Solution Algorithm               = petsc
+Solution Algorithm               = stratimikos
+Matrix storage format = tpetra
+#Amesos Solver Package            = mumps
+Amesos Solver Package            = superlu
+Number of Newton Iterations      = 10
+#Newton correction factor         = 0.8 1.0e-6 0.6 1.0e-4 0.5 1.0e-2
+Newton correction factor         = 1.0
+Normalized Residual Tolerance    = 1.0e-8
+Pressure Stabilization           = pspg_shakib
+Pressure Stabilization Scaling   = 1.0
+Pressure Stabilization Lagged Tau = yes
+SUPG Lagged Tau = yes
+#PSPG Advection Correction        = yes
+#Continuity Stabilization         = local
+Total Number of Matrices         = 1
+Disable Viscosity Sensitivities  = no
+
+------------------------------------------------------------
+	Boundary Condition Specifications                 
+------------------------------------------------------------
+Number of BC			 = -1
+
+# Top side
+BC = VELO_SLIP_LS_HEAVISIDE SS 100 {LS_width} {beta_slip_liquid} {beta_slip_gas} 0.0 {-y_dot} 0.0
+#BC = VELO_NORMAL_LS SS 100 0.0 1 {0.5*LS_width} {alpha_shift = 1.0} {CA = 150.0}
+BC = VELO_NORMAL SS 100 0.0
+
+# Bottom side
+BC = VELO_SLIP_LS_HEAVISIDE SS 200 {LS_width} {beta_slip_liquid} {beta_slip_gas} 0.0 0.0 0.0
+BC = VELO_NORMAL SS 200 0.0
+
+# Perimeter sides - hydrostatic pressure
+BC = FLOW_HYDROSTATIC SS 300 0.0 {-980.0 * 1.0e-3} 0.0 0.0
+BC = FLOW_STRESSNOBC SS 300 0.0 -1
+
+# Level set interface - capillary
+BC = LS_CAP_DIV_N LS 0
+
+## Mesh BC ##
+
+# Fix x and z coordinates
+BC = DX NS 1000 0.0
+BC = DZ NS 1000 0.0
+
+# Top side - DY + {y_dot} * t = 0.0
+BC = GD_LINEAR SS 100 R_MESH2 0 MESH_DISPLACEMENT2 0 1.0 0.0
+BC = GD_TIME SS 100 R_MESH2 0 LINEAR 0 0.0 {y_dot}
+BC = GD_LINEAR SS 100 R_MESH2 0 MESH_DISPLACEMENT2 0 0.0 1.0
+
+# Bottom side
+BC = DY NS 200 0.0
+
+END OF BC
+
+------------------------------------------------------------
+        Rotation Condition Specifications
+------------------------------------------------------------
+Rotation Specifications = -1
+
+END OF ROT
+
+
+###########
+----
+Problem Description
+---
+
+Number of Materials = 1
+
+MAT = liquid    1
+
+	Coordinate System = CARTESIAN
+ 
+	Element Mapping  = isoparametric
+
+	Mesh Motion = ARBITRARY
+ 
+	Number of bulk species = 0
+        Number of Matrices = 1
+
+       MATRIX = 1
+
+        Number of EQ   = 11
+        EQ = mesh1      Q1  D1  Q1        0.   0.   1.   1.   0.
+        EQ = mesh2      Q1  D2  Q1        0.   0.   1.   1.   0.
+        EQ = mesh3      Q1  D3  Q1        0.   0.   1.   1.   0.
+        EQ = momentum1  Q1  U1  Q1        1.   1.   1.   1.   1.   0.
+        EQ = momentum2  Q1  U2  Q1        1.   1.   1.   1.   1.   0.
+        EQ = momentum3  Q1  U3  Q1        1.   1.   1.   1.   1.   0.
+        EQ = continuity Q1  P   Q1   1.                       0.
+        EQ = level_set  Q1  F   Q1         1.   1.            1.
+        EQ = normal1    Q1  N1  Q1             1.             1.
+        EQ = normal2    Q1  N2  Q1             1.             1.
+        EQ = normal3    Q1  N3  Q1             1.             1.
+                                    div   ms  adv  bnd  dif  src  por
+
+
+Post Processing Specifications
+
+Stream Function = no
+Streamwise normal stress = no
+Mean shear rate = yes
+Pressure contours = yes
+Fluid Stress = yes
+Second Invarient of Strain = no
+Viscosity = yes
+Mesh Dilatation = no
+Navier Stokes Residuals = no
+Moving Mesh Residuals = no
+Mass Diffusion Vectors = no
+Mass Fluxlines = no
+Energy Conduction Vectors = no
+Energy Fluxlines = no
+Time Derivatives = no
+Mesh Stress Tensor = no
+Mesh Strain Tensor = no
+Lagrangian Convection = no
+
+
+Post Processing Volumetric Integration =
+
+VOLUME_INT = NEGATIVE_FILL {block_id=1} {species_no=0} drop_volume.txt {LS_width}
+
+END OF VOLUME_INT
+Volumetric Integration Output Format = CSV

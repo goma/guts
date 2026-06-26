@@ -1,0 +1,37 @@
+ TITLE 
+T Poisuielle mesh
+$
+ point 1 0. 0.
+ point 2 5. 0.
+ point 3 5. 1.
+ point 4 0. 1.
+
+ line 1 str 2 1 0 5 1.0
+ line 2 str 2 3 0 10 1.0
+ line 3 str 3 4 0 5 1.0
+ line 4 str 1 4 0 10 1.0
+$
+ side 1 1
+ side 2 2
+ side 3 3
+ side 4 4
+ 
+$
+ region 1 1     1    2   3   4
+$
+ body 1 
+$
+ SCHEME    1 M
+$
+ poinbc 100 2
+ nodebc 1  1 
+ nodebc 2  2
+ nodebc 3  3 
+ nodebc 4  4
+ elembc 1  1 
+ elembc 2  2
+ elembc 3  3 
+ elembc 4  4
+$
+ NINE
+ EXIT  

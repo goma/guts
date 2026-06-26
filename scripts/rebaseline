@@ -1,0 +1,119 @@
+#!/usr/bin/env python3
+"""Update blessed output files for one or more problems from a completed run."""
+from __future__ import annotations
+
+import argparse
+import shutil
+import sys
+from pathlib import Path
+
+# Allow running as scripts/rebaseline without installing the package
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from pyguts_pkg.discovery import load_problem_config
+
+
+def rebaseline_problem(
+    problem_name: str,
+    data_dir: Path,
+    problems_dir: Path,
+    dry_run: bool,
+) -> bool:
+    prob_dir = problems_dir / problem_name
+    if not prob_dir.is_dir():
+        print(f"  ERROR: problem directory not found: {prob_dir}", file=sys.stderr)
+        return False
+
+    try:
+        cfg = load_problem_config(prob_dir)
+    except Exception as exc:
+        print(f"  ERROR: could not load problem.json for {problem_name}: {exc}", file=sys.stderr)
+        return False
+
+    run_dir = data_dir / problem_name
+    if not run_dir.is_dir():
+        print(f"  ERROR: run directory not found: {run_dir}", file=sys.stderr)
+        return False
+
+    copies: list[tuple[Path, Path]] = []
+
+    if cfg.blessed.serr and cfg.run.goma_serr:
+        copies.append((run_dir / cfg.run.goma_serr, prob_dir / cfg.blessed.serr))
+
+    if cfg.blessed.sout and cfg.run.goma_sout:
+        copies.append((run_dir / cfg.run.goma_sout, prob_dir / cfg.blessed.sout))
+
+    for src_name, dst_name in zip(cfg.blessed.exo_output, cfg.blessed.blessed_exo_output):
+        if src_name and dst_name:
+            copies.append((run_dir / src_name, prob_dir / dst_name))
+
+    ok = True
+    for src, dst in copies:
+        if not src.exists():
+            print(f"  MISSING  {src}", file=sys.stderr)
+            ok = False
+            continue
+        tag = "DRY-RUN" if dry_run else "cp"
+        print(f"  {tag}  {src}  ->  {dst}")
+        if not dry_run:
+            shutil.copy2(src, dst)
+
+    return ok
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(
+        description="Update blessed files for GUTS problems from a completed run directory.",
+    )
+    parser.add_argument(
+        "-d", "--data-dir",
+        required=True,
+        metavar="DIR",
+        help="Run data directory (e.g. data/linux_host_20240101_120000/)",
+    )
+    parser.add_argument(
+        "-p", "--problem",
+        dest="problems",
+        action="append",
+        required=True,
+        metavar="NAME",
+        help="Problem name to rebaseline (repeatable)",
+    )
+    parser.add_argument(
+        "--problems-dir",
+        default=None,
+        metavar="DIR",
+        help="Path to the problems/ directory (default: problems/ next to scripts/)",
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Print what would be copied without actually copying",
+    )
+    args = parser.parse_args()
+
+    scripts_dir = Path(__file__).resolve().parent
+    repo_root = scripts_dir.parent
+
+    data_dir = Path(args.data_dir).resolve()
+    if not data_dir.is_dir():
+        parser.error(f"data directory does not exist: {data_dir}")
+
+    problems_dir = Path(args.problems_dir).resolve() if args.problems_dir else repo_root / "problems"
+    if not problems_dir.is_dir():
+        parser.error(f"problems directory does not exist: {problems_dir}")
+
+    failures = 0
+    for name in args.problems:
+        print(f"Updating {name}")
+        if not rebaseline_problem(name, data_dir, problems_dir, args.dry_run):
+            failures += 1
+
+    if failures:
+        print(f"\n{failures} problem(s) had errors.", file=sys.stderr)
+        return 1
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

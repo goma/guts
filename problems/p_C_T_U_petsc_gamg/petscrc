@@ -1,0 +1,2 @@
+-ksp_type gmres
+-pc_type gamg

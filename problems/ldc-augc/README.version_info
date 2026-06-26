@@ -1,0 +1,63 @@
+Augmenting Condition on Lid-Driven Cavity: GOMA Version Information
+===================================================================
+
+This problem was one of the original test problems developed by Ian
+Gates to check the advanced capabilities he was installing into Goma.
+
+This problem is a continuation of the basic Lid Driven Cavity (LDC),
+which has Dirichlet velocity conditions on the left,right and bottom
+boundaries (no-slip) and a specified velocity (u=1) on the top, i.e.,
+the lid driven cavity.
+
+In the 4th baseline of this problem, a continuation file (contin.dat.base4)
+was added to the repository. In the input file the Residual Tolerance was
+tightened slightly to 1.e-10.
+
+
+March 1999 baseline #1
+**********************
+     goma executable?? (run by ian gates at 3M)
+     output files:
+        ians_output
+        augc_baseline
+        no exoII baseline
+
+     initial residuals - 1.6e+00 5.8e+01 3.5e+00
+     1st iteration updates - 5.2e+02 3.7e+04 3.4e+03
+
+
+Sept 8, 99 baseline #2
+**********************
+     goma_000620 executable
+     output files:
+        base2.sout
+        base2.serr
+        base2_out.exoII
+
+     initial residuals - 3.7e+05 9.7e+05 5.4e+05 
+     1st iteration updates - 9.3e+07 9.2e+09 9.3e+08 
+
+
+Oct 18, 01 baseline #3
+**********************
+     goma_02OCT executable
+     output files:
+        base3.sout
+        base3.serr
+        base3_out.exoII
+
+     initial residuals - 3.7e+05 9.7e+05 5.4e+05 
+     1st iteration updates - 9.3e+07 9.2e+09 9.3e+08 
+
+
+Dec 6, 02 baseline #4
+**********************
+     goma_021204 executable
+     contin.dat.base4
+     output files:
+        base4.sout
+        base4.serr
+        out_blessed.exoII
+
+     initial residuals - 2.6e-12 2.2e-11 5.3e-12
+     1st iteration updates - 1.9e-10 1.3e-08 1.2e-09

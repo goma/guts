@@ -1,0 +1,190 @@
+                                                                                                                                                                                    
+# Aprepro variables                                                                                                                                                                 
+# Film Thickness = {H_film = 0.133561} cm                                                                                                                                           
+# Intervals      = {ints   = 50}                                                                                                                                                    
+# Side Intervals = {sints  = 1}                                                                                                                                                     
+# Film Width     = {H_t = H_film/10} cm                                                                                                                                             
+# Substrate thickness = {H_sub = 0.35} cm                                                                                                                                           
+                                                                                                                                                                                    
+/*                                                                                                                                                                                  
+ * This file defines (parameterizes) a one-layer                                                                                                                                    
+ *  drying film problem.                                                                                                                                                            
+ *  Model for toluene/polyester                                                                                                                                                     
+ *  Price, Wang, & Romdhane, 1997                                                                                                                                                   
+ *                                                                                                                                                                                  
+ */                                                                                                                                                                                 
+                                                                                                                                                                                    
+###################################################################                                                                                                                 
+#                Necessary But Unused Properties                                                                                                                                    
+##################################################################                                                                                                                  
+$ surface_tension        {surf_tens=30.0}                                                                                                                                           
+$ surf_tens_thermal_elasticity   {dsurfdT=-0.1}                                                                                                                                     
+$ surf_tens_composition_elasticity       {dsurfdX=0.0}                                                                                                                              
+###################################################################                                                                                                                 
+                                                                                                                                                                                    
+###################################################################                                                                                                                 
+#                     Initial Temperature                                                                                                                                           
+###################################################################                                                                                                                 
+$  {T_init = 69 + 273.15} kelvin                                                                                                                                                    
+$ Sink temperature oven wall/air                                                                                                                                                    
+$  {T_inf  = 88.9 + 273.15} kelvin                                                                                                                                                  
+$ Sink temperature oven base                                                                                                                                                        
+$  {T_b    = 60.5 + 273.15} kelvin                                                                                                                                                  
+$ Coil temperature of oven                                                                                                                                                          
+$  {T_coil = 360.2 + 273.15} kelvin                                                                                                                                                 
+###################################################################                                                                                                                 
+#                    Thermal Conductivity                                                                                                                                           
+###################################################################                                                                                                                 
+$ Polymer { k_poly = 4.5e-4 } cal/s/cm/K                                                                                                                                            
+$ Substrate { k_sub = 5.6381098e-1 } cal/s/cm/K                                                                                                                                     
+$ Solvent { k_sol_0 = 3.475e-4 } cal/s/cm/K                                                                                                                                         
+$ Solvent { k_sol_1 = 3.475e-4 } cal/s/cm/K                                                                                                                                         
+                                                                                                                                                                                    
+###################################################################                                                                                                                 
+#                     Initial Concentrations                                                                                                                                        
+###################################################################                                                                                                                 
+$ Sink Concentration in overlying gass                                                                                                                                              
+$  {X0_inf   =  0}  Toluene                                                                                                                                                         
+$  {X1_inf   =  0}  Ethanol                                                                                                                                                         
+$ Initial weight fraction of solvent                                                                                                                                                
+$  {X0_init = 0.6} Toluene                                                                                                                                                          
+$  {X1_init = 0.2} Ethanol                                                                                                                                                          
+$  {Xp_init  = 1.0 - X0_init - X1_init}                                                                                                                                             
+                                                                                                                                                                                    
+                                                                                                                                                                                    
+###################################################################                                                                                                                 
+#                             Densities                                                                                                                                             
+###################################################################                                                                                                                 
+$  Polymer {rho_poly = 1.17} gm/cm3                                                                                                                                                 
+$  Substrate {rho_sub  = 1.38} gm/cm                                                                                                                                                
+$  Solvent {rho_sol_0  = 0.866} gm/cm                                                                                                                                               
+$  Solvent {rho_sol_1  = 0.789} gm/cm                                                                                                                                               
+                                                                                                                                                                                    
+$  Initial Solution {rho_init = (1.0)/( X0_init/rho_sol_0 + X1_init/rho_sol_1 + Xp_init/rho_poly )}                                                                                 
+                                                                                                                                                                                    
+####################################################################                                                                                                                
+#                          Heat capacities                                                                                                                                          
+####################################################################                                                                                                                
+$ Polymer {cp_poly = 0.35} cal/g/K                                                                                                                                                  
+$ Substrate {cp_sub = 0.2126236} cal/g/K                                                                                                                                            
+$ Solvent {cp_sol_0 = 0.44} cal/g/K                                                                                                                                                 
+$ Solvent {cp_sol_1 = 0.5877} cal/g/K                                                                                                                                               
+                                                                                                                                                                                    
+####################################################################                                                                                                                
+#                            Molar volumes                                                                                                                                          
+####################################################################                                                                                                                
+$ {mv_poly = 96538.0} cm3/mol                                                                                                                                                       
+$ {mv_sol_0 = 106.4} cm3/mol                                                                                                                                                        
+$ {mv_sol_1 = 58.39} cm3/mol                                                                                                                                                        
+                                                                                                                                                                                    
+####################################################################                                                                                                                
+#                      Antoine coefficients Toluene                                                                                                                                 
+####################################################################                                                                                                                
+$  {ln10 = log(10)}                                                                                                                                                                 
+$  {A_0 = ln10*4.07383}                                                                                                                                                             
+$  {B_0 = ln10*1344.8}                                                                                                                                                              
+$  {C_0 = -53.668}                                                                                                                                                                  
+                                                                                                                                                                                    
+$  {A_1 = ln10*5.24677}                                                                                                                                                             
+$  {B_1 = ln10*1598.673}                                                                                                                                                            
+$  {C_1 = -46.424}                                                                                                                                                                  
+                                                                                                                                                                                    
+$  {conv = 1.} assume atmospheric pressure                                                                                                                                          
+$  {Tmin = 0.1}                                                                                                                                                                     
+$  {Tmax = 1000.}                                                                                                                                                                   
+$  {tref = 1}                                                                                                                                                                       
+                                                                                                                                                                                    
+                                                                                                                                                                                    
+                                                                                                                                                                                    
+###################################################################                                                                                                                 
+#                   Free volume diffusivity parameters                                                                                                                              
+###################################################################                                                                                                                 
+                                                                                                                                                                                    
+$  {E0_0 = 0.00 } kcal/mol                                                                                                                                                          
+$  {V1_crit_0 = 1.0*1.109076925511042} cm3                                                                                                                                          
+$  {V2_crit_0 = 1.0*0.9951985509112471} cm3                                                                                                                                         
+$  {k11_0 = 0.7436203384975066*2.21e-3} cm3/g/K                                                                                                                                     
+$  {k21_0 = -103*1.556602342080605 } Kelvin                                                                                                                                         
+$  {chi1 = 0.738*0.9596372228393505}                                                                                                                                                
+$  {k12_0 = 1.344098503861622*6.145e-4 } cm3/g/K                                                                                                                                    
+$  {k22_0 = -223.9*1.143551597904205 } Kelvin                                                                                                                                       
+$  {eps_02 = 1.0*1.197973724453698 }                                                                                                                                                
+$  {D_02 = 0.3829686708203371*3.988e-4} cm2/s                                                                                                                                       
+                                                                                                                                                                                    
+$  {D0p = 0.2034008314383220*1.0e-5} cm2/s                                                                                                                                          
+                                                                                                                                                                                    
+## ethanol-pvac ##                                                                                                                                                                  
+                                                                                                                                                                                    
+$  {E0_1 = 0.00 } kcal/mol                                                                                                                                                          
+$  {V2_crit_1 = V2_crit_0} cm3                                                                                                                                                      
+$  {k12_1 = k12_0}                                                                                                                                                                  
+$  {k22_1 = k22_0}                                                                                                                                                                  
+                                                                                                                                                                                    
+$  {k11_1 = 0.5152251300938544*2.21e-3} cm3/g/K                                                                                                                                     
+$  {k21_1 = -103*1.014623120992735 } Kelvin                                                                                                                                         
+$  {V1_crit_1 = 1.0*1.109949217042862} cm3                                                                                                                                          
+                                                                                                                                                                                    
+##	cdv_descriptor 	   'D_12' 'chi2' 'eps_12'                                                                                                                                        
+$$insert                                                                                                                                                                            
+                               $  {eps_12 = .23315E+00     }
+                            $  {D_12 = .48857E-04    } cm2/s
+                                  $  {chi2 = .16269E+01    }
+                                  $  {chi3 = .19074E+01    }
+                                                                                                                                                                                    
+                                                                                                                                                                                    
+                                                                                                                                                                                    
+                                                                                                                                                                                    
+                                                                                                                                                                                    
+                                                                                                                                                                                    
+                                                                                                                                                                                    
+                                                                                                                                                                                    
+                                                                                                                                                                                    
+## toluene-ethanol ##                                                                                                                                                               
+                                                                                                                                                                                    
+                                                                                                                                                                                    
+####################################################################                                                                                                                
+#                            Molecular weights                                                                                                                                      
+####################################################################                                                                                                                
+$ Molecular weight of carbon tetrachloride                                                                                                                                          
+$ {mw_ccl4 = 153.82}                                                                                                                                                                
+$ Molecular weight of air                                                                                                                                                           
+$ {mw_inert = 28.97}                                                                                                                                                                
+$ Molecular weight of toluene                                                                                                                                                       
+$ {mw_sol_0 = 92.141} MW of toluene                                                                                                                                                 
+$ Molecular weight of ethanol                                                                                                                                                       
+$ {mw_sol_1 = 46.07} MW of ethanol                                                                                                                                                  
+$ Molecular weight of PVAC                                                                                                                                                          
+$ {mw_poly = 1.0E+05}                                                                                                                                                               
+                                                                                                                                                                                    
+                                                                                                                                                                                    
+#####################################################################                                                                                                               
+#                                  Diffusivity                                                                                                                                      
+#####################################################################                                                                                                               
+$  E_0_polymer                                                                                                                                                                      
+$ {E0_polymer = 0.0}                                                                                                                                                                
+$  Assumes solvent is toluene                                                                                                                                                       
+$ {D_air = 0.0844} solvent diffusivity in air cm2/sec from Pete Price                                                                                                               
+                                                                                                                                                                                    
+#####################################################################                                                                                                               
+#                             Air Properties                                                                                                                                        
+#####################################################################                                                                                                               
+$ Mass transfer coefficient                                                                                                                                                         
+$  {Km_0 = 9.3325e-4} g/s/cm2/K toluene                                                                                                                                             
+$  {Km_1 = 7.2476e-4} g/s/cm2/K ethanol                                                                                                                                             
+                                                                                                                                                                                    
+$ Heat transfer coefficients                                                                                                                                                        
+$ Air                                                                                                                                                                               
+$  {Kh = 2.9687e-4} cal/s/cm2/K                                                                                                                                                     
+$ Base                                                                                                                                                                              
+$  {Kb = 5.7565e-4} cal/s/cm2/K                                                                                                                                                     
+                                                                                                                                                                                    
+$ heat of vaporization                                                                                                                                                              
+$  {h_vap_0 = 95.8}  cal/gm                                                                                                                                                         
+$  {h_vap_1 = 202.11}  cal/gm                                                                                                                                                       
+                                                                                                                                                                                    
+$ Radiative Terms                                                                                                                                                                   
+$   {SB_constant = 1.354669220e-12} SB constant (cal/cm2-s)                                                                                                                         
+$   bulk emissivity                                                                                                                                                                 
+$   {eps_poly = 0.1222}                                                                                                                                                             
+$   {eps_sol0 = 0.23639}                                                                                                                                                            
+$   {eps_sol1 = 0.23985}                                                                                                                                                            

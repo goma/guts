@@ -1,0 +1,49 @@
+ TITLE 
+ Thermal-battery cell modeling 
+  
+ POINT     1      0.0000000E+00      0.0000000E+00
+ POINT     2      0.0884000E+00      0.0000000E+00
+ POINT     3      0.1586000E+00      0.0000000E+00
+ POINT     4      0.2042000E+00      0.0000000E+00
+ POINT     5      0.2042000E+00      0.317500E+00
+ POINT     6      0.1586000E+00      0.317500E+00
+ POINT     7      0.0884000E+00      0.317500E+00
+ POINT     8      0.0000000E+00      0.317500E+00
+ POINT     9      0.1235000E+00      0.0000000E+00
+ POINT    10      0.1235000E+00      0.317500E+00
+ LINE      12   STR     1     2     0    10  0.8000
+ LINE      27   STR     2     7     0    2  1.0000
+ LINE      87   STR     8     7     0    10  0.8000
+ LINE      18   STR     1     8     0    2  1.0000
+ LINE      29   STR     2     9     0    5  1.6700
+ LINE      93   STR     9     3     0    5  0.6000
+ LINE      36   STR     3     6     0    2  1.0000
+ LINE      710  STR     7    10     0    5  1.6700
+ LINE      106  STR    10     6     0    5  0.6000
+ LINE      34   STR     3     4     0   10  1.2500
+ LINE      45   STR     4     5     0    2  1.0000
+ LINE      65   STR     6     5     0   10  1.2500
+ LINE     910   STR     9    10     0    2  1.0000
+ REGION     1     1    -12   -27   -87   -18
+ REGION     2     2    -29   -910  -710  -27
+ REGION     3     2    -93   -36   -106  -910
+ REGION     4     3    -34   -45   -65   -36
+ SCHEME    0 M
+ BODY       1  2  3  4
+ NODEBC     1     12  29    93  34
+ NODEBC     2     45
+ NODEBC     3     87  710  106  65
+ NODEBC     4     18
+ NODEBC     5     27
+ NODEBC     6     36
+ NODEBC     7     910
+ ELEMBC     1     12  29    93  34
+ ELEMBC     2     45
+ ELEMBC     3     87  710  106  65
+ ELEMBC     4     18
+ ELEMBC     5     27
+ ELEMBC     6     36
+ ELEMBC     7    910
+ RENUM 
+ NINE  
+ EXIT  

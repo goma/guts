@@ -1,0 +1,7 @@
+### Drop squeeze parameters ###
+
+### Mesh / LS parameters
+# Domain size = {Xlen = 1.0} cm
+# Solid height = {Zlen = 1.0} cm
+# Mesh interval = {nx = 30}
+

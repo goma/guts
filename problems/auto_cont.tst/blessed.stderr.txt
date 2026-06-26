@@ -1,0 +1,1 @@
+  REMOVING BC VELO_TANGENT at SS 8/6 because of KINEMATIC 

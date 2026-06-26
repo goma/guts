@@ -1,0 +1,69 @@
+<ParameterList>
+  <Parameter name="Linear Solver Type" type="string" value="Belos"/>
+  <ParameterList name="Linear Solver Types">
+    <ParameterList name="Belos">
+      <Parameter name="Solver Type" type="string" value="Pseudo Block GMRES"/>
+      <ParameterList name="Solver Types">
+        <!-- "Num Blocks" is the krylov subspace size, or iters-per-restart. -->
+        <ParameterList name="Pseudo Block GMRES">
+          <Parameter name="Num Blocks" type="int" value="100"/>
+          <Parameter name="Verbosity" type="int" value="33"/>
+          <Parameter name="Maximum Iterations" type="int" value="200"/>
+          <Parameter name="Maximum Restarts" type="int" value="10"/>
+          <Parameter name="Orthogonalization" type="string" value="IMGS"/>
+          <Parameter name="Output Style" type="int" value="1"/>
+          <Parameter name="Output Frequency" type="int" value="10"/>
+          <Parameter name="Convergence Tolerance" type="double" value="1e-6"/>
+        </ParameterList>
+      <!-- <Parameter name="Solver Type" type="string" value="BiCGStab"/> -->
+      <!-- <ParameterList name="Solver Types"> -->
+        <ParameterList name="Block GMRES">
+          <Parameter name="Block Size" type="int" value="1"/>
+          <Parameter name="Convergence Tolerance" type="double" value="1e-5"/>
+          <Parameter name="Num Blocks" type="int" value="300"/>
+          <Parameter name="Maximum Restarts" type="int" value="300"/>
+          <Parameter name="Output Frequency" type="int" value="1"/>
+          <!-- <Parameter name="Show Maximum Residual Norm Only" type="bool" value="1"/> -->
+          <Parameter name="Maximum Iterations" type="int" value="400"/>
+          <Parameter name="Output Frequency" type="int" value="1"/>
+          <Parameter name="Maximum Iterations" type="int" value="400"/>
+        </ParameterList>
+        <ParameterList name="BiCGStab">
+          <Parameter name="Convergence Tolerance" type="double" value="1e-7"/>
+          <Parameter name="Maximum Iterations" type="int" value="800"/>
+        </ParameterList>
+        <!-- <Parameter name="Show Maximum Residual Norm Only" type="bool" value="1"/> -->
+      </ParameterList>
+      <ParameterList name="VerboseObject">
+        <Parameter name="Verbosity Level" type="string" value="none" />
+      </ParameterList>
+    </ParameterList>
+  </ParameterList>
+  <Parameter name="Preconditioner Type" type="string" value="Ifpack2"/>
+  <ParameterList name="Preconditioner Types">
+    <ParameterList name="Ifpack2">
+      <!-- <Parameter name="Prec Type" type="string" value="ILUT"/> -->
+      <Parameter name="Prec Type" type="string" value="SCHWARZ"/>
+      <Parameter name="Overlap" type="int" value="1"/>
+      <ParameterList name="Ifpack2 Settings">
+        <Parameter name="fact: relax value" type="double" value="0"/>
+        <Parameter name="schwarz: subdomain solver name" type="string" value="riluk"/> -->
+        <Parameter name="schwarz: combine mode" type="string" value="ZERO"/>
+        <Parameter name="schwarz: use reordering" type="bool" value="true"/>
+        <Parameter name="schwarz: overlap level" type="int" value="0"/>
+        <!-- <Parameter name="subdomain solver name" type="string" value="FAST_ILU"/> -->
+        <ParameterList name="subdomain solver parameters">
+          <Parameter name="fact: iluk level-of-fill" type="int" value="1"/>
+	  <Parameter name="fact: ilut level-of-fill" type="double" value="2"/>
+		<!-- <Parameter name="fact: drop tolerance" type="double" value="1e-5"/ -->
+          <Parameter name="fact: relax value" type="double" value="0"/>
+          <!-- <Parameter name="level" type="int" value="2"/> -->
+          <!-- <Parameter name="triangular solve type" type="string" value="Standard"/> -->
+        </ParameterList>
+      </ParameterList>
+      <ParameterList name="VerboseObject">
+        <Parameter name="Verbosity Level" type="string" value="none" />
+      </ParameterList>
+    </ParameterList>
+  </ParameterList>
+</ParameterList>
