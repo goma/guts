@@ -5,3 +5,6 @@ WARNING: Defaulting Thixotropic Factor to Zero (/opt/workdir/goma/src/mm_input_m
 WARNING: Defaulting on Lubrication Curvature Normal (/opt/workdir/goma/src/mm_input_mp.c:11149)
 WARNING: Defaulting on Lubrication LS Interpolation (/opt/workdir/goma/src/mm_input_mp.c:11165)
 WARNING: get_side_info for BIQUAD_SHELL needs to be checked (/opt/workdir/goma/src/mm_fill_fill.c:3080)
+
+	Failed to reach end of hunt in maximum number of successful steps (5).
+	Sorry.
