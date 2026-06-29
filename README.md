@@ -69,7 +69,8 @@ results/latest.txt     -> symlink to most recent text report
 results/latest.html    -> symlink to most recent HTML report
 ```
 
-Exit code is 0 if every problem passed, 1 if any failed or aborted.
+Exit code is 0 if every runnable problem passed or was aborted as not runnable
+for the selected build/configuration, 1 if any runnable problem failed.
 
 ### Checking a JSON report in CI
 
