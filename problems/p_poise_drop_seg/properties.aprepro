@@ -1,0 +1,23 @@
+$ {R = 6}
+$ {D = 2*R}
+$ {H = 2*D}
+$ {L = 4*H}
+$ {mesh_size = 1}
+
+$ {rho = 4}
+$ {rho_fluid = rho}
+$ {rho_drop = rho}
+$ {mu_ratio = 1}
+
+$ {Ca = 1.48}
+$ {Re = 1.07}
+$ {surface_tension = 30}
+$ {g = 0.004}
+
+$ {Vmax = sqrt(Re * Ca * surface_tension / (rho * D))}
+
+$ {mu_fluid = Ca * surface_tension / Vmax}
+$ {mu_drop = mu_fluid * mu_ratio}
+
+$ {dropX = 2.5*D - L/2}
+$ {dropY = 0}

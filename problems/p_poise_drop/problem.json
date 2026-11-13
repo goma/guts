@@ -6,7 +6,7 @@
     "email": "contact@gomafem.com"
   },
   "estimated_time_minutes": 2,
-  "disabled": true,
+  "disabled": false,
   "features": [
     "transient",
     "2d",
@@ -28,7 +28,7 @@
     "aprepro_flags": "",
     "use_chemkin": false,
     "chemkin_input": "",
-    "use_mpi": false,
+    "use_mpi": true,
     "num_processors": 2,
     "use_decomp": true,
     "brk_input": "",
