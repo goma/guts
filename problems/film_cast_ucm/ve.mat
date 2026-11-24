@@ -14,7 +14,7 @@ Density			= CONSTANT 	750.0
 
 ---Mechanical Properties and Constitutive Equations
 Solid Constitutive Equation 	= ELLIPTIC	
-Elliptic fxi = SIMPLE_ABS 0. 10.0 2.0 -1.0 0. 0.
+Elliptic fxi = SIMPLE_ABS 0.5 0.0 1.0 0.0 0.5 0.25
 Convective Lagrangian Velocity  = NONE
 Lame MU 			= CONSTANT 	1.
 Lame LAMBDA 			= CONSTANT 	1.
@@ -30,8 +30,6 @@ Polymer Shock Capturing         = CONSTANT      1e-6
 Adaptive Viscosity Scaling      = CONSTANT      0.0
 Polymer Viscosity		= CONSTANT	1000.0
 Polymer Time Constant		= CONSTANT	{lambda}
-PTT Xi parameter = CONSTANT 0.0
-PTT Epsilon parameter = CONSTANT 0.02
 Surface Tension                 = CONSTANT      60.
 
 ---Thermal Properties

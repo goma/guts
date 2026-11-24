@@ -9,9 +9,9 @@
 # {h1 = 0.001}
 
 # {viscosity = 1000}
-# {D_R = 10.}
-# w1 {w1 = 0.02}
+# {D_R = 3.}
+# w1 {w1 = 0.01}
 # w2 {w2 = w1*D_R}
-# Wi {Wi = 0.4}
+# Wi {Wi = 0.1}
 # lambda {lambda = Wi * air_gap / w2}
 # L {air_gap}

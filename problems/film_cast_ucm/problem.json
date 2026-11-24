@@ -13,6 +13,7 @@
     "mumps",
     "2d",
     "viscoelastic",
+    "film_cast",
     "no_chemkin"
   ],
   "requirements": {
